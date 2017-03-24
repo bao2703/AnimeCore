@@ -25,6 +25,8 @@ namespace AnimeCore.Controllers
         [AllowAnonymous]
         public IActionResult Login(string returnUrl = null)
         {
+            if (_accountService.IsSignedIn(User))
+                return RedirectToLocal(returnUrl);
             ViewData[Constant.ReturnUrl] = returnUrl;
             return View();
         }
@@ -103,7 +105,7 @@ namespace AnimeCore.Controllers
                 return View("Login");
             }
             var info = await _accountService.GetExternalLoginInfoAsync();
-            if (info == null) return RedirectToAction(nameof(Login));
+            if (info == null) return RedirectToAction("Login");
 
             // Sign in the user with this external login provider if the user already has a login.
             var result = await _accountService.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, false);

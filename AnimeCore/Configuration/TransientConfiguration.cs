@@ -8,6 +8,7 @@ namespace AnimeCore.Configuration
         public static void Configure(IServiceCollection services)
         {
             services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IGenreService, GenreService>();
         }
     }
 }

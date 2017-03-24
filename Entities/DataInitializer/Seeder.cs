@@ -11,10 +11,8 @@ namespace Entities.DataInitializer
         public static void Seed(this IApplicationBuilder app)
         {
             var context = app.ApplicationServices.GetService<NeptuneContext>();
-            //context.Database.EnsureDeleted();
-            //context.Database.Migrate();
-            //if (!context.Database.EnsureCreated())
-            //    return;
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
 
             #region genres
 
