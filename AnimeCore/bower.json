@@ -6,10 +6,10 @@
     "jquery": "2.2.0",
     "jquery-validation-unobtrusive": "3.2.6",
     "font-awesome": "Font-Awesome#v4.7.0",
-    "DataTables": "datatable#RELEASE_1_9_4",
     "datatables-bootstrap": "1.0.0",
     "bootstrap-select": "v2.0.0-beta1",
-    "bootstrap-social": "v4.10.1"
+    "bootstrap-social": "v4.10.1",
+    "jquery-validation": "1.16.0"
   },
   "resolutions": {
     "jquery": "1.9.1 - 3",

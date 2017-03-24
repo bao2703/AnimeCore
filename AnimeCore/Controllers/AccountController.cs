@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using System.Threading.Tasks;
+using AnimeCore.Common;
 using Entities.Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -7,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Models.AccountViewModels;
 using Services;
 
-namespace NeptuneAnimeCore.Controllers
+namespace AnimeCore.Controllers
 {
     [Authorize]
     public class AccountController : Controller
@@ -24,7 +25,7 @@ namespace NeptuneAnimeCore.Controllers
         [AllowAnonymous]
         public IActionResult Login(string returnUrl = null)
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            ViewData[Constant.ReturnUrl] = returnUrl;
             return View();
         }
 
@@ -34,7 +35,7 @@ namespace NeptuneAnimeCore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            ViewData[Constant.ReturnUrl] = returnUrl;
             if (!ModelState.IsValid) return View(model);
             var result = await _accountService.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
             if (result.Succeeded) return RedirectToLocal(returnUrl);
@@ -47,7 +48,7 @@ namespace NeptuneAnimeCore.Controllers
         [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            ViewData[Constant.ReturnUrl] = returnUrl;
             return View();
         }
 
@@ -57,7 +58,7 @@ namespace NeptuneAnimeCore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            ViewData[Constant.ReturnUrl] = returnUrl;
             if (!ModelState.IsValid) return View(model);
             var user = new User {UserName = model.Email, Email = model.Email};
             var result = await _accountService.CreateAsync(user, model.Password);
@@ -99,7 +100,7 @@ namespace NeptuneAnimeCore.Controllers
             if (remoteError != null)
             {
                 ModelState.AddModelError(string.Empty, $"Error from external provider: {remoteError}");
-                return View(nameof(Login));
+                return View("Login");
             }
             var info = await _accountService.GetExternalLoginInfoAsync();
             if (info == null) return RedirectToAction(nameof(Login));
@@ -109,8 +110,8 @@ namespace NeptuneAnimeCore.Controllers
             if (result.Succeeded) return RedirectToLocal(returnUrl);
 
             // If the user does not have an account, then ask the user to create an account.
-            ViewData["ReturnUrl"] = returnUrl;
-            ViewData["LoginProvider"] = info.LoginProvider;
+            ViewData[Constant.ReturnUrl] = returnUrl;
+            ViewData[Constant.LoginProvider] = info.LoginProvider;
             var email = info.Principal.FindFirstValue(ClaimTypes.Email);
             return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel {Email = email});
         }
