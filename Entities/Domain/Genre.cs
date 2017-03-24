@@ -10,6 +10,6 @@ namespace Entities.Domain
 
         public string Slug { get; set; }
 
-        public virtual ICollection<GenreMovie> MovieGenre { get; set; }
+        public virtual ICollection<GenreMovie> GenreMovies { get; set; }
     }
 }

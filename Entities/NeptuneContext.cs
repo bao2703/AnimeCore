@@ -22,6 +22,16 @@ namespace Entities
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<GenreMovie>().HasKey(x => new {x.MovieId, x.GenreId});
+
+            builder.Entity<GenreMovie>()
+                .HasOne(x => x.Movie)
+                .WithMany(x => x.GenreMovies)
+                .HasForeignKey(x => x.MovieId);
+
+            builder.Entity<GenreMovie>()
+                .HasOne(x => x.Genre)
+                .WithMany(x => x.GenreMovies)
+                .HasForeignKey(x => x.GenreId);
             base.OnModelCreating(builder);
         }
 

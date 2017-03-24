@@ -35,7 +35,7 @@ namespace Entities.Domain
 
         public Status Status { get; set; }
 
-        public virtual ICollection<GenreMovie> Genres { get; set; }
+        public virtual ICollection<GenreMovie> GenreMovies { get; set; }
 
         public virtual ICollection<Episode> Episodes { get; set; }
     }

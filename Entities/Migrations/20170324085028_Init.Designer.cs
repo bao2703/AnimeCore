@@ -9,7 +9,7 @@ using Entities.Domain;
 namespace Entities.Migrations
 {
     [DbContext(typeof(NeptuneContext))]
-    [Migration("20170324075653_Init")]
+    [Migration("20170324085028_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,6 +56,19 @@ namespace Entities.Migrations
                     b.ToTable("Genres");
                 });
 
+            modelBuilder.Entity("Entities.Domain.GenreMovie", b =>
+                {
+                    b.Property<int>("MovieId");
+
+                    b.Property<int>("GenreId");
+
+                    b.HasKey("MovieId", "GenreId");
+
+                    b.HasIndex("GenreId");
+
+                    b.ToTable("GenreMovie");
+                });
+
             modelBuilder.Entity("Entities.Domain.Movie", b =>
                 {
                     b.Property<int>("Id")
@@ -91,19 +104,6 @@ namespace Entities.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Movies");
-                });
-
-            modelBuilder.Entity("Entities.Domain.MovieGenre", b =>
-                {
-                    b.Property<int>("MovieId");
-
-                    b.Property<int>("GenreId");
-
-                    b.HasKey("MovieId", "GenreId");
-
-                    b.HasIndex("GenreId");
-
-                    b.ToTable("MovieGenre");
                 });
 
             modelBuilder.Entity("Entities.Domain.User", b =>
@@ -270,15 +270,15 @@ namespace Entities.Migrations
                         .HasForeignKey("MovieId");
                 });
 
-            modelBuilder.Entity("Entities.Domain.MovieGenre", b =>
+            modelBuilder.Entity("Entities.Domain.GenreMovie", b =>
                 {
                     b.HasOne("Entities.Domain.Genre", "Genre")
-                        .WithMany("MovieGenre")
+                        .WithMany("GenreMovie")
                         .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Entities.Domain.Movie", "Movie")
-                        .WithMany("Genres")
+                        .WithMany("GenreMovies")
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

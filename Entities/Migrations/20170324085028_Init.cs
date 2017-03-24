@@ -111,7 +111,7 @@ namespace Entities.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                "MovieGenre",
+                "GenreMovie",
                 table => new
                 {
                     MovieId = table.Column<int>(nullable: false),
@@ -119,15 +119,15 @@ namespace Entities.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MovieGenre", x => new {x.MovieId, x.GenreId});
+                    table.PrimaryKey("PK_GenreMovie", x => new {x.MovieId, x.GenreId});
                     table.ForeignKey(
-                        "FK_MovieGenre_Genres_GenreId",
+                        "FK_GenreMovie_Genres_GenreId",
                         x => x.GenreId,
                         "Genres",
                         "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        "FK_MovieGenre_Movies_MovieId",
+                        "FK_GenreMovie_Movies_MovieId",
                         x => x.MovieId,
                         "Movies",
                         "Id",
@@ -226,8 +226,8 @@ namespace Entities.Migrations
                 "MovieId");
 
             migrationBuilder.CreateIndex(
-                "IX_MovieGenre_GenreId",
-                "MovieGenre",
+                "IX_GenreMovie_GenreId",
+                "GenreMovie",
                 "GenreId");
 
             migrationBuilder.CreateIndex(
@@ -274,7 +274,7 @@ namespace Entities.Migrations
                 "Episodes");
 
             migrationBuilder.DropTable(
-                "MovieGenre");
+                "GenreMovie");
 
             migrationBuilder.DropTable(
                 "AspNetRoleClaims");
