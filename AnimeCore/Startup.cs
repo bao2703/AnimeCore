@@ -1,4 +1,5 @@
-﻿using AnimeCore.Configuration;
+﻿using AnimeCore.Common;
+using AnimeCore.Configuration;
 using Entities;
 using Entities.DataInitializer;
 using Microsoft.AspNetCore.Builder;
@@ -8,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Sakura.AspNetCore.Mvc;
 
 namespace AnimeCore
 {
@@ -37,6 +39,9 @@ namespace AnimeCore
                 options.Filters.Add(new RequireHttpsAttribute());
             });
 
+            services.AddBootstrapPagerGenerator(options => { options.ConfigureDefault(); });
+
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             IdentityConfiguration.Configure(services);
             TransientConfiguration.Configure(services);
         }

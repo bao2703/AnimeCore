@@ -40,8 +40,8 @@ namespace AnimeCore.Configuration
                 options.User = userOptions;
 
                 options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromDays(1);
-                options.Cookies.ApplicationCookie.LoginPath = "/Account/SignIn";
-                options.Cookies.ApplicationCookie.LogoutPath = "/Account/SignOut";
+                options.Cookies.ApplicationCookie.LoginPath = "/Account/Login";
+                options.Cookies.ApplicationCookie.LogoutPath = "/Account/LogOff";
             });
         }
     }

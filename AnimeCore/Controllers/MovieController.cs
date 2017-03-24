@@ -1,16 +1,26 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AnimeCore.Common;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Sakura.AspNetCore;
+using Services;
 
 namespace AnimeCore.Controllers
 {
     public class MovieController : Controller
     {
-        public IActionResult Index()
+        private readonly AppSettings _appSettings;
+        private readonly IMovieService _movieService;
+
+        public MovieController(IMovieService movieService, IOptions<AppSettings> appSettings)
         {
-            return View();
+            _movieService = movieService;
+            _appSettings = appSettings.Value;
+        }
+
+        public IActionResult Index(int page = 1)
+        {
+            var model = _movieService.ToList();
+            return View(model.ToPagedList(_appSettings.PageSize, page));
         }
     }
 }

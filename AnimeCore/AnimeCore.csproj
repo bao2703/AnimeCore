@@ -42,6 +42,7 @@
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Movie\" />
     <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 

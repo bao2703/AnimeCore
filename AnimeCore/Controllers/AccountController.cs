@@ -144,7 +144,7 @@ namespace AnimeCore.Controllers
                 AddErrors(result);
             }
 
-            ViewData["ReturnUrl"] = returnUrl;
+            ViewData[Constant.ReturnUrl] = returnUrl;
             return View(model);
         }
 

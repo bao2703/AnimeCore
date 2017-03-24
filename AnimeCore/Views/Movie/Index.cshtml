@@ -1,0 +1,45 @@
+@model Sakura.AspNetCore.IPagedList<Movie>
+@{
+    ViewData[Constant.Title] = "Index";
+}
+
+@section slide{
+    @Html.Partial("_SlidePartial")
+}
+
+<div class="panel panel-info" id="panel-movie-list">
+    <div class="panel-heading">
+        Result
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-xs-6 col-sm-3">
+                    <a href="@Url.Action("Details", "Movie", new {movieId = item.Id})">
+                        <div class="movie-content">
+                            <span class="movie-name">@item.Name</span>
+                            <span class="movie-release">@item.Release.Month/@item.Release.Year</span>
+                            <span class="movie-viewed">@item.Viewed</span>
+                            <img src="@item.Image" class="movie-img img-rounded img-responsive" alt="@item.Name">
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+
+    <div class="panel-footer" align="center">
+        <pager source="@Model"/>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $("html, body").animate({
+                scrollTop: $("#panel-movie-list").offset().top - 60
+            },
+            1000);
+    })
+</script>
