@@ -1,0 +1,74 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <div class="panel panel-info">
+            <!-- panel-heading -->
+            <div class="panel-heading">
+                <div class="panel-title">@ViewBag.Title</div>
+                <div style="float: right; font-size: 80%; position: relative; top: -10px">
+                    <a href="#">Forgot password?</a>
+                </div>
+            </div>
+            <!-- /panel-heading -->
+            <!-- panel-body -->
+            <div style="padding-top: 20px" class="panel-body">
+                <form asp-action="Login" asp-controller="Account" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger validation-summary col-sm-12"></div>
+                    <div style="margin-bottom: 8px" class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <input asp-for="Email" class="form-control" asp-placeholder-for="Email" autofocus/>
+                    </div>
+                    <div style="margin-bottom: 10px">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div style="margin-bottom: 8px" class="input-group">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-lock"></i>
+                        </span>
+                        <input asp-for="Password" class="form-control" asp-placeholder-for="Password"/>
+                    </div>
+                    <div style="margin-bottom: 10px">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="col-xs-12 input-group">
+                        <div class="checkbox" style="text-align: center">
+                            <label asp-for="RememberMe">
+                                <input asp-for="RememberMe"/>
+                                <display name-for="RememberMe"></display>
+                            </label>
+                        </div>
+                    </div>
+                    <div style="margin-top: 10px" class="form-group">
+                        <!-- button -->
+                        <div class="col-sm-12">
+                            <input type="submit" class="btn btn-success btn-block" value="Log in"/>
+                        </div>
+                        <!-- /button -->
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div style="border-top: 1px solid #888; font-size: 85%; padding-top: 15px; text-align: center">
+                                Don't have an account!
+                                <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register Here</a>
+                                or
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                @await Html.PartialAsync("_ExternalLoginPartial")
+            </div>
+            <!-- /panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+</div>
+
+@section scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

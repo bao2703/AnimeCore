@@ -21,7 +21,30 @@
 </head>
 <body>
 
-@RenderBody()
+<!-- navbar -->
+@await Html.PartialAsync("_NavbarPartial")
+<!-- /navbar -->
+<!-- slide -->
+@RenderSection("slide", false)
+<!-- /.slide -->
+<!-- body-content -->
+<div class="body-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                @RenderBody()
+            </div>
+            <div class="col-md-3">
+                <!-- advertisement -->
+                <div class="advertisement">
+
+                </div>
+                <!-- /.advertisement -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.body-content -->
 
 
 <environment names="Development">

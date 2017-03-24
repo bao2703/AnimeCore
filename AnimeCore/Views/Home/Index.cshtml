@@ -1,3 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+
+@section slide {
+    @await Html.PartialAsync("_SlidePartial")
+}
