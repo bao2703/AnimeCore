@@ -35,11 +35,14 @@
     </div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        $("html, body").animate({
-                scrollTop: $("#panel-movie-list").offset().top - 60
-            },
-            1000);
-    })
-</script>
+
+@section scripts {
+    <script>
+        $(document).ready(function() {
+            $("html, body").animate({
+                    scrollTop: $("#panel-movie-list").offset().top - 60
+                },
+                1000);
+        })
+    </script>
+}

@@ -27,7 +27,7 @@ namespace Services
 
         public List<Movie> ToList()
         {
-            return _context.Movies.ToList();
+            return _context.Movies.OrderBy(x => x.Name).ToList();
         }
 
         public Movie FindBy(int id)

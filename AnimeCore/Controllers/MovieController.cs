@@ -17,10 +17,10 @@ namespace AnimeCore.Controllers
             _appSettings = appSettings.Value;
         }
 
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(int pageIndex = 1)
         {
             var model = _movieService.ToList();
-            return View(model.ToPagedList(_appSettings.PageSize, page));
+            return View(model.ToPagedList(_appSettings.PageSize, pageIndex));
         }
     }
 }

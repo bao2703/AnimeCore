@@ -9,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Sakura.AspNetCore.Mvc;
 
 namespace AnimeCore
 {
@@ -32,6 +31,7 @@ namespace AnimeCore
         {
             services.AddDbContext<NeptuneContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
             services.AddMvc(options =>
             {
@@ -39,11 +39,10 @@ namespace AnimeCore
                 options.Filters.Add(new RequireHttpsAttribute());
             });
 
-            services.AddBootstrapPagerGenerator(options => { options.ConfigureDefault(); });
 
-            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             IdentityConfiguration.Configure(services);
             TransientConfiguration.Configure(services);
+            PagerConfiguration.Configure(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
