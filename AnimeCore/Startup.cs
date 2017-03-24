@@ -2,6 +2,7 @@
 using Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,7 +30,11 @@ namespace AnimeCore
             services.AddDbContext<NeptuneContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddMvc();
+            services.AddMvc(options =>
+            {
+                options.SslPort = 44308;
+                options.Filters.Add(new RequireHttpsAttribute());
+            });
 
             IdentityConfiguration.Configure(services);
             TransientConfiguration.Configure(services);

@@ -5,11 +5,14 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - AnimeCore</title>
+    <title>@ViewData[Constant.Title] - AnimeCore</title>
 
     <environment names="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
-        <link rel="stylesheet" href="~/css/site.css"/>
+        <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+        <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+        <link href="~/lib/bootstrap-social/bootstrap-social.css" rel="stylesheet"/>
+        <link href="~/lib/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet"/>
+        <link href="~/css/site.css"rel="stylesheet"/>
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -50,6 +53,7 @@
 <environment names="Development">
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/bootstrap-select/dist/js/bootstrap-select.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 </environment>
 <environment names="Staging,Production">

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace NeptuneAnimeCore.TagHelpers
+namespace AnimeCore.TagHelpers
 {
     public class DisplayTagHelper : TagHelper
     {

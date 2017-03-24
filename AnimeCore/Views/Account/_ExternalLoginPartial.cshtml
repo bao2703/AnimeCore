@@ -2,7 +2,7 @@
 
 <div class="external-login">
     @{ var loginProviders = AccountService.GetExternalAuthenticationSchemes(); }
-    <form asp-action="ExternalLogin" asp-controller="Account" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+    <form asp-action="ExternalLogin" asp-controller="Account" asp-route-returnurl="@ViewData[Constant.ReturnUrl]" method="post" class="form-horizontal">
         @foreach (var provider in loginProviders)
         {
             <button type="submit" class="btn btn-block btn-social btn-facebook" name="provider" value="@provider.AuthenticationScheme" title="Login using your @provider.DisplayName account" style="text-align: center;">

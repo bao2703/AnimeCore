@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace NeptuneAnimeCore.TagHelpers
+namespace AnimeCore.TagHelpers
 {
     [HtmlTargetElement("input", Attributes = PlaceholderAttributeName, TagStructure = TagStructure.WithoutEndTag)]
     public class InputPlaceholderTagHelper : InputTagHelper

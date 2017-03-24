@@ -1,6 +1,10 @@
 ﻿@model LoginViewModel
 @{
-    ViewData["Title"] = "Log in";
+    ViewData[Constant.Title] = "Log in";
+}
+
+@section slide {
+    @await Html.PartialAsync("_SlidePartial")
 }
 
 <div class="row">
@@ -16,7 +20,7 @@
             <!-- /panel-heading -->
             <!-- panel-body -->
             <div style="padding-top: 20px" class="panel-body">
-                <form asp-action="Login" asp-controller="Account" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                <form asp-action="Login" asp-controller="Account" asp-route-returnurl="@ViewData[Constant.ReturnUrl]" method="post" class="form-horizontal">
                     <div asp-validation-summary="ModelOnly" class="alert alert-danger validation-summary col-sm-12"></div>
                     <div style="margin-bottom: 8px" class="input-group">
                         <span class="input-group-addon">

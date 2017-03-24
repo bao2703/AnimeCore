@@ -7,6 +7,18 @@
   <PropertyGroup>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\images\5cm.jpg" />
+    <Content Include="wwwroot\images\AOT.jpg" />
+    <Content Include="wwwroot\images\exorcist.jpg" />
+    <Content Include="wwwroot\images\naruto.jpg" />
+    <Content Include="wwwroot\images\one-piece.jpg" />
+    <Content Include="wwwroot\images\onepiece.jpg" />
+    <Content Include="wwwroot\images\onepunch.jpg" />
+    <Content Include="wwwroot\images\sao.jpg" />
+    <Content Include="wwwroot\images\tokyoghoul.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
@@ -24,9 +36,6 @@
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="wwwroot\images\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj" />
