@@ -3,8 +3,8 @@
     ViewData[Constant.Title] = "Index";
 }
 
-@section slide{
-    @Html.Partial("_SlidePartial")
+@section slide {
+    @await Html.PartialAsync("_SlidePartial")
 }
 
 <div class="panel panel-info" id="panel-movie-list">
@@ -16,7 +16,7 @@
             @foreach (var item in Model)
             {
                 <div class="col-xs-6 col-sm-3">
-                    <a href="@Url.Action("Details", "Movie", new {movieId = item.Id})">
+                    <a asp-action="Details" asp-controller="Movie" asp-route-id="@item.Id">
                         <div class="movie-content">
                             <span class="movie-name">@item.Name</span>
                             <span class="movie-release">@item.Release.Month/@item.Release.Year</span>
@@ -28,13 +28,10 @@
             }
         </div>
     </div>
-
-
     <div class="panel-footer" align="center">
         <pager source="@Model"/>
     </div>
 </div>
-
 
 @section scripts {
     <script>

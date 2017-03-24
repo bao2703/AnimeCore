@@ -8,6 +8,8 @@ namespace Entities.Domain
     {
         public Movie()
         {
+            GenreMovies = new HashSet<GenreMovie>();
+            Episodes = new HashSet<Episode>();
             Release = DateTime.Now;
             Status = Status.Ongoing;
         }
@@ -35,8 +37,8 @@ namespace Entities.Domain
 
         public Status Status { get; set; }
 
-        public virtual ICollection<GenreMovie> GenreMovies { get; set; }
+        public ICollection<GenreMovie> GenreMovies { get; set; }
 
-        public virtual ICollection<Episode> Episodes { get; set; }
+        public ICollection<Episode> Episodes { get; set; }
     }
 }

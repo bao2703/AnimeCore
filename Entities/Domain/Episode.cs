@@ -6,6 +6,6 @@
 
         public string Url { get; set; }
 
-        public virtual Movie Movie { get; set; }
+        public Movie Movie { get; set; }
     }
 }

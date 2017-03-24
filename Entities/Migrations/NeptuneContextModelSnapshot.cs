@@ -269,7 +269,7 @@ namespace Entities.Migrations
             modelBuilder.Entity("Entities.Domain.GenreMovie", b =>
             {
                 b.HasOne("Entities.Domain.Genre", "Genre")
-                    .WithMany("GenreMovie")
+                    .WithMany("GenreMovies")
                     .HasForeignKey("GenreId")
                     .OnDelete(DeleteBehavior.Cascade);
 

@@ -22,5 +22,11 @@ namespace AnimeCore.Controllers
             var model = _movieService.ToList();
             return View(model.ToPagedList(_appSettings.PageSize, pageIndex));
         }
+
+        public IActionResult Details(int id)
+        {
+            var model = _movieService.FindBy(id);
+            return View(model);
+        }
     }
 }

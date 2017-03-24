@@ -1,0 +1,89 @@
+@model Movie
+@{
+    ViewData[Constant.Title] = "Details";
+}
+
+@section slide {
+    @await Html.PartialAsync("_SlidePartial")
+}
+
+<ol class="breadcrumb">
+    <li>
+        <a href="/">Home</a>
+    </li>
+    <li class="active">
+        @Model.Name
+    </li>
+</ol>
+<div class="panel panel-info" id="panel-movie-detail">
+    <div class="panel-heading">
+        @Model.Name
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="col-sm-12">
+                    Genres:
+                    @{
+                        var i = 0;
+                    }
+                    @foreach (var genreMovies in Model.GenreMovies)
+                    {
+                        @(i++ > 0 ? ", " : "")
+                        <a asp-action="Index" asp-controller="Genre" asp-route-id="@genreMovies.GenreId" title="@genreMovies.Genre.Title">
+                            @genreMovies.Genre.Name
+                        </a>
+                    }
+                </div>
+                <div class="col-sm-12">
+                    <display name-for="Fansub"/>:
+                    @Model.Fansub
+                </div>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            Episodes:
+                            @Model.Episodes.Count / @(Model.Status == Status.Ongoing ? "??" : Model.Episodes.Count.ToString())
+                        </div>
+                        <div class="col-sm-4">
+                            <display name-for="Viewed"/>:
+                            @Model.Viewed
+                        </div>
+                        <div class="col-sm-4">
+                            <display name-for="Release"/>:
+                            @Model.Release.Month/@Model.Release.Year
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <display name-for="Description"/>:
+                    <p style="font-size: 10px">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.Description
+                    </p>
+                </div>
+                <div class="col-sm-12">
+                    <a asp-action="Watch" asp-controller="Movie" asp-route-id="@Model.Id">
+                        <input type="button" class="btn btn-primary" value="Watch"/>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <img class="img-rounded img-responsive" src="@Model.Image" alt="@Model.Name"/>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+    </div>
+</div>
+<div class="fb-comments" data-href="@Context.Request.Host@Context.Request.Path" data-numposts="10" data-width="100%" data-mobile="true" data-colorscheme="dark"></div>
+
+@section scripts {
+    <script>
+        $(document).ready(function() {
+            $("html, body").animate({
+                    scrollTop: $("#panel-movie-detail").offset().top - 120
+                },
+                1000);
+        })
+    </script>
+}

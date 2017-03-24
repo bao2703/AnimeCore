@@ -2,6 +2,7 @@
 using System.Linq;
 using Entities;
 using Entities.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Services
 {
@@ -27,22 +28,33 @@ namespace Services
 
         public List<Movie> ToList()
         {
-            return _context.Movies.OrderBy(x => x.Name).ToList();
+            return _context.Movies
+                .OrderBy(x => x.Name)
+                .ToList();
         }
 
         public Movie FindBy(int id)
         {
-            return _context.Movies.Find(id);
+            return _context.Movies
+                .Include(x => x.GenreMovies)
+                .ThenInclude(x => x.Genre)
+                .SingleOrDefault(x => x.Id == id);
         }
 
         public List<Movie> FindBy(string searchString)
         {
-            return _context.Movies.Where(x => x.Name.Contains(searchString)).OrderByDescending(x => x.Release).ToList();
+            return _context.Movies
+                .Where(x => x.Name.Contains(searchString))
+                .OrderByDescending(x => x.Release)
+                .ToList();
         }
 
         public List<Movie> FindNewestMovie(int take)
         {
-            return _context.Movies.OrderByDescending(x => x.Release).Take(take).ToList();
+            return _context.Movies
+                .OrderByDescending(x => x.Release)
+                .Take(take)
+                .ToList();
         }
 
         public void AddMovies(Movie movie)

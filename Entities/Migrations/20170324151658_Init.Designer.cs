@@ -9,7 +9,7 @@ using Entities.Domain;
 namespace Entities.Migrations
 {
     [DbContext(typeof(NeptuneContext))]
-    [Migration("20170324085028_Init")]
+    [Migration("20170324151658_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -273,7 +273,7 @@ namespace Entities.Migrations
             modelBuilder.Entity("Entities.Domain.GenreMovie", b =>
                 {
                     b.HasOne("Entities.Domain.Genre", "Genre")
-                        .WithMany("GenreMovie")
+                        .WithMany("GenreMovies")
                         .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade);
 
