@@ -6,7 +6,7 @@
 @section slide {
     @await Html.PartialAsync("_SlidePartial")
 }
-<div ng-app="app" ng-controller="movieController">
+<div ng-app="app" ng-controller="movie-controller">
     <div class="panel panel-primary">
         <div class="panel-heading">
             Filter
@@ -28,6 +28,7 @@
                     <div class="form-group">
                         <div align="center">Release:</div>
                         <select class="selectpicker col-xs-12" ng-model="release">
+                            <option value="">All</option>
                             @for (var i = 0; i < 7; i++)
                             {
                                 <option value="@(DateTime.Now.Year - i)">@(DateTime.Now.Year - i)</option>
@@ -84,11 +85,7 @@
 
 
 </div>
+
 @section scripts {
-    <script>
-        $(document).ready(function() {
-            //$("html, body").animate({ scrollTop: $("#panel-movie-list").offset().top - 60 }, 1000);
-        });
-    </script>
-    <script src="~/js/site.js"></script>
+    <script src="~/js/movie-controller.js"></script>
 }
