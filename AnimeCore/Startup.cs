@@ -40,7 +40,8 @@ namespace AnimeCore
                     options.SslPort = 44308;
                     options.Filters.Add(new RequireHttpsAttribute());
                 })
-                .AddJsonOptions(options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });
+                .AddJsonOptions(
+                    options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });
 
             IdentityConfiguration.Configure(services);
             TransientConfiguration.Configure(services);

@@ -27,7 +27,7 @@ namespace Entities.Domain
 
         public string Description { get; set; }
 
-        public long Viewed { get; set; }
+        public long Views { get; set; }
 
         public string Image { get; set; }
 

@@ -1,4 +1,3 @@
-@model Sakura.AspNetCore.IPagedList<Movie>
 @inject IGenreService GenreService
 @{
     ViewData[Constant.Title] = "Index";
@@ -7,107 +6,84 @@
 @section slide {
     @await Html.PartialAsync("_SlidePartial")
 }
+<div ng-app="app" ng-controller="movieController">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Filter
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <div align="center">Genres:</div>
+                        <select class="selectpicker col-xs-12" data-live-search="true" multiple>
+                            @foreach (var genre in GenreService.ToList())
+                            {
+                                <option value="@genre.Id">@genre.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <div align="center">Release:</div>
+                        <select class="selectpicker col-xs-12" ng-model="release">
+                            @for (var i = 0; i < 7; i++)
+                            {
+                                <option value="@(DateTime.Now.Year - i)">@(DateTime.Now.Year - i)</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="form-group">
+                        <div align="center">Status:</div>
+                        <select class="selectpicker col-xs-12" ng-model="status">
+                            <option value="">All</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Ongoing">Ongoing</option>
+                        </select>
+                    </div>
 
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        Filter
-    </div>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <div align="center">Genres:</div>
-                    <select class="selectpicker col-xs-12" data-live-search="true" multiple>
-                        @foreach (var genre in GenreService.ToList())
-                        {
-                            <option value="@genre.Id">@genre.Name</option>
-                        }
-                    </select>
                 </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <div align="center">Release:</div>
-                    <select class="selectpicker col-xs-12" multiple data-max-option="3">
-                        @for (var i = 0; i < 7; i++)
-                        {
-                            <option value="@i">@(DateTime.Now.Year - i)</option>
-                        }
-                    </select>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-3 show-tick">
-                <div class="form-group">
-                    <div align="center">Status:</div>
-                    <select class="selectpicker col-xs-12">
-                        <option value="0">All</option>
-                        <option value="1">Completed</option>
-                        <option value="2">Ongoing</option>
-                    </select>
-                </div>
-
-            </div>
-            <div class="col-xs-6 col-sm-3 show-tick">
-                <div class="form-group">
-                    <div align="center">Sort by:</div>
-                    <select class="selectpicker col-xs-12">
-                        <option value="0">Name</option>
-                        <option value="1">Views</option>
-                    </select>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="form-group">
+                        <div align="center">Sort by:</div>
+                        <select class="selectpicker col-xs-12" ng-model="propertyName">
+                            <option value="name">A-Z</option>
+                            <option value="-name">Z-A</option>
+                            <option value="-views">Views</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="panel panel-info" id="panel-movie-list">
-    <div class="panel-heading">
-        Result
-    </div>
-    <div class="panel-body">
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="col-xs-6 col-sm-3">
-                    <a asp-action="Details" asp-controller="Movie" asp-route-id="@item.Id">
-                        <div class="movie-content">
-                            <span class="movie-name">@item.Name</span>
-                            <span class="movie-release">@item.Release.Month/@item.Release.Year</span>
-                            <span class="movie-viewed">@item.Viewed</span>
-                            <img src="@item.Image" class="movie-img img-rounded img-responsive" alt="@item.Name">
+    <div class="panel panel-info" id="panel-movie-list">
+        <div class="panel-heading">
+            Result
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-6 col-sm-3" ng-repeat="movie in movies | orderBy:propertyName:reverse | filter:{status:status, release:release }">
+                    <a href="@Url.Action("Details")/{{ movie.id }}">
+                        <div class="movie-content" title="{{ movie.status }}">
+                            <span class="movie-name">{{ movie.name }}</span>
+                            <span class="movie-release">{{ movie.release | date:"MM/yyyy" }}</span>
+                            <span class="movie-viewed">{{ movie.views }} views</span>
+                            <img src="{{ movie.image }}" class="movie-img img-rounded img-responsive" alt="{{ movie.name }}">
                         </div>
                     </a>
                 </div>
-            }
-        </div>
-    </div>
-    <div class="panel-footer" align="center">
-        <pager source="@Model"/>
-    </div>
-</div>
-
-<div class="panel panel-info" id="panel-movie-list" ng-app="app">
-    <div class="panel-heading">
-        Result
-    </div>
-    <div class="panel-body" ng-controller="movieController">
-        <div class="row">
-            <div class="col-xs-6 col-sm-3" ng-repeat="movie in movies">
-                <a href="@Url.Action("Details")/{{ movie.id }}">
-                    <div class="movie-content">
-                        <span class="movie-name">{{ movie.name }}</span>
-                        <span class="movie-release">sadasd</span>
-                        <span class="movie-viewed">{{ movie.viewed }}</span>
-                        <img src="{{ movie.image }}" class="movie-img img-rounded img-responsive" alt="{{ movie.name }}">
-                    </div>
-                </a>
             </div>
         </div>
+        <div class="panel-footer" align="center">
+        </div>
     </div>
-    <div class="panel-footer" align="center">
-    </div>
-</div>
 
+
+</div>
 @section scripts {
     <script>
         $(document).ready(function() {

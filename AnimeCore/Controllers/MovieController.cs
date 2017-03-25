@@ -1,7 +1,6 @@
 using AnimeCore.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Sakura.AspNetCore;
 using Services;
 
 namespace AnimeCore.Controllers
@@ -17,10 +16,9 @@ namespace AnimeCore.Controllers
             _movieService = movieService;
         }
 
-        public IActionResult Index(int pageIndex = 1)
+        public IActionResult Index()
         {
-            var model = _movieService.ToList();
-            return View(model.ToPagedList(_appSettings.PageSize, pageIndex));
+            return View();
         }
 
         public IActionResult Details(int id)

@@ -272,7 +272,7 @@ namespace Entities.DataInitializer
                         new GenreMovie {Genre = genres[comedy]},
                         new GenreMovie {Genre = genres[shounen]}
                     },
-                    Viewed = 2000,
+                    Views = 2000,
                     Fansub = "SONGOKU Fanpage",
                     Description =
                         "Reuniting the franchise's iconic characters, Dragon Ball Super will follow the aftermath of Goku's fierce battle with Majin Buu as he attempts to maintain earth's fragile peace."
@@ -283,7 +283,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/10/21/[animevsub.com]-naruto-shippuuden_3dcdfccce91d66f7f7adb70114c228ee.jpg",
                     Release = new DateTime(2007, 1, 1),
-                    Viewed = 2000,
+                    Views = 2000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -300,7 +300,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2015/02/14/[animevsub.com]-one-piece_da40893a4c0ed75459fd31e68b390148.jpg",
                     Release = new DateTime(2000, 1, 1),
-                    Viewed = 1000,
+                    Views = 1000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -319,7 +319,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2017/03/06/[animevsub.com]-boruto-naruto-next-generations-|-naruto-season-3_6629c0695f51f9502bd5048154f46ee8.jpg",
                     Release = new DateTime(2017, 1, 1),
-                    Viewed = 3000,
+                    Views = 3000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -336,7 +336,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/11/05/[animevsub.com]-a-silent-voice,-the-shape-of-voice_c37cb87ed57d5e148f84cb7fa025bed4.jpg",
                     Release = new DateTime(2016, 1, 1),
-                    Viewed = 5000,
+                    Views = 5000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[drama]},
@@ -352,7 +352,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/09/13/[animevsub.com]-kimi-no-na-wa-_17b672c57668c1fb149d6b37a51e7d8d.jpg",
                     Release = new DateTime(2016, 1, 1),
-                    Viewed = 6000,
+                    Views = 6000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[drama]},
@@ -370,7 +370,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/12/27/[animevsub.com]-the-irregular-at-magic-high-school_3d4c311ff614980687780aea8a35bfe9.jpg",
                     Release = new DateTime(2014, 1, 1),
-                    Viewed = 3500,
+                    Views = 3500,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[magic]},
@@ -389,7 +389,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/03/25/[animevsub.com]-akame-ga-kiru_6efb0d8d0bd0e5707185d2c15d043786.jpg",
                     Release = new DateTime(2014, 1, 1),
-                    Viewed = 2000,
+                    Views = 2000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -410,7 +410,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/04/18/[animevsub.com]-detective-conan_b96803c31fea61e705aa89184b092899.jpg",
                     Release = new DateTime(1996, 1, 1),
-                    Viewed = 10000,
+                    Views = 10000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -427,7 +427,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/04/07/[animevsub.com]-hyouka_b86eb1f91fde9a01f685e394da0d4881.jpg",
                     Release = new DateTime(2013, 1, 1),
-                    Viewed = 15000,
+                    Views = 15000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[detective]},
@@ -443,7 +443,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/12/27/[animevsub.com]-overlord_f26f7cef18bbb70d2bdd51241da47ca0.jpg",
                     Release = new DateTime(2015, 1, 1),
-                    Viewed = 2000,
+                    Views = 2000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -461,7 +461,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/03/29/[animevsub.com]-sword-art-online-ss1-sao_53499921e4745616974d92d0fed44eb9.jpg",
                     Release = new DateTime(2012, 1, 1),
-                    Viewed = 5000,
+                    Views = 5000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -482,7 +482,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/04/15/[animevsub.com]-sword-art-online-ss2-sao-2_91782ddccbaad23fbb0c9bb3f838808f.jpg",
                     Release = new DateTime(2014, 1, 1),
-                    Viewed = 6000,
+                    Views = 6000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -503,7 +503,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/04/26/[animevsub.com]-[bd]-thang-tu-la-loi-noi-doi-cua-em_f103acafb0054772777a9447b95fd531.jpg",
                     Release = new DateTime(2014, 1, 1),
-                    Viewed = 5000,
+                    Views = 5000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[drama]},
@@ -521,7 +521,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/10/22/[animevsub.com]-beyond-the-boundary_d7b49a78b5d6b2a664a1a61659d3e55f.jpg",
                     Release = new DateTime(2013, 1, 1),
-                    Viewed = 2000,
+                    Views = 2000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[fantasy]},
@@ -537,7 +537,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/09/26/[animevsub.com]-[bd]-accel-world_d9e862e5d3aeb04dda6da4a1d5784347.jpg",
                     Release = new DateTime(2012, 1, 1),
-                    Viewed = 2000,
+                    Views = 2000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -557,7 +557,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://cdn.myanimelist.net/images/anime/12/42085.jpg",
                     Release = new DateTime(1988, 1, 1),
-                    Viewed = 2000,
+                    Views = 2000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[adventure]},
@@ -572,7 +572,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/08/29/[animevsub.com]-howl-s-moving-castle_f45acdf56a66c20ef50f202021ce076d.jpg",
                     Release = new DateTime(2004, 1, 1),
-                    Viewed = 2000,
+                    Views = 2000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[adventure]},
@@ -587,7 +587,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/10/01/[animevsub.com]-no-game-no-life_ea75f300da9764906399044006db69f5.jpg",
                     Release = new DateTime(2014, 1, 1),
-                    Viewed = 2000,
+                    Views = 2000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[adventure]},
@@ -606,7 +606,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/05/14/[animevsub.com]-kill-la-kill_8e25380724f5e2de4aa9bd9e628bdd12.jpg",
                     Release = new DateTime(2014, 1, 1),
-                    Viewed = 5000,
+                    Views = 5000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -623,7 +623,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/09/29/[animevsub.com]-ao-no-exorcist_65ca9233a2f79265b02e30a7c8e10c21.jpg",
                     Release = new DateTime(2011, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -641,7 +641,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/09/27/[animevsub.com]-joker-game_45a0ec6f97f5277e40147de4e9a35188.jpg",
                     Release = new DateTime(2016, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[military]},
@@ -656,7 +656,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/10/01/[animevsub.com]-tokyo-ghoul_bbf45160e4a1ee3581ab6ad10ebfda6b.jpg",
                     Release = new DateTime(2014, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -678,7 +678,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://cdn.myanimelist.net/images/anime/13/71777.jpg",
                     Release = new DateTime(2015, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -700,7 +700,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://i.imgur.com/DSko8fI.jpg",
                     Release = new DateTime(2004, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -718,7 +718,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/04/16/[animevsub.com]-attack-on-titan_b8b8988fd812bb8e0c86a06ee7bb4053.jpg",
                     Release = new DateTime(2013, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -738,7 +738,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://cdn.myanimelist.net/images/anime/6/73426.jpg",
                     Release = new DateTime(2007, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[drama]},
@@ -753,7 +753,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://cdn.myanimelist.net/images/anime/9/74970.jpg",
                     Release = new DateTime(2015, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[comedy]},
@@ -769,7 +769,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/09/27/[animevsub.com]-prison-school-bd_df0b9179626c9d67c3e2480c701177c3.jpg",
                     Release = new DateTime(2015, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[comedy]},
@@ -789,7 +789,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/09/26/[animevsub.com]-high-school-dxd_78bb9878a117107408aaba1887a9ff14.jpg",
                     Release = new DateTime(2012, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[comedy]},
@@ -808,7 +808,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/03/23/[animevsub.com]-high-school-dxd-new-bd_ebdf4cabea92577f8c82c5a11f5650ff.jpg",
                     Release = new DateTime(2014, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[comedy]},
@@ -827,7 +827,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img1.ak.crunchyroll.com/i/spire1/a33f57842c2a7bf94ef5c5236f6c98a41421732007_full.jpg",
                     Release = new DateTime(2015, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[comedy]},
@@ -846,7 +846,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2017/01/01/[animevsub.com]-dagashikashi_7b3b7c3723dbc14d276e0b12e9049af0.jpg",
                     Release = new DateTime(2016, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[comedy]},
@@ -861,7 +861,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/04/16/[animevsub.com]-fairy-tail-hoi-phap-su_6643833d1725d659d94dd680cf6b10f0.jpg",
                     Release = new DateTime(2009, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -882,7 +882,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/10/01/[animevsub.com]-fairy-tail-2014-fairy-tail-season-2_91084252e1d82d84aaae2b5449017713.jpg",
                     Release = new DateTime(2014, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -903,7 +903,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/09/26/[animevsub.com]-date-a-live_562d39420954f5d620737844115e1623.jpg",
                     Release = new DateTime(2013, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -923,7 +923,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/10/01/[animevsub.com]-date-a-live-ss2_53f74497d62ba8f6030e91f054d3daf6.jpg",
                     Release = new DateTime(2014, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -943,7 +943,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://cdn.myanimelist.net/images/anime/6/57947.jpg",
                     Release = new DateTime(2014, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -964,7 +964,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://cdn.myanimelist.net/images/anime/12/54337.jpg",
                     Release = new DateTime(2014, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -984,7 +984,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/03/26/[animevsub.com]-hotarubi-no-mori-e_79622a7601457487e319b7ad3bfd680c.jpg",
                     Release = new DateTime(2011, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[drama]},
@@ -1001,7 +1001,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/09/26/[animevsub.com]-[bd]-angel-beats_ddf797c6446d6c0bca619b33f84196cd.jpg",
                     Release = new DateTime(2010, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -1019,7 +1019,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://cdn.myanimelist.net/images/anime/12/46931.jpg",
                     Release = new DateTime(2012, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[comedy]},
@@ -1036,7 +1036,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/04/15/[animevsub.com]-highschool-of-the-dead-uncensor-[bd]_0c4f7166b2e9b46ef78aef94c7aecf43.jpg",
                     Release = new DateTime(2010, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -1053,7 +1053,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/09/29/[animevsub.com]-gintama_1121094e7b1e3e26d600a78101dfd300.jpg",
                     Release = new DateTime(2006, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -1072,7 +1072,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://i.imgur.com/fxqCyNc.jpg",
                     Release = new DateTime(2015, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[comedy]},
@@ -1088,7 +1088,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2017/02/20/[animevsub.com]-amaburi-bd-amagi-cong-vien-ruc-ro-bd_03e4c397fcfb34c8938d3deaf16c146a.jpg",
                     Release = new DateTime(2014, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[comedy]},
@@ -1103,7 +1103,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/04/16/[animevsub.com]-magi-the-labyrinth-of-magic_294b4b2b52a2624ad2ed632558bc0d58.jpg",
                     Release = new DateTime(2013, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -1121,7 +1121,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://cdn.myanimelist.net/images/anime/13/55039.jpg",
                     Release = new DateTime(2013, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -1139,7 +1139,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://cdn.myanimelist.net/images/anime/6/61891.jpg",
                     Release = new DateTime(2014, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[comedy]},
@@ -1156,7 +1156,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://cdn.myanimelist.net/images/anime/8/20483.jpg",
                     Release = new DateTime(2000, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -1177,7 +1177,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/09/26/[animevsub.com]-love-live-school-idol-project_ccbe338644265eaa7caf587f142e6445.jpg",
                     Release = new DateTime(2013, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[comedy]},
@@ -1193,7 +1193,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/04/22/[animevsub.com]-fate-stay-night_fe962b98704419366ccb328a14a19aa1.jpg",
                     Release = new DateTime(2006, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -1212,7 +1212,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2017/01/25/[animevsub.com]-death-note-bluray_dc74169216bfdf187f3243b471163ff5.jpg",
                     Release = new DateTime(2007, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -1230,7 +1230,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://cdn.myanimelist.net/images/anime/2/53407.jpg",
                     Release = new DateTime(2014, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[comedy]},
@@ -1245,7 +1245,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://upload.wikimedia.org/wikipedia/az/thumb/8/8c/Ruhlarla_sovrulanlar_(animasiya,_2001).jpg/230px-Ruhlarla_sovrulanlar_(animasiya,_2001).jpg",
                     Release = new DateTime(2001, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[adventure]},
@@ -1260,7 +1260,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=https://lh5.googleusercontent.com/-qeuQ6CbtQ8Q/VIAG9rGaj6I/AAAAAAAAZfs/m9lrEITJgCI/s307/14516.jpg",
                     Release = new DateTime(2000, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -1284,7 +1284,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/09/17/[animevsub.com]-my-two-faced-little-sister_f08d6fe9814cc2353763b70b0b3220f6.jpg",
                     Release = new DateTime(2015, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[comedy]},
@@ -1299,7 +1299,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://cdn.myanimelist.net/images/anime/4/42067.jpg",
                     Release = new DateTime(1988, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[drama]},
@@ -1314,7 +1314,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://cdn.myanimelist.net/images/anime/13/17594.jpg",
                     Release = new DateTime(2007, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[drama]},
@@ -1332,7 +1332,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2016/10/02/[animevsub.com]-assassination-classroom-blu-ray_821c3c82a7f9789192e7108ef48fcfa9.jpg",
                     Release = new DateTime(2015, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[action]},
@@ -1349,7 +1349,7 @@ namespace Entities.DataInitializer
                     Image =
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2017/01/24/[animevsub.com]-neko-para_52fbe6bc4d785518296670706638f5a3.jpg",
                     Release = new DateTime(2017, 1, 1),
-                    Viewed = 4000,
+                    Views = 4000,
                     GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[comedy]},
