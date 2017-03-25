@@ -13,8 +13,8 @@ namespace AnimeCore.Controllers
 
         public MovieController(IMovieService movieService, IOptions<AppSettings> appSettings)
         {
-            _movieService = movieService;
             _appSettings = appSettings.Value;
+            _movieService = movieService;
         }
 
         public IActionResult Index(int pageIndex = 1)

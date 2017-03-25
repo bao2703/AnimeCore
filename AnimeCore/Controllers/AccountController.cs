@@ -2,7 +2,6 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using AnimeCore.Common;
 using Entities.Domain;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.AccountViewModels;
@@ -10,7 +9,6 @@ using Services;
 
 namespace AnimeCore.Controllers
 {
-    [Authorize]
     public class AccountController : Controller
     {
         private readonly IAccountService _accountService;
@@ -22,7 +20,6 @@ namespace AnimeCore.Controllers
 
         // GET: /Account/Login
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Login(string returnUrl = null)
         {
             if (_accountService.IsSignedIn(User))
@@ -33,7 +30,6 @@ namespace AnimeCore.Controllers
 
         // POST: /Account/Login
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
@@ -47,7 +43,6 @@ namespace AnimeCore.Controllers
 
         // GET: /Account/Register
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
         {
             ViewData[Constant.ReturnUrl] = returnUrl;
@@ -56,7 +51,6 @@ namespace AnimeCore.Controllers
 
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
@@ -84,7 +78,6 @@ namespace AnimeCore.Controllers
 
         // POST: /Account/ExternalLogin
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public IActionResult ExternalLogin(string provider, string returnUrl = null)
         {
@@ -96,7 +89,6 @@ namespace AnimeCore.Controllers
 
         // GET: /Account/ExternalLoginCallback
         [HttpGet]
-        [AllowAnonymous]
         public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null)
         {
             if (remoteError != null)
@@ -120,7 +112,6 @@ namespace AnimeCore.Controllers
 
         // POST: /Account/ExternalLoginConfirmation
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model,
             string returnUrl = null)

@@ -29,6 +29,7 @@ namespace Services
         public List<Movie> ToList()
         {
             return _context.Movies
+                .Include(x => x.GenreMovies)
                 .OrderBy(x => x.Name)
                 .ToList();
         }

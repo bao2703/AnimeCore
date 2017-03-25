@@ -9,7 +9,8 @@
     "datatables-bootstrap": "1.0.0",
     "bootstrap-select": "v2.0.0-beta1",
     "bootstrap-social": "v4.10.1",
-    "jquery-validation": "1.16.0"
+    "jquery-validation": "1.16.0",
+    "angular": "v1.6.4-build.5336+sha.80077f3"
   },
   "resolutions": {
     "jquery": "1.9.1 - 3",

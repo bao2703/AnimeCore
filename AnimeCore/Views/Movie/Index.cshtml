@@ -86,11 +86,33 @@
     </div>
 </div>
 
+<div class="panel panel-info" id="panel-movie-list" ng-app="app">
+    <div class="panel-heading">
+        Result
+    </div>
+    <div class="panel-body" ng-controller="movieController">
+        <div class="row">
+            <div class="col-xs-6 col-sm-3" ng-repeat="movie in movies">
+                <a href="@Url.Action("Details")/{{ movie.id }}">
+                    <div class="movie-content">
+                        <span class="movie-name">{{ movie.name }}</span>
+                        <span class="movie-release">sadasd</span>
+                        <span class="movie-viewed">{{ movie.viewed }}</span>
+                        <img src="{{ movie.image }}" class="movie-img img-rounded img-responsive" alt="{{ movie.name }}">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer" align="center">
+    </div>
+</div>
+
 @section scripts {
     <script>
-        $(window).on('load',
-            function() {
-                //$("html, body").animate({ scrollTop: $("#panel-movie-list").offset().top - 60 }, 1000);
-            })
+        $(document).ready(function() {
+            //$("html, body").animate({ scrollTop: $("#panel-movie-list").offset().top - 60 }, 1000);
+        });
     </script>
+    <script src="~/js/site.js"></script>
 }

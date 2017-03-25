@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace AnimeCore
 {
@@ -35,11 +36,11 @@ namespace AnimeCore
             services.Configure<Authentication>(Configuration.GetSection("Authentication"));
 
             services.AddMvc(options =>
-            {
-                options.SslPort = 44308;
-                options.Filters.Add(new RequireHttpsAttribute());
-            });
-
+                {
+                    options.SslPort = 44308;
+                    options.Filters.Add(new RequireHttpsAttribute());
+                })
+                .AddJsonOptions(options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });
 
             IdentityConfiguration.Configure(services);
             TransientConfiguration.Configure(services);
