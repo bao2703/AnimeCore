@@ -1,4 +1,5 @@
 @model Sakura.AspNetCore.IPagedList<Movie>
+@inject IGenreService GenreService
 @{
     ViewData[Constant.Title] = "Index";
 }
@@ -6,6 +7,58 @@
 @section slide {
     @await Html.PartialAsync("_SlidePartial")
 }
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Filter
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <div align="center">Genres:</div>
+                    <select class="selectpicker col-xs-12" data-live-search="true" multiple>
+                        @foreach (var genre in GenreService.ToList())
+                        {
+                            <option value="@genre.Id">@genre.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <div align="center">Release:</div>
+                    <select class="selectpicker col-xs-12" multiple data-max-option="3">
+                        @for (var i = 0; i < 7; i++)
+                        {
+                            <option value="@i">@(DateTime.Now.Year - i)</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3 show-tick">
+                <div class="form-group">
+                    <div align="center">Status:</div>
+                    <select class="selectpicker col-xs-12">
+                        <option value="0">All</option>
+                        <option value="1">Completed</option>
+                        <option value="2">Ongoing</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="col-xs-6 col-sm-3 show-tick">
+                <div class="form-group">
+                    <div align="center">Sort by:</div>
+                    <select class="selectpicker col-xs-12">
+                        <option value="0">Name</option>
+                        <option value="1">Views</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="panel panel-info" id="panel-movie-list">
     <div class="panel-heading">
@@ -35,11 +88,9 @@
 
 @section scripts {
     <script>
-        $(document).ready(function() {
-            $("html, body").animate({
-                    scrollTop: $("#panel-movie-list").offset().top - 60
-                },
-                1000);
-        })
+        $(window).on('load',
+            function() {
+                //$("html, body").animate({ scrollTop: $("#panel-movie-list").offset().top - 60 }, 1000);
+            })
     </script>
 }
