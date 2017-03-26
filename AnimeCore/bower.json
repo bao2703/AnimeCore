@@ -10,7 +10,8 @@
     "bootstrap-select": "v2.0.0-beta1",
     "bootstrap-social": "v4.10.1",
     "jquery-validation": "1.16.0",
-    "angular": "v1.6.4-build.5336+sha.80077f3"
+    "angular": "v1.6.4-build.5336+sha.80077f3",
+    "angularUtils-pagination": "angular-utils-pagination#v0.11.1"
   },
   "resolutions": {
     "jquery": "1.9.1 - 3",

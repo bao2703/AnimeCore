@@ -16,7 +16,8 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <div align="center">Genres:</div>
-                        <select class="selectpicker col-xs-12" data-live-search="true" multiple>
+                        <select class="selectpicker col-xs-12" data-live-search="true" ng-model="genreId">
+                            <option value="">All</option>
                             @foreach (var genre in GenreService.ToList())
                             {
                                 <option value="@genre.Id">@genre.Name</option>
@@ -41,8 +42,8 @@
                         <div align="center">Status:</div>
                         <select class="selectpicker col-xs-12" ng-model="status">
                             <option value="">All</option>
-                            <option value="Completed">Completed</option>
-                            <option value="Ongoing">Ongoing</option>
+                            <option value="1">Completed</option>
+                            <option value="0">Ongoing</option>
                         </select>
                     </div>
 
@@ -67,9 +68,9 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-xs-6 col-sm-3" ng-repeat="movie in movies | orderBy:propertyName:reverse | filter:{status:status, release:release }">
+                <div class="col-xs-6 col-sm-3" dir-paginate="movie in movies | orderBy:propertyName:reverse | filter:{status:status, release:release, genreMovies: {genreId:genreId} } | itemsPerPage:8">
                     <a href="@Url.Action("Details")/{{ movie.id }}">
-                        <div class="movie-content" title="{{ movie.status }}">
+                        <div class="movie-content" title="{{ movie.status | status }}">
                             <span class="movie-name">{{ movie.name }}</span>
                             <span class="movie-release">{{ movie.release | date:"MM/yyyy" }}</span>
                             <span class="movie-viewed">{{ movie.views }} views</span>
@@ -80,6 +81,10 @@
             </div>
         </div>
         <div class="panel-footer" align="center">
+            <dir-pagination-controls max-size="5"
+                                     direction-links="true"
+                                     boundary-links="true">
+            </dir-pagination-controls>
         </div>
     </div>
 
@@ -87,5 +92,7 @@
 </div>
 
 @section scripts {
+    <script src="~/lib/angular/angular.js"></script>
+    <script src="~/lib/angularUtils-pagination/dirPagination.js"></script>
     <script src="~/js/movie-controller.js"></script>
 }
