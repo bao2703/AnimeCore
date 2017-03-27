@@ -6,6 +6,7 @@
 @section slide {
     @await Html.PartialAsync("_SlidePartial")
 }
+
 <div ng-app="app" ng-controller="movie-controller">
     <div class="panel panel-primary">
         <div class="panel-heading">
@@ -75,7 +76,7 @@
                             <span class="movie-name">{{ movie.name }}</span>
                             <span class="movie-release">{{ movie.release | date:"MM/yyyy" }}</span>
                             <span class="movie-views">{{ movie.views }} views</span>
-                            <img src="{{ movie.image }}" class="movie-img img-rounded img-responsive" alt="{{ movie.name }}">
+                            <img class="movie-img img-rounded img-responsive" src="{{ movie.image }}" alt="{{ movie.name }}" asp-append-version="true">
                         </div>
                     </a>
                 </div>

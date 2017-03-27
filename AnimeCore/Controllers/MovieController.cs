@@ -16,16 +16,27 @@ namespace AnimeCore.Controllers
             _movieService = movieService;
         }
 
+        // GET: /Movie/Index
         public IActionResult Index()
         {
             ViewData[Constant.PageSize] = _appSettings.PageSize;
             return View();
         }
 
-        public IActionResult Details(int id)
+        // GET: /Movie/Details/5
+        public IActionResult Details(int? id)
         {
-            var model = _movieService.FindBy(id);
-            return View(model);
+            if (id == null) return View("Error");
+            var movie = _movieService.FindBy((int) id);
+            return movie == null ? View("Error") : View(movie);
+        }
+
+        // GET: /Movie/Watch/5
+        public IActionResult Watch(int? id)
+        {
+            if (id == null) return View("Error");
+            var movie = _movieService.FindBy((int) id);
+            return movie == null ? View("Error") : View(movie);
         }
     }
 }

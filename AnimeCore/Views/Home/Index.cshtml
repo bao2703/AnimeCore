@@ -36,7 +36,7 @@
                                             <span class="movie-name">@newestMovie[j + i * 4].Name</span>
                                             <span class="movie-release">@newestMovie[j + i * 4].Release.Month/@newestMovie[j + i * 4].Release.Year</span>
                                             <span class="movie-views">@newestMovie[j + i * 4].Views</span>
-                                            <img src="@newestMovie[j + i * 4].Image" class="movie-img img-responsive img-rounded" alt="@newestMovie[j + i * 4].Name"/>
+                                            <img class="movie-img img-responsive img-rounded" src="@newestMovie[j + i * 4].Image" alt="@newestMovie[j + i * 4].Name" asp-append-version="true"/>
                                         </div>
                                     </a>
                                 </div>

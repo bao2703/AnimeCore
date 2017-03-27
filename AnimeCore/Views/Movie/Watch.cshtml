@@ -1,0 +1,61 @@
+@model Movie
+@{
+    ViewData[Constant.Title] = Model.Name + " - Watch";
+}
+
+@section slide{
+    <div class="container">
+        <div class="row">
+            <video class="col-xs-12" controls id="media-player" src="" autoplay></video>
+        </div>
+    </div>
+}
+
+<div class="panel panel-info" id="panel-movie-detail">
+    <div class="panel-heading">
+        Episode list
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-12">
+                @foreach (var item in Model.Episodes.OrderBy(x => x.Name))
+                {
+                    <button class="btn btn-primary btn-episode" data-url="@item.Url">@item.Id</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('.btn-episode').on('click',
+            function() {
+                var apiUrl = 'http://api.getlinkdrive.com/getlink?url=';
+                var movieUrl = $(this).data('url');
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": apiUrl + movieUrl,
+                    "method": "GET"
+                };
+                $.ajax(settings).done(function(response) {
+                    var bestRes = "";
+                    for (var i = 0; i < response.length; i++) {
+                        if (response[i].res === '720p') {
+                            bestRes = response[i].src;
+                        } else if (response[i].res === '1080p') {
+                            bestRes = response[i].src;
+                        }
+                    }
+                    $('#media-player').attr('src', bestRes);
+                }).fail(function() {
+                    console.log("error");
+                });
+
+                $('.btn-episode').removeClass('active');
+                $(this).addClass('active');
+            });
+        $('.btn-episode:first').trigger('click');
+    });
+</script>
