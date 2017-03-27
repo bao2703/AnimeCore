@@ -1,7 +1,50 @@
-﻿@{
+﻿@inject IMovieService MovieService
+@{
     ViewData["Title"] = "Home Page";
+    var newestMovie = MovieService.FindNewestMovie(16);
 }
 
 @section slide {
     @await Html.PartialAsync("_SlidePartial")
 }
+
+<div class="panel panel-primary">
+    <div class="panel-heading clearfix">
+        <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Newest Anime</h4>
+        <div class="btn-group pull-right">
+            <button class="btn" href="#newest-slide" role="button" data-slide="prev" style="background-color: grey">
+                <i class="fa fa-chevron-left"></i>
+            </button>
+            <button class="btn" href="#newest-slide" role="button" data-slide="next" style="background-color: grey">
+                <i class="fa fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div id="newest-slide" class="carousel slide" data-ride="carousel">
+            <!-- carousel-inner -->
+            <div class="carousel-inner" role="listbox">
+                @for (var i = 0; i < 4; i++)
+                {
+                    <div class="item @(i == 0 ? "active" : "")">
+                        <div class="row">
+                            @for (var j = 0; j < 4; j++)
+                            {
+                                <div class="col-xs-6 col-sm-3">
+                                        <div class="movie-content">
+                                            <span class="movie-name">@newestMovie[j + i * 4].Name</span>
+                                            <span class="movie-release">@newestMovie[j + i * 4].Release.Month/@newestMovie[j + i * 4].Release.Year</span>
+                                            <span class="movie-views">@newestMovie[j + i * 4].Views</span>
+                                            <img src="@newestMovie[j + i * 4].Image" class="movie-img img-responsive img-rounded" alt="@newestMovie[j + i * 4].Name"/>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- /.carousel-inner -->
+        </div>
+    </div>
+</div>

@@ -7,5 +7,7 @@
         public static string ReturnUrl => "ReturnUrl";
 
         public static string LoginProvider => "LoginProvider";
+
+        public static string PageSize => "PageSize";
     }
 }

@@ -14,7 +14,7 @@
         <input id="genreId" type="hidden" value="@Url.ActionContext.RouteData.Values["id"]"/>
         <div class="panel-body">
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-xs-6 col-sm-3">
                     <div class="form-group">
                         <div align="center">Genres:</div>
                         <select class="selectpicker col-xs-12" data-live-search="true" ng-model="genreId">
@@ -26,7 +26,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-xs-6 col-sm-3">
                     <div class="form-group">
                         <div align="center">Release:</div>
                         <select class="selectpicker col-xs-12" ng-model="release">
@@ -69,12 +69,12 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-xs-6 col-sm-3" dir-paginate="movie in movies | orderBy:propertyName:reverse | filter:{status:status, release:release, genreMovies: {genreId:genreId} } | itemsPerPage:8">
+                <div class="col-xs-6 col-sm-3" dir-paginate="movie in movies | orderBy:propertyName:reverse | filter:{status:status, release:release, genreMovies: {genreId:genreId} } | itemsPerPage:@ViewData[Constant.PageSize]">
                     <a href="@Url.Action("Details")/{{ movie.id }}">
                         <div class="movie-content" title="{{ movie.status | status }}">
                             <span class="movie-name">{{ movie.name }}</span>
                             <span class="movie-release">{{ movie.release | date:"MM/yyyy" }}</span>
-                            <span class="movie-viewed">{{ movie.views }} views</span>
+                            <span class="movie-views">{{ movie.views }} views</span>
                             <img src="{{ movie.image }}" class="movie-img img-rounded img-responsive" alt="{{ movie.name }}">
                         </div>
                     </a>
@@ -82,7 +82,7 @@
             </div>
         </div>
         <div class="panel-footer" align="center">
-            <dir-pagination-controls max-size="5"
+            <dir-pagination-controls max-size="10"
                                      direction-links="true"
                                      boundary-links="true">
             </dir-pagination-controls>

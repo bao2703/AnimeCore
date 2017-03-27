@@ -18,6 +18,7 @@ namespace AnimeCore.Controllers
 
         public IActionResult Index()
         {
+            ViewData[Constant.PageSize] = _appSettings.PageSize;
             return View();
         }
 

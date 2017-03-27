@@ -30,7 +30,7 @@
                     @foreach (var genreMovies in Model.GenreMovies)
                     {
                         @(i++ > 0 ? ", " : "")
-                        <a asp-action="Index" asp-controller="Genre" asp-route-id="@genreMovies.GenreId" title="@genreMovies.Genre.Title">
+                        <a asp-action="Index" asp-controller="Movie" asp-route-id="@genreMovies.GenreId" title="@genreMovies.Genre.Title">
                             @genreMovies.Genre.Name
                         </a>
                     }
