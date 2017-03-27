@@ -31,6 +31,7 @@
                             @for (var j = 0; j < 4; j++)
                             {
                                 <div class="col-xs-6 col-sm-3">
+                                    <a asp-action="Details" asp-controller="Movie" asp-route-id="@newestMovie[j + i * 4].Id">
                                         <div class="movie-content">
                                             <span class="movie-name">@newestMovie[j + i * 4].Name</span>
                                             <span class="movie-release">@newestMovie[j + i * 4].Release.Month/@newestMovie[j + i * 4].Release.Year</span>
