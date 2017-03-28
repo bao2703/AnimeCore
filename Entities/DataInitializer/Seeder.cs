@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Entities.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -1363,8 +1364,37 @@ namespace Entities.DataInitializer
 
             #endregion
 
+            #region episodes
+
+            var episodes = new List<List<Episode>>();
+
+            var swordArtOnline = new List<Episode>
+            {
+                new Episode
+                {
+                    Name = "1",
+                    Url = "https://drive.google.com/open?id=0B1M2hr77bX9fVm4zcnNIWkNkTUE"
+                },
+                new Episode
+                {
+                    Name = "2",
+                    Url = "https://drive.google.com/open?id=0B1M2hr77bX9fSzhtcUo4QXNTY3c"
+                },
+                new Episode
+                {
+                    Name = "3",
+                    Url = "https://drive.google.com/open?id=0B1M2hr77bX9fTnJ5Wkw3YkJWLWc"
+                }
+            };
+
+            swordArtOnline.ForEach(x => x.Movie = movies.Single(m => m.Name == "Sword Art Online"));
+            episodes.Add(swordArtOnline);
+
+            #endregion
+
             context.Genres.AddRange(genres.Values);
             context.Movies.AddRange(movies);
+            episodes.ForEach(x => context.Episodes.AddRange(x));
             context.SaveChanges();
         }
     }

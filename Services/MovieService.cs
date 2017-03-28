@@ -39,6 +39,7 @@ namespace Services
             return _context.Movies
                 .Include(x => x.GenreMovies)
                 .ThenInclude(x => x.Genre)
+                .Include(x => x.Episodes)
                 .SingleOrDefault(x => x.Id == id);
         }
 

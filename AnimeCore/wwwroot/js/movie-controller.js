@@ -16,7 +16,7 @@
 
     function controller($scope, $http) {
         angular.element(document).ready(function() {
-            $http.get("https://localhost:44308/api/Movie").then(function(response) {
+            $http.get("https://localhost:44326/api/Movie").then(function(response) {
                 $scope.movies = response.data;
                 $scope.propertyName = "name";
                 $scope.reverse = false;

@@ -35,9 +35,11 @@ namespace AnimeCore
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.Configure<Authentication>(Configuration.GetSection("Authentication"));
 
+            services.AddCors();
+
             services.AddMvc(options =>
                 {
-                    options.SslPort = 44308;
+                    options.SslPort = 44326;
                     options.Filters.Add(new RequireHttpsAttribute());
                 })
                 .AddJsonOptions(
@@ -55,14 +57,16 @@ namespace AnimeCore
             loggerFactory.AddDebug();
 
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
-            }
             else
-            {
                 app.UseExceptionHandler("/Home/Error");
-            }
+
+            app.UseCors(builder => builder
+                .WithOrigins("https://localhost:44326")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin()
+                .AllowCredentials());
 
             app.UseStaticFiles();
 

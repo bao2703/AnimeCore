@@ -3,10 +3,11 @@
     ViewData[Constant.Title] = Model.Name + " - Watch";
 }
 
-@section slide{
+@section slide {
     <div class="container">
         <div class="row">
             <video class="col-xs-12" controls id="media-player" src="" autoplay></video>
+            @*<iframe src="https://drive.google.com/file/d/0B1M2hr77bX9fVm4zcnNIWkNkTUE/preview"></iframe>*@
         </div>
     </div>
 }
@@ -31,23 +32,21 @@
     $(document).ready(function() {
         $('.btn-episode').on('click',
             function() {
-                var apiUrl = 'http://api.getlinkdrive.com/getlink?url=';
+                var apiUrl = 'https://api.getlinkdrive.com/getlink?url=';
                 var movieUrl = $(this).data('url');
-                var settings = {
-                    "async": true,
-                    "crossDomain": true,
-                    "url": apiUrl + movieUrl,
-                    "method": "GET"
-                };
-                $.ajax(settings).done(function(response) {
+                $.ajax({
+                    url: apiUrl + movieUrl,
+                    type: "GET"
+                }).done(function(response) {
                     var bestRes = "";
-                    for (var i = 0; i < response.length; i++) {
-                        if (response[i].res === '720p') {
-                            bestRes = response[i].src;
-                        } else if (response[i].res === '1080p') {
-                            bestRes = response[i].src;
-                        }
-                    }
+                    //for (var i = 0; i < response.length; i++) {
+                    //if (response[i].res === '720p') {
+                    //    bestRes = response[i].src;
+                    //} else if (response[i].res === '1080p') {
+                    //    bestRes = response[i].src;
+                    //}
+                    console.log(response);
+                    //}
                     $('#media-player').attr('src', bestRes);
                 }).fail(function() {
                     console.log("error");
