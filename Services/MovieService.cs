@@ -47,7 +47,9 @@ namespace Services
         {
             return _context.Movies
                 .Where(x => x.Name.Contains(searchString))
-                .OrderByDescending(x => x.Release)
+                .OrderByDescending(x => x.Name)
+                .Include(x => x.GenreMovies)
+                .OrderBy(x => x.Name)
                 .ToList();
         }
 

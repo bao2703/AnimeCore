@@ -52,17 +52,16 @@
                 </li>
 
                 <li>
-                    @using (Html.BeginForm("Index", "Movie", FormMethod.Get, new {@class = "navbar-form"}))
-                    {
+                    <form asp-action="Index" asp-controller="Movie" class="navbar-form" method="get">
                         <div class="form-group" style="display: inline;">
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="fa fa-search"></i>
                                 </span>
-                                <input class="form-control" name="searchString" placeholder="Search Here" autocomplete="off" value="@ViewBag.SearchString" type="text">
+                                <input class="form-control" name="searchString" placeholder="Search Here" autocomplete="off" value="@ViewData["SearchString"]" type="text">
                             </div>
                         </div>
-                    }
+                    </form>
                 </li>
             </ul>
             @await Html.PartialAsync("_LoginPartial")

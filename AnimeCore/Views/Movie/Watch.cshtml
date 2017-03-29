@@ -6,8 +6,10 @@
 @section slide {
     <div class="container">
         <div class="row">
-            <video class="col-xs-12" controls id="media-player" src="" autoplay></video>
-            @*<iframe src="https://drive.google.com/file/d/0B1M2hr77bX9fVm4zcnNIWkNkTUE/preview"></iframe>*@
+            <div class="col-xs-12">
+                <iframe id="media-player" class="col-xs-12" src="" allowfullscreen></iframe>
+            </div>
+
         </div>
     </div>
 }
@@ -21,7 +23,7 @@
             <div class="col-sm-12">
                 @foreach (var item in Model.Episodes.OrderBy(x => x.Name))
                 {
-                    <button class="btn btn-primary btn-episode" data-url="@item.Url">@item.Id</button>
+                    <button class="btn btn-primary btn-episode" data-url="@item.Url">@item.Name</button>
                 }
             </div>
         </div>
@@ -32,26 +34,7 @@
     $(document).ready(function() {
         $('.btn-episode').on('click',
             function() {
-                var apiUrl = 'https://api.getlinkdrive.com/getlink?url=';
-                var movieUrl = $(this).data('url');
-                $.ajax({
-                    url: apiUrl + movieUrl,
-                    type: "GET"
-                }).done(function(response) {
-                    var bestRes = "";
-                    //for (var i = 0; i < response.length; i++) {
-                    //if (response[i].res === '720p') {
-                    //    bestRes = response[i].src;
-                    //} else if (response[i].res === '1080p') {
-                    //    bestRes = response[i].src;
-                    //}
-                    console.log(response);
-                    //}
-                    $('#media-player').attr('src', bestRes);
-                }).fail(function() {
-                    console.log("error");
-                });
-
+                $('#media-player').attr('src', $(this).data('url'));
                 $('.btn-episode').removeClass('active');
                 $(this).addClass('active');
             });

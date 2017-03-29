@@ -171,3 +171,9 @@ div.footer {
         overflow-x: hidden;
     }
 }
+
+#media-player { height: 300px; }
+
+@media (min-width: 767px) {
+    #media-player { height: 500px; }
+}

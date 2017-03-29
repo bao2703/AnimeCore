@@ -4,7 +4,6 @@ using Entities;
 using Entities.DataInitializer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,13 +34,7 @@ namespace AnimeCore
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.Configure<Authentication>(Configuration.GetSection("Authentication"));
 
-            services.AddCors();
-
-            services.AddMvc(options =>
-                {
-                    options.SslPort = 44326;
-                    options.Filters.Add(new RequireHttpsAttribute());
-                })
+            services.AddMvc()
                 .AddJsonOptions(
                     options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });
 
@@ -61,12 +54,6 @@ namespace AnimeCore
             else
                 app.UseExceptionHandler("/Home/Error");
 
-            app.UseCors(builder => builder
-                .WithOrigins("https://localhost:44326")
-                .AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowAnyOrigin()
-                .AllowCredentials());
 
             app.UseStaticFiles();
 
