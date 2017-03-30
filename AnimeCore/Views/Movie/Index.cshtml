@@ -69,7 +69,7 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-xs-6 col-sm-3" dir-paginate="movie in movies | orderBy:propertyName:reverse | filter:{name:searchString, status:status, release:release, genreMovies: {genreId:genreId} } | itemsPerPage:@ViewData[Constant.PageSize]">
+                <div class="col-xs-6 col-sm-3" dir-paginate="movie in movies | orderBy:propertyName:reverse | filter:{ status:status, release:release, genreMovies: {genreId:genreId} } | itemsPerPage:@ViewData[Constant.PageSize]">
                     <a href="@Url.Action("Details")/{{ movie.id }}">
                         <div class="movie-content" title="{{ movie.status | status }}">
                             <span class="movie-name">{{ movie.name }}</span>
@@ -113,13 +113,12 @@
 
         function controller($scope, $http) {
             angular.element(document).ready(function() {
-                $http.get("@Url.Action("GetMovies", "MovieApi")").then(function(response) {
+                $http.get("@Url.Action("GetMovies", "MovieApi", new {searchString = ViewData["SearchString"]})").then(function(response) {
                     $scope.movies = response.data;
                     $scope.propertyName = "name";
                     $scope.reverse = false;
                     $scope.status = "";
                     $scope.release = "";
-                    $scope.searchString = "@ViewData["SearchString"]";
                     $scope.genreId = "@Url.ActionContext.RouteData.Values["id"]";
                 });
 

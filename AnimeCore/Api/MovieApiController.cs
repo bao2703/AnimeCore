@@ -16,9 +16,9 @@ namespace AnimeCore.Api
 
         // GET: api/Movie
         [HttpGet]
-        public IActionResult GetMovies()
+        public IActionResult GetMovies(string searchString = "")
         {
-            return Ok(_movieService.ToList());
+            return Ok(_movieService.FindBy(searchString));
         }
 
         // GET: api/Movie/5

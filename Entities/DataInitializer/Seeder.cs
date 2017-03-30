@@ -9,6 +9,11 @@ namespace Entities.DataInitializer
 {
     public static class Seeder
     {
+        private static string ConvertUrl(string url)
+        {
+            return "http://onecloud.media/embed/" + url.Split('/')[4];
+        }
+
         public static void Seed(this IApplicationBuilder app)
         {
             var context = app.ApplicationServices.GetService<NeptuneContext>();
@@ -1373,17 +1378,17 @@ namespace Entities.DataInitializer
                 new Episode
                 {
                     Name = "1",
-                    Url = "https://drive.google.com/open?id=0B1M2hr77bX9fVm4zcnNIWkNkTUE"
+                    Url = ConvertUrl("http://onecloud.media/file/14d2bdc89fe14910-c915ad8b3dbac0f3")
                 },
                 new Episode
                 {
                     Name = "2",
-                    Url = "https://drive.google.com/open?id=0B1M2hr77bX9fSzhtcUo4QXNTY3c"
+                    Url = ConvertUrl("http://onecloud.media/file/f7a14b87e36ea73e-2239de2fe37078f6")
                 },
                 new Episode
                 {
                     Name = "3",
-                    Url = "https://drive.google.com/open?id=0B1M2hr77bX9fTnJ5Wkw3YkJWLWc"
+                    Url = ConvertUrl("http://onecloud.media/file/91d301e21ababd36-b02005c7dbf77ff1")
                 }
             };
 
