@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
 namespace AnimeCore
@@ -44,7 +45,8 @@ namespace AnimeCore
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,
+            IOptions<Authentication> authentication)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -61,12 +63,16 @@ namespace AnimeCore
 
             app.UseFacebookAuthentication(new FacebookOptions
             {
-                AppId = Configuration["Authentication:Facebook:AppId"],
-                AppSecret = Configuration["Authentication:Facebook:AppSecret"]
+                AppId = authentication.Value.Facebook.AppId,
+                AppSecret = authentication.Value.Facebook.AppSecret
             });
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    "admin",
+                    "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+
                 routes.MapRoute(
                     "default",
                     "{controller=Home}/{action=Index}/{id?}");

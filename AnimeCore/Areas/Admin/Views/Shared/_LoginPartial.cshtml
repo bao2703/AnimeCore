@@ -1,0 +1,21 @@
+@if (User.Identity.IsAuthenticated)
+{
+    <ul class="nav navbar-nav navbar-right" style="margin-right: 7px">
+        <li>
+            <a href="#" title="Manage profile">
+                <i class="fa fa-user"> @User.Identity.Name</i>
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("SignOut", "Account")"><i class="fa fa-sign-out"></i> Log out</a>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right" style="margin-right: 7px">
+        <li>
+            <a href="@Url.Action("Login", "Account")"><i class="fa fa-sign-in"></i> Login</a>
+        </li>
+    </ul>
+}

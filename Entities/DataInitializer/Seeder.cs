@@ -1373,6 +1373,8 @@ namespace Entities.DataInitializer
 
             var episodes = new List<List<Episode>>();
 
+            #region Sword Art Online
+
             var swordArtOnline = new List<Episode>
             {
                 new Episode
@@ -1394,6 +1396,54 @@ namespace Entities.DataInitializer
 
             swordArtOnline.ForEach(x => x.Movie = movies.Single(m => m.Name == "Sword Art Online"));
             episodes.Add(swordArtOnline);
+
+            #endregion
+
+            #region Mahouka Koukou No Rettousei
+
+            var mahouka = new List<Episode>
+            {
+                new Episode
+                {
+                    Name = "1",
+                    Url = ConvertUrl("http://onecloud.media/file/ea0a4f0592876bc6-0d45215fe94e9118")
+                },
+                new Episode
+                {
+                    Name = "2",
+                    Url = ConvertUrl("http://onecloud.media/file/6f37b5f4547cfc91-6174b37da791b89b")
+                },
+                new Episode
+                {
+                    Name = "3",
+                    Url = ConvertUrl("http://onecloud.media/file/43b9a4368d3e7099-e51029d2a7731cb2")
+                },
+                new Episode
+                {
+                    Name = "4",
+                    Url = ConvertUrl("http://onecloud.media/file/43b9a4368d3e7099-e51029d2a7731cb2")
+                },
+                new Episode
+                {
+                    Name = "5",
+                    Url = ConvertUrl("http://onecloud.media/file/2ae2e1d5912afdeb-25b34a3986df13f8")
+                },
+                new Episode
+                {
+                    Name = "6",
+                    Url = ConvertUrl("http://onecloud.media/file/4cc4eb8020c49482-d79bf2b010c1f242")
+                },
+                new Episode
+                {
+                    Name = "7",
+                    Url = ConvertUrl("http://onecloud.media/file/c6572c530dc167b9-602b186e8ed2e62d")
+                }
+            };
+
+            mahouka.ForEach(x => x.Movie = movies.Single(m => m.Name == "Mahouka Koukou No Rettousei"));
+            episodes.Add(mahouka);
+
+            #endregion
 
             #endregion
 
