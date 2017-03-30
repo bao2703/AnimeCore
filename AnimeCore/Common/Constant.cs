@@ -9,5 +9,9 @@
         public static string LoginProvider => "LoginProvider";
 
         public static string PageSize => "PageSize";
+
+        public static string SearchString => "SearchString";
+
+        public static string SlideTitle => "SlideTitle";
     }
 }

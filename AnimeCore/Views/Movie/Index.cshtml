@@ -112,20 +112,22 @@
         controller.$inject = ["$scope", "$http"];
 
         function controller($scope, $http) {
-            angular.element(document).ready(function() {
-                $http.get("@Url.Action("GetMovies", "MovieApi", new {searchString = ViewData["SearchString"]})").then(function(response) {
+            $http.get("@Url.Action("GetMovies", "MovieApi", new {searchString = ViewData[Constant.SearchString]})")
+                .then(function(response) {
                     $scope.movies = response.data;
-                    $scope.propertyName = "name";
-                    $scope.reverse = false;
-                    $scope.status = "";
-                    $scope.release = "";
-                    $scope.genreId = "@Url.ActionContext.RouteData.Values["id"]";
+                    $scope.$watch('$viewContentLoaded',
+                        function() {
+                            $scope.propertyName = "name";
+                            $scope.reverse = false;
+                            $scope.status = "";
+                            $scope.release = "";
+                            $scope.genreId = "@Url.ActionContext.RouteData.Values["id"]";
+                        });
                 });
 
-                activate();
+            activate();
 
-                function activate() {}
-            });
+            function activate() {}
         }
     })();
 </script>

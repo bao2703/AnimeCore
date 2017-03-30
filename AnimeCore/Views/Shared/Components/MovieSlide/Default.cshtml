@@ -1,0 +1,46 @@
+@model List<Movie>
+@inject Helper Helper
+
+<div class="panel panel-primary">
+    <div class="panel-heading clearfix">
+        <h4 class="panel-title pull-left" style="padding-top: 7.5px;">
+            @ViewData[Constant.SlideTitle]
+        </h4>
+        <div class="btn-group pull-right">
+            <button class="btn" href="#@ViewData[Constant.SlideTitle]" role="button" data-slide="prev" style="background-color: grey">
+                <i class="fa fa-chevron-left"></i>
+            </button>
+            <button class="btn" href="#@ViewData[Constant.SlideTitle]" role="button" data-slide="next" style="background-color: grey">
+                <i class="fa fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div id="@ViewData[Constant.SlideTitle]" class="carousel slide" data-ride="carousel">
+            <!-- carousel-inner -->
+            <div class="carousel-inner" role="listbox">
+                @foreach (var list in Helper.SplitList(Model, 4))
+                {
+                    <div class="item">
+                        <div class="row">
+                            @foreach (var item in list)
+                            {
+                                <div class="col-xs-6 col-sm-3">
+                                    <a asp-action="Details" asp-controller="Movie" asp-route-id="@item.Id">
+                                        <div class="movie-content">
+                                            <span class="movie-name">@item.Name</span>
+                                            <span class="movie-release">@item.Release.Month/@item.Release.Year</span>
+                                            <span class="movie-views">@item.Views</span>
+                                            <img class="movie-img img-responsive img-rounded" src="@item.Image" alt="@item.Name" asp-append-version="true"/>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- /.carousel-inner -->
+        </div>
+    </div>
+</div>

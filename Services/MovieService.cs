@@ -14,6 +14,7 @@ namespace Services
         List<Movie> FindBy(string searchString);
         Episode FindEpisode(int episodeId);
         List<Movie> FindNewestMovie(int take);
+        List<Movie> FindPopularMovie(int take);
         List<Movie> ToList();
     }
 
@@ -56,6 +57,14 @@ namespace Services
         {
             return _context.Movies
                 .OrderByDescending(x => x.Release)
+                .Take(take)
+                .ToList();
+        }
+
+        public List<Movie> FindPopularMovie(int take)
+        {
+            return _context.Movies
+                .OrderByDescending(x => x.Views)
                 .Take(take)
                 .ToList();
         }

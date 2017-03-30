@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AnimeCore.Common;
+using Microsoft.Extensions.DependencyInjection;
 using Services;
 
 namespace AnimeCore.Configuration
@@ -10,6 +11,7 @@ namespace AnimeCore.Configuration
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<IGenreService, GenreService>();
             services.AddTransient<IMovieService, MovieService>();
+            services.AddTransient<Helper, Helper>();
         }
     }
 }
