@@ -12,7 +12,6 @@
         <div class="panel-heading">
             Filter
         </div>
-        <input id="genreId" type="hidden" value="@Url.ActionContext.RouteData.Values["id"]"/>
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-6 col-sm-3">
@@ -70,7 +69,7 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-xs-6 col-sm-3" dir-paginate="movie in movies | orderBy:propertyName:reverse | filter:{status:status, release:release, genreMovies: {genreId:genreId} } | itemsPerPage:@ViewData[Constant.PageSize]">
+                <div class="col-xs-6 col-sm-3" dir-paginate="movie in movies | orderBy:propertyName:reverse | filter:{name:searchString, status:status, release:release, genreMovies: {genreId:genreId} } | itemsPerPage:@ViewData[Constant.PageSize]">
                     <a href="@Url.Action("Details")/{{ movie.id }}">
                         <div class="movie-content" title="{{ movie.status | status }}">
                             <span class="movie-name">{{ movie.name }}</span>
@@ -83,10 +82,7 @@
             </div>
         </div>
         <div class="panel-footer" align="center">
-            <dir-pagination-controls max-size="10"
-                                     direction-links="true"
-                                     boundary-links="true">
-            </dir-pagination-controls>
+            <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true"></dir-pagination-controls>
         </div>
     </div>
 
@@ -96,5 +92,41 @@
 @section scripts {
     <script src="~/lib/angular/angular.js"></script>
     <script src="~/lib/angularUtils-pagination/dirPagination.js"></script>
-    <script src="~/js/movie-controller.js"></script>
 }
+
+<script>
+    (function() {
+        "use strict";
+        var app = angular.module("app", ["angularUtils.directives.dirPagination"]);
+        app.controller("movie-controller", controller);
+        app.filter("status",
+            function() {
+                return function(data) {
+                    if (data === 1) {
+                        return "Completed";
+                    }
+                    return "Ongoing";
+                };
+            });
+
+        controller.$inject = ["$scope", "$http"];
+
+        function controller($scope, $http) {
+            angular.element(document).ready(function() {
+                $http.get("@Url.Action("GetMovies", "MovieApi")").then(function(response) {
+                    $scope.movies = response.data;
+                    $scope.propertyName = "name";
+                    $scope.reverse = false;
+                    $scope.status = "";
+                    $scope.release = "";
+                    $scope.searchString = "@ViewData["SearchString"]";
+                    $scope.genreId = "@Url.ActionContext.RouteData.Values["id"]";
+                });
+
+                activate();
+
+                function activate() {}
+            });
+        }
+    })();
+</script>

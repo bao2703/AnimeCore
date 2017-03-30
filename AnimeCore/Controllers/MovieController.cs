@@ -17,8 +17,9 @@ namespace AnimeCore.Controllers
         }
 
         // GET: /Movie/Index
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
         {
+            ViewData["SearchString"] = searchString;
             ViewData[Constant.PageSize] = _appSettings.PageSize;
             return View();
         }
