@@ -20,7 +20,7 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var model = _userService.ToList().Select(x => new UserViewModel()
+            var model = _userService.ToList().Select(x => new UserListViewModel()
             {
                 Id = x.Id,
                 Email = x.Email,
@@ -28,6 +28,17 @@ namespace AnimeCore.Areas.Admin.Controllers
                 EmailConfirmed = x.EmailConfirmed
             });
             return View(model);
+        }
+
+        public IActionResult Add()
+        {
+            return PartialView();
+        }
+
+        [HttpPost]
+        public IActionResult Add(AddUserViewModel model)
+        {
+            return View();
         }
     }
 }
