@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Models.RoleViewModels;
 using Services;
@@ -20,7 +17,7 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var model = _roleService.ToList().Select(x => new RoleViewModel()
+            var model = _roleService.ToList().Select(x => new RoleViewModel
             {
                 Id = x.Id,
                 Name = x.Name,

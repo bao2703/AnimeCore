@@ -1,7 +1,7 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Entities.Domain;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.UserViewModels;
 using Services;
@@ -11,16 +11,18 @@ namespace AnimeCore.Areas.Admin.Controllers
     [Area("Admin")]
     public class UserController : Controller
     {
+        private readonly IAccountService _accountService;
         private readonly IUserService _userService;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IAccountService accountService)
         {
             _userService = userService;
+            _accountService = accountService;
         }
 
         public IActionResult Index()
         {
-            var model = _userService.ToList().Select(x => new UserListViewModel()
+            var model = _userService.ToList().Select(x => new UserListViewModel
             {
                 Id = x.Id,
                 Email = x.Email,
@@ -32,13 +34,38 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         public IActionResult Add()
         {
-            return PartialView();
+            return PartialView("_AddPartial");
         }
 
         [HttpPost]
-        public IActionResult Add(AddUserViewModel model)
+        public async Task<IActionResult> Add(AddUserViewModel model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                var user = new User
+                {
+                    UserName = model.UserName,
+                    Email = model.UserName
+                };
+                var result = await _accountService.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                    return Json(new
+                    {
+                        status = "Ok"
+                    });
+                AddErrors(result);
+            }
+            return PartialView("_AddPartial", model);
         }
+
+        #region Helpers
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+                ModelState.AddModelError(string.Empty, error.Description);
+        }
+
+        #endregion
     }
 }

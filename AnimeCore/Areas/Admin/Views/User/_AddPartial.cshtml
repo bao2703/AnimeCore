@@ -1,21 +1,24 @@
 @using Models.ModalViewModels
 @model Models.UserViewModels.AddUserViewModel
 
-<form asp-action="Add" asp-controller="User" method="post">
+<form asp-action="Add" asp-controller="User" data-ajax="true" data-ajax-method="post" id="add-user-form">
     @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = "Add User"})
     <div class="modal-body form-horizontal">
         <div class="row">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger validation-summary col-sm-12"></div>
             <div class="col-sm-6">
                 <div class="form-group">
                     <label asp-for="UserName" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
                         <input asp-for="UserName" class="form-control"/>
+                        <span asp-validation-for="UserName" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label asp-for="Email" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
                         <input asp-for="Email" class="form-control"/>
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -24,12 +27,14 @@
                     <label asp-for="Password" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
                         <input asp-for="Password" class="form-control"/>
+                        <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label asp-for="ConfirmPassword" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
                         <input asp-for="ConfirmPassword" class="form-control"/>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -37,3 +42,25 @@
     </div>
     @await Html.PartialAsync("Modal/_FooterPartial", new ModalFooter())
 </form>
+
+<script>
+    $.validator.unobtrusive.parse("#add-user-form");
+    $("#add-user-form").submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            success: function(data) {
+                if (data.status === "Ok") {
+                    location.reload();
+                } else {
+                    $(".modal-content").html(data);
+                }
+            },
+            error: function() {
+                console.log("error");
+            }
+        });
+    });
+</script>

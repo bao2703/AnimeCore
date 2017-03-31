@@ -13,7 +13,7 @@
     <div class="panel-body">
         <div class="col-xs-12" style="overflow-x: auto;">
             <div class="btn-group">
-                <a data-toggle="modal" asp-action="Add" data-target="#add-user-modal" class="btn btn-primary">
+                <a data-toggle="modal" asp-action="Add" asp-controller="User" data-target="#add-user-modal" class="btn btn-primary">
                     <i class="fa fa-plus"></i> Add User
                 </a>
             </div>
@@ -74,3 +74,8 @@
         });
     });
 </script>
+
+@section scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+}
