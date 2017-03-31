@@ -20,7 +20,7 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var model = _userService.ToList().Select(x => new UserListViewModel()
+            var model = _userService.ToList().Select(x => new UserViewModel()
             {
                 Id = x.Id,
                 Email = x.Email,

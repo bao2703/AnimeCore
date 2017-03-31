@@ -1,6 +1,6 @@
 ﻿namespace Models.UserViewModels
 {
-    public class UserListViewModel
+    public class UserViewModel
     {
         public string Id { get; set; }
 

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Entities
 {
-    public class NeptuneContext : IdentityDbContext<User>
+    public class NeptuneContext : IdentityDbContext<User, Role, string>
     {
         public NeptuneContext(DbContextOptions<NeptuneContext> options)
             : base(options)

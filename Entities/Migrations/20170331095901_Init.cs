@@ -37,16 +37,30 @@ namespace Entities.Migrations
                     Release = table.Column<DateTime>(nullable: false),
                     Slug = table.Column<string>(nullable: true),
                     Status = table.Column<int>(nullable: false),
-                    Viewed = table.Column<long>(nullable: false),
+                    Views = table.Column<long>(nullable: false),
                     Vote = table.Column<int>(nullable: false)
                 },
                 constraints: table => { table.PrimaryKey("PK_Movies", x => x.Id); });
 
             migrationBuilder.CreateTable(
+                "AspNetRoles",
+                table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(maxLength: 256, nullable: true)
+                },
+                constraints: table => { table.PrimaryKey("PK_AspNetRoles", x => x.Id); });
+
+            migrationBuilder.CreateTable(
                 "AspNetUsers",
                 table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
@@ -65,21 +79,10 @@ namespace Entities.Migrations
                 constraints: table => { table.PrimaryKey("PK_AspNetUsers", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                "AspNetRoles",
-                table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    ConcurrencyStamp = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(maxLength: 256, nullable: true)
-                },
-                constraints: table => { table.PrimaryKey("PK_AspNetRoles", x => x.Id); });
-
-            migrationBuilder.CreateTable(
                 "AspNetUserTokens",
                 table => new
                 {
-                    UserId = table.Column<string>(nullable: false),
+                    UserId = table.Column<int>(nullable: false),
                     LoginProvider = table.Column<string>(nullable: false),
                     Name = table.Column<string>(nullable: false),
                     Value = table.Column<string>(nullable: true)
@@ -135,6 +138,27 @@ namespace Entities.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                "AspNetRoleClaims",
+                table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ClaimType = table.Column<string>(nullable: true),
+                    ClaimValue = table.Column<string>(nullable: true),
+                    RoleId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
+                    table.ForeignKey(
+                        "FK_AspNetRoleClaims_AspNetRoles_RoleId",
+                        x => x.RoleId,
+                        "AspNetRoles",
+                        "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 "AspNetUserClaims",
                 table => new
                 {
@@ -142,7 +166,7 @@ namespace Entities.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: false)
+                    UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -162,7 +186,7 @@ namespace Entities.Migrations
                     LoginProvider = table.Column<string>(nullable: false),
                     ProviderKey = table.Column<string>(nullable: false),
                     ProviderDisplayName = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: false)
+                    UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -176,32 +200,11 @@ namespace Entities.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                "AspNetRoleClaims",
-                table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ClaimType = table.Column<string>(nullable: true),
-                    ClaimValue = table.Column<string>(nullable: true),
-                    RoleId = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
-                    table.ForeignKey(
-                        "FK_AspNetRoleClaims_AspNetRoles_RoleId",
-                        x => x.RoleId,
-                        "AspNetRoles",
-                        "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 "AspNetUserRoles",
                 table => new
                 {
-                    UserId = table.Column<string>(nullable: false),
-                    RoleId = table.Column<string>(nullable: false)
+                    UserId = table.Column<int>(nullable: false),
+                    RoleId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -231,6 +234,12 @@ namespace Entities.Migrations
                 "GenreId");
 
             migrationBuilder.CreateIndex(
+                "RoleNameIndex",
+                "AspNetRoles",
+                "NormalizedName",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 "EmailIndex",
                 "AspNetUsers",
                 "NormalizedEmail");
@@ -239,12 +248,6 @@ namespace Entities.Migrations
                 "UserNameIndex",
                 "AspNetUsers",
                 "NormalizedUserName",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                "RoleNameIndex",
-                "AspNetRoles",
-                "NormalizedName",
                 unique: true);
 
             migrationBuilder.CreateIndex(
