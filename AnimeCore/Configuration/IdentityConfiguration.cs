@@ -3,7 +3,6 @@ using Entities;
 using Entities.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AnimeCore.Configuration
@@ -12,7 +11,7 @@ namespace AnimeCore.Configuration
     {
         public static void Configure(IServiceCollection services)
         {
-            services.AddIdentity<User, IdentityRole>()
+            services.AddIdentity<User, Role>()
                 .AddEntityFrameworkStores<NeptuneContext>()
                 .AddDefaultTokenProviders();
 
