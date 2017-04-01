@@ -12,7 +12,6 @@ namespace Services
     {
         Task<IdentityResult> CreateAsync(User user, string password);
         Task<IdentityResult> CreateAsync(User user);
-        List<User> FindBy(string searchString);
         string GetUserName(ClaimsPrincipal principal);
         bool IsSignedIn(ClaimsPrincipal principal);
         Task<SignInResult> PasswordSignInAsync(string email, string password, bool rememberMe, bool lockoutOnFailure);
@@ -44,14 +43,6 @@ namespace Services
         public async Task<IdentityResult> CreateAsync(User user)
         {
             return await _userManager.CreateAsync(user);
-        }
-
-        public List<User> FindBy(string searchString)
-        {
-            var users = _userManager.Users;
-            if (!string.IsNullOrEmpty(searchString))
-                users = users.Where(user => user.Email.Contains(searchString) || user.UserName.Contains(searchString));
-            return users.ToList();
         }
 
         public string GetUserName(ClaimsPrincipal principal)

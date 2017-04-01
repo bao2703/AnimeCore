@@ -38,6 +38,7 @@ namespace AnimeCore.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(AddUserViewModel model)
         {
             if (ModelState.IsValid)
@@ -78,6 +79,7 @@ namespace AnimeCore.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(UserViewModel model)
         {
             if (ModelState.IsValid)
@@ -97,6 +99,45 @@ namespace AnimeCore.Areas.Admin.Controllers
                 }
             }
             return PartialView("_EditPartial", model);
+        }
+        public async Task<IActionResult> Delete(string id)
+        {
+            if (!string.IsNullOrEmpty(id))
+            {
+                var user = await _userService.FindByIdAsync(id);
+                if (user != null)
+                {
+                    var model = new UserViewModel
+                    {
+                        Id = user.Id,
+                        Email = user.Email,
+                        UserName = user.UserName
+                    };
+                    return PartialView("_DeletePartial", model);
+                }
+            }
+            return PartialView("Error");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(UserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userService.FindByIdAsync(model.Id);
+                if (user != null)
+                {
+                    var result = await _userService.DeleteAsync(user);
+                    if (result.Succeeded)
+                        return Json(new
+                        {
+                            status = "Ok"
+                        });
+                    AddErrors(result);
+                }
+            }
+            return PartialView("_DeletePartial", model);
         }
 
         #region Helpers

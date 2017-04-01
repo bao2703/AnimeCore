@@ -11,6 +11,7 @@ namespace Services
         List<User> ToList();
         Task<User> FindByIdAsync(string id);
         Task<IdentityResult> UpdateAsync(User user);
+        Task<IdentityResult> DeleteAsync(User user);
     }
 
     public class UserService : IUserService
@@ -35,6 +36,11 @@ namespace Services
         public Task<IdentityResult> UpdateAsync(User user)
         {
             return _userManager.UpdateAsync(user);
+        }
+
+        public Task<IdentityResult> DeleteAsync(User user)
+        {
+            return _userManager.DeleteAsync(user);
         }
     }
 }

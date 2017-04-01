@@ -1,0 +1,31 @@
+@using Models.ModalViewModels
+@model Models.UserViewModels.UserViewModel
+
+<form asp-action="Delete" asp-controller="User" data-ajax="true" data-ajax-method="post" id="user-form">
+    @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = "Delete User"})
+    <div class="modal-body form-horizontal">
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger validation-summary col-sm-12"></div>
+            <div class="text-center">
+                <h4>Are you want to delete this user?</h4>
+            </div>
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="form-group">
+                    <label asp-for="UserName" class="col-sm-3"></label>
+                    @Model.UserName
+                </div>
+            </div>
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="form-group">
+                    <label asp-for="Email" class="col-sm-3"></label>
+                    @Model.Email
+                </div>
+            </div>
+        </div>
+    </div>
+    <input asp-for="UserName" type="hidden" value="@Model.UserName"/>
+    <input asp-for="Email" type="hidden" value="@Model.Email"/>
+    @await Html.PartialAsync("Modal/_FooterPartial", new ModalFooter {SubmitButtonText = "Delete", SubmitButtonClass = "btn-danger"})
+</form>
+
+<script src="~/assets/admin/js/user-form.js"></script>

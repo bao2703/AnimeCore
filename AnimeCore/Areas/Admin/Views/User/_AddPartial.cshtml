@@ -40,7 +40,7 @@
             </div>
         </div>
     </div>
-    @await Html.PartialAsync("Modal/_FooterPartial", new ModalFooter())
+    @await Html.PartialAsync("Modal/_FooterPartial", new ModalFooter {SubmitButtonText = "Add", SubmitButtonClass = "btn-primary"})
 </form>
 
 <script src="~/assets/admin/js/user-form.js"></script>

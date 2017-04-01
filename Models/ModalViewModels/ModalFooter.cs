@@ -10,6 +10,10 @@
 
         public string CancelButtonId { get; set; } = "btn-cancel";
 
+        public string SubmitButtonClass { get; set; } = "btn-submit";
+
+        public string CancelButtonClass { get; set; } = "btn-default";
+
         public bool OnlyCancelButton { get; set; }
     }
 }
