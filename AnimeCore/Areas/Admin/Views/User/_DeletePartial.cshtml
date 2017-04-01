@@ -9,22 +9,26 @@
             <div class="text-center">
                 <h4>Are you want to delete this user?</h4>
             </div>
-            <div class="col-sm-offset-2 col-sm-10">
+            <div class="col-sm-offset-1 col-sm-10">
                 <div class="form-group">
-                    <label asp-for="UserName" class="col-sm-3"></label>
-                    @Model.UserName
+                    <label asp-for="UserName" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="UserName" class="form-control" readonly=""/>
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-offset-2 col-sm-10">
+            <div class="col-sm-offset-1 col-sm-10">
                 <div class="form-group">
-                    <label asp-for="Email" class="col-sm-3"></label>
-                    @Model.Email
+                    <label asp-for="Email" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="Email" class="form-control" readonly=""/>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <input asp-for="UserName" type="hidden" value="@Model.UserName"/>
-    <input asp-for="Email" type="hidden" value="@Model.Email"/>
     @await Html.PartialAsync("Modal/_FooterPartial", new ModalFooter {SubmitButtonText = "Delete", SubmitButtonClass = "btn-danger"})
 </form>
 

@@ -1,1 +1,30 @@
+@using Models.ModalViewModels
 @model Models.RoleViewModels.RoleViewModel
+
+<form asp-action="AddEdit" asp-controller="Role" data-ajax="true" data-ajax-method="post" id="user-form">
+    @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = "Add User"})
+    <div class="modal-body form-horizontal">
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger validation-summary col-sm-12"></div>
+            <div class="col-sm-offset-1 col-sm-10">
+                <div class="form-group">
+                    <label asp-for="Name" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="Name" class="form-control"/>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-offset-1 col-sm-10">
+                <div class="form-group">
+                    <label asp-for="Description" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="Description" class="form-control"/>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @await Html.PartialAsync("Modal/_FooterPartial", new ModalFooter {SubmitButtonText = "Add", SubmitButtonClass = "btn-primary"})
+</form>
