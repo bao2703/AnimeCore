@@ -1,8 +1,4 @@
-﻿.validation-summary { display: none; }
-
-.validation-summary-valid, .validation-summary-errors { display: block; }
-
-body { background-color: #1e1e1e; }
+﻿body { background-color: #1e1e1e; }
 
 div.body-content { margin-top: 20px; }
 

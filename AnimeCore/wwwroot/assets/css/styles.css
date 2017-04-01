@@ -1,1 +1,7 @@
 ﻿.top-buffer { margin-top: 15px; }
+
+.validation-summary-errors ul {
+    display: inline;
+    list-style-type: none;
+    padding: 0;
+}

@@ -1,5 +1,5 @@
-﻿$.validator.unobtrusive.parse("#user-form");
-$("#user-form").submit(function(e) {
+﻿$.validator.unobtrusive.parse(".modal-form");
+$(".modal-form").submit(function(e) {
     e.preventDefault();
     $.ajax({
         type: "POST",

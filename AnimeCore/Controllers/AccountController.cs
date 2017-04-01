@@ -2,14 +2,13 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using AnimeCore.Common;
 using Entities.Domain;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.AccountViewModels;
 using Services;
 
 namespace AnimeCore.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : IdentityController
     {
         private readonly IAccountService _accountService;
 
@@ -140,12 +139,6 @@ namespace AnimeCore.Controllers
         }
 
         #region Helpers
-
-        private void AddErrors(IdentityResult result)
-        {
-            foreach (var error in result.Errors)
-                ModelState.AddModelError(string.Empty, error.Description);
-        }
 
         private IActionResult RedirectToLocal(string returnUrl)
         {

@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
+using AnimeCore.Common;
 using Entities.Domain;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Models.UserViewModels;
 using Services;
@@ -9,7 +9,7 @@ using Services;
 namespace AnimeCore.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class UserController : Controller
+    public class UserController : IdentityController
     {
         private readonly IAccountService _accountService;
         private readonly IUserService _userService;
@@ -140,15 +140,5 @@ namespace AnimeCore.Areas.Admin.Controllers
             }
             return PartialView("_DeletePartial", model);
         }
-
-        #region Helpers
-
-        private void AddErrors(IdentityResult result)
-        {
-            foreach (var error in result.Errors)
-                ModelState.AddModelError(string.Empty, error.Description);
-        }
-
-        #endregion
     }
 }
