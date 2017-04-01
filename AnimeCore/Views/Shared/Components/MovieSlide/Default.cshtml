@@ -7,10 +7,10 @@
             @ViewData[Constant.SlideTitle]
         </h4>
         <div class="btn-group pull-right">
-            <button class="btn" href="#@ViewData[Constant.SlideTitle]" role="button" data-slide="prev" style="background-color: grey">
+            <button class="btn btn-info" href="#@ViewData[Constant.SlideTitle]" role="button" data-slide="prev">
                 <i class="fa fa-chevron-left"></i>
             </button>
-            <button class="btn" href="#@ViewData[Constant.SlideTitle]" role="button" data-slide="next" style="background-color: grey">
+            <button class="btn btn-info" href="#@ViewData[Constant.SlideTitle]" role="button" data-slide="next">
                 <i class="fa fa-chevron-right"></i>
             </button>
         </div>
@@ -30,7 +30,9 @@
                                         <div class="movie-content">
                                             <span class="movie-name">@item.Name</span>
                                             <span class="movie-release">@item.Release.Month/@item.Release.Year</span>
-                                            <span class="movie-views">@item.Views</span>
+                                            <span class="movie-views">
+                                                @item.Views <i class="fa fa-eye"></i>
+                                            </span>
                                             <img class="movie-img img-responsive img-rounded" src="@item.Image" alt="@item.Name" asp-append-version="true"/>
                                         </div>
                                     </a>
