@@ -1,10 +1,11 @@
 @using Models.ModalViewModels
-@model Models.UserViewModels.AddUserViewModel
+@model Models.UserViewModels.UserViewModel
 
-<form asp-action="Add" asp-controller="User" data-ajax="true" data-ajax-method="post" id="user-form">
-    @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = "Add User"})
+<form asp-action="Edit" asp-controller="User" data-ajax="true" data-ajax-method="post" id="user-form">
+    @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = "Edit User"})
     <div class="modal-body form-horizontal">
         <div class="row">
+            <input asp-for="Id" type="hidden" value="@Model.Id"/>
             <div asp-validation-summary="ModelOnly" class="alert alert-danger validation-summary col-sm-12"></div>
             <div class="col-sm-6">
                 <div class="form-group">
@@ -19,22 +20,6 @@
                     <div class="col-sm-9">
                         <input asp-for="Email" class="form-control"/>
                         <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <label asp-for="Password" class="col-sm-3 control-label"></label>
-                    <div class="col-sm-9">
-                        <input asp-for="Password" class="form-control"/>
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ConfirmPassword" class="col-sm-3 control-label"></label>
-                    <div class="col-sm-9">
-                        <input asp-for="ConfirmPassword" class="form-control"/>
-                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                     </div>
                 </div>
             </div>

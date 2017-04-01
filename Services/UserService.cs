@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Entities.Domain;
 using Microsoft.AspNetCore.Identity;
 
@@ -8,6 +9,8 @@ namespace Services
     public interface IUserService
     {
         List<User> ToList();
+        Task<User> FindByIdAsync(string id);
+        Task<IdentityResult> UpdateAsync(User user);
     }
 
     public class UserService : IUserService
@@ -22,6 +25,16 @@ namespace Services
         public List<User> ToList()
         {
             return _userManager.Users.ToList();
+        }
+
+        public Task<User> FindByIdAsync(string id)
+        {
+            return _userManager.FindByIdAsync(id);
+        }
+
+        public Task<IdentityResult> UpdateAsync(User user)
+        {
+            return _userManager.UpdateAsync(user);
         }
     }
 }

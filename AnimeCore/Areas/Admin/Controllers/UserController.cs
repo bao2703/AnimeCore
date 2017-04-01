@@ -45,7 +45,7 @@ namespace AnimeCore.Areas.Admin.Controllers
                 var user = new User
                 {
                     UserName = model.UserName,
-                    Email = model.UserName
+                    Email = model.Email
                 };
                 var result = await _accountService.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -56,6 +56,47 @@ namespace AnimeCore.Areas.Admin.Controllers
                 AddErrors(result);
             }
             return PartialView("_AddPartial", model);
+        }
+
+        public async Task<IActionResult> Edit(string id)
+        {
+            if (!string.IsNullOrEmpty(id))
+            {
+                var user = await _userService.FindByIdAsync(id);
+                if (user != null)
+                {
+                    var model = new UserViewModel
+                    {
+                        Id = user.Id,
+                        Email = user.Email,
+                        UserName = user.UserName
+                    };
+                    return PartialView("_EditPartial", model);
+                }
+            }
+            return PartialView("Error");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(UserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userService.FindByIdAsync(model.Id);
+                if (user != null)
+                {
+                    user.Email = model.Email;
+                    user.UserName = model.UserName;
+                    var result = await _userService.UpdateAsync(user);
+                    if (result.Succeeded)
+                        return Json(new
+                        {
+                            status = "Ok"
+                        });
+                    AddErrors(result);
+                }
+            }
+            return PartialView("_EditPartial", model);
         }
 
         #region Helpers
