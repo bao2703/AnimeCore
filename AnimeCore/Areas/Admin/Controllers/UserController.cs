@@ -100,6 +100,7 @@ namespace AnimeCore.Areas.Admin.Controllers
             }
             return PartialView("_EditPartial", model);
         }
+
         public async Task<IActionResult> Delete(string id)
         {
             if (!string.IsNullOrEmpty(id))

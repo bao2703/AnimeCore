@@ -25,6 +25,7 @@
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/lib/bootstrap-select/dist/js/bootstrap-select.js"></script>
+        <script src="~/assets/admin/js/site.js"></script>
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
@@ -41,11 +42,9 @@
         </script>
     </environment>
 
-    @RenderSection("scripts", false)
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body>
-
 <!-- navbar -->
 @Html.Partial("_NavbarPartial")
 <!-- /.navbar -->
@@ -61,6 +60,6 @@
     </div>
 </div>
 <!-- /.body-content -->
-
+@RenderSection("scripts", false)
 </body>
 </html>
