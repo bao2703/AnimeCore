@@ -27,7 +27,9 @@ namespace AnimeCore.TagHelpers
             TagHelperAttribute placeholderAttribute;
 
             if (!output.Attributes.TryGetAttribute("placeholder", out placeholderAttribute))
+            {
                 output.Attributes.Add(new TagHelperAttribute("placeholder", placeholder));
+            }
         }
 
         private static string GetPlaceholder(ModelExplorer modelExplorer)
@@ -35,7 +37,9 @@ namespace AnimeCore.TagHelpers
             var placeholder = modelExplorer.Metadata.Placeholder;
 
             if (string.IsNullOrWhiteSpace(placeholder))
+            {
                 placeholder = modelExplorer.Metadata.GetDisplayName();
+            }
 
             return placeholder;
         }

@@ -24,7 +24,9 @@ namespace AnimeCore.Controllers
         public IActionResult Login(string returnUrl = null)
         {
             if (_accountService.IsSignedIn(User))
+            {
                 return RedirectToLocal(returnUrl);
+            }
             ViewData[Constant.ReturnUrl] = returnUrl;
             return View();
         }
@@ -35,9 +37,15 @@ namespace AnimeCore.Controllers
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
             ViewData[Constant.ReturnUrl] = returnUrl;
-            if (!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             var result = await _accountService.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
-            if (result.Succeeded) return RedirectToLocal(returnUrl);
+            if (result.Succeeded)
+            {
+                return RedirectToLocal(returnUrl);
+            }
             ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             return View(model);
         }
@@ -56,7 +64,10 @@ namespace AnimeCore.Controllers
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
             ViewData[Constant.ReturnUrl] = returnUrl;
-            if (!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             var user = new User {UserName = model.Email, Email = model.Email};
             var result = await _userService.CreateAsync(user, model.Password);
             if (result.Succeeded)
@@ -98,11 +109,17 @@ namespace AnimeCore.Controllers
                 return View("Login");
             }
             var info = await _accountService.GetExternalLoginInfoAsync();
-            if (info == null) return RedirectToAction("Login");
+            if (info == null)
+            {
+                return RedirectToAction("Login");
+            }
 
             // Sign in the user with this external login provider if the user already has a login.
             var result = await _accountService.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, false);
-            if (result.Succeeded) return RedirectToLocal(returnUrl);
+            if (result.Succeeded)
+            {
+                return RedirectToLocal(returnUrl);
+            }
 
             // If the user does not have an account, then ask the user to create an account.
             ViewData[Constant.ReturnUrl] = returnUrl;
@@ -121,7 +138,10 @@ namespace AnimeCore.Controllers
             {
                 // Get the information about the user from the external login provider
                 var info = await _accountService.GetExternalLoginInfoAsync();
-                if (info == null) return View("ExternalLoginFailure");
+                if (info == null)
+                {
+                    return View("ExternalLoginFailure");
+                }
                 var user = new User {UserName = model.Email, Email = model.Email};
                 var result = await _userService.CreateAsync(user);
                 if (result.Succeeded)
@@ -145,7 +165,9 @@ namespace AnimeCore.Controllers
         private IActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
+            {
                 return Redirect(returnUrl);
+            }
             return RedirectToAction("Index", "Home");
         }
 

@@ -25,9 +25,15 @@ namespace AnimeCore.Api
         [HttpGet("{id}")]
         public IActionResult GetMovie([FromRoute] int id)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var movie = _movieService.FindBy(id);
-            if (movie == null) return NotFound();
+            if (movie == null)
+            {
+                return NotFound();
+            }
             return Ok(movie);
         }
     }

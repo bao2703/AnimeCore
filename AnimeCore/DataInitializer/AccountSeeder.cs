@@ -36,7 +36,9 @@ namespace AnimeCore.DataInitializer
                 }
             };
             foreach (var user in users)
+            {
                 await userService.CreateAsync(user, "Bao@2703", Administrator);
+            }
         }
 
         private static async Task InitializeRoleAsync(IApplicationBuilder app)
@@ -61,7 +63,9 @@ namespace AnimeCore.DataInitializer
                 }
             };
             foreach (var role in roles)
+            {
                 await roleService.CreateAsync(role);
+            }
         }
     }
 }

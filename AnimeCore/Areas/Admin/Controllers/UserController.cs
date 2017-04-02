@@ -25,6 +25,7 @@ namespace AnimeCore.Areas.Admin.Controllers
         {
             var model = new List<UserListViewModel>();
             foreach (var item in _userService.ToList())
+            {
                 model.Add(new UserListViewModel
                 {
                     Id = item.Id,
@@ -33,6 +34,7 @@ namespace AnimeCore.Areas.Admin.Controllers
                     EmailConfirmed = item.EmailConfirmed,
                     RoleName = (await _userService.GetRolesAsync(item)).FirstOrDefault()
                 });
+            }
             return View(model);
         }
 
@@ -55,10 +57,12 @@ namespace AnimeCore.Areas.Admin.Controllers
                 };
                 var result = await _userService.CreateAsync(user, model.Password, model.RoleName);
                 if (result.Succeeded)
+                {
                     return Json(new
                     {
                         status = "Ok"
                     });
+                }
                 AddErrors(result);
             }
             ViewData["RoleList"] = _roleService.ToList();
@@ -99,10 +103,12 @@ namespace AnimeCore.Areas.Admin.Controllers
                     user.UserName = model.UserName;
                     var result = await _userService.UpdateAsync(user, model.RoleName);
                     if (result.Succeeded)
+                    {
                         return Json(new
                         {
                             status = "Ok"
                         });
+                    }
                     AddErrors(result);
                 }
             }
@@ -141,10 +147,12 @@ namespace AnimeCore.Areas.Admin.Controllers
                 {
                     var result = await _userService.DeleteAsync(user);
                     if (result.Succeeded)
+                    {
                         return Json(new
                         {
                             status = "Ok"
                         });
+                    }
                     AddErrors(result);
                 }
             }

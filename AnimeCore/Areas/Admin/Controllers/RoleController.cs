@@ -71,10 +71,12 @@ namespace AnimeCore.Areas.Admin.Controllers
                     result = await _roleService.CreateAsync(role);
                 }
                 if (result.Succeeded)
+                {
                     return Json(new
                     {
                         status = "Ok"
                     });
+                }
                 AddErrors(result);
             }
             return PartialView("_AddEditPartial", model);
@@ -110,10 +112,12 @@ namespace AnimeCore.Areas.Admin.Controllers
                 {
                     var result = await _roleService.DeleteAsync(role);
                     if (result.Succeeded)
+                    {
                         return Json(new
                         {
                             status = "Ok"
                         });
+                    }
                     AddErrors(result);
                 }
             }

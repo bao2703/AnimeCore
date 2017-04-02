@@ -47,7 +47,9 @@ namespace Entities
             foreach (var entity in entities)
             {
                 if (entity.State == EntityState.Added)
+                {
                     ((TrackAbleEntity) entity.Entity).CreatedDate = DateTime.UtcNow;
+                }
 
                 ((TrackAbleEntity) entity.Entity).LastModifiedDate = DateTime.UtcNow;
             }

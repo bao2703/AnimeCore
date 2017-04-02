@@ -27,7 +27,10 @@ namespace AnimeCore.Controllers
         // GET: /Movie/Details/5
         public IActionResult Details(int? id)
         {
-            if (id == null) return View("Error");
+            if (id == null)
+            {
+                return View("Error");
+            }
             var movie = _movieService.FindBy((int) id);
             return movie == null ? View("Error") : View(movie);
         }
@@ -35,7 +38,10 @@ namespace AnimeCore.Controllers
         // GET: /Movie/Watch/5
         public IActionResult Watch(int? id)
         {
-            if (id == null) return View("Error");
+            if (id == null)
+            {
+                return View("Error");
+            }
             var movie = _movieService.FindBy((int) id);
             return movie == null ? View("Error") : View(movie);
         }

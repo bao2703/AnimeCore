@@ -47,7 +47,9 @@ namespace Services
         {
             var result = await _userManager.CreateAsync(user, password);
             if (result.Succeeded)
+            {
                 result = await _userManager.AddToRoleAsync(user, role);
+            }
             return result;
         }
 
@@ -76,7 +78,9 @@ namespace Services
             var roles = await GetRolesAsync(user);
             var result = await _userManager.RemoveFromRolesAsync(user, roles);
             if (result.Succeeded)
+            {
                 result = await _userManager.AddToRoleAsync(user, role);
+            }
             return result;
         }
 

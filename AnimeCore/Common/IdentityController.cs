@@ -10,7 +10,9 @@ namespace AnimeCore.Common
         protected void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
+            {
                 ModelState.AddModelError(string.Empty, error.Description);
+            }
         }
 
         #endregion

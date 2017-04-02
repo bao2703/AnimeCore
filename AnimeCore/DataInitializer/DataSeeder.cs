@@ -1449,7 +1449,7 @@ namespace AnimeCore.DataInitializer
 
             #region Kimi No Na Wa
 
-            var kimiNoNaWa = new List<Episode>()
+            var kimiNoNaWa = new List<Episode>
             {
                 new Episode
                 {
@@ -1465,7 +1465,7 @@ namespace AnimeCore.DataInitializer
 
             #region Sword Art Online 2
 
-            var swordArtOnline2 = new List<Episode>()
+            var swordArtOnline2 = new List<Episode>
             {
                 new Episode
                 {
@@ -1596,7 +1596,7 @@ namespace AnimeCore.DataInitializer
 
             #region Cardcaptor Sakura
 
-            var cardcaptorSakura = new List<Episode>()
+            var cardcaptorSakura = new List<Episode>
             {
                 new Episode
                 {
