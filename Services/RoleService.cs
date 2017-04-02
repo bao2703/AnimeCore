@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Entities.Domain;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Services
 {
@@ -26,7 +27,7 @@ namespace Services
 
         public List<Role> ToList()
         {
-            return _roleManager.Roles.ToList();
+            return _roleManager.Roles.Include(x => x.Users).ToList();
         }
 
         public Task<Role> FindByIdAsync(string roleId)

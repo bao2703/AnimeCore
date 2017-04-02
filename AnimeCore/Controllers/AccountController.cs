@@ -11,10 +11,12 @@ namespace AnimeCore.Controllers
     public class AccountController : IdentityController
     {
         private readonly IAccountService _accountService;
+        private readonly IUserService _userService;
 
-        public AccountController(IAccountService accountService)
+        public AccountController(IAccountService accountService, IUserService userService)
         {
             _accountService = accountService;
+            _userService = userService;
         }
 
         // GET: /Account/Login
@@ -56,7 +58,7 @@ namespace AnimeCore.Controllers
             ViewData[Constant.ReturnUrl] = returnUrl;
             if (!ModelState.IsValid) return View(model);
             var user = new User {UserName = model.Email, Email = model.Email};
-            var result = await _accountService.CreateAsync(user, model.Password);
+            var result = await _userService.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
                 await _accountService.SignInAsync(user, false);
@@ -121,7 +123,7 @@ namespace AnimeCore.Controllers
                 var info = await _accountService.GetExternalLoginInfoAsync();
                 if (info == null) return View("ExternalLoginFailure");
                 var user = new User {UserName = model.Email, Email = model.Email};
-                var result = await _accountService.CreateAsync(user);
+                var result = await _userService.CreateAsync(user);
                 if (result.Succeeded)
                 {
                     result = await _accountService.AddLoginAsync(user, info);

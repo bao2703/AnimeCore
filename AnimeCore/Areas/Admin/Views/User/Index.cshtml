@@ -1,5 +1,5 @@
 @using Models.ModalViewModels
-@model IEnumerable<Models.UserViewModels.UserListViewModel>
+@model List<Models.UserViewModels.UserListViewModel>
 @{
     ViewData[Constant.Title] = "User List";
 }
@@ -29,6 +29,9 @@
                     <th>
                         <display name-for="@Model.First().UserName"></display>
                     </th>
+                    <td>
+                        <display name-for="@Model.First().RoleName"></display>
+                    </td>
                     <th>
                         <display name-for="@Model.First().Email"></display>
                     </th>
@@ -48,6 +51,7 @@
                     <tr>
                         <td>@(i++)</td>
                         <td>@item.UserName</td>
+                        <td>@item.RoleName</td>
                         <td>@item.Email</td>
                         <td>@item.EmailConfirmed</td>
                         <td>
@@ -71,9 +75,8 @@
 @section scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
     <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
-    <script src="~/assets/admin/js/modal-remote-setup.js"></script>
-
     <script>
         $('#user-action-modal').addClass('action-modal');
     </script>
+    <script src="~/assets/admin/js/modal-remote-setup.js"></script>
 }

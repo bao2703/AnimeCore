@@ -1,5 +1,5 @@
 @using Models.ModalViewModels
-@model IEnumerable<Models.RoleViewModels.RoleViewModel>
+@model IEnumerable<Models.RoleViewModels.RoleListViewModel>
 @{
     ViewData[Constant.Title] = "Role List";
 }
@@ -71,9 +71,8 @@
 @section scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
     <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
-    <script src="~/assets/admin/js/modal-remote-setup.js"></script>
-
     <script>
         $('#role-action-modal').addClass('action-modal');
     </script>
+    <script src="~/assets/admin/js/modal-remote-setup.js"></script>
 }

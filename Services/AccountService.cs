@@ -10,8 +10,6 @@ namespace Services
 {
     public interface IAccountService
     {
-        Task<IdentityResult> CreateAsync(User user, string password);
-        Task<IdentityResult> CreateAsync(User user);
         string GetUserName(ClaimsPrincipal principal);
         bool IsSignedIn(ClaimsPrincipal principal);
         Task<SignInResult> PasswordSignInAsync(string email, string password, bool rememberMe, bool lockoutOnFailure);
@@ -33,16 +31,6 @@ namespace Services
         {
             _signInManager = signInManager;
             _userManager = userManager;
-        }
-
-        public async Task<IdentityResult> CreateAsync(User user, string password)
-        {
-            return await _userManager.CreateAsync(user, password);
-        }
-
-        public async Task<IdentityResult> CreateAsync(User user)
-        {
-            return await _userManager.CreateAsync(user);
         }
 
         public string GetUserName(ClaimsPrincipal principal)

@@ -6,7 +6,7 @@
     <div class="modal-body form-horizontal">
         <div class="row">
             <div asp-validation-summary="ModelOnly" class="alert alert-danger col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 text-center"></div>
-            <div class="text-center">
+            <div class="text-center col-sm-12">
                 <h4>Are you want to delete this user?</h4>
             </div>
             <div class="col-sm-offset-1 col-sm-10">
@@ -22,6 +22,14 @@
                     <label asp-for="Email" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
                         <input asp-for="Email" class="form-control" readonly=""/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-offset-1 col-sm-10">
+                <div class="form-group">
+                    <label asp-for="RoleName" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="RoleName" class="form-control" readonly=""/>
                     </div>
                 </div>
             </div>

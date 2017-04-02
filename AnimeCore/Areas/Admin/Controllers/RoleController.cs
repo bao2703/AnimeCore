@@ -21,7 +21,7 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var model = _roleService.ToList().Select(x => new RoleViewModel
+            var model = _roleService.ToList().Select(x => new RoleListViewModel
             {
                 Id = x.Id,
                 Name = x.Name,

@@ -2,6 +2,7 @@
 $(".modal-form").submit(function(e) {
     e.preventDefault();
     $.ajax({
+        async: true,
         type: "POST",
         url: $(this).attr("action"),
         data: $(this).serialize(),
@@ -12,7 +13,13 @@ $(".modal-form").submit(function(e) {
                 $(".modal-content").html(data);
             }
         },
+        statusCode: {
+            500: function() {
+                window.location = window.location;
+            }
+        },
         error: function() {
+            window.location = window.location;
             console.log("error");
         }
     });

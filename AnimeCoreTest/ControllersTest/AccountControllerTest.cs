@@ -22,7 +22,7 @@ namespace AnimeCoreTest.ControllersTest
         public void Register_ReturnUrl(string expectedUrl, string returnUrl)
         {
             //Arrange
-            var accountController = new AccountController(null);
+            var accountController = new AccountController(null, null);
 
             //Act
             var result = accountController.Register(returnUrl) as ViewResult;
@@ -36,9 +36,10 @@ namespace AnimeCoreTest.ControllersTest
         public void Login_IsSignedIn_False()
         {
             //Arrange
-            var mockUserService = new Mock<IAccountService>();
-            mockUserService.Setup(m => m.IsSignedIn(It.IsAny<ClaimsPrincipal>())).Returns(false);
-            var accountController = new AccountController(mockUserService.Object);
+            var mockAccountService = new Mock<IAccountService>();
+            var mockUserService = new Mock<IUserService>();
+            mockAccountService.Setup(m => m.IsSignedIn(It.IsAny<ClaimsPrincipal>())).Returns(false);
+            var accountController = new AccountController(mockAccountService.Object, mockUserService.Object);
 
             //Act
             var result = accountController.Login() as ViewResult;
@@ -54,10 +55,14 @@ namespace AnimeCoreTest.ControllersTest
             var mockUrlHelper = new Mock<IUrlHelper>();
             mockUrlHelper.Setup(m => m.IsLocalUrl(It.IsAny<string>())).Returns(false);
 
-            var mockUserService = new Mock<IAccountService>();
-            mockUserService.Setup(m => m.IsSignedIn(It.IsAny<ClaimsPrincipal>())).Returns(true);
+            var mockAccountService = new Mock<IAccountService>();
+            var mockUserService = new Mock<IUserService>();
+            mockAccountService.Setup(m => m.IsSignedIn(It.IsAny<ClaimsPrincipal>())).Returns(true);
 
-            var accountController = new AccountController(mockUserService.Object) {Url = mockUrlHelper.Object};
+            var accountController = new AccountController(mockAccountService.Object, mockUserService.Object)
+            {
+                Url = mockUrlHelper.Object
+            };
 
             //Act
             var result = accountController.Login() as RedirectToActionResult;
@@ -72,7 +77,7 @@ namespace AnimeCoreTest.ControllersTest
         public async Task Login_ModelState_NotValid()
         {
             //Arrange
-            var accountController = new AccountController(null);
+            var accountController = new AccountController(null, null);
             accountController.ModelState.AddModelError(string.Empty, "ErrorMessage");
 
             //Act
@@ -90,13 +95,14 @@ namespace AnimeCoreTest.ControllersTest
         public async Task Login_PasswordSignInAsync_Failed()
         {
             //Arrange
-            var mockUserService = new Mock<IAccountService>();
-            mockUserService.Setup(
+            var mockAccountService = new Mock<IAccountService>();
+            var mockUserService = new Mock<IUserService>();
+            mockAccountService.Setup(
                     m =>
                         m.PasswordSignInAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()))
                 .Returns(Task.FromResult(SignInResult.Failed));
 
-            var accountController = new AccountController(mockUserService.Object);
+            var accountController = new AccountController(mockAccountService.Object, mockUserService.Object);
 
             //Act
             var result = await accountController.Login(new LoginViewModel()) as ViewResult;
@@ -117,12 +123,16 @@ namespace AnimeCoreTest.ControllersTest
             var mockUrlHelper = new Mock<IUrlHelper>();
             mockUrlHelper.Setup(m => m.IsLocalUrl(It.IsAny<string>())).Returns(false);
 
-            var mockUserService = new Mock<IAccountService>();
-            mockUserService.Setup(m =>
+            var mockAccountService = new Mock<IAccountService>();
+            var mockUserService = new Mock<IUserService>();
+            mockAccountService.Setup(m =>
                     m.PasswordSignInAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()))
                 .Returns(Task.FromResult(SignInResult.Success));
 
-            var accountController = new AccountController(mockUserService.Object) {Url = mockUrlHelper.Object};
+            var accountController = new AccountController(mockAccountService.Object, mockUserService.Object)
+            {
+                Url = mockUrlHelper.Object
+            };
 
             //Act
             var result = await accountController.Login(new LoginViewModel()) as RedirectToActionResult;
@@ -137,14 +147,15 @@ namespace AnimeCoreTest.ControllersTest
         public async Task LogOff()
         {
             //Arrange
-            var mockUserService = new Mock<IAccountService>();
-            var accountController = new AccountController(mockUserService.Object);
+            var mockAccountService = new Mock<IAccountService>();
+            var mockUserService = new Mock<IUserService>();
+            var accountController = new AccountController(mockAccountService.Object, mockUserService.Object);
 
             //Act
             var result = await accountController.LogOff() as RedirectToActionResult;
 
             //Assert
-            mockUserService.Verify(m => m.SignOutAsync(), Times.Once);
+            mockAccountService.Verify(m => m.SignOutAsync(), Times.Once);
             Assert.NotNull(result);
             Assert.Equal("Index", result.ActionName);
             Assert.Equal("Home", result.ControllerName);
@@ -154,11 +165,12 @@ namespace AnimeCoreTest.ControllersTest
         public async Task Register_CreateAsync_Failed()
         {
             //Arrange
-            var mockUserService = new Mock<IAccountService>();
+            var mockAccountService = new Mock<IAccountService>();
+            var mockUserService = new Mock<IUserService>();
             mockUserService.Setup(m => m.CreateAsync(It.IsAny<User>(), It.IsAny<string>()))
                 .Returns(Task.FromResult(IdentityResult.Failed(new IdentityError {Description = "ErrorMessage"})));
 
-            var accountController = new AccountController(mockUserService.Object);
+            var accountController = new AccountController(mockAccountService.Object, mockUserService.Object);
 
             //Act
             var result = await accountController.Register(new RegisterViewModel()) as ViewResult;
@@ -180,17 +192,21 @@ namespace AnimeCoreTest.ControllersTest
             var mockUrlHelper = new Mock<IUrlHelper>();
             mockUrlHelper.Setup(m => m.IsLocalUrl(It.IsAny<string>())).Returns(false);
 
-            var mockUserService = new Mock<IAccountService>();
+            var mockAccountService = new Mock<IAccountService>();
+            var mockUserService = new Mock<IUserService>();
             mockUserService.Setup(m => m.CreateAsync(It.IsAny<User>(), It.IsAny<string>()))
                 .Returns(Task.FromResult(IdentityResult.Success));
 
-            var accountController = new AccountController(mockUserService.Object) {Url = mockUrlHelper.Object};
+            var accountController = new AccountController(mockAccountService.Object, mockUserService.Object)
+            {
+                Url = mockUrlHelper.Object
+            };
 
             //Act
             var result = await accountController.Register(new RegisterViewModel()) as RedirectToActionResult;
 
             //Assert
-            mockUserService.Verify(
+            mockAccountService.Verify(
                 m => m.SignInAsync(It.IsAny<User>(), It.IsAny<bool>(), It.IsAny<string>()), Times.Once);
             Assert.NotNull(result);
             Assert.Equal("Index", result.ActionName);
@@ -201,7 +217,7 @@ namespace AnimeCoreTest.ControllersTest
         public async Task Register_ModelState_NotValid()
         {
             //Arrange
-            var accountController = new AccountController(null);
+            var accountController = new AccountController(null, null);
             accountController.ModelState.AddModelError(string.Empty, "ErrorMessage");
 
             //Act

@@ -1,5 +1,5 @@
 @using Models.ModalViewModels
-@model Models.UserViewModels.UserViewModel
+@model Models.UserViewModels.EditUserViewModel
 
 <form asp-action="Edit" asp-controller="User" data-ajax="true" data-ajax-method="post" class="modal-form">
     @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = "Edit User"})
@@ -12,6 +12,15 @@
                     <div class="col-sm-9">
                         <input asp-for="UserName" class="form-control"/>
                         <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-offset-1 col-sm-10">
+                <div class="form-group">
+                    <label asp-for="RoleName" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <select asp-for="RoleName" asp-items="@(new SelectList((List<Role>) ViewData["RoleList"], "Name", "Name"))" class="selectpicker form-control"></select>
+                        <span asp-validation-for="RoleName" class="text-danger"></span>
                     </div>
                 </div>
             </div>

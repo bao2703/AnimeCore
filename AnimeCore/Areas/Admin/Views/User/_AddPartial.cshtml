@@ -26,10 +26,10 @@
             </div>
             <div class="col-sm-offset-1 col-sm-10">
                 <div class="form-group">
-                    <label asp-for="RoleId" class="col-sm-3 control-label"></label>
+                    <label asp-for="RoleName" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <select asp-for="RoleId" asp-items="@(new SelectList((List<Role>) ViewData["RoleList"], "Id", "Name"))" class="selectpicker form-control"></select>
-                        <span asp-validation-for="RoleId" class="text-danger"></span>
+                        <select asp-for="RoleName" asp-items="@(new SelectList((List<Role>) ViewData["RoleList"], "Name", "Name"))" class="selectpicker form-control"></select>
+                        <span asp-validation-for="RoleName" class="text-danger"></span>
                     </div>
                 </div>
             </div>

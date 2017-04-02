@@ -20,12 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\assets\admin\js\JavaScript.js" />
     <Content Include="wwwroot\assets\admin\js\modal-form.js" />
-    <Content Include="wwwroot\assets\admin\js\modal-active-remote.js" />
     <Content Include="wwwroot\assets\admin\js\modal-remote-setup.js" />
     <Content Include="wwwroot\assets\admin\js\site.js" />
-    <Content Include="wwwroot\assets\admin\js\user-form.js" />
     <Content Include="wwwroot\assets\css\styles.css" />
     <Content Include="wwwroot\assets\js\facebook-sdk.js" />
   </ItemGroup>
