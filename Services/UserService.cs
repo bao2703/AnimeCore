@@ -12,6 +12,7 @@ namespace Services
         Task<IdentityResult> CreateAsync(User user);
         Task<IdentityResult> CreateAsync(User user, string password);
         Task<IdentityResult> CreateAsync(User user, string password, string role);
+        Task<IdentityResult> AddLoginAsync(User user, UserLoginInfo userLoginInfo);
         List<User> ToList();
         Task<User> FindByIdAsync(string id);
         Task<IdentityResult> UpdateAsync(User user);
@@ -48,6 +49,11 @@ namespace Services
             if (result.Succeeded)
                 result = await _userManager.AddToRoleAsync(user, role);
             return result;
+        }
+
+        public async Task<IdentityResult> AddLoginAsync(User user, UserLoginInfo userLoginInfo)
+        {
+            return await _userManager.AddLoginAsync(user, userLoginInfo);
         }
 
         public List<User> ToList()

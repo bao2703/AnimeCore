@@ -22,8 +22,6 @@ namespace AnimeCore.DataInitializer
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
-            await AccountSeeder.InitializeAsync(app);
-
             #region genres
 
             const string action = "Action";
@@ -1959,10 +1957,16 @@ namespace AnimeCore.DataInitializer
 
             #endregion
 
-            await context.Genres.AddRangeAsync(genres.Values);
-            await context.Movies.AddRangeAsync(movies);
-            episodes.ForEach(async x => await context.Episodes.AddRangeAsync(x));
+            var tasks = new List<Task>
+            {
+                context.Genres.AddRangeAsync(genres.Values),
+                context.Movies.AddRangeAsync(movies)
+            };
+            episodes.ForEach(x => tasks.Add(context.Episodes.AddRangeAsync(x)));
+            await Task.WhenAll(tasks);
             await context.SaveChangesAsync();
+
+            await AccountSeeder.InitializeAsync(app);
         }
     }
 }

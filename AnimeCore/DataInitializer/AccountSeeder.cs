@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Entities.Domain;
 using Microsoft.AspNetCore.Builder;
@@ -8,54 +9,59 @@ namespace AnimeCore.DataInitializer
 {
     public class AccountSeeder
     {
+        private const string Administrator = "Administrator";
+        private const string SuperUser = "Super User";
+        private const string Manager = "Manager";
+
         public static async Task InitializeAsync(IApplicationBuilder app)
         {
-            await RoleInitializeAsync(app);
-            await UserInitializeAsync(app);
+            await InitializeRoleAsync(app);
+            await InitializeUserAsync(app);
         }
 
-        private static async Task UserInitializeAsync(IApplicationBuilder app)
+        private static async Task InitializeUserAsync(IApplicationBuilder app)
         {
             var userService = app.ApplicationServices.GetService<IUserService>();
-            var admin = new User
+            var users = new List<User>
             {
-                UserName = "admin",
-                Email = "admin@gmail.com"
+                new User
+                {
+                    UserName = "admin@gmail.com",
+                    Email = "admin@gmail.com"
+                },
+                new User
+                {
+                    UserName = "superuser@gmail.com",
+                    Email = "superuser@gmail.com"
+                }
             };
-            await userService.CreateAsync(admin, "admin", "Administrator");
+            foreach (var user in users)
+                await userService.CreateAsync(user, "Bao@2703", Administrator);
         }
 
-        private static async Task RoleInitializeAsync(IApplicationBuilder app)
+        private static async Task InitializeRoleAsync(IApplicationBuilder app)
         {
             var roleService = app.ApplicationServices.GetService<IRoleService>();
-
-            if (!await roleService.RoleExistsAsync("Administrator"))
+            var roles = new List<Role>
             {
-                var role = new Role
+                new Role
                 {
-                    Name = "Administrator",
+                    Name = Administrator,
                     Description = "Administrator"
-                };
-                await roleService.CreateAsync(role);
-            }
-            if (!await roleService.RoleExistsAsync("Super User"))
-            {
-                var role = new Role
+                },
+                new Role
                 {
-                    Name = "Super User",
+                    Name = SuperUser,
                     Description = "Super User"
-                };
-                await roleService.CreateAsync(role);
-            }
-            if (!await roleService.RoleExistsAsync("Manager"))
-            {
-                var role = new Role
+                },
+                new Role
                 {
-                    Name = "Manager",
+                    Name = Manager,
                     Description = "Manager"
-                };
+                }
+            };
+            foreach (var role in roles)
                 await roleService.CreateAsync(role);
-            }
         }
     }
 }

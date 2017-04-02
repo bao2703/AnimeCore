@@ -126,7 +126,7 @@ namespace AnimeCore.Controllers
                 var result = await _userService.CreateAsync(user);
                 if (result.Succeeded)
                 {
-                    result = await _accountService.AddLoginAsync(user, info);
+                    result = await _userService.AddLoginAsync(user, info);
                     if (result.Succeeded)
                     {
                         await _accountService.SignInAsync(user, false);

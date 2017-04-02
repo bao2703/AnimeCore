@@ -10,7 +10,6 @@ namespace Services
 {
     public interface IAccountService
     {
-        string GetUserName(ClaimsPrincipal principal);
         bool IsSignedIn(ClaimsPrincipal principal);
         Task<SignInResult> PasswordSignInAsync(string email, string password, bool rememberMe, bool lockoutOnFailure);
         Task SignInAsync(User user, bool isPersistent, string authenticationMethod = null);
@@ -18,24 +17,16 @@ namespace Services
         AuthenticationProperties ConfigureExternalAuthenticationProperties(string provider, string redirectUrl);
         Task<ExternalLoginInfo> GetExternalLoginInfoAsync();
         Task<SignInResult> ExternalLoginSignInAsync(string loginProvider, string providerKey, bool isPersistent);
-        Task<IdentityResult> AddLoginAsync(User user, UserLoginInfo userLoginInfo);
         List<AuthenticationDescription> GetExternalAuthenticationSchemes();
     }
 
     public class AccountService : IAccountService
     {
         private readonly SignInManager<User> _signInManager;
-        private readonly UserManager<User> _userManager;
 
-        public AccountService(SignInManager<User> signInManager, UserManager<User> userManager)
+        public AccountService(SignInManager<User> signInManager)
         {
             _signInManager = signInManager;
-            _userManager = userManager;
-        }
-
-        public string GetUserName(ClaimsPrincipal principal)
-        {
-            return _userManager.GetUserName(principal);
         }
 
         public bool IsSignedIn(ClaimsPrincipal user)
@@ -43,10 +34,10 @@ namespace Services
             return _signInManager.IsSignedIn(user);
         }
 
-        public async Task<SignInResult> PasswordSignInAsync(string email, string password, bool rememberMe,
+        public async Task<SignInResult> PasswordSignInAsync(string userName, string password, bool rememberMe,
             bool lockoutOnFailure)
         {
-            return await _signInManager.PasswordSignInAsync(email, password, rememberMe, lockoutOnFailure);
+            return await _signInManager.PasswordSignInAsync(userName, password, rememberMe, lockoutOnFailure);
         }
 
         public async Task SignInAsync(User user, bool isPersistent, string authenticationMethod = null)
@@ -73,11 +64,6 @@ namespace Services
             bool isPersistent)
         {
             return await _signInManager.ExternalLoginSignInAsync(loginProvider, providerKey, isPersistent);
-        }
-
-        public async Task<IdentityResult> AddLoginAsync(User user, UserLoginInfo userLoginInfo)
-        {
-            return await _userManager.AddLoginAsync(user, userLoginInfo);
         }
 
         public List<AuthenticationDescription> GetExternalAuthenticationSchemes()
