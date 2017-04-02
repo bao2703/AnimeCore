@@ -22,21 +22,23 @@
             <div class="col-sm-12">
                 @foreach (var item in Model.Episodes.OrderBy(x => x.Name))
                 {
-                    <button class="btn btn-primary btn-episode" data-url="@item.Url">@item.Name</button>
+                    <button class="btn btn-outline-primary btn-episode" data-url="@item.Url">@item.Name</button>
                 }
             </div>
         </div>
     </div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        $('.btn-episode').on('click',
-            function() {
-                $('#media-player').attr('src', $(this).data('url'));
-                $('.btn-episode').removeClass('active');
-                $(this).addClass('active');
-            });
-        $('.btn-episode:first').trigger('click');
-    });
-</script>
+@section scripts {
+    <script>
+        $(document).ready(function() {
+            $('.btn-episode').on('click',
+                function() {
+                    $('#media-player').attr('src', $(this).data('url'));
+                    $('.btn-episode').removeClass('active');
+                    $(this).addClass('active');
+                });
+            $('.btn-episode:first').trigger('click');
+        });
+    </script>
+}

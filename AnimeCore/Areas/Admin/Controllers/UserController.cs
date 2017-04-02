@@ -12,12 +12,14 @@ namespace AnimeCore.Areas.Admin.Controllers
     public class UserController : IdentityController
     {
         private readonly IAccountService _accountService;
+        private readonly IRoleService _roleService;
         private readonly IUserService _userService;
 
-        public UserController(IUserService userService, IAccountService accountService)
+        public UserController(IUserService userService, IAccountService accountService, IRoleService roleService)
         {
             _userService = userService;
             _accountService = accountService;
+            _roleService = roleService;
         }
 
         public IActionResult Index()
@@ -34,6 +36,7 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         public IActionResult Add()
         {
+            ViewData["RoleList"] = _roleService.ToList();
             return PartialView("_AddPartial");
         }
 

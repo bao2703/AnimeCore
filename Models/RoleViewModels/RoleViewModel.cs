@@ -12,6 +12,7 @@ namespace Models.RoleViewModels
 
         public string Description { get; set; }
 
+        [Display(Name = "Number of users")]
         public int NumberOfUsers { get; set; }
     }
 }

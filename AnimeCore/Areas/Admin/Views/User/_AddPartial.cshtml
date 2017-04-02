@@ -26,6 +26,15 @@
             </div>
             <div class="col-sm-offset-1 col-sm-10">
                 <div class="form-group">
+                    <label asp-for="RoleId" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <select asp-for="RoleId" asp-items="@(new SelectList((List<Role>) ViewData["RoleList"], "Id", "Name"))" class="selectpicker form-control"></select>
+                        <span asp-validation-for="RoleId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-offset-1 col-sm-10">
+                <div class="form-group">
                     <label asp-for="Password" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
                         <input asp-for="Password" class="form-control"/>
@@ -47,4 +56,7 @@
     @await Html.PartialAsync("Modal/_FooterPartial", new ModalFooter {SubmitButtonText = "Add", SubmitButtonClass = "btn-primary"})
 </form>
 
+<script>
+    $('.selectpicker').selectpicker();
+</script>
 <script src="~/assets/admin/js/modal-form.js"></script>

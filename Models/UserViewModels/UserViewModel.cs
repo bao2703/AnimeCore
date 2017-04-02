@@ -13,5 +13,8 @@ namespace Models.UserViewModels
         [Required]
         [EmailAddress]
         public string Email { get; set; }
+
+        [Display(Name = "Role")]
+        public string RoleId { get; set; }
     }
 }

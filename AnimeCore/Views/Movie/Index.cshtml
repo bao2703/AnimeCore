@@ -17,7 +17,7 @@
                 <div class="col-xs-6 col-sm-3">
                     <div class="form-group">
                         <div align="center">Genres:</div>
-                        <select class="selectpicker col-xs-12" data-live-search="true" ng-model="genreId">
+                        <select class="selectpicker form-control" data-live-search="true" ng-model="genreId">
                             <option value="">All</option>
                             @foreach (var genre in GenreService.ToList())
                             {
@@ -29,7 +29,7 @@
                 <div class="col-xs-6 col-sm-3">
                     <div class="form-group">
                         <div align="center">Release:</div>
-                        <select class="selectpicker col-xs-12" ng-model="release">
+                        <select class="selectpicker form-control" ng-model="release">
                             <option value="">All</option>
                             @for (var i = 0; i < 7; i++)
                             {
@@ -41,7 +41,7 @@
                 <div class="col-xs-6 col-sm-3">
                     <div class="form-group">
                         <div align="center">Status:</div>
-                        <select class="selectpicker col-xs-12" ng-model="status">
+                        <select class="selectpicker form-control" ng-model="status">
                             <option value="">All</option>
                             <option value="1">Completed</option>
                             <option value="0">Ongoing</option>
@@ -52,7 +52,7 @@
                 <div class="col-xs-6 col-sm-3">
                     <div class="form-group">
                         <div align="center">Sort by:</div>
-                        <select class="selectpicker col-xs-12" ng-model="propertyName">
+                        <select class="selectpicker form-control" ng-model="propertyName">
                             <option value="name">A-Z</option>
                             <option value="-name">Z-A</option>
                             <option value="-views">Views</option>
@@ -92,42 +92,42 @@
 @section scripts {
     <script src="~/lib/angular/angular.js"></script>
     <script src="~/lib/angularUtils-pagination/dirPagination.js"></script>
-}
 
-<script>
-    (function() {
-        "use strict";
-        var app = angular.module("app", ["angularUtils.directives.dirPagination"]);
-        app.controller("movie-controller", controller);
-        app.filter("status",
-            function() {
-                return function(data) {
-                    if (data === 1) {
-                        return "Completed";
-                    }
-                    return "Ongoing";
-                };
-            });
-
-        controller.$inject = ["$scope", "$http"];
-
-        function controller($scope, $http) {
-            $http.get("@Url.Action("GetMovies", "MovieApi", new {searchString = ViewData[Constant.SearchString]})")
-                .then(function(response) {
-                    $scope.movies = response.data;
-                    $scope.$watch('$viewContentLoaded',
-                        function() {
-                            $scope.propertyName = "name";
-                            $scope.reverse = false;
-                            $scope.status = "";
-                            $scope.release = "";
-                            $scope.genreId = "@Url.ActionContext.RouteData.Values["id"]";
-                        });
+    <script>
+        (function() {
+            "use strict";
+            var app = angular.module("app", ["angularUtils.directives.dirPagination"]);
+            app.controller("movie-controller", controller);
+            app.filter("status",
+                function() {
+                    return function(data) {
+                        if (data === 1) {
+                            return "Completed";
+                        }
+                        return "Ongoing";
+                    };
                 });
 
-            activate();
+            controller.$inject = ["$scope", "$http"];
 
-            function activate() {}
-        }
-    })();
-</script>
+            function controller($scope, $http) {
+                $http.get("@Url.Action("GetMovies", "MovieApi", new {searchString = ViewData[Constant.SearchString]})")
+                    .then(function(response) {
+                        $scope.movies = response.data;
+                        $scope.$watch('$viewContentLoaded',
+                            function() {
+                                $scope.propertyName = "name";
+                                $scope.reverse = false;
+                                $scope.status = "";
+                                $scope.release = "";
+                                $scope.genreId = "@Url.ActionContext.RouteData.Values["id"]";
+                            });
+                    });
+
+                activate();
+
+                function activate() {}
+            }
+        })();
+    </script>
+}
