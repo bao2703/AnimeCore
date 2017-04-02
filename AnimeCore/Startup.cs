@@ -1,7 +1,7 @@
 ﻿using AnimeCore.Common;
 using AnimeCore.Configuration;
+using AnimeCore.DataInitializer;
 using Entities;
-using Entities.DataInitializer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -45,8 +45,7 @@ namespace AnimeCore
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,
-            IOptions<Authentication> authentication)
+        public async void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -56,15 +55,16 @@ namespace AnimeCore
             else
                 app.UseExceptionHandler("/Home/Error");
 
-
             app.UseStaticFiles();
 
             app.UseIdentity();
 
+            var authentication = app.ApplicationServices.GetService<IOptions<Authentication>>().Value;
+
             app.UseFacebookAuthentication(new FacebookOptions
             {
-                AppId = authentication.Value.Facebook.AppId,
-                AppSecret = authentication.Value.Facebook.AppSecret
+                AppId = authentication.Facebook.AppId,
+                AppSecret = authentication.Facebook.AppSecret
             });
 
             app.UseMvc(routes =>
@@ -78,7 +78,7 @@ namespace AnimeCore
                     "{controller=Home}/{action=Index}/{id?}");
             });
 
-            app.Seed();
+            await DataSeeder.InitializeAsync(app);
         }
     }
 }

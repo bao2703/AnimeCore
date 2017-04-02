@@ -14,6 +14,7 @@ namespace Services
         Task<IdentityResult> CreateAsync(Role role);
         Task<IdentityResult> UpdateAsync(Role role);
         Task<IdentityResult> DeleteAsync(Role role);
+        Task<bool> RoleExistsAsync(string role);
     }
 
     public class RoleService : IRoleService
@@ -48,6 +49,11 @@ namespace Services
         public Task<IdentityResult> DeleteAsync(Role role)
         {
             return _roleManager.DeleteAsync(role);
+        }
+
+        public Task<bool> RoleExistsAsync(string role)
+        {
+            return _roleManager.RoleExistsAsync(role);
         }
     }
 }

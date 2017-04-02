@@ -1,24 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Entities;
 using Entities.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Entities.DataInitializer
+namespace AnimeCore.DataInitializer
 {
-    public static class Seeder
+    public static class DataSeeder
     {
         private static string ConvertUrl(string url)
         {
             return "http://onecloud.media/embed/" + url.Split('/')[4];
         }
 
-        public static void Seed(this IApplicationBuilder app)
+        public static async Task InitializeAsync(IApplicationBuilder app)
         {
             var context = app.ApplicationServices.GetService<NeptuneContext>();
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
+
+            await AccountSeeder.InitializeAsync(app);
 
             #region genres
 
@@ -1447,10 +1451,10 @@ namespace Entities.DataInitializer
 
             #endregion
 
-            context.Genres.AddRange(genres.Values);
-            context.Movies.AddRange(movies);
-            episodes.ForEach(x => context.Episodes.AddRange(x));
-            context.SaveChanges();
+            await context.Genres.AddRangeAsync(genres.Values);
+            await context.Movies.AddRangeAsync(movies);
+            episodes.ForEach(async x => await context.Episodes.AddRangeAsync(x));
+            await context.SaveChangesAsync();
         }
     }
 }
