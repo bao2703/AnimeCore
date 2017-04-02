@@ -1449,6 +1449,514 @@ namespace AnimeCore.DataInitializer
 
             #endregion
 
+            #region Kimi No Na Wa
+
+            var kimiNoNaWa = new List<Episode>()
+            {
+                new Episode
+                {
+                    Name = "1",
+                    Url = ConvertUrl("http://onecloud.media/file/5cb9d32a375f559f-777ea89f84aab4dd")
+                }
+            };
+
+            kimiNoNaWa.ForEach(x => x.Movie = movies.Single(m => m.Name == "Kimi No Na Wa"));
+            episodes.Add(kimiNoNaWa);
+
+            #endregion
+
+            #region Sword Art Online 2
+
+            var swordArtOnline2 = new List<Episode>()
+            {
+                new Episode
+                {
+                    Name = "1",
+                    Url = ConvertUrl("http://onecloud.media/file/f95dcef97e1c9ac3-84047d9ec7df8048")
+                },
+                new Episode
+                {
+                    Name = "2",
+                    Url = ConvertUrl("http://onecloud.media/file/4322f2c460465280-ac7147795579e3ca")
+                },
+                new Episode
+                {
+                    Name = "3",
+                    Url = ConvertUrl("http://onecloud.media/file/4197696b38e8fe19-9618be1e5b0db274")
+                },
+                new Episode
+                {
+                    Name = "4",
+                    Url = ConvertUrl("http://onecloud.media/file/6e7fc19b7743d69a-c56e536d1573342d")
+                },
+                new Episode
+                {
+                    Name = "5",
+                    Url = ConvertUrl("http://onecloud.media/file/d4f9929f6284fd6d-caa2299aeb94bdfa")
+                },
+                new Episode
+                {
+                    Name = "6",
+                    Url = ConvertUrl("http://onecloud.media/file/315b9fd7fd87d061-9df62afb34bf909c")
+                },
+                new Episode
+                {
+                    Name = "7",
+                    Url = ConvertUrl("http://onecloud.media/file/a6c8c9bef0b02e03-7b6b22100ed2aacf")
+                },
+                new Episode
+                {
+                    Name = "8",
+                    Url = ConvertUrl("http://onecloud.media/file/e52c1d65bbf4e6c4-5927629ddb67f833")
+                },
+                new Episode
+                {
+                    Name = "9",
+                    Url = ConvertUrl("http://onecloud.media/file/0cd9a89a78125fc0-357f7ee8fbfb3779")
+                },
+                new Episode
+                {
+                    Name = "10",
+                    Url = ConvertUrl("http://onecloud.media/file/b197491978c91b9e-b0d9c01807e2565f")
+                },
+                new Episode
+                {
+                    Name = "11",
+                    Url = ConvertUrl("http://onecloud.media/file/2a9f52a53f692389-27f619a91f7b5bd5")
+                },
+                new Episode
+                {
+                    Name = "12",
+                    Url = ConvertUrl("http://onecloud.media/file/d2a704152d7a13a9-df316bbe1c307250")
+                },
+                new Episode
+                {
+                    Name = "13",
+                    Url = ConvertUrl("http://onecloud.media/file/cb0aa9cf4a44d303-b0afe57cb8edca64")
+                },
+                new Episode
+                {
+                    Name = "14",
+                    Url = ConvertUrl("http://onecloud.media/file/83be1b1c4d6168ee-bc62ed3ddbddfbec")
+                },
+                new Episode
+                {
+                    Name = "15",
+                    Url = ConvertUrl("http://onecloud.media/file/31e7e636f2ba57b9-82301766174cf4a9")
+                },
+                new Episode
+                {
+                    Name = "16",
+                    Url = ConvertUrl("http://onecloud.media/file/4b454dc3562525ff-f29de606eec3ae62")
+                },
+                new Episode
+                {
+                    Name = "17",
+                    Url = ConvertUrl("http://onecloud.media/file/3f1b83716ebeb838-1ec9e615fd5f74a7")
+                },
+                new Episode
+                {
+                    Name = "18",
+                    Url = ConvertUrl("http://onecloud.media/file/b913fcf841203411-287cdd0d595bbb89")
+                },
+                new Episode
+                {
+                    Name = "19",
+                    Url = ConvertUrl("http://onecloud.media/file/12e29890c34e9ce6-bb70d79de7375e09")
+                },
+                new Episode
+                {
+                    Name = "20",
+                    Url = ConvertUrl("http://onecloud.media/file/1521558eebf7cc84-75261aa55c2f8d14")
+                },
+                new Episode
+                {
+                    Name = "21",
+                    Url = ConvertUrl("http://onecloud.media/file/84310e12cc5a7586-77038641a1b05f8e")
+                },
+                new Episode
+                {
+                    Name = "22",
+                    Url = ConvertUrl("http://onecloud.media/file/7c485c0ccd685d47-545ccaec6bcc86aa")
+                },
+                new Episode
+                {
+                    Name = "23",
+                    Url = ConvertUrl("http://onecloud.media/file/8f36cbc6fb97baa4-a9b6b553c5ea483d")
+                },
+                new Episode
+                {
+                    Name = "24",
+                    Url = ConvertUrl("http://onecloud.media/file/e35f3d7d64a5c18c-5b0bd8b81970ec68")
+                }
+            };
+
+            swordArtOnline2.ForEach(x => x.Movie = movies.Single(m => m.Name == "Sword Art Online 2"));
+            episodes.Add(swordArtOnline2);
+
+            #endregion
+
+            #region Cardcaptor Sakura
+
+            var cardcaptorSakura = new List<Episode>()
+            {
+                new Episode
+                {
+                    Name = "1",
+                    Url = ConvertUrl("http://onecloud.media/file/c848d82df460347b-cc6672285de6cac6")
+                },
+                new Episode
+                {
+                    Name = "2",
+                    Url = ConvertUrl("http://onecloud.media/file/7cfe0022dbeff5f9-c60930340818db41")
+                },
+                new Episode
+                {
+                    Name = "3",
+                    Url = ConvertUrl("http://onecloud.media/file/398ecc2969e0136f-e2ded4679bc7df12")
+                },
+                new Episode
+                {
+                    Name = "4",
+                    Url = ConvertUrl("http://onecloud.media/file/99cc8d310254ef66-b8c9936204a234a7")
+                },
+                new Episode
+                {
+                    Name = "5",
+                    Url = ConvertUrl("http://onecloud.media/file/49230f7936e4f2e2-8d7c1a70b8cc89ac")
+                },
+                new Episode
+                {
+                    Name = "6",
+                    Url = ConvertUrl("http://onecloud.media/file/6433e47ebd98471d-e266ae60face508c")
+                },
+                new Episode
+                {
+                    Name = "7",
+                    Url = ConvertUrl("http://onecloud.media/file/2bdff10150dfb506-7c483d7931d0b8a0")
+                },
+                new Episode
+                {
+                    Name = "8",
+                    Url = ConvertUrl("http://onecloud.media/file/8bce0408361c2355-34012992c4a9691a")
+                },
+                new Episode
+                {
+                    Name = "9",
+                    Url = ConvertUrl("http://onecloud.media/file/54f2dd1d7c3772f7-547182b653406698")
+                },
+                new Episode
+                {
+                    Name = "10",
+                    Url = ConvertUrl("http://onecloud.media/file/9cdf21402bd6bd7d-184643c357f8e71d")
+                },
+                new Episode
+                {
+                    Name = "11",
+                    Url = ConvertUrl("http://onecloud.media/file/7b3b68774945aa30-b4b581ffb280f70a")
+                },
+                new Episode
+                {
+                    Name = "12",
+                    Url = ConvertUrl("http://onecloud.media/file/3ad90107aaa00ed1-ff6ae10ef6cf17c7")
+                },
+                new Episode
+                {
+                    Name = "13",
+                    Url = ConvertUrl("http://onecloud.media/file/a5d0daa760219399-7e8aa0755b5b9bea")
+                },
+                new Episode
+                {
+                    Name = "14",
+                    Url = ConvertUrl("http://onecloud.media/file/411d87aabdaed83d-53c8669be5ba0027")
+                },
+                new Episode
+                {
+                    Name = "15",
+                    Url = ConvertUrl("http://onecloud.media/file/d3f016f09c7962b6-e93bcbae4006c837")
+                },
+                new Episode
+                {
+                    Name = "16",
+                    Url = ConvertUrl("http://onecloud.media/file/d36cc4d3167a2619-a8b52f272379638f")
+                },
+                new Episode
+                {
+                    Name = "17",
+                    Url = ConvertUrl("http://onecloud.media/file/32e2d64afc15fd2e-d5964eb523174dbe")
+                },
+                new Episode
+                {
+                    Name = "18",
+                    Url = ConvertUrl("http://onecloud.media/file/00d8c27da0ec8fa9-24c92f307bc0b0dd")
+                },
+                new Episode
+                {
+                    Name = "19",
+                    Url = ConvertUrl("http://onecloud.media/file/0d5ba696625ae9b9-580ae6d6f8d834e3")
+                },
+                new Episode
+                {
+                    Name = "20",
+                    Url = ConvertUrl("http://onecloud.media/file/bf4f1fc3af2b9b7b-b4b6914c2be490a1")
+                },
+                new Episode
+                {
+                    Name = "21",
+                    Url = ConvertUrl("http://onecloud.media/file/efe9f1604f32750b-53d779082fd7b14b")
+                },
+                new Episode
+                {
+                    Name = "22",
+                    Url = ConvertUrl("http://onecloud.media/file/5479933c1a4ffb89-e0db838bab5b789e")
+                },
+                new Episode
+                {
+                    Name = "23",
+                    Url = ConvertUrl("http://onecloud.media/file/699b83d809628ef9-bbb3d6681c51d8e6")
+                },
+                new Episode
+                {
+                    Name = "24",
+                    Url = ConvertUrl("http://onecloud.media/file/8b4ec6563598153c-3ffdb64869629491")
+                },
+                new Episode
+                {
+                    Name = "25",
+                    Url = ConvertUrl("http://onecloud.media/file/5f2d6edc740ba332-a4572289a9fe7323")
+                },
+                new Episode
+                {
+                    Name = "26",
+                    Url = ConvertUrl("http://onecloud.media/file/6d3c7bc95bd17c85-15dffe2e77a4204f")
+                },
+                new Episode
+                {
+                    Name = "27",
+                    Url = ConvertUrl("http://onecloud.media/file/557a99520ae0e2a4-8606db29f879ff22")
+                },
+                new Episode
+                {
+                    Name = "28",
+                    Url = ConvertUrl("http://onecloud.media/file/6631ae70ba5a91fa-d7c8308c57916b07")
+                },
+                new Episode
+                {
+                    Name = "29",
+                    Url = ConvertUrl("http://onecloud.media/file/ee240d7837b07edf-b7ba2eb33a642e25")
+                },
+                new Episode
+                {
+                    Name = "30",
+                    Url = ConvertUrl("http://onecloud.media/file/89d99b2a2ac1b4db-4e57c6a2df7c333e")
+                },
+                new Episode
+                {
+                    Name = "31",
+                    Url = ConvertUrl("http://onecloud.media/file/3611c015a3b15b00-644be15b04662d68")
+                },
+                new Episode
+                {
+                    Name = "32",
+                    Url = ConvertUrl("http://onecloud.media/file/1ac9c10f9198554c-d53eeb0054088222")
+                },
+                new Episode
+                {
+                    Name = "33",
+                    Url = ConvertUrl("http://onecloud.media/file/b15b7a7c8e4fe925-3518e9519ba2b5a8")
+                },
+                new Episode
+                {
+                    Name = "34",
+                    Url = ConvertUrl("http://onecloud.media/file/7eca10ee15255f86-5176431d51fe6ff3")
+                },
+                new Episode
+                {
+                    Name = "35",
+                    Url = ConvertUrl("http://onecloud.media/file/12e10b5636d5f5fd-5b6d36ced43d0f89")
+                },
+                new Episode
+                {
+                    Name = "36",
+                    Url = ConvertUrl("http://onecloud.media/file/b1cadd240d8280f5-73ddc03cc42580a8")
+                },
+                new Episode
+                {
+                    Name = "37",
+                    Url = ConvertUrl("http://onecloud.media/file/c14e6f23f6c49016-1f6986f8c469b99e")
+                },
+                new Episode
+                {
+                    Name = "38",
+                    Url = ConvertUrl("http://onecloud.media/file/1457b74e20072f60-bf612f722da48e03")
+                },
+                new Episode
+                {
+                    Name = "39",
+                    Url = ConvertUrl("http://onecloud.media/file/6f8f77352dbac0d4-4a502ec18619d640")
+                },
+                new Episode
+                {
+                    Name = "40",
+                    Url = ConvertUrl("http://onecloud.media/file/cb9d678543265d18-99a34ce4cb15530b")
+                },
+                new Episode
+                {
+                    Name = "41",
+                    Url = ConvertUrl("http://onecloud.media/file/5207987ab96851ce-7614b43f553adfe2")
+                },
+                new Episode
+                {
+                    Name = "42",
+                    Url = ConvertUrl("http://onecloud.media/file/5207987ab96851ce-7614b43f553adfe2")
+                },
+                new Episode
+                {
+                    Name = "43",
+                    Url = ConvertUrl("http://onecloud.media/file/cf55331fb11ebd6e-7216c657462404e8")
+                },
+                new Episode
+                {
+                    Name = "44",
+                    Url = ConvertUrl("http://onecloud.media/file/8ea7966b25552a57-34d4d37c5c7e430d")
+                },
+                new Episode
+                {
+                    Name = "45",
+                    Url = ConvertUrl("http://onecloud.media/file/85889ed4fa750c8a-b99e8ff6a24fb092")
+                },
+                new Episode
+                {
+                    Name = "46",
+                    Url = ConvertUrl("http://onecloud.media/file/005629552826b2b1-f93c7994f1620164")
+                },
+                new Episode
+                {
+                    Name = "47",
+                    Url = ConvertUrl("http://onecloud.media/file/4d5c67d7e2f7e8fe-27b222f82b33fabd")
+                },
+                new Episode
+                {
+                    Name = "48",
+                    Url = ConvertUrl("http://onecloud.media/file/944dd4cd82db6cf3-d5b3092c2be8feac")
+                },
+                new Episode
+                {
+                    Name = "49",
+                    Url = ConvertUrl("http://onecloud.media/file/be59c9f65460c0e5-90a869e5fdac5c4a")
+                },
+                new Episode
+                {
+                    Name = "50",
+                    Url = ConvertUrl("http://onecloud.media/file/3f53085550ab28cc-3e09cea92f11ba0e")
+                },
+                new Episode
+                {
+                    Name = "51",
+                    Url = ConvertUrl("http://onecloud.media/file/3928685fba028bb2-cceef7bd8bcff0d5")
+                },
+                new Episode
+                {
+                    Name = "52",
+                    Url = ConvertUrl("http://onecloud.media/file/458503a7ca726c33-2a538cbda855dbf1")
+                },
+                new Episode
+                {
+                    Name = "53",
+                    Url = ConvertUrl("http://onecloud.media/file/0dbfa61bcde3b024-e2ad976c2ecd07b6")
+                },
+                new Episode
+                {
+                    Name = "54",
+                    Url = ConvertUrl("http://onecloud.media/file/4309e939bc96a68e-7b030281e6309453")
+                },
+                new Episode
+                {
+                    Name = "55",
+                    Url = ConvertUrl("http://onecloud.media/file/922622d7a858800d-6a2ccb455132d911")
+                },
+                new Episode
+                {
+                    Name = "56",
+                    Url = ConvertUrl("http://onecloud.media/file/248f14cfd144d0c5-7c030f305c5b8c67")
+                },
+                new Episode
+                {
+                    Name = "57",
+                    Url = ConvertUrl("http://onecloud.media/file/5a804c80b66267d1-44f3e2ac8f4bb635")
+                },
+                new Episode
+                {
+                    Name = "58",
+                    Url = ConvertUrl("http://onecloud.media/file/931cee1f9b2fc6d2-fad0482ced19d8f0")
+                },
+                new Episode
+                {
+                    Name = "59",
+                    Url = ConvertUrl("http://onecloud.media/file/0663094a8fea6600-36d504836731b44b")
+                },
+                new Episode
+                {
+                    Name = "60",
+                    Url = ConvertUrl("http://onecloud.media/file/97dcddade7875c3a-2164b9ec1f9ff4b9")
+                },
+                new Episode
+                {
+                    Name = "61",
+                    Url = ConvertUrl("http://onecloud.media/file/e43d5feeba25f06c-0d37e15b2035cf37")
+                },
+                new Episode
+                {
+                    Name = "62",
+                    Url = ConvertUrl("http://onecloud.media/file/04399f19b2d2c629-c3e075d1639f7876")
+                },
+                new Episode
+                {
+                    Name = "63",
+                    Url = ConvertUrl("http://onecloud.media/file/e3188dbd23e4f74e-595941b0406bc558")
+                },
+                new Episode
+                {
+                    Name = "64",
+                    Url = ConvertUrl("http://onecloud.media/file/7ebc359adb773e54-84c54b0014f9b12b")
+                },
+                new Episode
+                {
+                    Name = "65",
+                    Url = ConvertUrl("http://onecloud.media/file/ae32650655a2a6f7-a08cfa48ec8326ca")
+                },
+                new Episode
+                {
+                    Name = "66",
+                    Url = ConvertUrl("http://onecloud.media/file/7d8ba3460c9a4079-4df7bfc11c7993f1")
+                },
+                new Episode
+                {
+                    Name = "67",
+                    Url = ConvertUrl("http://onecloud.media/file/54c2a9197ce0590f-84f9879509c618d0")
+                },
+                new Episode
+                {
+                    Name = "68",
+                    Url = ConvertUrl("http://onecloud.media/file/4b6a52ca0f08b876-5bc095b5627b605f")
+                },
+                new Episode
+                {
+                    Name = "69",
+                    Url = ConvertUrl("http://onecloud.media/file/85c321349e98e8b1-5090a3f864e763f4")
+                },
+                new Episode
+                {
+                    Name = "70",
+                    Url = ConvertUrl("http://onecloud.media/file/ae2ebe23378c88bb-1da95a8a736b75bb")
+                }
+            };
+
+            cardcaptorSakura.ForEach(x => x.Movie = movies.Single(m => m.Name == "Cardcaptor Sakura"));
+            episodes.Add(cardcaptorSakura);
+
+            #endregion
+
             #endregion
 
             await context.Genres.AddRangeAsync(genres.Values);
