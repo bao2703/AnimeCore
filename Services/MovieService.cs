@@ -12,7 +12,6 @@ namespace Services
         void DeleteMovies(Movie movie);
         Movie FindBy(int id);
         List<Movie> FindBy(string searchString);
-        Episode FindEpisode(int episodeId);
         List<Movie> FindNewestMovie(int take);
         List<Movie> FindPopularMovie(int take);
         List<Movie> ToList();
@@ -80,11 +79,6 @@ namespace Services
         {
             _context.Movies.Remove(movie);
             _context.SaveChanges();
-        }
-
-        public Episode FindEpisode(int episodeId)
-        {
-            return _context.Episodes.Find(episodeId);
         }
     }
 }

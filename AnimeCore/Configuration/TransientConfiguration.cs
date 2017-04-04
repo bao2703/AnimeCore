@@ -13,6 +13,7 @@ namespace AnimeCore.Configuration
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IGenreService, GenreService>();
             services.AddTransient<IMovieService, MovieService>();
+            services.AddTransient<IEpisodeService, EpisodeService>();
             services.AddTransient<Helper, Helper>();
         }
     }

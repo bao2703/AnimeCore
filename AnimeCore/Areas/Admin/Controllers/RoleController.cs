@@ -1,6 +1,5 @@
 using System.Linq;
 using System.Threading.Tasks;
-using AnimeCore.Common;
 using Entities.Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,8 +8,7 @@ using Services;
 
 namespace AnimeCore.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    public class RoleController : IdentityController
+    public class RoleController : AdminIdentityController
     {
         private readonly IRoleService _roleService;
 

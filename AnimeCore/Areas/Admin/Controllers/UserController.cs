@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AnimeCore.Common;
 using Entities.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Models.UserViewModels;
@@ -9,8 +8,7 @@ using Services;
 
 namespace AnimeCore.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    public class UserController : IdentityController
+    public class UserController : AdminIdentityController
     {
         private readonly IRoleService _roleService;
         private readonly IUserService _userService;
