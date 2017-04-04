@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Entities;
 using Entities.Domain;
 
@@ -8,6 +9,10 @@ namespace Services
     public interface IEpisodeService
     {
         Episode FindBy(int id);
+        Task<Episode> FindByAsync(int id);
+        Task AddAsync(Episode episode);
+        Task UpdateAsync(Episode episode);
+        Task RemoveAsync(Episode episode);
         List<Episode> OrderByName(IEnumerable<Episode> episodes);
     }
 
@@ -23,6 +28,29 @@ namespace Services
         public Episode FindBy(int id)
         {
             return _context.Episodes.Find(id);
+        }
+
+        public async Task<Episode> FindByAsync(int id)
+        {
+            return await _context.Episodes.FindAsync(id);
+        }
+
+        public async Task AddAsync(Episode episode)
+        {
+            await _context.Episodes.AddAsync(episode);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(Episode episode)
+        {
+            _context.Episodes.Update(episode);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task RemoveAsync(Episode episode)
+        {
+            _context.Episodes.Remove(episode);
+            await _context.SaveChangesAsync();
         }
 
         public List<Episode> OrderByName(IEnumerable<Episode> episodes)

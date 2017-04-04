@@ -1,10 +1,10 @@
 ﻿@using Models.ModalViewModels
-@model List<Episode>
+@model List<Models.GenreViewModels.GenreViewModel>
 @{
-    ViewData[Constant.Title] = ViewData["Movie"];
+    ViewData[Constant.Title] = "Genre List";
 }
 
-@await Html.PartialAsync("Modal/_ModalPartial", new Modal {Id = "ep-action-modal", ModalSize = ModalSize.Medium})
+@await Html.PartialAsync("Modal/_ModalPartial", new Modal {Id = "genre-action-modal", ModalSize = ModalSize.Medium})
 
 <div class="panel panel-info">
     <div class="panel-heading">
@@ -15,8 +15,8 @@
     <div class="panel-body">
         <div class="col-xs-12" style="overflow-x: auto;">
             <div class="btn-group">
-                <a asp-action="AddEdit" class="btn btn-primary" data-toggle="modal" data-target="#ep-action-modal">
-                    <i class="fa fa-plus"></i> Add Episode
+                <a asp-action="AddEdit" class="btn btn-primary" data-toggle="modal" data-target="#genre-action-modal">
+                    <i class="fa fa-plus"></i> Add Genre
                 </a>
             </div>
             <div class="top-buffer"></div>
@@ -24,39 +24,32 @@
                 <thead>
                 <tr>
                     <th>
+                        <display name-for="@Model.First().Id"></display>
+                    </th>
+                    <th>
                         <display name-for="@Model.First().Name"></display>
                     </th>
                     <th>
-                        <display name-for="@Model.First().Url"></display>
-                    </th>
-                    <th>
-                        <display name-for="@Model.First().CreatedDate"></display>
-                    </th>
-                    <th>
-                        <display name-for="@Model.First().LastModifiedDate"></display>
+                        <display name-for="@Model.First().Title"></display>
                     </th>
                     <th style="width: 20px;">#</th>
                     <th style="width: 20px;">#</th>
                 </tr>
                 </thead>
                 <tbody>
-                @{
-                    var i = 1;
-                }
                 @foreach (var item in Model)
                 {
                     <tr>
+                        <td>@item.Id</td>
                         <td>@item.Name</td>
-                        <td>@item.Url</td>
-                        <td>@item.CreatedDate</td>
-                        <td>@item.LastModifiedDate</td>
+                        <td>@item.Title</td>
                         <td>
-                            <a asp-action="AddEdit" asp-route-id="@item.Id" class="btn btn-info" data-toggle="modal" data-target="#ep-action-modal">
+                            <a asp-action="AddEdit" asp-route-id="@item.Id" class="btn btn-info" data-toggle="modal" data-target="#genre-action-modal">
                                 <i class="fa fa-pencil"></i> Edit
                             </a>
                         </td>
                         <td>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" data-toggle="modal" data-target="#ep-action-modal">
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" data-toggle="modal" data-target="#genre-action-modal">
                                 <i class="fa fa-trash"></i> Delete
                             </a>
                         </td>
@@ -72,7 +65,7 @@
     @await Html.PartialAsync("_ValidationScriptsPartial")
     <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
     <script>
-        $('#ep-action-modal').addClass('action-modal');
+        $('#genre-action-modal').addClass('action-modal');
     </script>
     <script src="~/assets/admin/js/modal-remote-setup.js"></script>
 }

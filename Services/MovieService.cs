@@ -8,8 +8,6 @@ namespace Services
 {
     public interface IMovieService
     {
-        void AddMovies(Movie movie);
-        void DeleteMovies(Movie movie);
         Movie FindBy(int id);
         List<Movie> FindBy(string searchString);
         List<Movie> FindNewestMovie(int take);
@@ -66,19 +64,6 @@ namespace Services
                 .OrderByDescending(x => x.Views)
                 .Take(take)
                 .ToList();
-        }
-
-        public void AddMovies(Movie movie)
-        {
-            movie.GenreMovies.ToList().ForEach(x => _context.Genres.Attach(x.Genre));
-            _context.Movies.Add(movie);
-            _context.SaveChanges();
-        }
-
-        public void DeleteMovies(Movie movie)
-        {
-            _context.Movies.Remove(movie);
-            _context.SaveChanges();
         }
     }
 }
