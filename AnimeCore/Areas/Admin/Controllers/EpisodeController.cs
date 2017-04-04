@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 
@@ -9,8 +5,8 @@ namespace AnimeCore.Areas.Admin.Controllers
 {
     public class EpisodeController : AdminController
     {
-        private readonly IMovieService _movieService;
         private readonly IEpisodeService _episodeService;
+        private readonly IMovieService _movieService;
 
         public EpisodeController(IMovieService movieService, IEpisodeService episodeService)
         {

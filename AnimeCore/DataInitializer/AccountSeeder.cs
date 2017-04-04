@@ -12,6 +12,7 @@ namespace AnimeCore.DataInitializer
         private const string Administrator = "Administrator";
         private const string SuperUser = "Super User";
         private const string Manager = "Manager";
+        private const string User = "User";
 
         public static async Task InitializeAsync(IApplicationBuilder app)
         {
@@ -60,6 +61,11 @@ namespace AnimeCore.DataInitializer
                 {
                     Name = Manager,
                     Description = "Manager"
+                },
+                new Role
+                {
+                    Name = User,
+                    Description = "User"
                 }
             };
             foreach (var role in roles)

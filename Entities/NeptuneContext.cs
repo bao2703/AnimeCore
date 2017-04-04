@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Entities.Domain;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -32,10 +33,23 @@ namespace Entities
                 .HasOne(x => x.Genre)
                 .WithMany(x => x.GenreMovies)
                 .HasForeignKey(x => x.GenreId);
+
             base.OnModelCreating(builder);
         }
 
         public override int SaveChanges()
+        {
+            AddTimestamps();
+            return base.SaveChanges();
+        }
+
+        public async Task<int> SaveChangesAsync()
+        {
+            AddTimestamps();
+            return await base.SaveChangesAsync();
+        }
+
+        public void AddTimestamps()
         {
             var entities =
                 ChangeTracker.Entries()
@@ -48,13 +62,11 @@ namespace Entities
             {
                 if (entity.State == EntityState.Added)
                 {
-                    ((TrackAbleEntity) entity.Entity).CreatedDate = DateTime.UtcNow;
+                    ((TrackAbleEntity) entity.Entity).CreatedDate = DateTime.Now;
                 }
 
-                ((TrackAbleEntity) entity.Entity).LastModifiedDate = DateTime.UtcNow;
+                ((TrackAbleEntity) entity.Entity).LastModifiedDate = DateTime.Now;
             }
-
-            return base.SaveChanges();
         }
     }
 }
