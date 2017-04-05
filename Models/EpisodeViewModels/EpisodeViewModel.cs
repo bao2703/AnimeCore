@@ -11,7 +11,6 @@ namespace Models.EpisodeViewModels
         public string Name { get; set; }
 
         [Required]
-        [DataType(DataType.Url)]
         public string Url { get; set; }
     }
 }

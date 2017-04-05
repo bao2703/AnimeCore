@@ -37,6 +37,7 @@ namespace Services
 
         public async Task AddAsync(Episode episode)
         {
+            _context.Attach(episode.Movie);
             await _context.Episodes.AddAsync(episode);
             await _context.SaveChangesAsync();
         }

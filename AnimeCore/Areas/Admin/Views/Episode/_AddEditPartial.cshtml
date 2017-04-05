@@ -1,11 +1,11 @@
 @using Models.ModalViewModels
-@model Models.EpisodeViewModels.EpisodeViewModel
+@model Models.EpisodeViewModels.AddEditEpisodeViewModel
 
 @{
     var modalHeading = "Add Episode";
     var submitButtonText = "Add";
     var submitButtonClass = "btn-primary";
-    //if ()
+    if ((bool) ViewData["IsAdd"] == false)
     {
         modalHeading = "Edit Episode";
         submitButtonText = "Edit";
@@ -13,7 +13,7 @@
     }
 }
 
-<form asp-action="AddEdit" data-ajax="true" data-ajax-method="post" class="modal-form">
+<form asp-action="AddEdit" asp-route-isAdd="@ViewData["IsAdd"]" data-ajax="true" data-ajax-method="post" class="modal-form">
     @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = modalHeading})
     <div class="modal-body form-horizontal">
         <div class="row">
@@ -36,6 +36,7 @@
                     </div>
                 </div>
             </div>
+            <input asp-for="MovieId" class="form-control" value="@Model.MovieId" type="hidden"/>
         </div>
     </div>
     @await Html.PartialAsync("Modal/_FooterPartial", new ModalFooter {SubmitButtonText = submitButtonText, SubmitButtonClass = submitButtonClass})

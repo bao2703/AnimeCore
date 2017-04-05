@@ -1,7 +1,7 @@
 ﻿@using Models.ModalViewModels
 @model List<Episode>
 @{
-    ViewData[Constant.Title] = ViewData["Movie"];
+    ViewData[Constant.Title] = ((Movie)ViewData["Movie"]).Name;
 }
 
 @await Html.PartialAsync("Modal/_ModalPartial", new Modal {Id = "ep-action-modal", ModalSize = ModalSize.Medium})
@@ -15,7 +15,7 @@
     <div class="panel-body">
         <div class="col-xs-12" style="overflow-x: auto;">
             <div class="btn-group">
-                <a asp-action="AddEdit" class="btn btn-primary" data-toggle="modal" data-target="#ep-action-modal">
+                <a asp-action="AddEdit" asp-route-movieId="@(((Movie)ViewData["Movie"]).Id)" class="btn btn-primary" data-toggle="modal" data-target="#ep-action-modal">
                     <i class="fa fa-plus"></i> Add Episode
                 </a>
             </div>

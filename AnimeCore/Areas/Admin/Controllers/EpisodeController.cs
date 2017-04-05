@@ -24,16 +24,16 @@ namespace AnimeCore.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            ViewData["Movie"] = movie.Name;
+            ViewData["Movie"] = movie;
             var model = _episodeService.OrderByName(movie.Episodes);
             return View(model);
         }
 
-        public IActionResult AddEdit(int id)
+        public IActionResult AddEdit(int id, int movieId)
         {
-            var model = new EpisodeViewModel();
-            ViewData["IsAdd"] = true;
+            var model = new AddEditEpisodeViewModel();
             var episode = _episodeService.FindBy(id);
+            ViewData["IsAdd"] = true;
             if (episode != null)
             {
                 model.Id = episode.Id;
@@ -41,13 +41,15 @@ namespace AnimeCore.Areas.Admin.Controllers
                 model.Url = episode.Url;
                 ViewData["IsAdd"] = false;
             }
+            model.MovieId = movieId;
             return PartialView("_AddEditPartial", model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddEdit(EpisodeViewModel model)
+        public async Task<IActionResult> AddEdit(AddEditEpisodeViewModel model, bool isAdd)
         {
+            ViewData["IsAdd"] = isAdd;
             if (ModelState.IsValid)
             {
                 var episode = _episodeService.FindBy(model.Id);
@@ -62,7 +64,8 @@ namespace AnimeCore.Areas.Admin.Controllers
                     episode = new Episode
                     {
                         Name = model.Name,
-                        Url = model.Url
+                        Url = model.Url,
+                        Movie = new Movie {Id = model.MovieId}
                     };
                     await _episodeService.AddAsync(episode);
                 }
