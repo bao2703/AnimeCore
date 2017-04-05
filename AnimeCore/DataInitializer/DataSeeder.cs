@@ -53,6 +53,7 @@ namespace AnimeCore.DataInitializer
             const string superNatural = "Super Natural";
             const string superPower = "Super Power";
             const string tragedy = "Tragedy";
+            const string vampire = "Vampire";
 
             var genres = new Dictionary<string, Genre>
             {
@@ -257,6 +258,13 @@ namespace AnimeCore.DataInitializer
                     {
                         Name = tragedy,
                         Title = tragedy
+                    }
+                },
+                {
+                    vampire, new Genre
+                    {
+                        Name = vampire,
+                        Title = vampire
                     }
                 }
             };
@@ -1366,6 +1374,23 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Nekopara là gì?Tại sao, đây là con mèo của thiên đường. Kashou Minazuki, một hàng dài người Nhật chuyển ra, con trai của nhà sản xuất kẹo tự mở La Circus như một tiệm bánh ngọt. Nhưng trong di chuyển, ẩn trong đồ của hắn đều ở Catgirls (Cat), hay Carat và vani, gia đình này đã tăng.Khi hắn đang cố đưa họ đi, họ cầu xin cho đến khi hắn bây giờ họ đã mở rạp xiếc. Los Angeles cùng nhau. Hai nekos ai thực sự yêu chủ nhân của chúng trong họ nhất thỉnh thoảng thất bại... Chân thành hài, mở cửa!"
+                },
+                new Movie
+                {
+                    Name = "Bakemonogatari",
+                    Image =
+                        "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2015/02/05/[animevsub.com]-bakemonogatari_338a489a5bcf4cd296d0e05354c33f57.jpg",
+                    Release = new DateTime(2010, 1, 1),
+                    Views = 3000,
+                    GenreMovies= new List<GenreMovie>
+                    {
+                        new GenreMovie {Genre = genres[vampire]},
+                        new GenreMovie {Genre = genres[superNatural]},
+                        new GenreMovie {Genre = genres[romance]},
+                        new GenreMovie {Genre = genres[mystery]}
+                    },
+                    Description =
+                        "Mọi chuyện bắt đầu từ một sự kiện được nhắc đi nhắc lại nhan nhản trong phim, và sẽ được ra mắt trong movie Kizumonogatari trong 1 tương lai xa ngoài vùng phủ sóng (tạm gọi là X). Kể từ sau sự kiện X đó, Araragi Koyomi đã không còn là một học sinh cấp ba bình thường. Cậu sở hữu một sức mạnh cho phép cậu đeo đuổi một trong những sở thích ít ỏi của mình - nhúng mũi vào những rắc rối của người khác - đặc biệt là những rắc rối có liên quan đến hiện tượng siêu linh, do tinh linh gây ra.."
                 }
             };
 
@@ -2583,6 +2608,289 @@ namespace AnimeCore.DataInitializer
 
             dragonBallSuper.ForEach(x => x.Movie = movies.Single(m => m.Name == "Dragon Ball Super"));
             episodes.Add(dragonBallSuper);
+
+            #endregion
+
+            #region Hyouka
+            
+            var hyouka = new List<Episode>
+            {
+                new Episode
+                {
+                    Name = "1",
+                    Url = ConvertUrl("http://onecloud.media/file/26fc518515dc3ca1-db7febdb58deedb7")
+                },
+                new Episode
+                {
+                    Name = "2",
+                    Url = ConvertUrl("http://onecloud.media/file/e1b004df9a8df5a0-0df8a001e3896919")
+                },
+                new Episode
+                {
+                    Name = "3",
+                    Url = ConvertUrl("http://onecloud.media/file/f667d58321dfeb17-71fb9fc7d0f94890")
+                },
+                new Episode
+                {
+                    Name = "4",
+                    Url = ConvertUrl("http://onecloud.media/file/c0f215734490f440-0c0946e9e56f3651")
+                },
+                new Episode
+                {
+                    Name = "5",
+                    Url = ConvertUrl("http://onecloud.media/file/9be91ae358208e7f-b4fc916aace8e0df")
+                },
+                new Episode
+                {
+                    Name = "6",
+                    Url = ConvertUrl("http://onecloud.media/file/ad7588ccf691ad38-4330a5c6eb2ae94c")
+                },
+                new Episode
+                {
+                    Name = "7",
+                    Url = ConvertUrl("http://onecloud.media/file/78c6293e1d6cc2ae-6fd15321b5aeb226")
+                },
+                new Episode
+                {
+                    Name = "8",
+                    Url = ConvertUrl("http://onecloud.media/file/6398e0d2bb11f37d-5c594bd00e178b90")
+                },
+                new Episode
+                {
+                    Name = "9",
+                    Url = ConvertUrl("http://onecloud.media/file/1d783ab12ba8daeb-1a9a984c2f8460dc")
+                },
+                new Episode
+                {
+                    Name = "10",
+                    Url = ConvertUrl("http://onecloud.media/file/c14f7cf8b2a10bbe-8992bb1ec8c9b763")
+                },
+                new Episode
+                {
+                    Name = "11",
+                    Url = ConvertUrl("http://onecloud.media/file/8acb457edaa7c656-633b1d3de3815d35")
+                },
+                new Episode
+                {
+                    Name = "12",
+                    Url = ConvertUrl("http://onecloud.media/file/60b2622f4c47986a-a9a91a46eddd6a4b")
+                },
+                new Episode
+                {
+                    Name = "13",
+                    Url = ConvertUrl("http://onecloud.media/file/4edea0140e6893ed-94cfc3b2b121ac3f")
+                },
+                new Episode
+                {
+                    Name = "14",
+                    Url = ConvertUrl("http://onecloud.media/file/53217e6489788cd3-20e3f565e3660848")
+                },
+                new Episode
+                {
+                    Name = "15",
+                    Url = ConvertUrl("http://onecloud.media/file/e401841a2e722fe8-eb493dec71b0c1aa")
+                },
+                new Episode
+                {
+                    Name = "16",
+                    Url = ConvertUrl("http://onecloud.media/file/05e192e272d59383-34fe5fc77bed5bc0")
+                },
+                new Episode
+                {
+                    Name = "17",
+                    Url = ConvertUrl("http://onecloud.media/file/6ea5217fc531c31d-b0f962853e444e3f")
+                },
+                new Episode
+                {
+                    Name = "18",
+                    Url = ConvertUrl("http://onecloud.media/file/d4e0e9baf89b7503-829c1d5bc031b7b2")
+                },
+                new Episode
+                {
+                    Name = "19",
+                    Url = ConvertUrl("http://onecloud.media/file/fbdc4f90c94f001c-930ce0b8700b6eeb")
+                },
+                new Episode
+                {
+                    Name = "20",
+                    Url = ConvertUrl("http://onecloud.media/file/bbedc3eade4280c6-27f019337a369ca1")
+                },
+                new Episode
+                {
+                    Name = "21",
+                    Url = ConvertUrl("http://onecloud.media/file/93139da2b3c0b04d-690e03bedeb9fa1a")
+                },
+                new Episode
+                {
+                    Name = "22",
+                    Url = ConvertUrl("http://onecloud.media/file/83fe6eb1cfa86aee-a41299e623eb0ca2")
+                }
+            };
+
+            hyouka.ForEach(x => x.Movie = movies.Single(m => m.Name == "Hyouka"));
+            episodes.Add(hyouka);
+
+            #endregion
+
+            #region Overlord
+
+            var overlord = new List<Episode>
+            {
+                new Episode
+                {
+                    Name = "1",
+                    Url = ConvertUrl("http://onecloud.media/file/b75f35bc1fb19586-3fe0e90a8d8d5107")
+                },
+                new Episode
+                {
+                    Name = "2",
+                    Url = ConvertUrl("http://onecloud.media/file/9c685fc351d8667f-fc899c8659fa9f83")
+                },
+                new Episode
+                {
+                    Name = "3",
+                    Url = ConvertUrl("http://onecloud.media/file/8caacac85868e9f5-aff437180c5d7d4f")
+                },
+                new Episode
+                {
+                    Name = "4",
+                    Url = ConvertUrl("http://onecloud.media/file/ea38d87978b2c0fc-77ba1059061d1ce9")
+                },
+                new Episode
+                {
+                    Name = "5",
+                    Url = ConvertUrl("http://onecloud.media/file/0fea0fdad6fd0ac1-10149fc84f889388")
+                },
+                new Episode
+                {
+                    Name = "6",
+                    Url = ConvertUrl("http://onecloud.media/file/cbe38685ecaf9457-015b2e46f846e8d6")
+                },
+                new Episode
+                {
+                    Name = "7",
+                    Url = ConvertUrl("http://onecloud.media/file/d85419852234a6e8-1e649a71918439fa")
+                },
+                new Episode
+                {
+                    Name = "8",
+                    Url = ConvertUrl("http://onecloud.media/file/0a25421410a42c3d-c24eac2020339501")
+                },
+                new Episode
+                {
+                    Name = "9",
+                    Url = ConvertUrl("http://onecloud.media/file/e6986e73b7915ef1-428c97a2b213a701")
+                },
+                new Episode
+                {
+                    Name = "10",
+                    Url = ConvertUrl("http://onecloud.media/file/949de90969484086-236449cc3af3a640")
+                },
+                new Episode
+                {
+                    Name = "11",
+                    Url = ConvertUrl("http://onecloud.media/file/87c132154887d7bb-87d9f19c7c5b38a3")
+                },
+                new Episode
+                {
+                    Name = "12",
+                    Url = ConvertUrl("http://onecloud.media/file/59173da250a060bb-701bd95cee2e3e50")
+                },
+                new Episode
+                {
+                    Name = "13",
+                    Url = ConvertUrl("http://onecloud.media/file/71b860a6eea72da8-cdca5477ce2bd1aa")
+                }
+            };
+
+            overlord.ForEach(x => x.Movie = movies.Single(m => m.Name == "Overlord"));
+            episodes.Add(overlord);
+
+            #endregion
+
+            #region Bakemonogatari
+
+            var bakemonogatari = new List<Episode>
+            {
+                new Episode
+                {
+                    Name = "1",
+                    Url = ConvertUrl("http://onecloud.media/file/cbbde4fc701e6e90-3b9345eab5da2878")
+                },
+                new Episode
+                {
+                    Name = "2",
+                    Url = ConvertUrl("http://onecloud.media/file/f14750ff1ebc6f8a-3357d709fac73cb5")
+                },
+                new Episode
+                {
+                    Name = "3",
+                    Url = ConvertUrl("http://onecloud.media/file/0d4d1750b188e53d-0d865282f85f85e6")
+                },
+                new Episode
+                {
+                    Name = "4",
+                    Url = ConvertUrl("http://onecloud.media/file/0a35b2ded8137da3-ddf73d56bd1ebf89")
+                },
+                new Episode
+                {
+                    Name = "5",
+                    Url = ConvertUrl("http://onecloud.media/file/25eda9af5fff2841-59902c373fdca382")
+                },
+                new Episode
+                {
+                    Name = "6",
+                    Url = ConvertUrl("http://onecloud.media/file/5b846a141f2cde34-3515d769471f8771")
+                },
+                new Episode
+                {
+                    Name = "7",
+                    Url = ConvertUrl("http://onecloud.media/file/9c786954b019175f-fe4e10f521d67842")
+                },
+                new Episode
+                {
+                    Name = "8",
+                    Url = ConvertUrl("http://onecloud.media/file/86d3696efe7ecb52-598cd27bdd7fd50f")
+                },
+                new Episode
+                {
+                    Name = "9",
+                    Url = ConvertUrl("http://onecloud.media/file/bac4a0b9eb475930-156508ee486ce374")
+                },
+                new Episode
+                {
+                    Name = "10",
+                    Url = ConvertUrl("http://onecloud.media/file/9244110c0ccb1f6a-3fee7709146f9c6a")
+                },
+                new Episode
+                {
+                    Name = "11",
+                    Url = ConvertUrl("http://onecloud.media/file/f5dea071a4bda83d-943adb467ac10ff4")
+                },
+                new Episode
+                {
+                    Name = "12",
+                    Url = ConvertUrl("http://onecloud.media/file/88034ecbd827e93c-c0888e2ce926e46d")
+                },
+                new Episode
+                {
+                    Name = "13",
+                    Url = ConvertUrl("http://onecloud.media/file/fff9b24a4936df4e-d67d20be3c9c58db")
+                },
+                new Episode
+                {
+                    Name = "14",
+                    Url = ConvertUrl("http://onecloud.media/file/7c0d809289a9d414-fa217c46fc605c3a")
+                },
+                new Episode
+                {
+                    Name = "15",
+                    Url = ConvertUrl("http://onecloud.media/file/b46da17f0af816c1-f92214d304f71cba")
+                }
+            };
+
+            bakemonogatari.ForEach(x => x.Movie = movies.Single(m => m.Name == "Bakemonogatari"));
+            episodes.Add(bakemonogatari);
 
             #endregion
 
