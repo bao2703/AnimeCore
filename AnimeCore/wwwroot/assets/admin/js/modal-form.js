@@ -2,9 +2,8 @@
 $(".modal-form").submit(function(e) {
     e.preventDefault();
     $.ajax({
-        async: true,
-        type: "POST",
-        url: $(this).attr("action"),
+        type: this.method,
+        url: this.action,
         data: $(this).serialize(),
         success: function(data) {
             if (data.status === "Ok") {

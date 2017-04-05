@@ -10,7 +10,7 @@ namespace Services
     {
         Genre FindBy(int id);
         Task<Genre> FindByAsync(int id);
-        Task AddAsync(Genre genre);
+        void Add(Genre genre);
         Task UpdateAsync(Genre genre);
         Task RemoveAsync(Genre genre);
         List<Genre> ToList();
@@ -35,10 +35,10 @@ namespace Services
             return await _context.Genres.FindAsync(id);
         }
 
-        public async Task AddAsync(Genre genre)
+        public void Add(Genre genre)
         {
-            await _context.Genres.AddAsync(genre);
-            await _context.SaveChangesAsync();
+            _context.Genres.Add(genre);
+            _context.SaveChanges();
         }
 
         public async Task UpdateAsync(Genre genre)

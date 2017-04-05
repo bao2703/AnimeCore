@@ -1382,7 +1382,7 @@ namespace AnimeCore.DataInitializer
                         "https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&gadget=a&no_expand=1&refresh=604800&url=http://img.animevsub.com/images/2015/02/05/[animevsub.com]-bakemonogatari_338a489a5bcf4cd296d0e05354c33f57.jpg",
                     Release = new DateTime(2010, 1, 1),
                     Views = 3000,
-                    GenreMovies= new List<GenreMovie>
+                    GenreMovies = new List<GenreMovie>
                     {
                         new GenreMovie {Genre = genres[vampire]},
                         new GenreMovie {Genre = genres[superNatural]},
@@ -2612,7 +2612,7 @@ namespace AnimeCore.DataInitializer
             #endregion
 
             #region Hyouka
-            
+
             var hyouka = new List<Episode>
             {
                 new Episode
