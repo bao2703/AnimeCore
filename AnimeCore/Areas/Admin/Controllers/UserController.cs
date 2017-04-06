@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AnimeCore.Common;
 using Entities.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Models.UserViewModels;
@@ -56,10 +57,7 @@ namespace AnimeCore.Areas.Admin.Controllers
                 var result = await _userService.CreateAsync(user, model.Password, model.RoleName);
                 if (result.Succeeded)
                 {
-                    return Json(new
-                    {
-                        status = "Ok"
-                    });
+                    return JsonStatus.Ok;
                 }
                 AddErrors(result);
             }
@@ -102,10 +100,7 @@ namespace AnimeCore.Areas.Admin.Controllers
                     var result = await _userService.UpdateAsync(user, model.RoleName);
                     if (result.Succeeded)
                     {
-                        return Json(new
-                        {
-                            status = "Ok"
-                        });
+                        return JsonStatus.Ok;
                     }
                     AddErrors(result);
                 }
@@ -146,10 +141,7 @@ namespace AnimeCore.Areas.Admin.Controllers
                     var result = await _userService.DeleteAsync(user);
                     if (result.Succeeded)
                     {
-                        return Json(new
-                        {
-                            status = "Ok"
-                        });
+                        return JsonStatus.Ok;
                     }
                     AddErrors(result);
                 }

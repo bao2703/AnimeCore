@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using AnimeCore.Common;
 using Entities.Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -70,10 +71,7 @@ namespace AnimeCore.Areas.Admin.Controllers
                 }
                 if (result.Succeeded)
                 {
-                    return Json(new
-                    {
-                        status = "Ok"
-                    });
+                    return JsonStatus.Ok;
                 }
                 AddErrors(result);
             }
@@ -111,10 +109,7 @@ namespace AnimeCore.Areas.Admin.Controllers
                     var result = await _roleService.DeleteAsync(role);
                     if (result.Succeeded)
                     {
-                        return Json(new
-                        {
-                            status = "Ok"
-                        });
+                        return JsonStatus.Ok;
                     }
                     AddErrors(result);
                 }

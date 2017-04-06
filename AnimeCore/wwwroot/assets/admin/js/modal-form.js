@@ -13,14 +13,7 @@ $(".modal-form").submit(function(e) {
                 console.log("not valid");
             }
         },
-        statusCode: {
-            500: function() {
-                window.location = window.location;
-                console.log("500");
-            }
-        },
         error: function() {
-            window.location = window.location;
             console.log("error");
         }
     });
