@@ -33,7 +33,7 @@ namespace AnimeCore.Areas.Admin.Controllers
                     RoleName = (await _userService.GetRolesAsync(item)).FirstOrDefault()
                 });
             }
-            return View(model);
+            return View(model.AsEnumerable());
         }
 
         public IActionResult Add()

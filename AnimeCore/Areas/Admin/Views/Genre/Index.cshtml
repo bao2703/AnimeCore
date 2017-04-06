@@ -1,10 +1,10 @@
 @using Models.ModalViewModels
-@model IEnumerable<Models.UserViewModels.UserListViewModel>
+@model IEnumerable<Models.GenreViewModels.GenreViewModel>
 @{
-    ViewData[Constant.Title] = "User List";
+    ViewData[Constant.Title] = "Genre List";
 }
 
-@await Html.PartialAsync("Modal/_ModalPartial", new Modal {Id = "user-action-modal", ModalSize = ModalSize.Medium})
+@await Html.PartialAsync("Modal/_ModalPartial", new Modal {Id = "genre-action-modal", ModalSize = ModalSize.Medium})
 
 <div class="panel panel-info">
     <div class="panel-heading">
@@ -15,8 +15,8 @@
     <div class="panel-body">
         <div class="col-xs-12" style="overflow-x: auto;">
             <div class="btn-group">
-                <a asp-action="Add" class="btn btn-primary" data-toggle="modal" data-target="#user-action-modal">
-                    <i class="fa fa-plus"></i> Add User
+                <a asp-action="AddEdit" class="btn btn-primary" data-toggle="modal" data-target="#genre-action-modal">
+                    <i class="fa fa-plus"></i> Add Genre
                 </a>
             </div>
             <div class="top-buffer"></div>
@@ -24,43 +24,32 @@
                 <thead>
                 <tr>
                     <th>
-                        No
+                        <display name-for="@Model.First().Id"></display>
                     </th>
                     <th>
-                        <display name-for="@Model.First().UserName"></display>
+                        <display name-for="@Model.First().Name"></display>
                     </th>
                     <th>
-                        <display name-for="@Model.First().RoleName"></display>
-                    </th>
-                    <th>
-                        <display name-for="@Model.First().Email"></display>
-                    </th>
-                    <th>
-                        <display name-for="@Model.First().EmailConfirmed"></display>
+                        <display name-for="@Model.First().Title"></display>
                     </th>
                     <th style="width: 20px;">#</th>
                     <th style="width: 20px;">#</th>
                 </tr>
                 </thead>
                 <tbody>
-                @{
-                    var i = 1;
-                }
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@(i++)</td>
-                        <td>@item.UserName</td>
-                        <td>@item.RoleName</td>
-                        <td>@item.Email</td>
-                        <td>@item.EmailConfirmed</td>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Title</td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info" data-toggle="modal" data-target="#user-action-modal">
+                            <a asp-action="AddEdit" asp-route-id="@item.Id" class="btn btn-info" data-toggle="modal" data-target="#genre-action-modal">
                                 <i class="fa fa-pencil"></i> Edit
                             </a>
                         </td>
                         <td>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" data-toggle="modal" data-target="#user-action-modal">
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" data-toggle="modal" data-target="#genre-action-modal">
                                 <i class="fa fa-trash"></i> Delete
                             </a>
                         </td>
