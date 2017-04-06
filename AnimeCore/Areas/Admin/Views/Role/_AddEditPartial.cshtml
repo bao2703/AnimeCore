@@ -13,7 +13,7 @@
     }
 }
 
-<form asp-action="AddEdit" asp-controller="Role" data-ajax="true" data-ajax-method="post" class="modal-form">
+<form asp-action="AddEdit" asp-controller="Role" method="post" class="modal-form">
     @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = modalHeading})
     <div class="modal-body form-horizontal">
         <div class="row">

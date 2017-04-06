@@ -1,7 +1,7 @@
 @using Models.ModalViewModels
 @model Models.UserViewModels.UserViewModel
 
-<form asp-action="Delete" asp-controller="User" data-ajax="true" data-ajax-method="post" class="modal-form">
+<form asp-action="Delete" asp-controller="User" method="post" class="modal-form">
     @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = "Delete User"})
     <div class="modal-body form-horizontal">
         <div class="row">

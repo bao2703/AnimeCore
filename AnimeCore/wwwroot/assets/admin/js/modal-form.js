@@ -10,7 +10,6 @@ $(".modal-form").submit(function(e) {
                 window.location = window.location;
                 console.log("Ok");
             } else {
-                $(".modal-content").html(data);
                 console.log("not valid");
             }
         },
