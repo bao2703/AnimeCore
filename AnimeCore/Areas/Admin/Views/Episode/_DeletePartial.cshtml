@@ -1,0 +1,33 @@
+@using Models.ModalViewModels
+@model Models.EpisodeViewModels.EpisodeViewModel
+
+<form asp-action="Delete" asp-controller="Episode" method="post" class="modal-form">
+    @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = "Delete Episode"})
+    <div class="modal-body form-horizontal">
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 text-center"></div>
+            <div class="text-center col-sm-12">
+                <h4>Are you want to delete this episode?</h4>
+            </div>
+            <div class="col-sm-offset-1 col-sm-10">
+                <div class="form-group">
+                    <label asp-for="Name" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="Name" class="form-control" readonly=""/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-offset-1 col-sm-10">
+                <div class="form-group">
+                    <label asp-for="Url" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="Url" class="form-control" readonly=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @await Html.PartialAsync("Modal/_FooterPartial", new ModalFooter {SubmitButtonText = "Delete", SubmitButtonClass = "btn-danger"})
+</form>
+
+<script src="~/assets/admin/js/modal-form.js"></script>

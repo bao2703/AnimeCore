@@ -40,7 +40,6 @@ namespace AnimeCore.Areas.Admin.Controllers
                 model.Name = role.Name;
                 model.Description = role.Description;
             }
-
             return PartialView("_AddEditPartial", model);
         }
 

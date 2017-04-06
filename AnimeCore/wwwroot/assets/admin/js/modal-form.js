@@ -11,6 +11,8 @@ $(".modal-form").submit(function(e) {
                 console.log("Ok");
             } else {
                 console.log("not valid");
+                $(".modal-content").html(data);
+                $(".form-control:first").focus();
             }
         },
         error: function() {

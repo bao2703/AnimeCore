@@ -65,5 +65,76 @@ namespace AnimeCore.Areas.Admin.Controllers
             }
             return PartialView("_AddEditPartial", model);
         }
+
+        public IActionResult Edit(int id)
+        {
+            ViewData["Action"] = "Edit";
+            var episode = _episodeService.FindBy(id);
+            if (episode == null)
+            {
+                return NotFound();
+            }
+            var model = new AddEditEpisodeViewModel
+            {
+                Id = episode.Id,
+                Name = episode.Name,
+                Url = episode.Url,
+                MovieId = episode.Movie.Id
+            };
+            return PartialView("_AddEditPartial", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(AddEditEpisodeViewModel model)
+        {
+            ViewData["Action"] = "Edit";
+            if (ModelState.IsValid)
+            {
+                var episode = _episodeService.FindBy(model.Id);
+                if (episode == null)
+                {
+                    return NotFound();
+                }
+                episode.Name = model.Name;
+                episode.Url = model.Url;
+                await _episodeService.UpdateAsync(episode);
+                return JsonStatus.Ok;
+            }
+            return PartialView("_AddEditPartial", model);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var episode = _episodeService.FindBy(id);
+            if (episode == null)
+            {
+                return NotFound();
+            }
+            var model = new EpisodeViewModel
+            {
+                Id = episode.Id,
+                Name = episode.Name,
+                Url = episode.Url
+            };
+            return PartialView("_DeletePartial", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(EpisodeViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var episode = _episodeService.FindBy(model.Id);
+                if (episode == null)
+                {
+                    return NotFound();
+                }
+                await _episodeService.RemoveAsync(episode);
+                return JsonStatus.Ok;
+            }
+            return PartialView("_DeletePartial", model);
+        }
     }
 }

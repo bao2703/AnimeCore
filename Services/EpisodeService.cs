@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Entities;
 using Entities.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Services
 {
@@ -27,7 +28,7 @@ namespace Services
 
         public Episode FindBy(int id)
         {
-            return _context.Episodes.Find(id);
+            return _context.Episodes.Include(x => x.Movie).SingleOrDefault(x => x.Id == id);
         }
 
         public async Task<Episode> FindByAsync(int id)
