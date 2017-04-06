@@ -30,18 +30,27 @@ namespace AnimeCore.Areas.Admin.Controllers
             return View(model);
         }
 
-        public IActionResult AddEdit(int id)
+        public IActionResult Add()
         {
-            var model = new GenreViewModel();
             ViewData["Action"] = "Add";
+            var model = new GenreViewModel();
+            return PartialView("_AddEditPartial", model);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            ViewData["Action"] = "Edit";
             var genre = _genreService.FindBy(id);
-            if (genre != null)
+            if (genre == null)
             {
-                model.Id = genre.Id;
-                model.Name = genre.Name;
-                model.Title = genre.Title;
-                ViewData["Action"] = "Edit";
+                return NotFound();
             }
+            var model = new GenreViewModel()
+            {
+                Id = genre.Id,
+                Name = genre.Name,
+                Title = genre.Title
+            };
             return PartialView("_AddEditPartial", model);
         }
 

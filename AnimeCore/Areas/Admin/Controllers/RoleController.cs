@@ -33,16 +33,14 @@ namespace AnimeCore.Areas.Admin.Controllers
         public async Task<IActionResult> AddEdit(string id)
         {
             var model = new RoleViewModel();
-            if (!string.IsNullOrEmpty(id))
+            var role = await _roleService.FindByIdAsync(id);
+            if (role != null)
             {
-                var role = await _roleService.FindByIdAsync(id);
-                if (role != null)
-                {
-                    model.Id = role.Id;
-                    model.Name = role.Name;
-                    model.Description = role.Description;
-                }
+                model.Id = role.Id;
+                model.Name = role.Name;
+                model.Description = role.Description;
             }
+
             return PartialView("_AddEditPartial", model);
         }
 
@@ -80,21 +78,18 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Delete(string id)
         {
-            if (!string.IsNullOrEmpty(id))
+            var role = await _roleService.FindByIdAsync(id);
+            if (role == null)
             {
-                var role = await _roleService.FindByIdAsync(id);
-                if (role != null)
-                {
-                    var model = new RoleViewModel
-                    {
-                        Id = role.Id,
-                        Name = role.Name,
-                        Description = role.Description
-                    };
-                    return PartialView("_DeletePartial", model);
-                }
+                return NotFound();
             }
-            return PartialView("Error");
+            var model = new RoleViewModel
+            {
+                Id = role.Id,
+                Name = role.Name,
+                Description = role.Description
+            };
+            return PartialView("_DeletePartial", model);
         }
 
         [HttpPost]
@@ -104,15 +99,16 @@ namespace AnimeCore.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var role = await _roleService.FindByIdAsync(model.Id);
-                if (role != null)
+                if (role == null)
                 {
-                    var result = await _roleService.DeleteAsync(role);
-                    if (result.Succeeded)
-                    {
-                        return JsonStatus.Ok;
-                    }
-                    AddErrors(result);
+                    return NotFound();
                 }
+                var result = await _roleService.DeleteAsync(role);
+                if (result.Succeeded)
+                {
+                    return JsonStatus.Ok;
+                }
+                AddErrors(result);
             }
             return PartialView("_DeletePartial", model);
         }

@@ -13,7 +13,7 @@ namespace Services
         Task AddAsync(Episode episode);
         Task UpdateAsync(Episode episode);
         Task RemoveAsync(Episode episode);
-        List<Episode> OrderByName(IEnumerable<Episode> episodes);
+        IEnumerable<Episode> OrderByName(IEnumerable<Episode> episodes);
     }
 
     public class EpisodeService : IEpisodeService
@@ -54,7 +54,7 @@ namespace Services
             await _context.SaveChangesAsync();
         }
 
-        public List<Episode> OrderByName(IEnumerable<Episode> episodes)
+        public IEnumerable<Episode> OrderByName(IEnumerable<Episode> episodes)
         {
             return episodes.OrderBy(x => x.Name.Length).ThenBy(x => x.Name).ToList();
         }

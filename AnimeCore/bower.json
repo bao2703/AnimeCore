@@ -11,8 +11,7 @@
     "bootstrap-social": "v4.10.1",
     "jquery-validation": "1.16.0",
     "angular": "v1.6.4-build.5336+sha.80077f3",
-    "angularUtils-pagination": "angular-utils-pagination#v0.11.1",
-    "jquery-ajax-unobtrusive": "v3.2.4"
+    "angularUtils-pagination": "angular-utils-pagination#v0.11.1"
   },
   "resolutions": {
     "jquery": "3.2.1",

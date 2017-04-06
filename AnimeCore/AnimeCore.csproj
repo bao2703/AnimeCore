@@ -11,12 +11,16 @@
   <ItemGroup>
     <Compile Remove="App_Data\**" />
     <Compile Remove="wwwroot\images\**" />
+    <Compile Remove="wwwroot\lib\jquery-ajax-unobtrusive\**" />
     <Content Remove="App_Data\**" />
     <Content Remove="wwwroot\images\**" />
+    <Content Remove="wwwroot\lib\jquery-ajax-unobtrusive\**" />
     <EmbeddedResource Remove="App_Data\**" />
     <EmbeddedResource Remove="wwwroot\images\**" />
+    <EmbeddedResource Remove="wwwroot\lib\jquery-ajax-unobtrusive\**" />
     <None Remove="App_Data\**" />
     <None Remove="wwwroot\images\**" />
+    <None Remove="wwwroot\lib\jquery-ajax-unobtrusive\**" />
   </ItemGroup>
 
   <ItemGroup>

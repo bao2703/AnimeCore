@@ -1,10 +1,11 @@
 @using Models.ModalViewModels
-@model IEnumerable<Models.GenreViewModels.GenreViewModel>
+@model IEnumerable<Models.EpisodeViewModels.EpisodeViewModel>
 @{
-    ViewData[Constant.Title] = "Genre List";
+    var movie = (Movie) ViewData["Movie"];
+    ViewData[Constant.Title] = movie.Name + " Episode List";
 }
 
-@await Html.PartialAsync("Modal/_ModalPartial", new Modal {Id = "genre-action-modal", ModalSize = ModalSize.Medium})
+@await Html.PartialAsync("Modal/_ModalPartial", new Modal {Id = "ep-action-modal", ModalSize = ModalSize.Medium})
 
 <div class="panel panel-info">
     <div class="panel-heading">
@@ -15,8 +16,8 @@
     <div class="panel-body">
         <div class="col-xs-12" style="overflow-x: auto;">
             <div class="btn-group">
-                <a asp-action="Add" class="btn btn-primary" data-toggle="modal" data-target="#genre-action-modal">
-                    <i class="fa fa-plus"></i> Add Genre
+                <a asp-action="Add" asp-route-movieId="@movie.Id" class="btn btn-primary" data-toggle="modal" data-target="#ep-action-modal">
+                    <i class="fa fa-plus"></i> Add Episode
                 </a>
             </div>
             <div class="top-buffer"></div>
@@ -24,13 +25,10 @@
                 <thead>
                 <tr>
                     <th>
-                        <display name-for="@Model.First().Id"></display>
-                    </th>
-                    <th>
                         <display name-for="@Model.First().Name"></display>
                     </th>
                     <th>
-                        <display name-for="@Model.First().Title"></display>
+                        <display name-for="@Model.First().Url"></display>
                     </th>
                     <th style="width: 20px;">#</th>
                     <th style="width: 20px;">#</th>
@@ -40,16 +38,15 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@item.Id</td>
                         <td>@item.Name</td>
-                        <td>@item.Title</td>
+                        <td>@item.Url</td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info" data-toggle="modal" data-target="#genre-action-modal">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info" data-toggle="modal" data-target="#ep-action-modal">
                                 <i class="fa fa-pencil"></i> Edit
                             </a>
                         </td>
                         <td>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" data-toggle="modal" data-target="#genre-action-modal">
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" data-toggle="modal" data-target="#ep-action-modal">
                                 <i class="fa fa-trash"></i> Delete
                             </a>
                         </td>

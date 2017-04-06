@@ -67,23 +67,20 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(string id)
         {
-            if (!string.IsNullOrEmpty(id))
+            var user = await _userService.FindByIdAsync(id);
+            if (user == null)
             {
-                var user = await _userService.FindByIdAsync(id);
-                if (user != null)
-                {
-                    var model = new EditUserViewModel
-                    {
-                        Id = user.Id,
-                        Email = user.Email,
-                        UserName = user.UserName,
-                        RoleName = (await _userService.GetRolesAsync(user)).FirstOrDefault()
-                    };
-                    ViewData["RoleList"] = _roleService.ToList();
-                    return PartialView("_EditPartial", model);
-                }
+                return NotFound();
             }
-            return PartialView("Error");
+            var model = new EditUserViewModel
+            {
+                Id = user.Id,
+                Email = user.Email,
+                UserName = user.UserName,
+                RoleName = (await _userService.GetRolesAsync(user)).FirstOrDefault()
+            };
+            ViewData["RoleList"] = _roleService.ToList();
+            return PartialView("_EditPartial", model);
         }
 
         [HttpPost]
@@ -93,17 +90,18 @@ namespace AnimeCore.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var user = await _userService.FindByIdAsync(model.Id);
-                if (user != null)
+                if (user == null)
                 {
-                    user.Email = model.Email;
-                    user.UserName = model.UserName;
-                    var result = await _userService.UpdateAsync(user, model.RoleName);
-                    if (result.Succeeded)
-                    {
-                        return JsonStatus.Ok;
-                    }
-                    AddErrors(result);
+                    return NotFound();
                 }
+                user.Email = model.Email;
+                user.UserName = model.UserName;
+                var result = await _userService.UpdateAsync(user, model.RoleName);
+                if (result.Succeeded)
+                {
+                    return JsonStatus.Ok;
+                }
+                AddErrors(result);
             }
             ViewData["RoleList"] = _roleService.ToList();
             return PartialView("_EditPartial", model);
@@ -111,22 +109,19 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         public async Task<IActionResult> Delete(string id)
         {
-            if (!string.IsNullOrEmpty(id))
+            var user = await _userService.FindByIdAsync(id);
+            if (user == null)
             {
-                var user = await _userService.FindByIdAsync(id);
-                if (user != null)
-                {
-                    var model = new UserViewModel
-                    {
-                        Id = user.Id,
-                        Email = user.Email,
-                        UserName = user.UserName,
-                        RoleName = (await _userService.GetRolesAsync(user)).FirstOrDefault()
-                    };
-                    return PartialView("_DeletePartial", model);
-                }
+                return NotFound();
             }
-            return PartialView("Error");
+            var model = new UserViewModel
+            {
+                Id = user.Id,
+                Email = user.Email,
+                UserName = user.UserName,
+                RoleName = (await _userService.GetRolesAsync(user)).FirstOrDefault()
+            };
+            return PartialView("_DeletePartial", model);
         }
 
         [HttpPost]
@@ -136,15 +131,16 @@ namespace AnimeCore.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var user = await _userService.FindByIdAsync(model.Id);
-                if (user != null)
+                if (user == null)
                 {
-                    var result = await _userService.DeleteAsync(user);
-                    if (result.Succeeded)
-                    {
-                        return JsonStatus.Ok;
-                    }
-                    AddErrors(result);
+                    return NotFound();
                 }
+                var result = await _userService.DeleteAsync(user);
+                if (result.Succeeded)
+                {
+                    return JsonStatus.Ok;
+                }
+                AddErrors(result);
             }
             return PartialView("_DeletePartial", model);
         }
