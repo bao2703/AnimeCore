@@ -14,7 +14,8 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var model = _unitOfWork.MovieRepository.GetAllMovieWithGenres();
+            return View(model);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace AnimeCore.Controllers
             {
                 return View("Error");
             }
-            var movie = _unitOfWork.MovieRepository.GetMovieWithEpisodes((int) id);
+            var movie = _unitOfWork.MovieRepository.GetMovieWithGenres((int) id);
             return movie == null ? View("Error") : View(movie);
         }
 

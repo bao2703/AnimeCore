@@ -30,12 +30,12 @@ namespace Repositories.Repositories
 
         public Movie GetMovieWithGenres(int id)
         {
-            return DbSet.Include(x => x.GenreMovies).SingleOrDefault(x => x.Id == id);
+            return DbSet.Include(x => x.GenreMovies).ThenInclude(x => x.Genre).SingleOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<Movie> GetAllMovieWithGenres()
         {
-            return DbSet.Include(x => x.GenreMovies);
+            return DbSet.Include(x => x.GenreMovies).ThenInclude(x => x.Genre);
         }
 
         public IEnumerable<Movie> GetAllMovieWithGenres(string searchString)
