@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Services;
+using Repositories;
 
 namespace AnimeCore.Api
 {
@@ -7,34 +7,18 @@ namespace AnimeCore.Api
     [Route("api/Movie")]
     public class MovieApiController : Controller
     {
-        private readonly IMovieService _movieService;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public MovieApiController(IMovieService movieService)
+        public MovieApiController(IUnitOfWork unitOfWork)
         {
-            _movieService = movieService;
+            _unitOfWork = unitOfWork;
         }
 
         // GET: api/Movie
         [HttpGet]
         public IActionResult GetMovies(string searchString = "")
         {
-            return Ok(_movieService.FindBy(searchString));
-        }
-
-        // GET: api/Movie/5
-        [HttpGet("{id}")]
-        public IActionResult GetMovie([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            var movie = _movieService.FindBy(id);
-            if (movie == null)
-            {
-                return NotFound();
-            }
-            return Ok(movie);
+            return Ok(_unitOfWork.MovieRepository.GetAllMovieWithGenres(searchString));
         }
     }
 }

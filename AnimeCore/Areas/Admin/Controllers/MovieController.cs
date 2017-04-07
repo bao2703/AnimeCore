@@ -1,15 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
-using Services;
+using Repositories;
 
 namespace AnimeCore.Areas.Admin.Controllers
 {
     public class MovieController : AdminController
     {
-        private readonly IMovieService _movieService;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public MovieController(IMovieService movieService)
+        public MovieController(IUnitOfWork unitOfWork)
         {
-            _movieService = movieService;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()

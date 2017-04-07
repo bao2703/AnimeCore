@@ -1,5 +1,5 @@
 @model Movie
-@inject IEpisodeService EpisodeService
+@inject IEpisodeRepository EpisodeRepository
 
 @{
     ViewData[Constant.Title] = Model.Name + " - Watch";
@@ -22,7 +22,7 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-sm-12">
-                @foreach (var item in EpisodeService.OrderByName(Model.Episodes))
+                @foreach (var item in EpisodeRepository.OrderByName(Model.Episodes))
                 {
                     <button class="btn btn-primary btn-episode" data-url="@item.Url">@item.Name</button>
                 }

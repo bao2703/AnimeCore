@@ -1,4 +1,4 @@
-@model List<Movie>
+@model IEnumerable<Movie>
 @inject Helper Helper
 
 <div class="panel panel-primary">
@@ -19,7 +19,7 @@
         <div id="@ViewData[Constant.SlideTitle]" class="carousel slide" data-ride="carousel">
             <!-- carousel-inner -->
             <div class="carousel-inner" role="listbox">
-                @foreach (var list in Helper.SplitList(Model, 4))
+                @foreach (var list in Helper.SplitList(Model.ToList(), 4))
                 {
                     <div class="item">
                         <div class="row">

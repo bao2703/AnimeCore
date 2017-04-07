@@ -1,4 +1,4 @@
-﻿@inject IMovieService MovieService
+﻿@inject IMovieRepository MovieRepository
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -7,6 +7,6 @@
     @await Html.PartialAsync("_SlidePartial")
 }
 
-@await Component.InvokeAsync("MovieSlide", new {model = MovieService.FindPopularMovie(16), title = "Popular"})
+@await Component.InvokeAsync("MovieSlide", new {model = MovieRepository.FindPopularMovie(16), title = "Popular"})
 
-@await Component.InvokeAsync("MovieSlide", new {model = MovieService.FindNewestMovie(16), title = "Newest"})
+@await Component.InvokeAsync("MovieSlide", new {model = MovieRepository.FindNewestMovie(16), title = "Newest"})

@@ -1,4 +1,4 @@
-﻿@inject IGenreService GenreService
+﻿@inject IGenreRepository GenreRepository
 
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
@@ -20,7 +20,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Genres<b class="caret"></b></a>
                     <ul class="dropdown-menu multi-column columns-genres">
                         <li class="row">
-                            @foreach (var genre in GenreService.ToList())
+                            @foreach (var genre in GenreRepository.GetAll())
                             {
                                 <div class="col-md-4">
                                     <ul class="multi-column-dropdown">
