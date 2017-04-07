@@ -6,10 +6,10 @@ using Repositories.Core;
 
 namespace Repositories
 {
-    public abstract class AsyncRepository<TEntity> : BaseRepository<TEntity>, IAsyncRepository<TEntity>
+    public abstract class RepositoryAsync<TEntity> : BaseRepository<TEntity>, IRepositoryAsync<TEntity>
         where TEntity : Entity
     {
-        protected AsyncRepository(NeptuneContext context) : base(context)
+        protected RepositoryAsync(NeptuneContext context) : base(context)
         {
         }
 

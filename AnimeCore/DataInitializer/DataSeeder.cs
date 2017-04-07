@@ -2898,7 +2898,7 @@ namespace AnimeCore.DataInitializer
 
             var noGameNoLife = new List<Episode>
             {
-               new Episode
+                new Episode
                 {
                     Name = "1",
                     Url = ConvertUrl("http://onecloud.media/file/c524f2bf27340f8d-c8d54f15a587025d")
@@ -2980,8 +2980,6 @@ namespace AnimeCore.DataInitializer
             episodes.Add(totoro);
 
             #endregion
-
-
 
             #endregion
 

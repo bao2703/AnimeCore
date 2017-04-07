@@ -4,7 +4,7 @@ using Entities.Domain;
 
 namespace Repositories.Core
 {
-    public interface IAsyncRepository<TEntity> : IBaseRepository<TEntity> where TEntity : Entity
+    public interface IRepositoryAsync<in TEntity> where TEntity : Entity
     {
         Task AddAsync(TEntity entity);
 
