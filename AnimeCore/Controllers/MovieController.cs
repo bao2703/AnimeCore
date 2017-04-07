@@ -1,19 +1,19 @@
 using AnimeCore.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Services;
+using Repositories;
 
 namespace AnimeCore.Controllers
 {
     public class MovieController : Controller
     {
         private readonly AppSettings _appSettings;
-        private readonly IMovieService _movieService;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public MovieController(IMovieService movieService, IOptions<AppSettings> appSettings)
+        public MovieController(IOptions<AppSettings> appSettings, IUnitOfWork unitOfWork)
         {
             _appSettings = appSettings.Value;
-            _movieService = movieService;
+            _unitOfWork = unitOfWork;
         }
 
         // GET: /Movie/Index
@@ -31,7 +31,7 @@ namespace AnimeCore.Controllers
             {
                 return View("Error");
             }
-            var movie = _movieService.FindBy((int) id);
+            var movie = _unitOfWork.MovieRepository.GetMovieWithEpisodes((int) id);
             return movie == null ? View("Error") : View(movie);
         }
 
@@ -42,7 +42,7 @@ namespace AnimeCore.Controllers
             {
                 return View("Error");
             }
-            var movie = _movieService.FindBy((int) id);
+            var movie = _unitOfWork.MovieRepository.GetMovieWithEpisodes((int) id);
             return movie == null ? View("Error") : View(movie);
         }
     }

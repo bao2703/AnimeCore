@@ -40,7 +40,7 @@ namespace AnimeCore
                     options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });
 
             IdentityConfiguration.Configure(services);
-            TransientConfiguration.Configure(services);
+            ServiceRegister.Configure(services);
             PagerConfiguration.Configure(services);
         }
 

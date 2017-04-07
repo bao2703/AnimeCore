@@ -5,7 +5,7 @@ using Entities.Domain;
 
 namespace Repositories.Core
 {
-    public interface IBaseRepository<TEntity> where TEntity : Entity
+    public interface IBaseRepository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
         TEntity FindById(object id);
 

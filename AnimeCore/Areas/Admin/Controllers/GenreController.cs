@@ -4,22 +4,22 @@ using AnimeCore.Common;
 using Entities.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Models.GenreViewModels;
-using Services;
+using Repositories;
 
 namespace AnimeCore.Areas.Admin.Controllers
 {
     public class GenreController : AdminController
     {
-        private readonly IGenreService _genreService;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public GenreController(IGenreService genreService)
+        public GenreController(IUnitOfWork unitOfWork)
         {
-            _genreService = genreService;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            var model = _genreService.ToList().Select(x => new GenreViewModel
+            var model = _unitOfWork.GenreRepository.GetAll().Select(x => new GenreViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -38,7 +38,7 @@ namespace AnimeCore.Areas.Admin.Controllers
         public IActionResult Edit(int id)
         {
             ViewData["Action"] = "Edit";
-            var genre = _genreService.FindBy(id);
+            var genre = _unitOfWork.GenreRepository.FindById(id);
             if (genre == null)
             {
                 return NotFound();
@@ -64,7 +64,8 @@ namespace AnimeCore.Areas.Admin.Controllers
                     Name = model.Name,
                     Title = model.Title
                 };
-                await _genreService.AddAsync(genre);
+                await _unitOfWork.GenreRepository.AddAsync(genre);
+                await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;
             }
             return PartialView("_AddEditPartial", model);
@@ -77,21 +78,22 @@ namespace AnimeCore.Areas.Admin.Controllers
             ViewData["Action"] = "Edit";
             if (ModelState.IsValid)
             {
-                var genre = _genreService.FindBy(model.Id);
+                var genre = _unitOfWork.GenreRepository.FindById(model.Id);
                 if (genre != null)
                 {
                     genre.Name = model.Name;
                     genre.Title = model.Title;
-                    await _genreService.UpdateAsync(genre);
+                    _unitOfWork.GenreRepository.Update(genre);
+                    await _unitOfWork.SaveChangesAsync();
                 }
                 return JsonStatus.Ok;
             }
             return PartialView("_AddEditPartial", model);
         }
 
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
-            var genre = await _genreService.FindByAsync(id);
+            var genre = _unitOfWork.GenreRepository.FindById(id);
             if (genre != null)
             {
                 var model = new GenreViewModel
@@ -111,10 +113,11 @@ namespace AnimeCore.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var role = await _genreService.FindByAsync(model.Id);
+                var role = _unitOfWork.GenreRepository.FindById(model.Id);
                 if (role != null)
                 {
-                    await _genreService.RemoveAsync(role);
+                    _unitOfWork.GenreRepository.Remove(role);
+                    await _unitOfWork.SaveChangesAsync();
                     return JsonStatus.Ok;
                 }
             }

@@ -2960,7 +2960,7 @@ namespace AnimeCore.DataInitializer
                 }
             };
 
-            noGameNoLife.ForEach(x => x.Movie = movies.Single(m => m.Name == "No Gane No Life"));
+            noGameNoLife.ForEach(x => x.Movie = movies.Single(m => m.Name == "No Game No Life"));
             episodes.Add(noGameNoLife);
 
             #endregion
