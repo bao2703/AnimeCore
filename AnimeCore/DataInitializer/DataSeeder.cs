@@ -2894,6 +2894,95 @@ namespace AnimeCore.DataInitializer
 
             #endregion
 
+            #region No Game No Life
+
+            var noGameNoLife = new List<Episode>
+            {
+               new Episode
+                {
+                    Name = "1",
+                    Url = ConvertUrl("http://onecloud.media/file/c524f2bf27340f8d-c8d54f15a587025d")
+                },
+                new Episode
+                {
+                    Name = "2",
+                    Url = ConvertUrl("http://onecloud.media/file/07c364700e706cb1-5f34bf49cb52a3a9")
+                },
+                new Episode
+                {
+                    Name = "3",
+                    Url = ConvertUrl("http://onecloud.media/file/40487533c7f17176-57a8a796e195497f")
+                },
+                new Episode
+                {
+                    Name = "4",
+                    Url = ConvertUrl("http://onecloud.media/file/1926271b179e8784-78daab0e9b719769")
+                },
+                new Episode
+                {
+                    Name = "5",
+                    Url = ConvertUrl("http://onecloud.media/file/511c8989dbf4591e-7f5b06e7c1079afd")
+                },
+                new Episode
+                {
+                    Name = "6",
+                    Url = ConvertUrl("http://onecloud.media/file/937733c34c68f141-47d6cada7cd137c5")
+                },
+                new Episode
+                {
+                    Name = "7",
+                    Url = ConvertUrl("http://onecloud.media/file/4d65e14ab7adeab7-3be923609d0ffd1f")
+                },
+                new Episode
+                {
+                    Name = "8",
+                    Url = ConvertUrl("http://onecloud.media/file/12a9dc96c6ff1cf4-b6f3b79958461799")
+                },
+                new Episode
+                {
+                    Name = "9",
+                    Url = ConvertUrl("http://onecloud.media/file/76f81a62158eafbd-219a757d7b07df9f")
+                },
+                new Episode
+                {
+                    Name = "10",
+                    Url = ConvertUrl("http://onecloud.media/file/0fdd866486be880b-458d90108880bf5e")
+                },
+                new Episode
+                {
+                    Name = "11",
+                    Url = ConvertUrl("http://onecloud.media/file/5998e92b8de735d3-7a287974afdac242")
+                },
+                new Episode
+                {
+                    Name = "12",
+                    Url = ConvertUrl("http://onecloud.media/file/c505c141258aa003-4183a16d096603cc")
+                }
+            };
+
+            noGameNoLife.ForEach(x => x.Movie = movies.Single(m => m.Name == "No Gane No Life"));
+            episodes.Add(noGameNoLife);
+
+            #endregion
+
+            #region Tonari No Totoro
+
+            var totoro = new List<Episode>
+            {
+                new Episode
+                {
+                    Name = "1",
+                    Url = ConvertUrl("http://onecloud.media/file/7fc0cb4ce9c0dc6d-29283c40dacabbef")
+                }
+            };
+
+            totoro.ForEach(x => x.Movie = movies.Single(m => m.Name == "Tonari No Totoro"));
+            episodes.Add(totoro);
+
+            #endregion
+
+
+
             #endregion
 
             var tasks = new List<Task>
