@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Domain
 {
-    public class Movie : TrackAbleEntity
+    public class Movie : TimestampEntity
     {
         public Movie()
         {

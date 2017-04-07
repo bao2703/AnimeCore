@@ -2,7 +2,7 @@
 
 namespace Entities.Domain
 {
-    public abstract class TrackAbleEntity : Entity
+    public abstract class TimestampEntity : Entity
     {
         public DateTime? CreatedDate { get; set; }
 

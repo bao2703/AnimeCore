@@ -55,17 +55,17 @@ namespace Entities
                 ChangeTracker.Entries()
                     .Where(
                         x =>
-                            x.Entity is TrackAbleEntity &&
+                            x.Entity is TimestampEntity &&
                             (x.State == EntityState.Added || x.State == EntityState.Modified));
 
             foreach (var entity in entities)
             {
                 if (entity.State == EntityState.Added)
                 {
-                    ((TrackAbleEntity) entity.Entity).CreatedDate = DateTime.Now;
+                    ((TimestampEntity) entity.Entity).CreatedDate = DateTime.Now;
                 }
 
-                ((TrackAbleEntity) entity.Entity).LastModifiedDate = DateTime.Now;
+                ((TimestampEntity) entity.Entity).LastModifiedDate = DateTime.Now;
             }
         }
     }

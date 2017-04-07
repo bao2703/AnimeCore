@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AnimeCore.Common;
@@ -45,7 +43,7 @@ namespace AnimeCore.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var model = new GenreViewModel()
+            var model = new GenreViewModel
             {
                 Id = genre.Id,
                 Name = genre.Name,
