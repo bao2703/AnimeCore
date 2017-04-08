@@ -10,16 +10,18 @@ namespace AnimeCore.Areas.Admin.Controllers
 {
     public class GenreController : AdminController
     {
+        private readonly IGenreRepository _genreRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public GenreController(IUnitOfWork unitOfWork)
+        public GenreController(IUnitOfWork unitOfWork, IGenreRepository genreRepository)
         {
             _unitOfWork = unitOfWork;
+            _genreRepository = genreRepository;
         }
 
         public IActionResult Index()
         {
-            var model = _unitOfWork.GenreRepository.GetAll().Select(x => new GenreViewModel
+            var model = _genreRepository.GetAll().Select(x => new GenreViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -38,7 +40,7 @@ namespace AnimeCore.Areas.Admin.Controllers
         public IActionResult Edit(int id)
         {
             ViewData["Action"] = "Edit";
-            var genre = _unitOfWork.GenreRepository.FindById(id);
+            var genre = _genreRepository.FindById(id);
             if (genre == null)
             {
                 return NotFound();
@@ -64,7 +66,7 @@ namespace AnimeCore.Areas.Admin.Controllers
                     Name = model.Name,
                     Title = model.Title
                 };
-                await _unitOfWork.GenreRepository.AddAsync(genre);
+                await _genreRepository.AddAsync(genre);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;
             }
@@ -78,12 +80,12 @@ namespace AnimeCore.Areas.Admin.Controllers
             ViewData["Action"] = "Edit";
             if (ModelState.IsValid)
             {
-                var genre = _unitOfWork.GenreRepository.FindById(model.Id);
+                var genre = _genreRepository.FindById(model.Id);
                 if (genre != null)
                 {
                     genre.Name = model.Name;
                     genre.Title = model.Title;
-                    _unitOfWork.GenreRepository.Update(genre);
+                    _genreRepository.Update(genre);
                     await _unitOfWork.SaveChangesAsync();
                 }
                 return JsonStatus.Ok;
@@ -93,7 +95,7 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         public IActionResult Delete(int id)
         {
-            var genre = _unitOfWork.GenreRepository.FindById(id);
+            var genre = _genreRepository.FindById(id);
             if (genre != null)
             {
                 var model = new GenreViewModel
@@ -113,10 +115,10 @@ namespace AnimeCore.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var role = _unitOfWork.GenreRepository.FindById(model.Id);
+                var role = _genreRepository.FindById(model.Id);
                 if (role != null)
                 {
-                    _unitOfWork.GenreRepository.Remove(role);
+                    _genreRepository.Remove(role);
                     await _unitOfWork.SaveChangesAsync();
                     return JsonStatus.Ok;
                 }

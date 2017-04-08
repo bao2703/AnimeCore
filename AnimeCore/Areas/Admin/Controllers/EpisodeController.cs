@@ -10,22 +10,27 @@ namespace AnimeCore.Areas.Admin.Controllers
 {
     public class EpisodeController : AdminController
     {
+        private readonly IEpisodeRepository _episodeRepository;
+        private readonly IMovieRepository _movieRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public EpisodeController(IUnitOfWork unitOfWork)
+        public EpisodeController(IUnitOfWork unitOfWork, IEpisodeRepository episodeRepository,
+            IMovieRepository movieRepository)
         {
             _unitOfWork = unitOfWork;
+            _episodeRepository = episodeRepository;
+            _movieRepository = movieRepository;
         }
 
         public IActionResult Index(int movieId)
         {
-            var movie = _unitOfWork.MovieRepository.FindById(movieId);
+            var movie = _movieRepository.FindById(movieId);
             if (movie == null)
             {
                 return NotFound();
             }
             ViewData["Movie"] = movie;
-            var episode = _unitOfWork.EpisodeRepository.OrderByDescendingName(movie.Episodes);
+            var episode = _episodeRepository.OrderByDescendingName(movie.Episodes);
             var model = episode.Select(x => new EpisodeViewModel
             {
                 Id = x.Id,
@@ -58,8 +63,8 @@ namespace AnimeCore.Areas.Admin.Controllers
                     Url = model.Url,
                     Movie = new Movie {Id = model.MovieId}
                 };
-                _unitOfWork.MovieRepository.Attach(episode.Movie);
-                await _unitOfWork.EpisodeRepository.AddAsync(episode);
+                _movieRepository.Attach(episode.Movie);
+                await _episodeRepository.AddAsync(episode);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;
             }
@@ -69,7 +74,7 @@ namespace AnimeCore.Areas.Admin.Controllers
         public IActionResult Edit(int id)
         {
             ViewData["Action"] = "Edit";
-            var episode = _unitOfWork.EpisodeRepository.FindById(id);
+            var episode = _episodeRepository.FindById(id);
             if (episode == null)
             {
                 return NotFound();
@@ -90,14 +95,14 @@ namespace AnimeCore.Areas.Admin.Controllers
             ViewData["Action"] = "Edit";
             if (ModelState.IsValid)
             {
-                var episode = _unitOfWork.EpisodeRepository.FindById(model.Id);
+                var episode = _episodeRepository.FindById(model.Id);
                 if (episode == null)
                 {
                     return NotFound();
                 }
                 episode.Name = model.Name;
                 episode.Url = model.Url;
-                _unitOfWork.EpisodeRepository.Update(episode);
+                _episodeRepository.Update(episode);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;
             }
@@ -106,7 +111,7 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         public IActionResult Delete(int id)
         {
-            var episode = _unitOfWork.EpisodeRepository.FindById(id);
+            var episode = _episodeRepository.FindById(id);
             if (episode == null)
             {
                 return NotFound();
@@ -126,12 +131,12 @@ namespace AnimeCore.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var episode = _unitOfWork.EpisodeRepository.FindById(model.Id);
+                var episode = _episodeRepository.FindById(model.Id);
                 if (episode == null)
                 {
                     return NotFound();
                 }
-                _unitOfWork.EpisodeRepository.Remove(episode);
+                _episodeRepository.Remove(episode);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;
             }

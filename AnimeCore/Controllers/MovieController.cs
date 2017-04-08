@@ -9,13 +9,11 @@ namespace AnimeCore.Controllers
     {
         private readonly AppSettings _appSettings;
         private readonly IMovieRepository _movieRepository;
-        private readonly IUnitOfWork _unitOfWork;
 
         public MovieController(IOptions<AppSettings> appSettings, IUnitOfWork unitOfWork,
             IMovieRepository movieRepository)
         {
             _appSettings = appSettings.Value;
-            _unitOfWork = unitOfWork;
             _movieRepository = movieRepository;
         }
 

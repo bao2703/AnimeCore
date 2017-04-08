@@ -7,18 +7,18 @@ namespace AnimeCore.Api
     [Route("api/Movie")]
     public class MovieApiController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMovieRepository _movieRepository;
 
-        public MovieApiController(IUnitOfWork unitOfWork)
+        public MovieApiController(IMovieRepository movieRepository)
         {
-            _unitOfWork = unitOfWork;
+            _movieRepository = movieRepository;
         }
 
         // GET: api/Movie
         [HttpGet]
         public IActionResult GetMovies(string searchString = "")
         {
-            return Ok(_unitOfWork.MovieRepository.FindByNameContains(searchString));
+            return Ok(_movieRepository.FindByNameContains(searchString));
         }
     }
 }

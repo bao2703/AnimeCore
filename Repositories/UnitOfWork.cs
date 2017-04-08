@@ -6,9 +6,6 @@ namespace Repositories
 {
     public interface IUnitOfWork : IDisposable
     {
-        IEpisodeRepository EpisodeRepository { get; }
-        IMovieRepository MovieRepository { get; }
-        IGenreRepository GenreRepository { get; }
         int SaveChanges();
         Task<int> SaveChangesAsync();
     }
@@ -17,20 +14,10 @@ namespace Repositories
     {
         private readonly NeptuneContext _context;
 
-        public UnitOfWork(NeptuneContext context, IMovieRepository movieRepository, IGenreRepository genreRepository,
-            IEpisodeRepository episodeRepository)
+        public UnitOfWork(NeptuneContext context)
         {
             _context = context;
-            MovieRepository = movieRepository;
-            GenreRepository = genreRepository;
-            EpisodeRepository = episodeRepository;
         }
-
-        public IEpisodeRepository EpisodeRepository { get; }
-
-        public IMovieRepository MovieRepository { get; }
-
-        public IGenreRepository GenreRepository { get; }
 
         public void Dispose()
         {
