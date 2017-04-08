@@ -46,7 +46,6 @@
                 </div>
             </div>
         </div>
-        <input asp-for="Id" value="@Model.Id" type="hidden"/>
     </div>
     @await Html.PartialAsync("Modal/_FooterPartial", new ModalFooter {SubmitButtonText = submitButtonText, SubmitButtonClass = submitButtonClass})
 </form>
