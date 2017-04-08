@@ -7,17 +7,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Services
 {
-    public interface IUserService
+    public interface IUserService : IIdentityService<User>
     {
-        Task<IdentityResult> CreateAsync(User user);
         Task<IdentityResult> CreateAsync(User user, string password);
         Task<IdentityResult> CreateAsync(User user, string password, string role);
         Task<IdentityResult> AddLoginAsync(User user, UserLoginInfo userLoginInfo);
-        List<User> ToList();
-        Task<User> FindByIdAsync(string id);
-        Task<IdentityResult> UpdateAsync(User user);
         Task<IdentityResult> UpdateAsync(User user, string role);
-        Task<IdentityResult> DeleteAsync(User user);
         Task<IdentityResult> AddToRoleAsync(User user, string role);
         Task<IdentityResult> RemoveFromRoleAsync(User user, string role);
         Task<IdentityResult> RemoveFromRolesAsync(User user, IEnumerable<string> role);

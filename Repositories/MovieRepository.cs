@@ -48,7 +48,7 @@ namespace Repositories
 
         public IEnumerable<Movie> FindPopularMovie(int take)
         {
-            return DbSet.OrderByDescending(x => x.Views).Take(take);
+            return DbSet.OrderByDescending(x => x.View).Take(take);
         }
     }
 }

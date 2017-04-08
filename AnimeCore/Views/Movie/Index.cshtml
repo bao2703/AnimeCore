@@ -74,7 +74,7 @@
                         <div class="movie-content" title="{{ movie.status | status }}">
                             <span class="movie-name">{{ movie.name }}</span>
                             <span class="movie-release">{{ movie.release | date:"MM/yyyy" }}</span>
-                            <span class="movie-views">{{ movie.views }} <i class="fa fa-eye"></i></span>
+                            <span class="movie-view">{{ movie.view }} <i class="fa fa-eye"></i></span>
                             <img class="movie-img img-rounded img-responsive" src="{{ movie.image }}" alt="{{ movie.name }}" asp-append-version="true">
                         </div>
                     </a>

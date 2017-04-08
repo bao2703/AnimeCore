@@ -7,13 +7,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Services
 {
-    public interface IRoleService
+    public interface IRoleService : IIdentityService<Role>
     {
-        List<Role> ToList();
-        Task<Role> FindByIdAsync(string roleId);
-        Task<IdentityResult> CreateAsync(Role role);
-        Task<IdentityResult> UpdateAsync(Role role);
-        Task<IdentityResult> DeleteAsync(Role role);
         Task<bool> RoleExistsAsync(string role);
     }
 

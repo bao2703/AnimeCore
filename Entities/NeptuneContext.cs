@@ -20,6 +20,20 @@ namespace Entities
 
         public DbSet<Episode> Episodes { get; set; }
 
+        public DbSet<Invoice> Invoices { get; set; }
+
+        public DbSet<Customer> Customers { get; set; }
+
+        public DbSet<Advertisement> Advertisements { get; set; }
+
+        public DbSet<BannerAds> BannerAdses { get; set; }
+
+        public DbSet<VideoAds> VideoAdses { get; set; }
+
+        public DbSet<AdsType> AdsTypes { get; set; }
+
+        public DbSet<AdsLocation> AdsLocations { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<GenreMovie>().HasKey(x => new {x.MovieId, x.GenreId});
@@ -33,6 +47,18 @@ namespace Entities
                 .HasOne(x => x.Genre)
                 .WithMany(x => x.GenreMovies)
                 .HasForeignKey(x => x.GenreId);
+
+            builder.Entity<InvoiceDetail>().HasKey(x => new {x.InvoiceId, x.AdvertisementId});
+
+            builder.Entity<InvoiceDetail>()
+                .HasOne(x => x.Invoice)
+                .WithMany(x => x.InvoiceDetails)
+                .HasForeignKey(x => x.InvoiceId);
+
+            builder.Entity<InvoiceDetail>()
+                .HasOne(x => x.Advertisement)
+                .WithMany(x => x.InvoiceDetails)
+                .HasForeignKey(x => x.AdvertisementId);
 
             base.OnModelCreating(builder);
         }
