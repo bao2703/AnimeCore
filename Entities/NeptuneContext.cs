@@ -60,7 +60,11 @@ namespace Entities
                 .WithMany(x => x.InvoiceDetails)
                 .HasForeignKey(x => x.AdvertisementId);
 
+
             base.OnModelCreating(builder);
+
+            builder.Entity<User>().ToTable("Users");
+            builder.Entity<Role>().ToTable("Roles");
         }
 
         public override int SaveChanges()

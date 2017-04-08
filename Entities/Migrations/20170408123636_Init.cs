@@ -9,17 +9,6 @@ namespace Entities.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                "AdsLocations",
-                table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Desciption = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table => { table.PrimaryKey("PK_AdsLocations", x => x.Id); });
-
-            migrationBuilder.CreateTable(
                 "AdsTypes",
                 table => new
                 {
@@ -79,7 +68,7 @@ namespace Entities.Migrations
                 constraints: table => { table.PrimaryKey("PK_Movies", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                "AspNetRoles",
+                "Roles",
                 table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -88,10 +77,10 @@ namespace Entities.Migrations
                     Name = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(maxLength: 256, nullable: true)
                 },
-                constraints: table => { table.PrimaryKey("PK_AspNetRoles", x => x.Id); });
+                constraints: table => { table.PrimaryKey("PK_Roles", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                "AspNetUsers",
+                "Users",
                 table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -110,7 +99,7 @@ namespace Entities.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     UserName = table.Column<string>(maxLength: 256, nullable: true)
                 },
-                constraints: table => { table.PrimaryKey("PK_AspNetUsers", x => x.Id); });
+                constraints: table => { table.PrimaryKey("PK_Users", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 "AspNetUserTokens",
@@ -125,34 +114,20 @@ namespace Entities.Migrations
                 table => { table.PrimaryKey("PK_AspNetUserTokens", x => new {x.UserId, x.LoginProvider, x.Name}); });
 
             migrationBuilder.CreateTable(
-                "Advertisements",
+                "AdsLocations",
                 table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AdsLocationId = table.Column<int>(nullable: true),
                     AdsTypeId = table.Column<int>(nullable: true),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Discriminator = table.Column<string>(nullable: false),
-                    LastModifiedDate = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true),
-                    Url = table.Column<string>(nullable: true),
-                    Image = table.Column<string>(nullable: true),
-                    VideoUrl = table.Column<string>(nullable: true)
+                    Desciption = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Advertisements", x => x.Id);
+                    table.PrimaryKey("PK_AdsLocations", x => x.Id);
                     table.ForeignKey(
-                        "FK_Advertisements_AdsLocations_AdsLocationId",
-                        x => x.AdsLocationId,
-                        "AdsLocations",
-                        "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        "FK_Advertisements_AdsTypes_AdsTypeId",
+                        "FK_AdsLocations_AdsTypes_AdsTypeId",
                         x => x.AdsTypeId,
                         "AdsTypes",
                         "Id",
@@ -242,9 +217,9 @@ namespace Entities.Migrations
                 {
                     table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
                     table.ForeignKey(
-                        "FK_AspNetRoleClaims_AspNetRoles_RoleId",
+                        "FK_AspNetRoleClaims_Roles_RoleId",
                         x => x.RoleId,
-                        "AspNetRoles",
+                        "Roles",
                         "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -263,9 +238,9 @@ namespace Entities.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
                     table.ForeignKey(
-                        "FK_AspNetUserClaims_AspNetUsers_UserId",
+                        "FK_AspNetUserClaims_Users_UserId",
                         x => x.UserId,
-                        "AspNetUsers",
+                        "Users",
                         "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -283,9 +258,9 @@ namespace Entities.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserLogins", x => new {x.LoginProvider, x.ProviderKey});
                     table.ForeignKey(
-                        "FK_AspNetUserLogins_AspNetUsers_UserId",
+                        "FK_AspNetUserLogins_Users_UserId",
                         x => x.UserId,
-                        "AspNetUsers",
+                        "Users",
                         "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -301,17 +276,45 @@ namespace Entities.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUserRoles", x => new {x.UserId, x.RoleId});
                     table.ForeignKey(
-                        "FK_AspNetUserRoles_AspNetRoles_RoleId",
+                        "FK_AspNetUserRoles_Roles_RoleId",
                         x => x.RoleId,
-                        "AspNetRoles",
+                        "Roles",
                         "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        "FK_AspNetUserRoles_AspNetUsers_UserId",
+                        "FK_AspNetUserRoles_Users_UserId",
                         x => x.UserId,
-                        "AspNetUsers",
+                        "Users",
                         "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                "Advertisements",
+                table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    AdsLocationId = table.Column<int>(nullable: true),
+                    CreatedDate = table.Column<DateTime>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Discriminator = table.Column<string>(nullable: false),
+                    LastModifiedDate = table.Column<DateTime>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
+                    Url = table.Column<string>(nullable: true),
+                    Image = table.Column<string>(nullable: true),
+                    VideoUrl = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Advertisements", x => x.Id);
+                    table.ForeignKey(
+                        "FK_Advertisements_AdsLocations_AdsLocationId",
+                        x => x.AdsLocationId,
+                        "AdsLocations",
+                        "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -345,14 +348,14 @@ namespace Entities.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                "IX_AdsLocations_AdsTypeId",
+                "AdsLocations",
+                "AdsTypeId");
+
+            migrationBuilder.CreateIndex(
                 "IX_Advertisements_AdsLocationId",
                 "Advertisements",
                 "AdsLocationId");
-
-            migrationBuilder.CreateIndex(
-                "IX_Advertisements_AdsTypeId",
-                "Advertisements",
-                "AdsTypeId");
 
             migrationBuilder.CreateIndex(
                 "IX_Episodes_MovieId",
@@ -376,18 +379,18 @@ namespace Entities.Migrations
 
             migrationBuilder.CreateIndex(
                 "RoleNameIndex",
-                "AspNetRoles",
+                "Roles",
                 "NormalizedName",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 "EmailIndex",
-                "AspNetUsers",
+                "Users",
                 "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
                 "UserNameIndex",
-                "AspNetUsers",
+                "Users",
                 "NormalizedUserName",
                 unique: true);
 
@@ -451,19 +454,19 @@ namespace Entities.Migrations
                 "Invoices");
 
             migrationBuilder.DropTable(
-                "AspNetRoles");
+                "Roles");
 
             migrationBuilder.DropTable(
-                "AspNetUsers");
+                "Users");
 
             migrationBuilder.DropTable(
                 "AdsLocations");
 
             migrationBuilder.DropTable(
-                "AdsTypes");
+                "Customers");
 
             migrationBuilder.DropTable(
-                "Customers");
+                "AdsTypes");
         }
     }
 }

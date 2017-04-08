@@ -8,6 +8,6 @@ namespace Entities.Domain
 
         public string Description { get; set; }
 
-        public ICollection<Advertisement> Advertisements { get; set; }
+        public ICollection<AdsLocation> AdsLocations { get; set; }
     }
 }

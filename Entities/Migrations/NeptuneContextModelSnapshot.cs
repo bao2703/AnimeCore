@@ -19,11 +19,15 @@ namespace Entities.Migrations
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd();
 
+                b.Property<int?>("AdsTypeId");
+
                 b.Property<string>("Desciption");
 
                 b.Property<string>("Name");
 
                 b.HasKey("Id");
+
+                b.HasIndex("AdsTypeId");
 
                 b.ToTable("AdsLocations");
             });
@@ -49,8 +53,6 @@ namespace Entities.Migrations
 
                 b.Property<int?>("AdsLocationId");
 
-                b.Property<int?>("AdsTypeId");
-
                 b.Property<DateTime?>("CreatedDate");
 
                 b.Property<string>("Description");
@@ -69,8 +71,6 @@ namespace Entities.Migrations
                 b.HasKey("Id");
 
                 b.HasIndex("AdsLocationId");
-
-                b.HasIndex("AdsTypeId");
 
                 b.ToTable("Advertisements");
 
@@ -252,7 +252,7 @@ namespace Entities.Migrations
                     .IsUnique()
                     .HasName("RoleNameIndex");
 
-                b.ToTable("AspNetRoles");
+                b.ToTable("Roles");
             });
 
             modelBuilder.Entity("Entities.Domain.User", b =>
@@ -302,7 +302,7 @@ namespace Entities.Migrations
                     .IsUnique()
                     .HasName("UserNameIndex");
 
-                b.ToTable("AspNetUsers");
+                b.ToTable("Users");
             });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -411,15 +411,18 @@ namespace Entities.Migrations
                 b.HasDiscriminator().HasValue("VideoAds");
             });
 
+            modelBuilder.Entity("Entities.Domain.AdsLocation", b =>
+            {
+                b.HasOne("Entities.Domain.AdsType", "AdsType")
+                    .WithMany("AdsLocations")
+                    .HasForeignKey("AdsTypeId");
+            });
+
             modelBuilder.Entity("Entities.Domain.Advertisement", b =>
             {
                 b.HasOne("Entities.Domain.AdsLocation", "AdsLocation")
                     .WithMany("Advertisements")
                     .HasForeignKey("AdsLocationId");
-
-                b.HasOne("Entities.Domain.AdsType", "AdsType")
-                    .WithMany("Advertisements")
-                    .HasForeignKey("AdsTypeId");
             });
 
             modelBuilder.Entity("Entities.Domain.Episode", b =>
