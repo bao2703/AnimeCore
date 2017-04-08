@@ -9,15 +9,15 @@ namespace Entities.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                "AdsTypes",
+                "AdsLocations",
                 table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Description = table.Column<string>(nullable: true),
-                    Price = table.Column<long>(nullable: false)
+                    Desciption = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
                 },
-                constraints: table => { table.PrimaryKey("PK_AdsTypes", x => x.Id); });
+                constraints: table => { table.PrimaryKey("PK_AdsLocations", x => x.Id); });
 
             migrationBuilder.CreateTable(
                 "Customers",
@@ -114,22 +114,29 @@ namespace Entities.Migrations
                 table => { table.PrimaryKey("PK_AspNetUserTokens", x => new {x.UserId, x.LoginProvider, x.Name}); });
 
             migrationBuilder.CreateTable(
-                "AdsLocations",
+                "Advertisements",
                 table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AdsTypeId = table.Column<int>(nullable: true),
-                    Desciption = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true)
+                    AdsLocationId = table.Column<int>(nullable: true),
+                    CreatedDate = table.Column<DateTime>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Discriminator = table.Column<string>(nullable: false),
+                    LastModifiedDate = table.Column<DateTime>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
+                    Url = table.Column<string>(nullable: true),
+                    Image = table.Column<string>(nullable: true),
+                    VideoUrl = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AdsLocations", x => x.Id);
+                    table.PrimaryKey("PK_Advertisements", x => x.Id);
                     table.ForeignKey(
-                        "FK_AdsLocations_AdsTypes_AdsTypeId",
-                        x => x.AdsTypeId,
-                        "AdsTypes",
+                        "FK_Advertisements_AdsLocations_AdsLocationId",
+                        x => x.AdsLocationId,
+                        "AdsLocations",
                         "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -290,34 +297,6 @@ namespace Entities.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                "Advertisements",
-                table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AdsLocationId = table.Column<int>(nullable: true),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Discriminator = table.Column<string>(nullable: false),
-                    LastModifiedDate = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true),
-                    Url = table.Column<string>(nullable: true),
-                    Image = table.Column<string>(nullable: true),
-                    VideoUrl = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Advertisements", x => x.Id);
-                    table.ForeignKey(
-                        "FK_Advertisements_AdsLocations_AdsLocationId",
-                        x => x.AdsLocationId,
-                        "AdsLocations",
-                        "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 "InvoiceDetail",
                 table => new
                 {
@@ -346,11 +325,6 @@ namespace Entities.Migrations
                         "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                "IX_AdsLocations_AdsTypeId",
-                "AdsLocations",
-                "AdsTypeId");
 
             migrationBuilder.CreateIndex(
                 "IX_Advertisements_AdsLocationId",
@@ -464,9 +438,6 @@ namespace Entities.Migrations
 
             migrationBuilder.DropTable(
                 "Customers");
-
-            migrationBuilder.DropTable(
-                "AdsTypes");
         }
     }
 }

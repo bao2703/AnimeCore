@@ -8,8 +8,6 @@ namespace Entities.Domain
 
         public string Desciption { get; set; }
 
-        public AdsType AdsType { get; set; }
-
         public ICollection<Advertisement> Advertisements { get; set; }
     }
 }

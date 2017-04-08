@@ -30,8 +30,6 @@ namespace Entities
 
         public DbSet<VideoAds> VideoAdses { get; set; }
 
-        public DbSet<AdsType> AdsTypes { get; set; }
-
         public DbSet<AdsLocation> AdsLocations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)

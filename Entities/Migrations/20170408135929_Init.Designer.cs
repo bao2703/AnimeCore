@@ -9,7 +9,7 @@ using Entities.Domain;
 namespace Entities.Migrations
 {
     [DbContext(typeof(NeptuneContext))]
-    [Migration("20170408123636_Init")]
+    [Migration("20170408135929_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,31 +23,13 @@ namespace Entities.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AdsTypeId");
-
                     b.Property<string>("Desciption");
 
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AdsTypeId");
-
                     b.ToTable("AdsLocations");
-                });
-
-            modelBuilder.Entity("Entities.Domain.AdsType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Description");
-
-                    b.Property<long>("Price");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AdsTypes");
                 });
 
             modelBuilder.Entity("Entities.Domain.Advertisement", b =>
@@ -413,13 +395,6 @@ namespace Entities.Migrations
                     b.ToTable("VideoAds");
 
                     b.HasDiscriminator().HasValue("VideoAds");
-                });
-
-            modelBuilder.Entity("Entities.Domain.AdsLocation", b =>
-                {
-                    b.HasOne("Entities.Domain.AdsType", "AdsType")
-                        .WithMany("AdsLocations")
-                        .HasForeignKey("AdsTypeId");
                 });
 
             modelBuilder.Entity("Entities.Domain.Advertisement", b =>

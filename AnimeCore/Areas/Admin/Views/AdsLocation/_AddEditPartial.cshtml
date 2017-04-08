@@ -1,0 +1,45 @@
+@using Models.ModalViewModels
+@model Models.AdsLocationViewModels.AdsLocationViewModel
+
+@{
+    var modalHeading = "Add Ads Location";
+    var submitButtonText = "Add";
+    var submitButtonClass = "btn-primary";
+    if (ViewData["Action"].ToString() == "Edit")
+    {
+        modalHeading = "Edit Ads Location";
+        submitButtonText = "Edit";
+        submitButtonClass = "btn-info";
+    }
+}
+
+<form asp-action="@ViewData["Action"]" method="post" class="modal-form">
+    @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = modalHeading})
+    <div class="modal-body form-horizontal">
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 text-center"></div>
+            <div class="col-sm-offset-1 col-sm-10">
+                <div class="form-group">
+                    <label asp-for="Name" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="Name" class="form-control"/>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-offset-1 col-sm-10">
+                <div class="form-group">
+                    <label asp-for="Desciption" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="Desciption" class="form-control"/>
+                        <span asp-validation-for="Desciption" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input asp-for="Id" value="@Model.Id" type="hidden"/>
+    </div>
+    @await Html.PartialAsync("Modal/_FooterPartial", new ModalFooter {SubmitButtonText = submitButtonText, SubmitButtonClass = submitButtonClass})
+</form>
+
+<script src="~/assets/admin/js/modal-form.js"></script>
