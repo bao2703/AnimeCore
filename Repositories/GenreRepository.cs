@@ -2,7 +2,7 @@
 using Entities.Domain;
 using Repositories.Core;
 
-namespace Repositories.Repositories
+namespace Repositories
 {
     public interface IGenreRepository : IRepositoryAsync<Genre>
     {

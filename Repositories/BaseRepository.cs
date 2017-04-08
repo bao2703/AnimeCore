@@ -14,17 +14,17 @@ namespace Repositories
         {
         }
 
-        public TEntity FindById(object id)
+        public virtual TEntity FindById(object id)
         {
             return DbSet.Find(id);
         }
 
-        public IEnumerable<TEntity> FindBy(Expression<Func<TEntity, bool>> predicate)
+        public virtual IEnumerable<TEntity> FindBy(Expression<Func<TEntity, bool>> predicate)
         {
             return DbSet.Where(predicate);
         }
 
-        public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
+        public virtual TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
         {
             return DbSet.SingleOrDefault(predicate);
         }
@@ -44,12 +44,12 @@ namespace Repositories
             return DbSet.OrderByDescending(keySelector);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return DbSet.AsEnumerable();
         }
 
-        public List<TEntity> ToList()
+        public virtual List<TEntity> ToList()
         {
             return DbSet.ToList();
         }

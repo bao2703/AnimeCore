@@ -8,12 +8,15 @@ namespace AnimeCore.Controllers
     public class MovieController : Controller
     {
         private readonly AppSettings _appSettings;
+        private readonly IMovieRepository _movieRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public MovieController(IOptions<AppSettings> appSettings, IUnitOfWork unitOfWork)
+        public MovieController(IOptions<AppSettings> appSettings, IUnitOfWork unitOfWork,
+            IMovieRepository movieRepository)
         {
             _appSettings = appSettings.Value;
             _unitOfWork = unitOfWork;
+            _movieRepository = movieRepository;
         }
 
         // GET: /Movie/Index
@@ -31,7 +34,7 @@ namespace AnimeCore.Controllers
             {
                 return View("Error");
             }
-            var movie = _unitOfWork.MovieRepository.GetMovieWithGenres((int) id);
+            var movie = _movieRepository.FindById((int) id);
             return movie == null ? View("Error") : View(movie);
         }
 
@@ -42,7 +45,7 @@ namespace AnimeCore.Controllers
             {
                 return View("Error");
             }
-            var movie = _unitOfWork.MovieRepository.GetMovieWithEpisodes((int) id);
+            var movie = _movieRepository.FindById((int) id);
             return movie == null ? View("Error") : View(movie);
         }
     }

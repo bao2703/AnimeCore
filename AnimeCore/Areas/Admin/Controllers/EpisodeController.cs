@@ -19,7 +19,7 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         public IActionResult Index(int movieId)
         {
-            var movie = _unitOfWork.MovieRepository.GetMovieWithEpisodes(movieId);
+            var movie = _unitOfWork.MovieRepository.FindById(movieId);
             if (movie == null)
             {
                 return NotFound();
@@ -52,13 +52,14 @@ namespace AnimeCore.Areas.Admin.Controllers
             ViewData["Action"] = "Add";
             if (ModelState.IsValid)
             {
-                var genre = new Episode
+                var episode = new Episode
                 {
                     Name = model.Name,
                     Url = model.Url,
                     Movie = new Movie {Id = model.MovieId}
                 };
-                await _unitOfWork.EpisodeRepository.AddAsync(genre);
+                _unitOfWork.MovieRepository.Attach(episode.Movie);
+                await _unitOfWork.EpisodeRepository.AddAsync(episode);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;
             }
@@ -77,8 +78,7 @@ namespace AnimeCore.Areas.Admin.Controllers
             {
                 Id = episode.Id,
                 Name = episode.Name,
-                Url = episode.Url,
-                MovieId = episode.Movie.Id
+                Url = episode.Url
             };
             return PartialView("_AddEditPartial", model);
         }

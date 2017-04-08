@@ -1,7 +1,6 @@
 ﻿using AnimeCore.Common;
 using Microsoft.Extensions.DependencyInjection;
 using Repositories;
-using Repositories.Repositories;
 using Services;
 
 namespace AnimeCore.Configuration

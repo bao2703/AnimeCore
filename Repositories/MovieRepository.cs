@@ -5,14 +5,11 @@ using Entities.Domain;
 using Microsoft.EntityFrameworkCore;
 using Repositories.Core;
 
-namespace Repositories.Repositories
+namespace Repositories
 {
     public interface IMovieRepository : IRepositoryAsync<Movie>
     {
-        Movie GetMovieWithEpisodes(int id);
-        Movie GetMovieWithGenres(int id);
-        IEnumerable<Movie> GetAllMovieWithGenres();
-        IEnumerable<Movie> GetAllMovieWithGenres(string searchString);
+        IEnumerable<Movie> FindByNameContains(string searchString);
         IEnumerable<Movie> FindNewestMovie(int take);
         IEnumerable<Movie> FindPopularMovie(int take);
     }
@@ -23,24 +20,25 @@ namespace Repositories.Repositories
         {
         }
 
-        public Movie GetMovieWithEpisodes(int id)
+        public override Movie FindById(object id)
         {
-            return DbSet.Include(x => x.Episodes).SingleOrDefault(x => x.Id == id);
+            return DbSet.Include(x => x.Episodes)
+                .Include(x => x.GenreMovies)
+                .ThenInclude(x => x.Genre)
+                .SingleOrDefault(x => x.Id == (int) id);
         }
 
-        public Movie GetMovieWithGenres(int id)
+        public override IEnumerable<Movie> GetAll()
         {
-            return DbSet.Include(x => x.GenreMovies).ThenInclude(x => x.Genre).SingleOrDefault(x => x.Id == id);
+            return DbSet.Include(x => x.Episodes)
+                .Include(x => x.GenreMovies)
+                .ThenInclude(x => x.Genre);
         }
 
-        public IEnumerable<Movie> GetAllMovieWithGenres()
+        public IEnumerable<Movie> FindByNameContains(string searchString)
         {
-            return DbSet.Include(x => x.GenreMovies).ThenInclude(x => x.Genre);
-        }
-
-        public IEnumerable<Movie> GetAllMovieWithGenres(string searchString)
-        {
-            return DbSet.Include(x => x.GenreMovies).Where(x => x.Name.Contains(searchString));
+            return DbSet.Include(x => x.GenreMovies)
+                .Where(x => x.Name.Contains(searchString));
         }
 
         public IEnumerable<Movie> FindNewestMovie(int take)

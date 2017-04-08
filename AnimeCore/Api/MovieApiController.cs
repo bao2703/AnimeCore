@@ -18,7 +18,7 @@ namespace AnimeCore.Api
         [HttpGet]
         public IActionResult GetMovies(string searchString = "")
         {
-            return Ok(_unitOfWork.MovieRepository.GetAllMovieWithGenres(searchString));
+            return Ok(_unitOfWork.MovieRepository.FindByNameContains(searchString));
         }
     }
 }

@@ -4,7 +4,7 @@ using Entities;
 using Entities.Domain;
 using Repositories.Core;
 
-namespace Repositories.Repositories
+namespace Repositories
 {
     public interface IEpisodeRepository : IRepositoryAsync<Episode>
     {
@@ -17,6 +17,7 @@ namespace Repositories.Repositories
         public EpisodeRepository(NeptuneContext context) : base(context)
         {
         }
+
 
         public IEnumerable<Episode> OrderByName(IEnumerable<Episode> episodes)
         {
