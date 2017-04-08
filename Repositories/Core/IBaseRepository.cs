@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using Entities.Domain;
 
 namespace Repositories.Core
@@ -22,5 +23,9 @@ namespace Repositories.Core
         bool Any(Expression<Func<TEntity, bool>> predicate);
 
         List<TEntity> ToList();
+
+        Task AddAsync(TEntity entity);
+
+        Task AddRangeAsync(IEnumerable<TEntity> entities);
     }
 }

@@ -4,11 +4,11 @@ using Repositories.Core;
 
 namespace Repositories
 {
-    public interface IGenreRepository : IRepositoryAsync<Genre>
+    public interface IGenreRepository : IBaseRepository<Genre>
     {
     }
 
-    public class GenreRepository : RepositoryAsync<Genre>, IGenreRepository
+    public class GenreRepository : BaseRepository<Genre>, IGenreRepository
     {
         public GenreRepository(NeptuneContext context) : base(context)
         {

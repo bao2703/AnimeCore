@@ -7,14 +7,14 @@ using Repositories.Core;
 
 namespace Repositories
 {
-    public interface IMovieRepository : IRepositoryAsync<Movie>
+    public interface IMovieRepository : IBaseRepository<Movie>
     {
         IEnumerable<Movie> FindByNameContains(string searchString);
         IEnumerable<Movie> FindNewestMovie(int take);
         IEnumerable<Movie> FindPopularMovie(int take);
     }
 
-    public class MovieRepository : RepositoryAsync<Movie>, IMovieRepository
+    public class MovieRepository : BaseRepository<Movie>, IMovieRepository
     {
         public MovieRepository(NeptuneContext context) : base(context)
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using Entities;
 using Entities.Domain;
 using Repositories.Core;
@@ -52,6 +53,16 @@ namespace Repositories
         public virtual List<TEntity> ToList()
         {
             return DbSet.ToList();
+        }
+
+        public async Task AddAsync(TEntity entity)
+        {
+            await DbSet.AddAsync(entity);
+        }
+
+        public async Task AddRangeAsync(IEnumerable<TEntity> entities)
+        {
+            await DbSet.AddRangeAsync(entities);
         }
     }
 }

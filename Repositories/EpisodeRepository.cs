@@ -6,13 +6,13 @@ using Repositories.Core;
 
 namespace Repositories
 {
-    public interface IEpisodeRepository : IRepositoryAsync<Episode>
+    public interface IEpisodeRepository : IBaseRepository<Episode>
     {
         IEnumerable<Episode> OrderByName(IEnumerable<Episode> episodes);
         IEnumerable<Episode> OrderByDescendingName(IEnumerable<Episode> episodes);
     }
 
-    public class EpisodeRepository : RepositoryAsync<Episode>, IEpisodeRepository
+    public class EpisodeRepository : BaseRepository<Episode>, IEpisodeRepository
     {
         public EpisodeRepository(NeptuneContext context) : base(context)
         {
