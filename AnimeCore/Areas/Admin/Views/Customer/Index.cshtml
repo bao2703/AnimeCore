@@ -1,10 +1,10 @@
 @using Models.ModalViewModels
-@model IEnumerable<AdsLocation>
+@model IEnumerable<Customer>
 @{
-    ViewData[Constant.Title] = "Ads Location List";
+    ViewData[Constant.Title] = "Customer List";
 }
 
-@await Html.PartialAsync("Modal/_ModalPartial", new Modal {Id = "ads-action-modal", ModalSize = ModalSize.Medium})
+@await Html.PartialAsync("Modal/_ModalPartial", new Modal {Id = "customer-action-modal", ModalSize = ModalSize.Medium})
 
 <div class="panel panel-info">
     <div class="panel-heading">
@@ -15,7 +15,7 @@
     <div class="panel-body">
         <div class="col-xs-12" style="overflow-x: auto;">
             <div class="btn-group">
-                <a asp-action="Add" class="btn btn-primary" data-toggle="modal" data-target="#ads-action-modal">
+                <a asp-action="Add" class="btn btn-primary" data-toggle="modal" data-target="#customer-action-modal">
                     <i class="fa fa-plus"></i> Add Ads Location
                 </a>
             </div>
@@ -30,7 +30,10 @@
                         <display name-for="@Model.First().Name"></display>
                     </th>
                     <th>
-                        <display name-for="@Model.First().Desciption"></display>
+                        <display name-for="@Model.First().Email"></display>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().Address"></display>
                     </th>
                     <th style="width: 20px;">#</th>
                     <th style="width: 20px;">#</th>
@@ -42,14 +45,15 @@
                     <tr>
                         <td>@item.Id</td>
                         <td>@item.Name</td>
-                        <td>@item.Desciption</td>
+                        <td>@item.Email</td>
+                        <td>@item.Address</td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info" data-toggle="modal" data-target="#ads-action-modal">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info" data-toggle="modal" data-target="#customer-action-modal">
                                 <i class="fa fa-pencil"></i> Edit
                             </a>
                         </td>
                         <td>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" data-toggle="modal" data-target="#ads-action-modal">
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" data-toggle="modal" data-target="#customer-action-modal">
                                 <i class="fa fa-trash"></i> Delete
                             </a>
                         </td>

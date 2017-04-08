@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AnimeCore.Common;
 using Entities.Domain;
@@ -6,38 +9,38 @@ using Repositories;
 
 namespace AnimeCore.Areas.Admin.Controllers
 {
-    public class AdsLocationController : AdminController
+    public class CustomerController : AdminController
     {
-        private readonly IAdsLocationRepository _adsLocationRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICustomerRepository _customerRepository;
 
-        public AdsLocationController(IUnitOfWork unitOfWork, IAdsLocationRepository adsLocationRepository)
+        public CustomerController(IUnitOfWork unitOfWork, ICustomerRepository customerRepository)
         {
             _unitOfWork = unitOfWork;
-            _adsLocationRepository = adsLocationRepository;
+            _customerRepository = customerRepository;
         }
 
         public IActionResult Index()
         {
-            var model = _adsLocationRepository.GetAll();
+            var model = _customerRepository.GetAll();
             return View(model);
         }
 
         public IActionResult Add()
         {
             ViewData["Action"] = "Add";
-            var model = new AdsLocation();
+            var model = new Customer();
             return PartialView("_AddEditPartial", model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Add(AdsLocation model)
+        public async Task<IActionResult> Add(Customer model)
         {
             ViewData["Action"] = "Add";
             if (ModelState.IsValid)
             {
-                await _adsLocationRepository.AddAsync(model);
+                await _customerRepository.AddAsync(model);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;
             }

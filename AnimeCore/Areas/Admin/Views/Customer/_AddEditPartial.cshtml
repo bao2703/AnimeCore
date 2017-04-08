@@ -1,13 +1,13 @@
 @using Models.ModalViewModels
-@model AdsLocation
+@model Customer
 
 @{
-    var modalHeading = "Add Ads Location";
+    var modalHeading = "Add Customer";
     var submitButtonText = "Add";
     var submitButtonClass = "btn-primary";
     if (ViewData["Action"].ToString() == "Edit")
     {
-        modalHeading = "Edit Ads Location";
+        modalHeading = "Edit Customer";
         submitButtonText = "Edit";
         submitButtonClass = "btn-info";
     }
@@ -29,10 +29,19 @@
             </div>
             <div class="col-sm-offset-1 col-sm-10">
                 <div class="form-group">
-                    <label asp-for="Desciption" class="col-sm-3 control-label"></label>
+                    <label asp-for="Email" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <input asp-for="Desciption" class="form-control"/>
-                        <span asp-validation-for="Desciption" class="text-danger"></span>
+                        <input asp-for="Email" class="form-control"/>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-offset-1 col-sm-10">
+                <div class="form-group">
+                    <label asp-for="Address" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="Address" class="form-control"/>
+                        <span asp-validation-for="Address" class="text-danger"></span>
                     </div>
                 </div>
             </div>

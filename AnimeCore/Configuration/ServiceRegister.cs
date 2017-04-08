@@ -17,6 +17,7 @@ namespace AnimeCore.Configuration
             services.AddTransient<IEpisodeRepository, EpisodeRepository>();
             services.AddTransient<IMovieRepository, MovieRepository>();
             services.AddTransient<IGenreRepository, GenreRepository>();
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<IAdsLocationRepository, AdsLocationRepository>();
             services.AddSingleton<Helper>();
         }

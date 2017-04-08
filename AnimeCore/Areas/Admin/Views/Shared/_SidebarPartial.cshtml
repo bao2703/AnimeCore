@@ -14,7 +14,7 @@
                 <table class="table">
                     <tr>
                         <td>
-                            <a href="@Url.Action("Index", "User")">
+                            <a asp-action="Index" asp-controller="User">
                                 <i class="fa fa-user"></i>
                                 <span>User</span>
                             </a>
@@ -22,7 +22,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <a href="@Url.Action("Index", "Role")">
+                            <a asp-action="Index" asp-controller="Role">
                                 <i class="fa fa fa-id-card"></i>
                                 <span>Role</span>
                             </a>
@@ -30,7 +30,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <a href="@Url.Action("Index", "Genre")">
+                            <a asp-action="Index" asp-controller="Genre">
                                 <i class="fa fa-list"></i>
                                 <span>Genre</span>
                             </a>
@@ -38,7 +38,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <a href="@Url.Action("Index", "Movie")">
+                            <a asp-action="Index" asp-controller="Movie">
                                 <i class="fa fa-film"></i>
                                 <span>Anime</span>
                             </a>
@@ -46,9 +46,17 @@
                     </tr>
                     <tr>
                         <td>
-                            <a href="@Url.Action("Index", "AdsLocation")">
+                            <a asp-action="Index" asp-controller="AdsLocation">
                                 <i class="fa fa-film"></i>
                                 <span>Ads Location</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a asp-action="Index" asp-controller="Customer">
+                                <i class="fa fa-film"></i>
+                                <span>Customer</span>
                             </a>
                         </td>
                     </tr>
