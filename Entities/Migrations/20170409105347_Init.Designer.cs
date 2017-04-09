@@ -9,7 +9,7 @@ using Entities.Domain;
 namespace Entities.Migrations
 {
     [DbContext(typeof(NeptuneContext))]
-    [Migration("20170408135929_Init")]
+    [Migration("20170409105347_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,19 +25,23 @@ namespace Entities.Migrations
 
                     b.Property<string>("Desciption");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
                     b.ToTable("AdsLocations");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("AdsLocation");
                 });
 
             modelBuilder.Entity("Entities.Domain.Advertisement", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("AdsLocationId");
 
                     b.Property<DateTime?>("CreatedDate");
 
@@ -56,8 +60,6 @@ namespace Entities.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AdsLocationId");
-
                     b.ToTable("Advertisements");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Advertisement");
@@ -72,11 +74,16 @@ namespace Entities.Migrations
 
                     b.Property<DateTime?>("CreatedDate");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired();
 
                     b.Property<DateTime?>("LastModifiedDate");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<string>("PhoneNumber");
 
                     b.HasKey("Id");
 
@@ -110,7 +117,9 @@ namespace Entities.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100);
 
                     b.Property<string>("Slug");
 
@@ -375,11 +384,35 @@ namespace Entities.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Entities.Domain.BannerAdsLocation", b =>
+                {
+                    b.HasBaseType("Entities.Domain.AdsLocation");
+
+
+                    b.ToTable("BannerAdsLocation");
+
+                    b.HasDiscriminator().HasValue("BannerAdsLocation");
+                });
+
+            modelBuilder.Entity("Entities.Domain.VideoAdsLocation", b =>
+                {
+                    b.HasBaseType("Entities.Domain.AdsLocation");
+
+
+                    b.ToTable("VideoAdsLocation");
+
+                    b.HasDiscriminator().HasValue("VideoAdsLocation");
+                });
+
             modelBuilder.Entity("Entities.Domain.BannerAds", b =>
                 {
                     b.HasBaseType("Entities.Domain.Advertisement");
 
+                    b.Property<int?>("BannerAdsLocationId");
+
                     b.Property<string>("Image");
+
+                    b.HasIndex("BannerAdsLocationId");
 
                     b.ToTable("BannerAds");
 
@@ -390,18 +423,15 @@ namespace Entities.Migrations
                 {
                     b.HasBaseType("Entities.Domain.Advertisement");
 
-                    b.Property<string>("VideoUrl");
+                    b.Property<string>("Video");
+
+                    b.Property<int?>("VideoAdsLocationId");
+
+                    b.HasIndex("VideoAdsLocationId");
 
                     b.ToTable("VideoAds");
 
                     b.HasDiscriminator().HasValue("VideoAds");
-                });
-
-            modelBuilder.Entity("Entities.Domain.Advertisement", b =>
-                {
-                    b.HasOne("Entities.Domain.AdsLocation", "AdsLocation")
-                        .WithMany("Advertisements")
-                        .HasForeignKey("AdsLocationId");
                 });
 
             modelBuilder.Entity("Entities.Domain.Episode", b =>
@@ -479,6 +509,20 @@ namespace Entities.Migrations
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Entities.Domain.BannerAds", b =>
+                {
+                    b.HasOne("Entities.Domain.BannerAdsLocation", "BannerAdsLocation")
+                        .WithMany("BannerAdses")
+                        .HasForeignKey("BannerAdsLocationId");
+                });
+
+            modelBuilder.Entity("Entities.Domain.VideoAds", b =>
+                {
+                    b.HasOne("Entities.Domain.VideoAdsLocation", "VideoAdsLocation")
+                        .WithMany("VideoAdses")
+                        .HasForeignKey("VideoAdsLocationId");
                 });
         }
     }

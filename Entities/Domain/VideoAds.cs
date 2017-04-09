@@ -2,6 +2,8 @@
 {
     public class VideoAds : Advertisement
     {
-        public string VideoUrl { get; set; }
+        public string Video { get; set; }
+
+        public VideoAdsLocation VideoAdsLocation { get; set; }
     }
 }

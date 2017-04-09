@@ -15,7 +15,8 @@ namespace Entities.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Desciption = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true)
+                    Discriminator = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table => { table.PrimaryKey("PK_AdsLocations", x => x.Id); });
 
@@ -27,9 +28,10 @@ namespace Entities.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Address = table.Column<string>(nullable: true),
                     CreatedDate = table.Column<DateTime>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: false),
                     LastModifiedDate = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(maxLength: 100, nullable: false),
+                    PhoneNumber = table.Column<string>(nullable: true)
                 },
                 constraints: table => { table.PrimaryKey("PK_Customers", x => x.Id); });
 
@@ -39,7 +41,7 @@ namespace Entities.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 100, nullable: false),
                     Slug = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true)
                 },
@@ -119,7 +121,6 @@ namespace Entities.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AdsLocationId = table.Column<int>(nullable: true),
                     CreatedDate = table.Column<DateTime>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Discriminator = table.Column<string>(nullable: false),
@@ -127,15 +128,23 @@ namespace Entities.Migrations
                     Name = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
                     Url = table.Column<string>(nullable: true),
+                    BannerAdsLocationId = table.Column<int>(nullable: true),
                     Image = table.Column<string>(nullable: true),
-                    VideoUrl = table.Column<string>(nullable: true)
+                    Video = table.Column<string>(nullable: true),
+                    VideoAdsLocationId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Advertisements", x => x.Id);
                     table.ForeignKey(
-                        "FK_Advertisements_AdsLocations_AdsLocationId",
-                        x => x.AdsLocationId,
+                        "FK_Advertisements_AdsLocations_BannerAdsLocationId",
+                        x => x.BannerAdsLocationId,
+                        "AdsLocations",
+                        "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        "FK_Advertisements_AdsLocations_VideoAdsLocationId",
+                        x => x.VideoAdsLocationId,
                         "AdsLocations",
                         "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -327,9 +336,14 @@ namespace Entities.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                "IX_Advertisements_AdsLocationId",
+                "IX_Advertisements_BannerAdsLocationId",
                 "Advertisements",
-                "AdsLocationId");
+                "BannerAdsLocationId");
+
+            migrationBuilder.CreateIndex(
+                "IX_Advertisements_VideoAdsLocationId",
+                "Advertisements",
+                "VideoAdsLocationId");
 
             migrationBuilder.CreateIndex(
                 "IX_Episodes_MovieId",

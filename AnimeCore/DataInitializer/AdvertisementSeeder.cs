@@ -13,7 +13,7 @@ namespace AnimeCore.DataInitializer
         public static async Task InitializeAsync(IApplicationBuilder app)
         {
             var unitOfWork = app.ApplicationServices.GetService<IUnitOfWork>();
-            await InitializeAdvertisementAsync(app);
+            await InitializeVideoAdvertisementAsync(app);
             await InitializeCustomerAsync(app);
             await unitOfWork.SaveChangesAsync();
         }
@@ -53,43 +53,18 @@ namespace AnimeCore.DataInitializer
             await repository.AddRangeAsync(customers);
         }
 
-        private static async Task InitializeAdvertisementAsync(IApplicationBuilder app)
+        private static async Task InitializeVideoAdvertisementAsync(IApplicationBuilder app)
         {
-            var adsLocationRepository = app.ApplicationServices.GetService<IAdsLocationRepository>();
+            var adsLocationRepository = app.ApplicationServices.GetService<IVideoAdsLocationRepository>();
 
-            var adsLocations = new List<AdsLocation>
+            var adsLocations = new List<VideoAdsLocation>
             {
-                new AdsLocation
-                {
-                    Name = "Top Banner",
-                    Desciption = "Top Banner"
-                },
-                new AdsLocation
-                {
-                    Name = "Center Banner",
-                    Desciption = "Center Banner"
-                },
-                new AdsLocation
-                {
-                    Name = "Footer Banner",
-                    Desciption = "Footer Banner"
-                },
-                new AdsLocation
-                {
-                    Name = "Right Vertical Banner 1",
-                    Desciption = "Right Vertical Banner 1"
-                },
-                new AdsLocation
-                {
-                    Name = "Right Vertical Banner 2",
-                    Desciption = "Right Vertical Banner 2"
-                },
-                new AdsLocation
+                new VideoAdsLocation
                 {
                     Name = "Popular video",
                     Desciption = "Popular video"
                 },
-                new AdsLocation
+                new VideoAdsLocation
                 {
                     Name = "Newest video",
                     Desciption = "Newest video"
@@ -98,7 +73,7 @@ namespace AnimeCore.DataInitializer
 
             await adsLocationRepository.AddRangeAsync(adsLocations);
 
-            var videoAdsRepository = app.ApplicationServices.GetService<IVideoAdsRepository>();
+            var adsRepository = app.ApplicationServices.GetService<IVideoAdsRepository>();
 
             var videoAds = new List<VideoAds>
             {
@@ -108,12 +83,12 @@ namespace AnimeCore.DataInitializer
                     Description = "Neptune",
                     Title = "Neptune",
                     Url = "123123",
-                    VideoUrl = "123123",
-                    AdsLocation = adsLocations.Single(x => x.Name == "Popular video")
+                    Video = "123123",
+                    VideoAdsLocation = adsLocations.Single(x => x.Name == "Popular video")
                 }
             };
 
-            await videoAdsRepository.AddRangeAsync(videoAds);
+            await adsRepository.AddRangeAsync(videoAds);
         }
     }
 }

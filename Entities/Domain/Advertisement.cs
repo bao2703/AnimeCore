@@ -12,8 +12,6 @@ namespace Entities.Domain
 
         public string Description { get; set; }
 
-        public AdsLocation AdsLocation { get; set; }
-
         public ICollection<InvoiceDetail> InvoiceDetails { get; set; }
     }
 }

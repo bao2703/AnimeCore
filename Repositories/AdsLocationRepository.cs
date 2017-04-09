@@ -4,13 +4,13 @@ using Repositories.Core;
 
 namespace Repositories
 {
-    public interface IAdsLocationRepository : IBaseRepository<AdsLocation>
+    public interface IVideoAdsLocationRepository : IBaseRepository<AdsLocation>
     {
     }
 
-    public class AdsLocationRepository : BaseRepository<AdsLocation>, IAdsLocationRepository
+    public class VideoAdsLocationRepository : BaseRepository<AdsLocation>, IVideoAdsLocationRepository
     {
-        public AdsLocationRepository(NeptuneContext context) : base(context)
+        public VideoAdsLocationRepository(NeptuneContext context) : base(context)
         {
         }
     }

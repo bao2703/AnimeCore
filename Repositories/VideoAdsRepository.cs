@@ -18,7 +18,7 @@ namespace Repositories
 
         public override IEnumerable<VideoAds> GetAll()
         {
-            return DbSet.Include(x => x.AdsLocation);
+            return DbSet.Include(x => x.VideoAdsLocation);
         }
     }
 }
