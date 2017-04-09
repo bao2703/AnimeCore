@@ -9,7 +9,7 @@ using Entities.Domain;
 namespace Entities.Migrations
 {
     [DbContext(typeof(NeptuneContext))]
-    [Migration("20170409140253_Init")]
+    [Migration("20170409165505_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,8 +28,7 @@ namespace Entities.Migrations
                     b.Property<string>("Discriminator")
                         .IsRequired();
 
-                    b.Property<string>("Name")
-                        .IsRequired();
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
 
@@ -54,7 +53,8 @@ namespace Entities.Migrations
 
                     b.Property<DateTime?>("LastModifiedDate");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<string>("Title");
 
@@ -429,7 +429,7 @@ namespace Entities.Migrations
 
                     b.Property<string>("Video");
 
-                    b.Property<int?>("VideoAdsLocationId");
+                    b.Property<int>("VideoAdsLocationId");
 
                     b.HasIndex("VideoAdsLocationId");
 
@@ -533,7 +533,8 @@ namespace Entities.Migrations
                 {
                     b.HasOne("Entities.Domain.VideoAdsLocation", "VideoAdsLocation")
                         .WithMany("VideoAdses")
-                        .HasForeignKey("VideoAdsLocationId");
+                        .HasForeignKey("VideoAdsLocationId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

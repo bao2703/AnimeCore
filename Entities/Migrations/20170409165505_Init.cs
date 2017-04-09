@@ -16,7 +16,7 @@ namespace Entities.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Desciption = table.Column<string>(nullable: true),
                     Discriminator = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: false)
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table => { table.PrimaryKey("PK_AdsLocations", x => x.Id); });
 
@@ -126,7 +126,7 @@ namespace Entities.Migrations
                     Description = table.Column<string>(nullable: true),
                     Discriminator = table.Column<string>(nullable: false),
                     LastModifiedDate = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Url = table.Column<string>(nullable: true),
                     BannerAdsLocationId = table.Column<int>(nullable: true),
@@ -154,7 +154,7 @@ namespace Entities.Migrations
                         x => x.VideoAdsLocationId,
                         "AdsLocations",
                         "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

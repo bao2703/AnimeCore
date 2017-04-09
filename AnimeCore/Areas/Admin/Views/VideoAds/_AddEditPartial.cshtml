@@ -1,5 +1,5 @@
 @using Models.ModalViewModels
-@model Customer
+@model VideoAds
 
 @{
     var modalHeading = "Add Customer";
@@ -29,28 +29,46 @@
             </div>
             <div class="col-sm-offset-1 col-sm-10">
                 <div class="form-group">
-                    <label asp-for="Email" class="col-sm-3 control-label"></label>
+                    <label asp-for="Title" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <input asp-for="Email" class="form-control"/>
-                        <span asp-validation-for="Email" class="text-danger"></span>
+                        <input asp-for="Title" class="form-control"/>
+                        <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="col-sm-offset-1 col-sm-10">
                 <div class="form-group">
-                    <label asp-for="PhoneNumber" class="col-sm-3 control-label"></label>
+                    <label asp-for="Description" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <input asp-for="PhoneNumber" class="form-control"/>
-                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        <input asp-for="Description" class="form-control"/>
+                        <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="col-sm-offset-1 col-sm-10">
                 <div class="form-group">
-                    <label asp-for="Address" class="col-sm-3 control-label"></label>
+                    <label asp-for="Url" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <input asp-for="Address" class="form-control"/>
-                        <span asp-validation-for="Address" class="text-danger"></span>
+                        <input asp-for="Url" class="form-control"/>
+                        <span asp-validation-for="Url" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-offset-1 col-sm-10">
+                <div class="form-group">
+                    <label asp-for="Video" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="Video" class="form-control"/>
+                        <span asp-validation-for="Video" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-offset-1 col-sm-10">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Location</label>
+                    <div class="col-sm-9">
+                        <select asp-for="VideoAdsLocation.Id" asp-items="@(new SelectList((List<VideoAdsLocation>) ViewData["AdsLocationList"], "Id", "Name"))" class="selectpicker form-control"></select>
+                        <span asp-validation-for="VideoAdsLocation.Id" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -59,4 +77,7 @@
     @await Html.PartialAsync("Modal/_FooterPartial", new ModalFooter {SubmitButtonText = submitButtonText, SubmitButtonClass = submitButtonClass})
 </form>
 
+<script>
+    $('.selectpicker').selectpicker();
+</script>
 <script src="~/assets/admin/js/modal-form.js"></script>

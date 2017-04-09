@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Entities;
 using Entities.Domain;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,11 @@ namespace Repositories
     {
         public VideoAdsRepository(NeptuneContext context) : base(context)
         {
+        }
+
+        public override VideoAds FindById(object id)
+        {
+            return DbSet.Include(x => x.VideoAdsLocation).SingleOrDefault(x => x.Id == (int) id);
         }
 
         public override IEnumerable<VideoAds> GetAll()
