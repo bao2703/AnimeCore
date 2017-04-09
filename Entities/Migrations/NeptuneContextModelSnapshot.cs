@@ -41,6 +41,8 @@ namespace Entities.Migrations
 
                 b.Property<DateTime?>("CreatedDate");
 
+                b.Property<int?>("CustomerId");
+
                 b.Property<string>("Description");
 
                 b.Property<string>("Discriminator")
@@ -55,6 +57,8 @@ namespace Entities.Migrations
                 b.Property<string>("Url");
 
                 b.HasKey("Id");
+
+                b.HasIndex("CustomerId");
 
                 b.ToTable("Advertisements");
 
@@ -430,6 +434,13 @@ namespace Entities.Migrations
                 b.HasDiscriminator().HasValue("VideoAds");
             });
 
+            modelBuilder.Entity("Entities.Domain.Advertisement", b =>
+            {
+                b.HasOne("Entities.Domain.Customer", "Customer")
+                    .WithMany("Advertisements")
+                    .HasForeignKey("CustomerId");
+            });
+
             modelBuilder.Entity("Entities.Domain.Episode", b =>
             {
                 b.HasOne("Entities.Domain.Movie", "Movie")
@@ -452,7 +463,7 @@ namespace Entities.Migrations
 
             modelBuilder.Entity("Entities.Domain.Invoice", b =>
             {
-                b.HasOne("Entities.Domain.Customer")
+                b.HasOne("Entities.Domain.Customer", "Customer")
                     .WithMany("Invoices")
                     .HasForeignKey("CustomerId");
             });

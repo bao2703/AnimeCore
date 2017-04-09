@@ -33,6 +33,9 @@
                         <display name-for="@Model.First().Email"></display>
                     </th>
                     <th>
+                        <display name-for="@Model.First().PhoneNumber"></display>
+                    </th>
+                    <th>
                         <display name-for="@Model.First().Address"></display>
                     </th>
                     <th style="width: 20px;">#</th>
@@ -46,6 +49,7 @@
                         <td>@item.Id</td>
                         <td>@item.Name</td>
                         <td>@item.Email</td>
+                        <td>@item.PhoneNumber</td>
                         <td>@item.Address</td>
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info" data-toggle="modal" data-target="#customer-action-modal">

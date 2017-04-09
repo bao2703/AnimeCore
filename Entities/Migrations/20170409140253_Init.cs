@@ -122,6 +122,7 @@ namespace Entities.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreatedDate = table.Column<DateTime>(nullable: true),
+                    CustomerId = table.Column<int>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Discriminator = table.Column<string>(nullable: false),
                     LastModifiedDate = table.Column<DateTime>(nullable: true),
@@ -136,6 +137,12 @@ namespace Entities.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Advertisements", x => x.Id);
+                    table.ForeignKey(
+                        "FK_Advertisements_Customers_CustomerId",
+                        x => x.CustomerId,
+                        "Customers",
+                        "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         "FK_Advertisements_AdsLocations_BannerAdsLocationId",
                         x => x.BannerAdsLocationId,
@@ -334,6 +341,11 @@ namespace Entities.Migrations
                         "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                "IX_Advertisements_CustomerId",
+                "Advertisements",
+                "CustomerId");
 
             migrationBuilder.CreateIndex(
                 "IX_Advertisements_BannerAdsLocationId",

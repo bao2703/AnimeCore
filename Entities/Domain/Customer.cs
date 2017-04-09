@@ -19,6 +19,8 @@ namespace Entities.Domain
         [EmailAddress]
         public string Email { get; set; }
 
+        [Display(Name = "Phone number")]
+        [RegularExpression("(\\+84|0)\\d{9,10}", ErrorMessage = "The {0} is not valid.")]
         public string PhoneNumber { get; set; }
 
         public string Address { get; set; }
