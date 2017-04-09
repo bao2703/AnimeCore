@@ -1,0 +1,83 @@
+@using Models.ModalViewModels
+@model IEnumerable<VideoAds>
+@{
+    ViewData[Constant.Title] = "Advertisement List";
+}
+
+@await Html.PartialAsync("Modal/_ModalPartial", new Modal {Id = "customer-action-modal", ModalSize = ModalSize.Medium})
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4>
+            @ViewData[Constant.Title]
+        </h4>
+    </div>
+    <div class="panel-body">
+        <div class="col-xs-12" style="overflow-x: auto;">
+            <div class="btn-group">
+                <a asp-action="Add" class="btn btn-primary" data-toggle="modal" data-target="#customer-action-modal">
+                    <i class="fa fa-plus"></i> Add Advertisement
+                </a>
+            </div>
+            <div class="top-buffer"></div>
+            <table class="table table-striped table-bordered table-hover" id="dataTables">
+                <thead>
+                <tr>
+                    <th>
+                        <display name-for="@Model.First().Id"></display>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().Name"></display>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().Title"></display>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().Description"></display>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().Url"></display>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().VideoUrl"></display>
+                    </th>
+                    <th>
+                        Location
+                    </th>
+                    <th style="width: 20px;">#</th>
+                    <th style="width: 20px;">#</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Title</td>
+                        <td>@item.Description</td>
+                        <td>@item.Url</td>
+                        <td>@item.VideoUrl</td>
+                        <td>@item.AdsLocation.Name</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info" data-toggle="modal" data-target="#customer-action-modal">
+                                <i class="fa fa-pencil"></i> Edit
+                            </a>
+                        </td>
+                        <td>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" data-toggle="modal" data-target="#customer-action-modal">
+                                <i class="fa fa-trash"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script src="~/assets/admin/js/modal-remote-setup.js"></script>
+}

@@ -2997,10 +2997,12 @@ namespace AnimeCore.DataInitializer
                 context.Movies.AddRangeAsync(movies)
             };
             episodes.ForEach(x => tasks.Add(context.Episodes.AddRangeAsync(x)));
+
             await Task.WhenAll(tasks);
             await context.SaveChangesAsync();
 
             await AccountSeeder.InitializeAsync(app);
+            await AdvertisementSeeder.InitializeAsync(app);
         }
     }
 }
