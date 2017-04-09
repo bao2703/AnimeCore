@@ -1,4 +1,6 @@
+using System.Threading.Tasks;
 using Entities.Domain;
+using Microsoft.AspNetCore.Mvc;
 using Repositories;
 
 namespace AnimeCore.Areas.Admin.Controllers
@@ -11,5 +13,29 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         protected override string AddPartialViewName { get; set; } = "_AddEditPartial";
         protected override string EditPartialViewName { get; set; } = "_AddEditPartial";
+
+        public override IActionResult Add()
+        {
+            ViewData["Action"] = "Add";
+            return base.Add();
+        }
+
+        public override Task<IActionResult> Add(Customer model)
+        {
+            ViewData["Action"] = "Add";
+            return base.Add(model);
+        }
+
+        public override IActionResult Edit(int id)
+        {
+            ViewData["Action"] = "Edit";
+            return base.Edit(id);
+        }
+
+        public override Task<IActionResult> Edit(Customer model)
+        {
+            ViewData["Action"] = "Edit";
+            return base.Edit(model);
+        }
     }
 }

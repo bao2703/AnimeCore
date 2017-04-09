@@ -44,30 +44,6 @@
                             </a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <a asp-action="Index" asp-controller="AdsLocation">
-                                <i class="fa fa-film"></i>
-                                <span>Ads Location</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a asp-action="Index" asp-controller="VideoAds">
-                                <i class="fa fa-film"></i>
-                                <span>Video Advertisement</span>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a asp-action="Index" asp-controller="Customer">
-                                <i class="fa fa-film"></i>
-                                <span>Customer</span>
-                            </a>
-                        </td>
-                    </tr>
                 </table>
             </div>
         </div>
@@ -76,16 +52,41 @@
     <div class="panel panel-warning">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse-report">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse-advertisement">
                     <span class="fa fa-file">
-                        Report
+                        Advertisement Management
                     </span>
                 </a>
             </h4>
         </div>
-        <div id="collapse-report" class="panel-collapse collapse">
+        <div id="collapse-advertisement" class="panel-collapse collapse in">
             <div class="panel-body">
-                <table class="table"></table>
+                <table class="table">
+                    <tr>
+                        <td>
+                            <a asp-action="Index" asp-controller="Customer">
+                                <i class="fa fa-group"></i>
+                                <span>Customer</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a asp-action="Index" asp-controller="VideoAds">
+                                <i class="fa"></i>
+                                <span>Video Advertisement</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a asp-action="Index" asp-controller="AdsLocation">
+                                <i class="fa"></i>
+                                <span>Video Ads Location</span>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>

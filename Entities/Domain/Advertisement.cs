@@ -12,6 +12,8 @@ namespace Entities.Domain
 
         public string Description { get; set; }
 
+        public Customer Customer { get; set; }
+
         public ICollection<InvoiceDetail> InvoiceDetails { get; set; }
     }
 }

@@ -31,7 +31,6 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         public virtual IActionResult Add()
         {
-            ViewData["Action"] = "Add";
             var model = new TEntity();
             return PartialView(AddPartialViewName, model);
         }
@@ -40,7 +39,6 @@ namespace AnimeCore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public virtual async Task<IActionResult> Add(TEntity model)
         {
-            ViewData["Action"] = "Add";
             if (ModelState.IsValid)
             {
                 await _repository.AddAsync(model);
@@ -52,7 +50,6 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         public virtual IActionResult Edit(int id)
         {
-            ViewData["Action"] = "Edit";
             var model = _repository.FindById(id);
             if (model == null)
             {
@@ -65,7 +62,6 @@ namespace AnimeCore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public virtual async Task<IActionResult> Edit(TEntity model)
         {
-            ViewData["Action"] = "Edit";
             if (ModelState.IsValid)
             {
                 _repository.Update(model);

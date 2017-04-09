@@ -6,6 +6,8 @@ namespace Entities.Domain
     {
         public long TotalPrice { get; set; }
 
+        public Customer Customer { get; set; }
+
         public ICollection<InvoiceDetail> InvoiceDetails { get; set; }
     }
 }

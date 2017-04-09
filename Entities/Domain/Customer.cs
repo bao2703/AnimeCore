@@ -23,6 +23,8 @@ namespace Entities.Domain
 
         public string Address { get; set; }
 
+        public ICollection<Advertisement> Advertisements { get; set; }
+
         public ICollection<Invoice> Invoices { get; set; }
     }
 }
