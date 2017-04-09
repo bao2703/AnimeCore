@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AnimeCore.Common;
 using Entities.Domain;
@@ -10,16 +7,21 @@ using Repositories.Core;
 
 namespace AnimeCore.Areas.Admin.Controllers
 {
-    public abstract class DefaultController<TEntity, TRepository> : AdminController where TEntity : Entity, new() where TRepository : IBaseRepository<TEntity>
+    public abstract class DefaultController<TEntity, TRepository> : AdminController where TEntity : Entity, new()
+        where TRepository : IBaseRepository<TEntity>
     {
-        private readonly IUnitOfWork _unitOfWork;
         private readonly TRepository _repository;
+        private readonly IUnitOfWork _unitOfWork;
 
         protected DefaultController(IUnitOfWork unitOfWork, TRepository repository)
         {
             _unitOfWork = unitOfWork;
             _repository = repository;
         }
+
+        protected virtual string AddPartialViewName { get; set; } = "_AddPartial";
+        protected virtual string EditPartialViewName { get; set; } = "_EditPartial";
+        protected virtual string DeletePartialViewName { get; set; } = "_DeletePartial";
 
         public virtual IActionResult Index()
         {
@@ -31,7 +33,7 @@ namespace AnimeCore.Areas.Admin.Controllers
         {
             ViewData["Action"] = "Add";
             var model = new TEntity();
-            return PartialView("_AddEditPartial", model);
+            return PartialView(AddPartialViewName, model);
         }
 
         [HttpPost]
@@ -45,7 +47,7 @@ namespace AnimeCore.Areas.Admin.Controllers
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;
             }
-            return PartialView("_AddEditPartial", model);
+            return PartialView(AddPartialViewName, model);
         }
 
         public virtual IActionResult Edit(int id)
@@ -56,7 +58,7 @@ namespace AnimeCore.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            return PartialView("_AddEditPartial", model);
+            return PartialView(EditPartialViewName, model);
         }
 
         [HttpPost]
@@ -70,7 +72,7 @@ namespace AnimeCore.Areas.Admin.Controllers
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;
             }
-            return PartialView("_AddEditPartial", model);
+            return PartialView(EditPartialViewName, model);
         }
 
         public virtual IActionResult Delete(int id)
@@ -80,7 +82,7 @@ namespace AnimeCore.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            return PartialView("_DeletePartial", model);
+            return PartialView(DeletePartialViewName, model);
         }
 
         [HttpPost]
@@ -93,7 +95,7 @@ namespace AnimeCore.Areas.Admin.Controllers
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;
             }
-            return PartialView("_DeletePartial", model);
+            return PartialView(DeletePartialViewName, model);
         }
     }
 }

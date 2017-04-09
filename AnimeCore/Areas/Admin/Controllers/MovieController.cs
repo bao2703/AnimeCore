@@ -1,23 +1,15 @@
-using Microsoft.AspNetCore.Mvc;
+using Entities.Domain;
 using Repositories;
 
 namespace AnimeCore.Areas.Admin.Controllers
 {
-    public class MovieController : AdminController
+    public class MovieController : DefaultController<Movie, IMovieRepository>
     {
-        private readonly IMovieRepository _movieRepository;
-        private readonly IUnitOfWork _unitOfWork;
-
-        public MovieController(IUnitOfWork unitOfWork, IMovieRepository movieRepository)
+        public MovieController(IUnitOfWork unitOfWork, IMovieRepository repository) : base(unitOfWork, repository)
         {
-            _unitOfWork = unitOfWork;
-            _movieRepository = movieRepository;
         }
 
-        public IActionResult Index()
-        {
-            var model = _movieRepository.GetAll();
-            return View(model);
-        }
+        protected override string AddPartialViewName { get; set; } = "_AddEditPartial";
+        protected override string EditPartialViewName { get; set; } = "_AddEditPartial";
     }
 }

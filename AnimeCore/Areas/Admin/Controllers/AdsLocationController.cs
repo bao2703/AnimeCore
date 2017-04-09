@@ -9,5 +9,8 @@ namespace AnimeCore.Areas.Admin.Controllers
             : base(unitOfWork, repository)
         {
         }
+
+        protected override string AddPartialViewName { get; set; } = "_AddEditPartial";
+        protected override string EditPartialViewName { get; set; } = "_AddEditPartial";
     }
 }

@@ -8,5 +8,8 @@ namespace AnimeCore.Areas.Admin.Controllers
         public GenreController(IUnitOfWork unitOfWork, IGenreRepository repository) : base(unitOfWork, repository)
         {
         }
+
+        protected override string AddPartialViewName { get; set; } = "_AddEditPartial";
+        protected override string EditPartialViewName { get; set; } = "_AddEditPartial";
     }
 }
