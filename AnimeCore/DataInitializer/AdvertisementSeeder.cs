@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Entities.Domain;
@@ -61,12 +62,12 @@ namespace AnimeCore.DataInitializer
             {
                 new VideoAdsLocation
                 {
-                    Name = "Popular video",
+                    Name = "Popular",
                     Desciption = "Popular video"
                 },
                 new VideoAdsLocation
                 {
-                    Name = "Newest video",
+                    Name = "Newest",
                     Desciption = "Newest video"
                 }
             };
@@ -82,9 +83,11 @@ namespace AnimeCore.DataInitializer
                     Name = "Neptune",
                     Description = "Neptune",
                     Title = "Neptune",
-                    Url = "123123",
-                    Video = "123123",
-                    VideoAdsLocation = adsLocations.Single(x => x.Name == "Popular video")
+                    Url = "http:\\localhost.com",
+                    Video = "C:\\",
+                    StartDate = new DateTime(2017, 4, 10),
+                    EndDate = new DateTime(2017, 6, 10),
+                    VideoAdsLocation = adsLocations.Single(x => x.Name == "Popular")
                 }
             };
 

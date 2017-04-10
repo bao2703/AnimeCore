@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Entities.Domain
+﻿namespace Entities.Domain
 {
     public class InvoiceDetail
     {
@@ -12,16 +10,6 @@ namespace Entities.Domain
 
         public Advertisement Advertisement { get; set; }
 
-        public long View { get; set; }
-
-        public long Hover { get; set; }
-
-        public long Click { get; set; }
-
         public long Price { get; set; }
-
-        public DateTime StartDate { get; set; }
-
-        public DateTime EndDate { get; set; }
     }
 }
