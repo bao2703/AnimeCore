@@ -2,12 +2,12 @@
 @model VideoAds
 
 @{
-    var modalHeading = "Add Customer";
+    var modalHeading = "Add Advertisement";
     var submitButtonText = "Add";
     var submitButtonClass = "btn-primary";
     if (ViewData["Action"].ToString() == "Edit")
     {
-        modalHeading = "Edit Customer";
+        modalHeading = "Edit Advertisement";
         submitButtonText = "Edit";
         submitButtonClass = "btn-info";
     }
@@ -68,7 +68,7 @@
                     <label asp-for="StartDate" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
                         <div class="input-group" id="start">
-                            <input asp-for="StartDate" class="form-control"/>
+                            <input asp-for="StartDate" value="@Model.StartDate.ToString("MM/dd/yyyy")" class="form-control"/>
                             <span class="input-group-addon">
                                 <span class="fa fa-calendar"></span>
                             </span>
@@ -82,7 +82,7 @@
                     <label asp-for="EndDate" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
                         <div class="input-group" id="end">
-                            <input asp-for="EndDate" class="form-control"/>
+                            <input asp-for="EndDate" value="@Model.EndDate.ToString("MM/dd/yyyy")" class="form-control"/>
                             <span class="input-group-addon">
                                 <span class="fa fa-calendar"></span>
                             </span>

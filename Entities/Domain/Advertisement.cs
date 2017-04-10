@@ -6,6 +6,12 @@ namespace Entities.Domain
 {
     public abstract class Advertisement : TimestampEntity, IValidatableObject
     {
+        protected Advertisement()
+        {
+            StartDate = DateTime.Now;
+            EndDate = DateTime.Now;
+        }
+
         [Required]
         public string Name { get; set; }
 
@@ -36,7 +42,7 @@ namespace Entities.Domain
         {
             var result = new List<ValidationResult>();
 
-            if (StartDate <= DateTime.Now)
+            if (StartDate < DateTime.Now)
             {
                 result.Add(new ValidationResult("Start date must be greater than current date.", new[] {"StartDate"}));
             }

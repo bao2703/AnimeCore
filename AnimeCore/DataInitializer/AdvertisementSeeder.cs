@@ -83,7 +83,7 @@ namespace AnimeCore.DataInitializer
                     Name = "Neptune",
                     Description = "Neptune",
                     Title = "Neptune",
-                    Url = "http:\\localhost.com",
+                    Url = "http://localhost.com",
                     Video = "C:\\",
                     StartDate = new DateTime(2017, 4, 10),
                     EndDate = new DateTime(2017, 6, 10),
