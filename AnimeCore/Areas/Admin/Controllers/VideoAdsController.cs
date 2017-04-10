@@ -29,7 +29,6 @@ namespace AnimeCore.Areas.Admin.Controllers
         {
             ViewData["Action"] = "Add";
             ViewData["AdsLocationList"] = _videoAdsLocationRepository.ToList();
-            model.VideoAdsLocation = _videoAdsLocationRepository.FindById(model.VideoAdsLocation.Id);
             return base.Add(model);
         }
 
@@ -44,7 +43,6 @@ namespace AnimeCore.Areas.Admin.Controllers
         {
             ViewData["Action"] = "Edit";
             ViewData["AdsLocationList"] = _videoAdsLocationRepository.ToList();
-            model.VideoAdsLocation = _videoAdsLocationRepository.FindById(model.VideoAdsLocation.Id);
             return base.Edit(model);
         }
     }

@@ -67,8 +67,8 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Location</label>
                     <div class="col-sm-9">
-                        <select asp-for="VideoAdsLocation.Id" asp-items="@(new SelectList((List<VideoAdsLocation>) ViewData["AdsLocationList"], "Id", "Name"))" class="selectpicker form-control"></select>
-                        <span asp-validation-for="VideoAdsLocation.Id" class="text-danger"></span>
+                        <select asp-for="VideoAdsLocationId" asp-items="@(new SelectList((List<VideoAdsLocation>) ViewData["AdsLocationList"], "Id", "Name"))" class="selectpicker form-control"></select>
+                        <span asp-validation-for="VideoAdsLocationId" class="text-danger"></span>
                     </div>
                 </div>
             </div>

@@ -1,12 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Entities.Domain
+﻿namespace Entities.Domain
 {
     public class VideoAds : Advertisement
     {
         public string Video { get; set; }
 
-        [Required]
+        public int? VideoAdsLocationId { get; set; }
+
         public VideoAdsLocation VideoAdsLocation { get; set; }
     }
 }
