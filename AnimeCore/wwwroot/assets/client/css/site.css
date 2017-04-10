@@ -168,8 +168,8 @@ div.footer {
     }
 }
 
-#media-player { height: 300px; }
+#movie-player { height: 300px; }
 
 @media (min-width: 767px) {
-    #media-player { height: 500px; }
+    #movie-player { height: 500px; }
 }
