@@ -173,3 +173,15 @@ div.footer {
 @media (min-width: 767px) {
     #movie-player { height: 500px; }
 }
+
+#ads-area {
+    position: relative;
+    z-index: 0;
+}
+
+#ads-skip {
+    bottom: 0;
+    margin-bottom: 50px;
+    position: absolute;
+    z-index: 1;
+}

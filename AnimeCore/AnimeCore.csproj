@@ -32,6 +32,7 @@
     <Content Include="wwwroot\assets\client\ads-example\doritos-crash-the-super-bowl-finalist-ultrasound.mp4" />
     <Content Include="wwwroot\assets\client\ads-example\ford.MP4" />
     <Content Include="wwwroot\assets\css\styles.css" />
+    <Content Include="wwwroot\assets\js\facebook-sdk.js" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
@@ -61,7 +62,6 @@
     <Folder Include="Views\Movie\" />
     <Folder Include="Views\Shared\Components\MovieSlide\" />
     <Folder Include="Views\Shared\Components\MovieSlide\" />
-    <Folder Include="wwwroot\assets\js\" />
     <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
