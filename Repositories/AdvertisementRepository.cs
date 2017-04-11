@@ -34,7 +34,7 @@ namespace Repositories
             return
                 DbSet.Include(x => x.AdsLocation)
                     .Where(x => x.AdsType == AdsType.Video)
-                    .Where(x => x.EndDate < DateTime.Today);
+                    .Where(x => x.EndDate >= DateTime.Today);
         }
     }
 }
