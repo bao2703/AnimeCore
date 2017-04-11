@@ -75,7 +75,8 @@
     <div class="panel-footer">
     </div>
 </div>
-<div class="fb-comments" data-href="@Context.Request.Host@Context.Request.Path" data-numposts="10" data-width="100%" data-mobile="true" data-colorscheme="dark"></div>
+
+<div class="fb-comments" data-href="@($"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}")" data-numposts="10" data-width="100%" data-mobile="true" data-colorscheme="dark"></div>
 
 @section scripts {
     <script>
