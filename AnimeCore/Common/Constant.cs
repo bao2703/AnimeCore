@@ -13,5 +13,7 @@
         public static string SearchString => "SearchString";
 
         public static string SlideTitle => "SlideTitle";
+
+        public static string DateFormat => "MM/dd/yyyy";
     }
 }

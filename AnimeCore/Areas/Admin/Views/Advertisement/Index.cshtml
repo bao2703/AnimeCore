@@ -1,5 +1,5 @@
 @using Models.ModalViewModels
-@model IEnumerable<VideoAds>
+@model IEnumerable<Advertisement>
 @{
     ViewData[Constant.Title] = "Advertisement List";
 }
@@ -39,13 +39,10 @@
                         <display name-for="@Model.First().Url"></display>
                     </th>
                     <th>
-                        <display name-for="@Model.First().Video"></display>
+                        <display name-for="@Model.First().Source"></display>
                     </th>
                     <th>
                         <display name-for="@Model.First().Click"></display>
-                    </th>
-                    <th>
-                        <display name-for="@Model.First().Hover"></display>
                     </th>
                     <th>
                         <display name-for="@Model.First().View"></display>
@@ -72,13 +69,12 @@
                         <td>@item.Title</td>
                         <td>@item.Description</td>
                         <td>@item.Url</td>
-                        <td>@item.Video</td>
+                        <td>@item.Source</td>
                         <td>@item.Click</td>
-                        <td>@item.Hover</td>
                         <td>@item.View</td>
-                        <td>@item.StartDate.ToString("MM/dd/yyyy")</td>
-                        <td>@item.EndDate.ToString("MM/dd/yyyy")</td>
-                        <td>@item.VideoAdsLocation.Name</td>
+                        <td>@item.StartDate.ToString(Constant.DateFormat)</td>
+                        <td>@item.EndDate.ToString(Constant.DateFormat)</td>
+                        <td>@item.AdsLocation.Name</td>
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info" data-toggle="modal" data-target="#customer-action-modal">
                                 <i class="fa fa-pencil"></i> Edit

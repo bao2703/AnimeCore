@@ -56,16 +56,16 @@ namespace AnimeCore.DataInitializer
 
         private static async Task InitializeVideoAdvertisementAsync(IApplicationBuilder app)
         {
-            var adsLocationRepository = app.ApplicationServices.GetService<IVideoAdsLocationRepository>();
+            var adsLocationRepository = app.ApplicationServices.GetService<IAdsLocationRepository>();
 
-            var adsLocations = new List<VideoAdsLocation>
+            var adsLocations = new List<AdsLocation>
             {
-                new VideoAdsLocation
+                new AdsLocation
                 {
                     Name = "Popular",
                     Desciption = "Popular video"
                 },
-                new VideoAdsLocation
+                new AdsLocation
                 {
                     Name = "Newest",
                     Desciption = "Newest video"
@@ -74,20 +74,21 @@ namespace AnimeCore.DataInitializer
 
             await adsLocationRepository.AddRangeAsync(adsLocations);
 
-            var adsRepository = app.ApplicationServices.GetService<IVideoAdsRepository>();
+            var adsRepository = app.ApplicationServices.GetService<IAdvertisementRepository>();
 
-            var videoAds = new List<VideoAds>
+            var videoAds = new List<Advertisement>
             {
-                new VideoAds
+                new Advertisement
                 {
                     Name = "Neptune",
                     Description = "Neptune",
                     Title = "Neptune",
-                    Url = "http://localhost.com",
-                    Video = "C:\\",
+                    Url = "https://www.ford.com.vn/",
+                    Source = "/assets/client/ads-example/ford-ads-example.MP4",
+                    AdsType = AdsType.Video,
                     StartDate = new DateTime(2017, 4, 10),
                     EndDate = new DateTime(2017, 6, 10),
-                    VideoAdsLocation = adsLocations.Single(x => x.Name == "Popular")
+                    AdsLocation = adsLocations.Single(x => x.Name == "Popular")
                 }
             };
 

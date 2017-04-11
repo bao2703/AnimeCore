@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Domain
 {
-    public abstract class AdsLocation : Entity
+    public class AdsLocation : Entity
     {
         [Required]
         public string Name { get; set; }
@@ -10,5 +11,7 @@ namespace Entities.Domain
         public int Price { get; set; }
 
         public string Desciption { get; set; }
+
+        public ICollection<Advertisement> Advertisements { get; set; }
     }
 }

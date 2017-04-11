@@ -4,12 +4,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Domain
 {
-    public abstract class Advertisement : TimestampEntity, IValidatableObject
+    public enum AdsType
     {
-        protected Advertisement()
+        Video,
+        Banner
+    }
+
+    public class Advertisement : TimestampEntity, IValidatableObject
+    {
+        public Advertisement()
         {
-            StartDate = DateTime.Now;
-            EndDate = DateTime.Now;
+            StartDate = DateTime.Today;
+            EndDate = DateTime.Today;
         }
 
         [Required]
@@ -20,11 +26,13 @@ namespace Entities.Domain
         [DataType(DataType.Url)]
         public string Url { get; set; }
 
+        public string Source { get; set; }
+
+        public AdsType AdsType { get; set; }
+
         public string Description { get; set; }
 
         public long View { get; set; }
-
-        public long Hover { get; set; }
 
         public long Click { get; set; }
 
@@ -36,13 +44,17 @@ namespace Entities.Domain
 
         public Customer Customer { get; set; }
 
+        public int AdsLocationId { get; set; }
+
+        public AdsLocation AdsLocation { get; set; }
+
         public ICollection<InvoiceDetail> InvoiceDetails { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var result = new List<ValidationResult>();
 
-            if (StartDate < DateTime.Now)
+            if (StartDate < DateTime.Today)
             {
                 result.Add(new ValidationResult("Start date must be greater than current date.", new[] {"StartDate"}));
             }

@@ -1,5 +1,5 @@
 @using Models.ModalViewModels
-@model VideoAds
+@model Advertisement
 
 @{
     var modalHeading = "Add Advertisement";
@@ -56,10 +56,10 @@
             </div>
             <div class="col-sm-offset-1 col-sm-10">
                 <div class="form-group">
-                    <label asp-for="Video" class="col-sm-3 control-label"></label>
+                    <label asp-for="Source" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <input asp-for="Video" class="form-control"/>
-                        <span asp-validation-for="Video" class="text-danger"></span>
+                        <input asp-for="Source" class="form-control"/>
+                        <span asp-validation-for="Source" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                     <label asp-for="StartDate" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
                         <div class="input-group" id="start">
-                            <input asp-for="StartDate" value="@Model.StartDate.ToString("MM/dd/yyyy")" class="form-control"/>
+                            <input asp-for="StartDate" value="@Model.StartDate.ToString(Constant.DateFormat)" class="form-control"/>
                             <span class="input-group-addon">
                                 <span class="fa fa-calendar"></span>
                             </span>
@@ -82,7 +82,7 @@
                     <label asp-for="EndDate" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
                         <div class="input-group" id="end">
-                            <input asp-for="EndDate" value="@Model.EndDate.ToString("MM/dd/yyyy")" class="form-control"/>
+                            <input asp-for="EndDate" value="@Model.EndDate.ToString(Constant.DateFormat)" class="form-control"/>
                             <span class="input-group-addon">
                                 <span class="fa fa-calendar"></span>
                             </span>
@@ -95,8 +95,8 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Location</label>
                     <div class="col-sm-9">
-                        <select asp-for="VideoAdsLocationId" asp-items="@(new SelectList((List<VideoAdsLocation>) ViewData["AdsLocationList"], "Id", "Name"))" class="selectpicker form-control"></select>
-                        <span asp-validation-for="VideoAdsLocationId" class="text-danger"></span>
+                        <select asp-for="AdsLocationId" asp-items="@(new SelectList((List<AdsLocation>) ViewData["AdsLocationList"], "Id", "Name"))" class="selectpicker form-control"></select>
+                        <span asp-validation-for="AdsLocationId" class="text-danger"></span>
                     </div>
                 </div>
             </div>

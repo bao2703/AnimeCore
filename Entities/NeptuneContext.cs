@@ -26,15 +26,7 @@ namespace Entities
 
         public DbSet<Advertisement> Advertisements { get; set; }
 
-        public DbSet<BannerAds> BannerAdses { get; set; }
-
-        public DbSet<VideoAds> VideoAdses { get; set; }
-
         public DbSet<AdsLocation> AdsLocations { get; set; }
-
-        public DbSet<BannerAdsLocation> BannerAdsLocations { get; set; }
-
-        public DbSet<VideoAdsLocation> VideoAdsLocations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

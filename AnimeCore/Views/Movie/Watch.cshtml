@@ -9,9 +9,11 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12" id="media-area">
-                <video class="col-xs-12" id="ads-player" autoplay="">
-                    <source src="" type="video/mp4"/>
-                </video>
+                <a href="" id="ads-url" target="_blank">
+                    <video class="col-xs-12" id="ads-player" autoplay="">
+                        <source src="" type="video/mp4"/>
+                    </video>
+                </a>
             </div>
         </div>
     </div>
@@ -36,7 +38,8 @@
 @section scripts {
     <script>
         $(document).ready(function() {
-            $('#ads-player').attr('src', '/assets/client/ads-example/5%20Second%20Ad%20Sample.mp4%20-%20YouTube.MP4');
+            $("#ads-player").attr("src", "/assets/client/ads-example/ford-ads-example.MP4");
+            $("#ads-url").attr("href", "https://www.ford.com.vn/");
             // TODO : need to get ads src from database
             $("video").on("ended",
                 function() {
