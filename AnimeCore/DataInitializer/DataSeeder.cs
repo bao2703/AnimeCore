@@ -2989,6 +2989,430 @@ namespace AnimeCore.DataInitializer
 
             #endregion
 
+            #region Hauru No Ugoku Shiro
+
+            var howl = new List<Episode>
+            {
+                new Episode
+                {
+                    Name = "1",
+                    Url = ConvertUrl("")
+                }
+            };
+
+            howl.ForEach(x => x.Movie = movies.Single(m => m.Name == "Hauru No Ugoku Shiro"));
+            episodes.Add(howl);
+
+            #endregion
+
+            #region Akame Ga Kill
+
+            var akame = new List<Episode>
+            {
+                new Episode
+                {
+                    Name = "1",
+                    Url = ConvertUrl("http://onecloud.media/file/c585e4264ac79793-91b74772a5f8e1ce")
+                },
+                new Episode
+                {
+                    Name = "2",
+                    Url = ConvertUrl("http://onecloud.media/file/9eeb32f8906f71ee-fa8d5eb3a44a66dc")
+                },
+                new Episode
+                {
+                    Name = "3",
+                    Url = ConvertUrl("http://onecloud.media/file/35c66fac66198126-ff3f7f0662834763")
+                },
+                new Episode
+                {
+                    Name = "4",
+                    Url = ConvertUrl("http://onecloud.media/file/40e221d07a9f9e8b-d70702fd4cc9c640")
+                },
+                new Episode
+                {
+                    Name = "5",
+                    Url = ConvertUrl("http://onecloud.media/file/819ccafb264ad592-c1b4c15192978d24")
+                },
+                new Episode
+                {
+                    Name = "6",
+                    Url = ConvertUrl("http://onecloud.media/file/ae87eb93592d93bc-3ce927f2b445eac2")
+                },
+                new Episode
+                {
+                    Name = "7",
+                    Url = ConvertUrl("http://onecloud.media/file/41f0f9b45e8dd589-5a18c5d84dd0492f")
+                },
+                new Episode
+                {
+                    Name = "8",
+                    Url = ConvertUrl("http://onecloud.media/file/4a4340b6dfca9140-7c5eb6ca72516fd6")
+                }
+            };
+
+            akame.ForEach(x => x.Movie = movies.Single(m => m.Name == "Akame Ga Kill"));
+            episodes.Add(akame);
+
+            #endregion
+
+            #region Shigatsu Wa Kimi No Uso
+
+            var shigatsu = new List<Episode>
+            {
+                new Episode
+                {
+                    Name = "1",
+                    Url = ConvertUrl("http://onecloud.media/file/2d87b427cea48a5c-e752c9b3a000be79")
+                },
+                new Episode
+                {
+                    Name = "2",
+                    Url = ConvertUrl("http://onecloud.media/file/54ae7d914d90a5ae-bda52bb5f98c9485")
+                },
+                new Episode
+                {
+                    Name = "3",
+                    Url = ConvertUrl("http://onecloud.media/file/50e12ed0664e5a37-07b524568681e1c3")
+                },
+                new Episode
+                {
+                    Name = "4",
+                    Url = ConvertUrl("http://onecloud.media/file/cb979b53b5a6f4ca-87fd347a4579234d")
+                },
+                new Episode
+                { 
+                    Name = "5",
+                    Url = ConvertUrl("http://onecloud.media/file/6cebd80d0ba11201-69e90355f6d95354")
+                },
+                new Episode
+                {
+                    Name = "6",
+                    Url = ConvertUrl("http://onecloud.media/file/db84a1c9e583c940-feb643536bdab181")
+                }
+            };
+
+            shigatsu.ForEach(x => x.Movie = movies.Single(m => m.Name == "Shigatsu Wa Kimi No Uso"));
+            episodes.Add(shigatsu);
+
+            #endregion
+
+            #region Kill La Kill
+
+            var killLaKill = new List<Episode>
+            {
+                new Episode
+                {
+                    Name = "1",
+                    Url = ConvertUrl("http://onecloud.media/file/a37370f34963364d-1859d14762e6ff2d")
+                },
+                new Episode
+                {
+                    Name = "2",
+                    Url = ConvertUrl("http://onecloud.media/file/af0c151c6ae6a01d-1801276d0f65193d")
+                },
+                new Episode
+                {
+                    Name = "3",
+                    Url = ConvertUrl("http://onecloud.media/file/8036a2a6a5a277fb-ad5bbb34015fc812")
+                },
+                new Episode
+                {
+                    Name = "4",
+                    Url = ConvertUrl("http://onecloud.media/file/e0b86aa4c3cecff9-2d7e4ba3c3dabc34")
+                },
+                new Episode
+                {
+                    Name = "5",
+                    Url = ConvertUrl("http://onecloud.media/file/7bad38f3336e71ba-13fb441a7bb4de3b")
+                },
+                new Episode
+                {
+                    Name = "6",
+                    Url = ConvertUrl("http://onecloud.media/file/b8ec428a0d989ccc-a6a459847355c5d4")
+                }
+            };
+
+            killLaKill.ForEach(x => x.Movie = movies.Single(m => m.Name == "Kill La Kill"));
+            episodes.Add(killLaKill);
+
+            #endregion
+
+            #region One Piece
+
+            var onePiece = new List<Episode>
+            {
+                new Episode
+                {
+                    Name = "1",
+                    Url = ConvertUrl("http://onecloud.media/file/78816a0d052736ff-fc148cc9d5b621f6")
+                },
+                new Episode
+                {
+                    Name = "2",
+                    Url = ConvertUrl("http://onecloud.media/file/6b47cdc90159efb8-0d832a559aa48640")
+                },
+                new Episode
+                {
+                    Name = "3",
+                    Url = ConvertUrl("http://onecloud.media/file/725b8e7aa141e9a6-8d675c43fc510e12")
+                },
+                new Episode
+                {
+                    Name = "4",
+                    Url = ConvertUrl("http://onecloud.media/file/b363d71a8d5513d2-e5b701168527b7b0")
+                },
+                new Episode
+                {
+                    Name = "5",
+                    Url = ConvertUrl("http://onecloud.media/file/9eed65eae28593c7-8f04a28f0db7496e")
+                },
+                new Episode
+                {
+                    Name = "6",
+                    Url = ConvertUrl("http://onecloud.media/file/335394d82a40297b-e7cd4181c79dc06a")
+                },
+                new Episode
+                {
+                    Name = "7",
+                    Url = ConvertUrl("http://onecloud.media/file/add776810dfe930e-39657c8d7ca82081")
+                },
+                new Episode
+                {
+                    Name = "8",
+                    Url = ConvertUrl("http://onecloud.media/file/a62bbf7734470478-c537c1d38c245c46")
+                },
+                new Episode
+                {
+                    Name = "9",
+                    Url = ConvertUrl("http://onecloud.media/file/03dc437314a3fd18-92596afed4274280")
+                },
+                new Episode
+                {
+                    Name = "10",
+                    Url = ConvertUrl("http://onecloud.media/file/d54037e4c29f30b5-d96c7c0240629d3c")
+                },
+                new Episode
+                {
+                    Name = "11",
+                    Url = ConvertUrl("http://onecloud.media/file/b1bc124b2ca3fe92-37eab44aef61d140")
+                },
+                new Episode
+                {
+                    Name = "12",
+                    Url = ConvertUrl("http://onecloud.media/file/204ec80a44523a89-a3007247a81edf80")
+                },
+                new Episode
+                {
+                    Name = "13",
+                    Url = ConvertUrl("http://onecloud.media/file/61281cd372629546-6e848a2a78cf06e1")
+                },
+                new Episode
+                {
+                    Name = "14",
+                    Url = ConvertUrl("http://onecloud.media/file/134dee1e75fa834c-86f9ade177e6d466")
+                },
+                new Episode
+                {
+                    Name = "15",
+                    Url = ConvertUrl("http://onecloud.media/file/48763a3efa57a1b0-6cb59158093e5518")
+                },
+                new Episode
+                {
+                    Name = "16",
+                    Url = ConvertUrl("http://onecloud.media/file/2f36ddd9a5cbf75a-176bc6de780cc4a8")
+                },
+                new Episode
+                {
+                    Name = "17",
+                    Url = ConvertUrl("http://onecloud.media/file/11cfe87b47905b02-a126fb6e777e7f83")
+                },
+                new Episode
+                {
+                    Name = "18",
+                    Url = ConvertUrl("http://onecloud.media/file/abb85f211fb25028-0e5586a3c5a64647")
+                },
+                new Episode
+                {
+                    Name = "19",
+                    Url = ConvertUrl("http://onecloud.media/file/cf39e24ba72d3f4f-ceb4633ed6ec41ff")
+                },
+                new Episode
+                {
+                    Name = "20",
+                    Url = ConvertUrl("http://onecloud.media/file/fc0f7c934e7a8462-f808312ac88d1c4a")
+                }
+            };
+
+            onePiece.ForEach(x => x.Movie = movies.Single(m => m.Name == "One Piece"));
+            episodes.Add(onePiece);
+
+            #endregion
+
+            #region Accel World
+
+            var accelWorld = new List<Episode>
+            {
+                new Episode
+                {
+                    Name = "1",
+                    Url = ConvertUrl("http://onecloud.media/file/9a1f921fabaf4d24-0b0c7e463048bacc")
+                },
+                new Episode
+                {
+                    Name = "2",
+                    Url = ConvertUrl("http://onecloud.media/file/b90b858a1127c149-d9034999870e0f0c")
+                },
+                new Episode
+                {
+                    Name = "3",
+                    Url = ConvertUrl("http://onecloud.media/file/4e7bfcdee54bd960-e45b1d79d7ec2432")
+                },
+                new Episode
+                {
+                    Name = "4",
+                    Url = ConvertUrl("http://onecloud.media/file/5e5d3a99f1e805d2-0c6ae3445fa0b8ec")
+                },
+                new Episode
+                {
+                    Name = "5",
+                    Url = ConvertUrl("http://onecloud.media/file/3f2486b8c6c9bbd2-ffe9b8a318d438b7")
+                },
+                new Episode
+                {
+                    Name = "6",
+                    Url = ConvertUrl("http://onecloud.media/file/27e6b2e1d06b572c-a9bbc04a5ebee374")
+                }
+            };
+
+            accelWorld.ForEach(x => x.Movie = movies.Single(m => m.Name == "Accel World"));
+            episodes.Add(accelWorld);
+
+            #endregion
+
+            #region Kyoukai No Kanata
+
+            var kyoukaiNoKanata = new List<Episode>
+            {
+                new Episode
+                {
+                    Name = "1",
+                    Url = ConvertUrl("http://onecloud.media/file/63869fc6ad4a1469-b746d05177026b62")
+                },
+                new Episode
+                {
+                    Name = "2",
+                    Url = ConvertUrl("http://onecloud.media/file/af396b09cf9d643a-4fdb74064b2586dc")
+                },
+                new Episode
+                {
+                    Name = "3",
+                    Url = ConvertUrl("http://onecloud.media/file/ce21fbf1cb8323bc-459535ef5a06b741")
+                },
+                new Episode
+                {
+                    Name = "4",
+                    Url = ConvertUrl("http://onecloud.media/file/e658223274b53c8c-f6157376eb3e5221")
+                },
+                new Episode
+                {
+                    Name = "5",
+                    Url = ConvertUrl("http://onecloud.media/file/f54e1bf23004b5ae-f9be8ccc2debd99a")
+                },
+                new Episode
+                {
+                    Name = "6",
+                    Url = ConvertUrl("http://onecloud.media/file/accab70e9f863ab4-820bd904a58dbe8f")
+                }
+            };
+
+            kyoukaiNoKanata.ForEach(x => x.Movie = movies.Single(m => m.Name == "Kyoukai No Kanata"));
+            episodes.Add(kyoukaiNoKanata);
+
+            #endregion
+
+            #region Ao No Exorcist
+
+            var aoNoExorcist = new List<Episode>
+            {
+                new Episode
+                {
+                    Name = "1",
+                    Url = ConvertUrl("http://onecloud.media/file/5d79c081badea2cd-8d4bd590c18ed127")
+                },
+                new Episode
+                {
+                    Name = "2",
+                    Url = ConvertUrl("http://onecloud.media/file/57848743d64b34b3-a6778b64d239df44")
+                },
+                new Episode
+                {
+                    Name = "3",
+                    Url = ConvertUrl("http://onecloud.media/file/aab81e39733c7890-e09dee75d5a6dc24")
+                },
+                new Episode
+                {
+                    Name = "4",
+                    Url = ConvertUrl("http://onecloud.media/file/fe24a29f950ffa28-7c190a87c53201a9")
+                },
+                new Episode
+                {
+                    Name = "5",
+                    Url = ConvertUrl("http://onecloud.media/file/f99d39315aea0760-a713a4f7f800276c")
+                },
+                new Episode
+                {
+                    Name = "6",
+                    Url = ConvertUrl("http://onecloud.media/file/105f75b8d49b4e79-67f7c33b43efb99d")
+                }
+            };
+
+            aoNoExorcist.ForEach(x => x.Movie = movies.Single(m => m.Name == "Ao No Exorcist"));
+            episodes.Add(aoNoExorcist);
+
+            #endregion
+
+            #region Tokyo Ghoul
+
+            var tokyoGhoul = new List<Episode>
+            {
+                new Episode
+                {
+                    Name = "1",
+                    Url = ConvertUrl("http://onecloud.media/file/41f11a262d9789ae-304d682a9dfe6a39")
+                },
+                new Episode
+                {
+                    Name = "2",
+                    Url = ConvertUrl("http://onecloud.media/file/3f10efea81fbf06a-1006b3fc2babc95f")
+                },
+                new Episode
+                {
+                    Name = "3",
+                    Url = ConvertUrl("http://onecloud.media/file/9aa0df10c74f7ad2-687260866d7223fb")
+                },
+                new Episode
+                {
+                    Name = "4",
+                    Url = ConvertUrl("http://onecloud.media/file/8e1f8003abb194b9-5ecd2c4f11e3b613")
+                },
+                new Episode
+                {
+                    Name = "5",
+                    Url = ConvertUrl("http://onecloud.media/file/8950d632d814a402-de155de7ed5459b8")
+                },
+                new Episode
+                {
+                    Name = "6",
+                    Url = ConvertUrl("http://onecloud.media/file/6a7e572aca1387ed-7ec3b23c2978ed39")
+                }
+            };
+
+            tokyoGhoul.ForEach(x => x.Movie = movies.Single(m => m.Name == "Tokyo Ghoul"));
+            episodes.Add(tokyoGhoul);
+
+            #endregion
+
             #endregion
 
             var tasks = new List<Task>
