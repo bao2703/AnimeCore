@@ -116,6 +116,17 @@ namespace AnimeCore.DataInitializer
                 },
                 new Advertisement
                 {
+                    Name = "Dell Alienware",
+                    Description = "Dell Alienware",
+                    Title = "Dell Alienware",
+                    Url = "http://www.dell.com/en-us/gaming/alienware?cs=19",
+                    Source = "/assets/client/ads-example/dell-alienware-17-2016-official-video-trailer-commercial.mp4",
+                    StartDate = new DateTime(2017, 3, 1),
+                    EndDate = new DateTime(2017, 5, 1),
+                    AdsLocation = adsLocations.Single(x => x.Name == "Newest")
+                },
+                new Advertisement
+                {
                     Name = "Ford",
                     Description = "Ford",
                     Title = "Ford",
@@ -124,6 +135,17 @@ namespace AnimeCore.DataInitializer
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 6, 1),
                     AdsLocation = adsLocations.Single(x => x.Name == "Normal")
+                },
+                new Advertisement
+                {
+                    Name = "Expired Ads example",
+                    Description = "Expired Ads example",
+                    Title = "Expired Ads example",
+                    Url = "http://www.localhost.com",
+                    Source = "C:/",
+                    StartDate = new DateTime(2017, 1, 1),
+                    EndDate = new DateTime(2017, 2, 1),
+                    AdsLocation = adsLocations.Single(x => x.Name == "Newest")
                 }
             };
 

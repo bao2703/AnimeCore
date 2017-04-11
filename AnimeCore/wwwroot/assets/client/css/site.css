@@ -185,3 +185,10 @@ div.footer {
     position: absolute;
     z-index: 1;
 }
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ellipsis.multiline { white-space: normal; }

@@ -51,6 +51,14 @@
             </div>
             <div class="col-sm-offset-1 col-sm-10">
                 <div class="form-group">
+                    <label asp-for="AdsLocation.AdsType" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="AdsLocation.AdsType" class="form-control" readonly=""/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-offset-1 col-sm-10">
+                <div class="form-group">
                     <label asp-for="StartDate" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
                         <input asp-for="StartDate" value="@Model.StartDate.ToString(Constant.DateFormat)" class="form-control" readonly=""/>
