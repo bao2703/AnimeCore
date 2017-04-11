@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Entities;
 using Entities.Domain;
@@ -9,6 +10,7 @@ namespace Repositories
 {
     public interface IAdvertisementRepository : IBaseRepository<Advertisement>
     {
+        IEnumerable<Advertisement> GetAvailableVideoAdvertisements();
     }
 
     public class AdvertisementRepository : BaseRepository<Advertisement>, IAdvertisementRepository
@@ -25,6 +27,14 @@ namespace Repositories
         public override IEnumerable<Advertisement> GetAll()
         {
             return DbSet.Include(x => x.AdsLocation);
+        }
+
+        public IEnumerable<Advertisement> GetAvailableVideoAdvertisements()
+        {
+            return
+                DbSet.Include(x => x.AdsLocation)
+                    .Where(x => x.AdsType == AdsType.Video)
+                    .Where(x => x.EndDate < DateTime.Today);
         }
     }
 }

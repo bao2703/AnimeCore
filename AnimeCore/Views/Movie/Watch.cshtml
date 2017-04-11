@@ -3,14 +3,15 @@
 
 @{
     ViewData[Constant.Title] = Model.Name + " - Watch";
+    dynamic advertisement = ViewData["Advertisement"];
 }
 
 @section slide {
     <div class="container">
         <div class="row">
-            <div class="col-xs-12" id="media-area">
-                <a href="" id="ads-url" target="_blank">
-                    <video class="col-xs-12" id="ads-player" autoplay="">
+            <div class="col-xs-12" id="player-area">
+                <a href="" id="ads-area" title="" target="_blank">
+                    <video class="col-xs-12" autoplay="">
                         <source src="" type="video/mp4"/>
                     </video>
                 </a>
@@ -38,16 +39,17 @@
 @section scripts {
     <script>
         $(document).ready(function() {
-            $("#ads-player").attr("src", "/assets/client/ads-example/ford-ads-example.MP4");
-            $("#ads-url").attr("href", "https://www.ford.com.vn/");
-            // TODO : need to get ads src from database
+            $("#ads-area video").attr("src", "@advertisement.Source");
+            $("#ads-area").attr("href", "@advertisement.Url");
+            $("#ads-area").attr("title", "@advertisement.Title");
             $("video").on("ended",
                 function() {
                     $(this).remove();
-                    $("#media-area")
+                    $("#player-area")
                         .append('<iframe id="movie-player" class="col-xs-12" src="" allowfullscreen></iframe>');
                     $('.btn-episode:first').trigger('click');
                 });
+
             $('.btn-episode').on('click',
                 function() {
                     $('#movie-player').attr('src', $(this).data('url'));

@@ -28,6 +28,7 @@ namespace Entities.Domain
 
         public string Source { get; set; }
 
+        [Display(Name = "Ads type")]
         public AdsType AdsType { get; set; }
 
         public string Description { get; set; }

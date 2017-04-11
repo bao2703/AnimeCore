@@ -4,7 +4,7 @@
     ViewData[Constant.Title] = "Advertisement List";
 }
 
-@await Html.PartialAsync("Modal/_ModalPartial", new Modal {Id = "customer-action-modal", ModalSize = ModalSize.Medium})
+@await Html.PartialAsync("Modal/_ModalPartial", new Modal {Id = "advertisement-action-modal", ModalSize = ModalSize.Medium})
 
 <div class="panel panel-info">
     <div class="panel-heading">
@@ -15,7 +15,7 @@
     <div class="panel-body">
         <div class="col-xs-12" style="overflow-x: auto;">
             <div class="btn-group">
-                <a asp-action="Add" class="btn btn-primary" data-toggle="modal" data-target="#customer-action-modal">
+                <a asp-action="Add" class="btn btn-primary" data-toggle="modal" data-target="#advertisement-action-modal">
                     <i class="fa fa-plus"></i> Add Advertisement
                 </a>
             </div>
@@ -76,12 +76,12 @@
                         <td>@item.EndDate.ToString(Constant.DateFormat)</td>
                         <td>@item.AdsLocation.Name</td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info" data-toggle="modal" data-target="#customer-action-modal">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info" data-toggle="modal" data-target="#advertisement-action-modal">
                                 <i class="fa fa-pencil"></i> Edit
                             </a>
                         </td>
                         <td>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" data-toggle="modal" data-target="#customer-action-modal">
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" data-toggle="modal" data-target="#advertisement-action-modal">
                                 <i class="fa fa-trash"></i> Delete
                             </a>
                         </td>

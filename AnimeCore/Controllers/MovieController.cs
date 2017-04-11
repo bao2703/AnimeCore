@@ -7,14 +7,16 @@ namespace AnimeCore.Controllers
 {
     public class MovieController : Controller
     {
+        private readonly IAdvertisementRepository _advertisementRepository;
         private readonly AppSettings _appSettings;
         private readonly IMovieRepository _movieRepository;
 
         public MovieController(IOptions<AppSettings> appSettings, IUnitOfWork unitOfWork,
-            IMovieRepository movieRepository)
+            IMovieRepository movieRepository, IAdvertisementRepository advertisementRepository)
         {
             _appSettings = appSettings.Value;
             _movieRepository = movieRepository;
+            _advertisementRepository = advertisementRepository;
         }
 
         // GET: /Movie/Index
@@ -44,6 +46,7 @@ namespace AnimeCore.Controllers
                 return View("Error");
             }
             var movie = _movieRepository.FindById((int) id);
+            ViewData["Advertisement"] = _advertisementRepository.GetAvailableVideoAdvertisements().PickRandom();
             return movie == null ? View("Error") : View(movie);
         }
     }
