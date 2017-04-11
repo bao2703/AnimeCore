@@ -10,7 +10,7 @@ namespace Repositories
 {
     public interface IAdvertisementRepository : IBaseRepository<Advertisement>
     {
-        IEnumerable<Advertisement> GetAvailableVideoAdvertisements();
+        IEnumerable<Advertisement> GetAvailableVideoAdvertisements(string locationName);
     }
 
     public class AdvertisementRepository : BaseRepository<Advertisement>, IAdvertisementRepository
@@ -29,11 +29,12 @@ namespace Repositories
             return DbSet.Include(x => x.AdsLocation);
         }
 
-        public IEnumerable<Advertisement> GetAvailableVideoAdvertisements()
+        public IEnumerable<Advertisement> GetAvailableVideoAdvertisements(string locationName)
         {
             return
                 DbSet.Include(x => x.AdsLocation)
-                    .Where(x => x.AdsType == AdsType.Video)
+                    .Where(x => x.AdsLocation.AdsType == AdsType.Video)
+                    .Where(x => x.AdsLocation.Name == locationName)
                     .Where(x => x.EndDate >= DateTime.Today);
         }
     }

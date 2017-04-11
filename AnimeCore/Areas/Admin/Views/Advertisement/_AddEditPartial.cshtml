@@ -65,10 +65,9 @@
             </div>
             <div class="col-sm-offset-1 col-sm-10">
                 <div class="form-group">
-                    <label asp-for="AdsType" class="col-sm-3 control-label"></label>
+                    <label asp-for="AdsLocation.AdsType" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <select asp-for="AdsType" asp-items="Html.GetEnumSelectList<AdsType>()" class="selectpicker form-control"></select>
-                        <span asp-validation-for="AdsType" class="text-danger"></span>
+                        <select asp-items="Html.GetEnumSelectList<AdsType>()" class="selectpicker form-control"></select>
                     </div>
                 </div>
             </div>

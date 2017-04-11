@@ -1,4 +1,5 @@
 using AnimeCore.Common;
+using Entities.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Repositories;
@@ -46,8 +47,25 @@ namespace AnimeCore.Controllers
                 return View("Error");
             }
             var movie = _movieRepository.FindById((int) id);
-            ViewData["Advertisement"] = _advertisementRepository.GetAvailableVideoAdvertisements().PickRandom();
-            return movie == null ? View("Error") : View(movie);
+            if (movie == null)
+            {
+                return View("Error");
+            }
+            Advertisement advertisement;
+            if (_movieRepository.IsPopular(movie.Id))
+            {
+                advertisement = _advertisementRepository.GetAvailableVideoAdvertisements("Popular").PickRandom();
+            }
+            else if (_movieRepository.IsNewest(movie.Id))
+            {
+                advertisement = _advertisementRepository.GetAvailableVideoAdvertisements("Newest").PickRandom();
+            }
+            else
+            {
+                advertisement = _advertisementRepository.GetAvailableVideoAdvertisements("Normal").PickRandom();
+            }
+            ViewData["Advertisement"] = advertisement;
+            return View(movie);
         }
     }
 }

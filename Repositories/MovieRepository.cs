@@ -12,6 +12,8 @@ namespace Repositories
         IEnumerable<Movie> FindByNameContains(string searchString);
         IEnumerable<Movie> FindNewestMovie(int take);
         IEnumerable<Movie> FindPopularMovie(int take);
+        bool IsPopular(int id);
+        bool IsNewest(int id);
     }
 
     public class MovieRepository : BaseRepository<Movie>, IMovieRepository
@@ -49,6 +51,16 @@ namespace Repositories
         public IEnumerable<Movie> FindPopularMovie(int take)
         {
             return DbSet.OrderByDescending(x => x.View).Take(take);
+        }
+
+        public bool IsPopular(int id)
+        {
+            return FindPopularMovie(16).Any(x => x.Id == id);
+        }
+
+        public bool IsNewest(int id)
+        {
+            return FindNewestMovie(16).Any(x => x.Id == id);
         }
     }
 }

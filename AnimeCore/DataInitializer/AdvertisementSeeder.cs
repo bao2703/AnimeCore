@@ -63,12 +63,26 @@ namespace AnimeCore.DataInitializer
                 new AdsLocation
                 {
                     Name = "Popular",
-                    Desciption = "Popular video"
+                    Desciption = "Show ads on Popular movie",
+                    AdsType = AdsType.Video,
+                    LocationType = LocationType.Share,
+                    Price = 100000
                 },
                 new AdsLocation
                 {
                     Name = "Newest",
-                    Desciption = "Newest video"
+                    Desciption = "Show ads on Newest movie",
+                    AdsType = AdsType.Video,
+                    LocationType = LocationType.Share,
+                    Price = 200000
+                },
+                new AdsLocation
+                {
+                    Name = "Normal",
+                    Desciption = "Show ads on Normal movie",
+                    AdsType = AdsType.Video,
+                    LocationType = LocationType.Share,
+                    Price = 200000
                 }
             };
 
@@ -80,15 +94,36 @@ namespace AnimeCore.DataInitializer
             {
                 new Advertisement
                 {
-                    Name = "Neptune",
-                    Description = "Neptune",
-                    Title = "Neptune",
-                    Url = "https://www.ford.com.vn/",
-                    Source = "/assets/client/ads-example/ford-ads-example.MP4",
-                    AdsType = AdsType.Video,
-                    StartDate = new DateTime(2017, 4, 10),
-                    EndDate = new DateTime(2017, 6, 10),
+                    Name = "Coca-Cola: Coke Mini (Hulk vs. Ant-Man)",
+                    Description = "Coca-Cola: Coke Mini (Hulk vs. Ant-Man)",
+                    Title = "Coca-Cola: Coke Mini (Hulk vs. Ant-Man)",
+                    Url = "http://www.coca-colacompany.com/",
+                    Source = "/assets/client/ads-example/coca-cola-coke-mini-hulk-vs-ant-man.mp4",
+                    StartDate = new DateTime(2017, 3, 1),
+                    EndDate = new DateTime(2017, 5, 1),
                     AdsLocation = adsLocations.Single(x => x.Name == "Popular")
+                },
+                new Advertisement
+                {
+                    Name = "Asus ROG G752",
+                    Description = "Asus ROG G752",
+                    Title = "Asus ROG G752 Gaming Laptop",
+                    Url = "https://www.asus.com/vn/ROG-Republic-Of-Gamers/ROG-G752VM/",
+                    Source = "/assets/client/ads-example/asus-rog-g752-gaming-laptop.mp4",
+                    StartDate = new DateTime(2017, 2, 1),
+                    EndDate = new DateTime(2017, 5, 1),
+                    AdsLocation = adsLocations.Single(x => x.Name == "Newest")
+                },
+                new Advertisement
+                {
+                    Name = "Ford",
+                    Description = "Ford",
+                    Title = "Ford",
+                    Url = "https://www.ford.com.vn/",
+                    Source = "/assets/client/ads-example/ford.mp4",
+                    StartDate = new DateTime(2017, 4, 1),
+                    EndDate = new DateTime(2017, 6, 1),
+                    AdsLocation = adsLocations.Single(x => x.Name == "Normal")
                 }
             };
 

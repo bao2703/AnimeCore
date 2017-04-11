@@ -4,12 +4,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Domain
 {
-    public enum AdsType
-    {
-        Video,
-        Banner
-    }
-
     public class Advertisement : TimestampEntity, IValidatableObject
     {
         public Advertisement()
@@ -27,9 +21,6 @@ namespace Entities.Domain
         public string Url { get; set; }
 
         public string Source { get; set; }
-
-        [Display(Name = "Ads type")]
-        public AdsType AdsType { get; set; }
 
         public string Description { get; set; }
 

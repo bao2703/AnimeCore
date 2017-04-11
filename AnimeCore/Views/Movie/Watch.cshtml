@@ -10,11 +10,13 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12" id="player-area">
-                <a href="" id="ads-area" title="" target="_blank">
-                    <video class="col-xs-12" autoplay="">
-                        <source src="" type="video/mp4"/>
-                    </video>
-                </a>
+                <div id="ads-area">
+                    <a href="#" title="" target="">
+                        <video class="col-xs-12" autoplay="">
+                            <source src="" type="video/mp4"/>
+                        </video>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -39,12 +41,20 @@
 @section scripts {
     <script>
         $(document).ready(function() {
-            $("#ads-area video").attr("src", "@advertisement.Source");
-            $("#ads-area").attr("href", "@advertisement.Url");
-            $("#ads-area").attr("title", "@advertisement.Title");
+            var ads = $("#ads-area");
+            @if (advertisement != null)
+            {
+                <text>
+                    var adsLink = ads.find("a");
+                    adsLink.attr("href", "@advertisement.Url");
+                    adsLink.attr("title", "@advertisement.Title");
+                    adsLink.attr("target", "_blank");
+                    ads.find("video").attr("src", "@advertisement.Source");
+                </text>
+            }
             $("video").on("ended",
                 function() {
-                    $(this).remove();
+                    ads.remove();
                     $("#player-area")
                         .append('<iframe id="movie-player" class="col-xs-12" src="" allowfullscreen></iframe>');
                     $('.btn-episode:first').trigger('click');
