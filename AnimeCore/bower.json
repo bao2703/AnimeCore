@@ -6,17 +6,18 @@
     "jquery": "3.2.1",
     "jquery-validation-unobtrusive": "3.2.6",
     "font-awesome": "Font-Awesome#v4.7.0",
-    "datatables-bootstrap": "1.0.0",
     "bootstrap-select": "v2.0.0-beta1",
     "bootstrap-social": "v4.10.1",
     "jquery-validation": "1.16.0",
     "angular": "v1.6.4-build.5336+sha.80077f3",
     "angularUtils-pagination": "angular-utils-pagination#v0.11.1",
     "eonasdan-bootstrap-datetimepicker": "bootstrap3-datetimepicker#v4.17.45",
-    "moment": "2.18.1"
+    "moment": "2.18.1",
+    "DataTables": "datatable#RELEASE_1_9_4",
+    "datatables-bootstrap": "1.0.0"
   },
   "resolutions": {
-    "jquery": "3.2.1",
+    "jquery": ">=1.8",
     "font-awesome": "v4.7.0",
     "jquery-validation": ">=1.16"
   }

@@ -67,7 +67,7 @@
                     <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr class="@(item.EndDate >= DateTime.Today ? "success" : "danger")">
+                        <tr class="@(item.EndDate >= DateTime.Today ? "" : "danger")">
                             <td>@item.Id</td>
                             <td>@item.Name</td>
                             <td>@item.Title</td>
