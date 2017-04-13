@@ -15,6 +15,7 @@ namespace AnimeCore.DataInitializer
         {
             var unitOfWork = app.ApplicationServices.GetService<IUnitOfWork>();
             await InitializeVideoAdvertisementAsync(app);
+            await InitializeBannerAdvertisementAsync(app);
             await InitializeCustomerAsync(app);
             await unitOfWork.SaveChangesAsync();
         }
@@ -150,6 +151,21 @@ namespace AnimeCore.DataInitializer
             };
 
             await adsRepository.AddRangeAsync(videoAds);
+        }
+
+        private static async Task InitializeBannerAdvertisementAsync(IApplicationBuilder app)
+        {
+            var adsLocationRepository = app.ApplicationServices.GetService<IAdsLocationRepository>();
+
+            var adsLocations = new List<AdsLocation>();
+
+            await adsLocationRepository.AddRangeAsync(adsLocations);
+
+            var adsRepository = app.ApplicationServices.GetService<IAdvertisementRepository>();
+
+            var bannerAds = new List<Advertisement>();
+
+            await adsRepository.AddRangeAsync(bannerAds);
         }
     }
 }

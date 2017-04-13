@@ -28,6 +28,7 @@
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body>
+
 <div id="fb-root"></div>
 <script>
     window.fbAsyncInit = function() {
@@ -40,12 +41,19 @@
         FB.AppEvents.logPageView();
     };
 </script>
+
 <!-- navbar -->
 @await Html.PartialAsync("_NavbarPartial")
 <!-- /navbar -->
+
+<!-- top-ads -->
+@await Html.PartialAsync("Advertisement/_TopAdsPartial")
+<!-- /.top-ads -->
+
 <!-- slide -->
 @RenderSection("slide", false)
 <!-- /.slide -->
+
 <!-- body-content -->
 <div class="body-content">
     <div class="container">
@@ -54,16 +62,20 @@
                 @RenderBody()
             </div>
             <div class="col-sm-3">
-                <!-- advertisement -->
-                <div class="advertisement">
-
-                </div>
-                <!-- /.advertisement -->
+                <!-- right-ads -->
+                @await Html.PartialAsync("Advertisement/_RightAdsPartial")
+                <!-- /.right-ads -->
             </div>
         </div>
     </div>
 </div>
 <!-- /.body-content -->
+
+<!-- bottom-ads -->
+@await Html.PartialAsync("Advertisement/_BottomAdsPartial")
+<!-- /.bottom-ads -->
+
+<footer></footer>
 
 <environment names="Development">
     <script src="~/lib/jquery/dist/jquery.js"></script>

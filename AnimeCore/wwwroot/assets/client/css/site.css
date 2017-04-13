@@ -1,6 +1,8 @@
 ﻿body { background-color: #1e1e1e; }
 
-div.body-content { margin-top: 20px; }
+.body-content { margin-top: 20px; }
+
+#slide { margin-top: 20px; }
 
 div.footer {
     box-shadow: #cccccc 1px -6px 16px -6px;
@@ -52,8 +54,6 @@ div.footer {
 }
 
 .carousel-inner > .item > img { margin: 0 auto; }
-
-.navbar { margin-bottom: 7px; }
 
 .dropdown-menu { min-width: 200px; }
 
