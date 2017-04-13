@@ -17,8 +17,7 @@
     "datatables-bootstrap": "1.0.0"
   },
   "resolutions": {
-    "jquery": ">=1.8",
     "font-awesome": "v4.7.0",
-    "jquery-validation": ">=1.16"
+    "jquery": "3.2.1"
   }
 }

@@ -2996,7 +2996,7 @@ namespace AnimeCore.DataInitializer
                 new Episode
                 {
                     Name = "1",
-                    Url = ConvertUrl("")
+                    Url = ""
                 }
             };
 
@@ -3081,7 +3081,7 @@ namespace AnimeCore.DataInitializer
                     Url = ConvertUrl("http://onecloud.media/file/cb979b53b5a6f4ca-87fd347a4579234d")
                 },
                 new Episode
-                { 
+                {
                     Name = "5",
                     Url = ConvertUrl("http://onecloud.media/file/6cebd80d0ba11201-69e90355f6d95354")
                 },
