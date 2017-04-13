@@ -9,11 +9,12 @@
 @section slide {
     <div class="container">
         <div class="row">
-            <div class="col-xs-12" id="player-area">
-                <div class="col-xs-12" id="ads-area">
-                    <div class="row">
-                        <a href="#" id="ads-url">
-                            <video class="col-xs-12" autoplay=""></video>
+            <div class="col-xs-12">
+                <div id="player" class="embed-responsive embed-responsive-16by9">
+                    <!-- ads-area -->
+                    <div id="ads-area">
+                        <a href="#">
+                            <video class="embed-responsive-item" autoplay=""></video>
                         </a>
                         <div id="ads-skip" class="col-xs-12">
                             <div class="col-xs-offset-10 col-xs-2">
@@ -25,6 +26,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- /.ads-area -->
                 </div>
             </div>
         </div>
@@ -51,48 +53,54 @@
     <script>
         $(document).ready(function() {
             var ads = $("#ads-area");
+            
             @if (advertisement != null)
             {
                 <text>
                     var adsLink = ads.find("a");
+                    var adsVideo = ads.find("video");
                     adsLink.attr("href", "@advertisement.Url");
                     adsLink.attr("title", "@advertisement.Title");
                     adsLink.attr("target", "_blank");
-                    ads.find("video").attr("src", "@advertisement.Source");
-                </text>
-            }
+                    adsVideo.attr("src", "@advertisement.Source");
 
-            var counter = 10;
-            var adsSkipLink = $("#ads-skip").find("a");
-            var interval = setInterval(function() {
-                    counter--;
-                    adsSkipLink.html("Skip Ad in " + counter);
-                    if (counter === 0) {
-                        adsSkipLink.html("Skip Ad >>");
-                        adsSkipLink.click(function(e) {
-                            e.preventDefault();
+                    adsVideo.on("ended",
+                        function() {
                             skipAds();
                         });
-                        clearInterval(interval);
-                    }
-                },
-                1000);
 
-            ads.find("video").on("ended",
-                function() {
-                    skipAds();
-                });
-
+                    var counter = 10;
+                    var adsSkipLink = $("#ads-skip").find("a");
+                    var interval = setInterval(function() {
+                            counter--;
+                            adsSkipLink.html("Skip Ad in " + counter);
+                            if (counter === 0) {
+                                adsSkipLink.html("Skip Ad >>");
+                                adsSkipLink.click(function(e) {
+                                    e.preventDefault();
+                                    skipAds();
+                                });
+                                clearInterval(interval);
+                            }
+                        },
+                        1000);
+                </text>
+            }
+            else
+            {
+                <text>skipAds();</text>
+            }
+           
             function skipAds() {
                 ads.remove();
-                $("#player-area")
-                    .append('<iframe id="movie-player" class="col-xs-12" src="" allowfullscreen></iframe>');
+                $("#player")
+                    .append('<iframe id="movie" class="embed-responsive-item" src="" allowfullscreen></iframe>');
                 $('.btn-episode:first').trigger('click');
             }
 
             $('.btn-episode').on('click',
                 function() {
-                    $('#movie-player').attr("src", $(this).data("url"));
+                    $('#movie').attr("src", $(this).data("url"));
                     $('.btn-episode').removeClass("active");
                     $(this).addClass("active");
                 });

@@ -1,3 +1,4 @@
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Repositories;
 
@@ -18,7 +19,7 @@ namespace AnimeCore.Api
         [HttpGet]
         public IActionResult GetMovies(string searchString = "")
         {
-            return Ok(_movieRepository.FindByNameContains(searchString));
+            return Ok(_movieRepository.FindByNameContains(searchString).OrderBy(x => x.Name));
         }
     }
 }
