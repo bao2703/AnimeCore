@@ -3,6 +3,9 @@
 @{
     ViewData[Constant.Title] = "Advertisement List";
 }
+<style>
+    .even { background-color: #f9f9f9; }
+</style>
 
 @await Html.PartialAsync("Modal/_ModalPartial", new Modal {Id = "advertisement-action-modal", ModalSize = ModalSize.Medium})
 
@@ -14,18 +17,16 @@
     </div>
     <div class="panel-body">
         <div class="col-xs-12">
-            <div class="btn-group">
-                <a asp-action="Add" class="btn btn-primary" data-toggle="modal" data-target="#advertisement-action-modal">
-                    <i class="fa fa-plus"></i> Add Advertisement
-                </a>
-            </div>
-            <div class="top-buffer"></div>
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover" id="dataTables">
                     <thead>
                     <tr>
                         <th>
-                            <display name-for="@Model.First().Id"></display>
+                            <div class="btn-group">
+                                <a asp-action="Add" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#advertisement-action-modal">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
                         </th>
                         <th>
                             <display name-for="@Model.First().Name"></display>
@@ -43,16 +44,7 @@
                             <display name-for="@Model.First().Source"></display>
                         </th>
                         <th>
-                            <display name-for="@Model.First().Click"></display>
-                        </th>
-                        <th>
-                            <display name-for="@Model.First().View"></display>
-                        </th>
-                        <th>
-                            <display name-for="@Model.First().StartDate"></display>
-                        </th>
-                        <th>
-                            <display name-for="@Model.First().EndDate"></display>
+                            Date
                         </th>
                         <th>
                             <display name-for="@Model.First().AdsLocation.AdsType"></display>
@@ -60,36 +52,56 @@
                         <th>
                             Location
                         </th>
-                        <th style="width: 20px;">#</th>
-                        <th style="width: 20px;">#</th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            <display name-for="@Model.First().Click"></display>
+                        </th>
+                        <th>
+                            <display name-for="@Model.First().View"></display>
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr class="@(item.EndDate >= DateTime.Today ? "" : "danger")">
-                            <td>@item.Id</td>
+                        <tr>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm" data-toggle="modal" data-target="#advertisement-action-modal">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#advertisement-action-modal">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
                             <td>@item.Name</td>
                             <td>@item.Title</td>
                             <td>@item.Description</td>
                             <td>@item.Url</td>
                             <td>@item.Source</td>
-                            <td>@item.Click</td>
-                            <td>@item.View</td>
-                            <td>@item.StartDate.Format()</td>
-                            <td>@item.EndDate.Format()</td>
+                            <td>@item.StartDate.Format()-@item.EndDate.Format()</td>
                             <td>@item.AdsLocation.AdsType</td>
                             <td>@item.AdsLocation.Name</td>
+                            @{
+                                var status = "Actice";
+                                var statusColor = "green";
+                                if (item.EndDate < DateTime.Today)
+                                {
+                                    status = "Expired";
+                                    statusColor = "red";
+                                }
+                                else if (item.StartDate > DateTime.Today)
+                                {
+                                    status = "Not start";
+                                    statusColor = "blue";
+                                }
+                            }
                             <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info" data-toggle="modal" data-target="#advertisement-action-modal">
-                                    <i class="fa fa-pencil"></i> Edit
-                                </a>
+                                <span style="color: @statusColor">@status</span>
                             </td>
-                            <td>
-                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" data-toggle="modal" data-target="#advertisement-action-modal">
-                                    <i class="fa fa-trash"></i> Delete
-                                </a>
-                            </td>
+                            <td>@item.Click</td>
+                            <td>@item.View</td>
                         </tr>
                     }
                     </tbody>

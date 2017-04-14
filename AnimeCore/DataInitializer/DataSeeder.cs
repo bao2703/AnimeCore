@@ -1691,7 +1691,7 @@ namespace AnimeCore.DataInitializer
             {
                 new Episode
                 {
-                    Name = "1",
+                    Name = "FULL",
                     Url = ConvertUrl("http://onecloud.media/file/5cb9d32a375f559f-777ea89f84aab4dd")
                 }
             };

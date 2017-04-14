@@ -46,11 +46,6 @@ namespace Entities.Domain
         {
             var result = new List<ValidationResult>();
 
-            if (StartDate < DateTime.Today)
-            {
-                result.Add(new ValidationResult("Start date must be greater than current date.", new[] {"StartDate"}));
-            }
-
             if (EndDate <= StartDate)
             {
                 result.Add(new ValidationResult("End date must be greater than start date.", new[] {"EndDate"}));

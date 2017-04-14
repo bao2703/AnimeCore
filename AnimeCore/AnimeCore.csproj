@@ -11,23 +11,16 @@
   <ItemGroup>
     <Compile Remove="App_Data\**" />
     <Compile Remove="wwwroot\images\**" />
-    <Compile Remove="wwwroot\lib\jquery-ajax-unobtrusive\**" />
-    <Compile Remove="wwwroot\lib\jquery-ellipsis\**" />
     <Content Remove="App_Data\**" />
     <Content Remove="wwwroot\images\**" />
-    <Content Remove="wwwroot\lib\jquery-ajax-unobtrusive\**" />
-    <Content Remove="wwwroot\lib\jquery-ellipsis\**" />
     <EmbeddedResource Remove="App_Data\**" />
     <EmbeddedResource Remove="wwwroot\images\**" />
-    <EmbeddedResource Remove="wwwroot\lib\jquery-ajax-unobtrusive\**" />
-    <EmbeddedResource Remove="wwwroot\lib\jquery-ellipsis\**" />
     <None Remove="App_Data\**" />
     <None Remove="wwwroot\images\**" />
-    <None Remove="wwwroot\lib\jquery-ajax-unobtrusive\**" />
-    <None Remove="wwwroot\lib\jquery-ellipsis\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\assets\admin\css\site.css" />
     <Content Include="wwwroot\assets\admin\js\modal-form.js" />
     <Content Include="wwwroot\assets\admin\js\modal-remote-setup.js" />
     <Content Include="wwwroot\assets\admin\js\site.js" />
@@ -66,7 +59,6 @@
     <Folder Include="Views\Movie\" />
     <Folder Include="Views\Shared\Components\MovieSlide\" />
     <Folder Include="Views\Shared\Components\MovieSlide\" />
-    <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
 </Project>

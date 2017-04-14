@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Entities.Domain;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +30,10 @@ namespace AnimeCore.Areas.Admin.Controllers
         {
             ViewData["Action"] = "Add";
             ViewData["AdsLocationList"] = _adsLocationRepository.ToList();
+            if (model.StartDate < DateTime.Today)
+            {
+                ModelState.AddModelError(string.Empty, "Start date must be greater than current date.");
+            }
             return base.Add(model);
         }
 
