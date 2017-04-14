@@ -31,9 +31,9 @@
                         <div align="center">Release:</div>
                         <select class="form-control" ng-model="release">
                             <option value="">All</option>
-                            @for (var i = 0; i < 7; i++)
+                            @for (var i = DateTime.Now.Year; i >= 2010; i--)
                             {
-                                <option value="@(DateTime.Now.Year - i)">@(DateTime.Now.Year - i)</option>
+                                <option value="@i">@i</option>
                             }
                         </select>
                     </div>
@@ -69,10 +69,20 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-xs-6 col-sm-3" dir-paginate="movie in movies | orderBy:propertyName:reverse | filter:{ status:status, release:release, genreMovies: {genreId:genreId} } | itemsPerPage:@ViewData[Constant.PageSize]">
+                <div class="col-xs-6 col-sm-4 col-md-3" dir-paginate="movie in movies | orderBy:propertyName:reverse | filter:{ status:status, release:release, genreMovies: {genreId:genreId} } | itemsPerPage:@ViewData[Constant.PageSize]">
                     <a href="@Url.Action("Details")/{{ movie.id }}">
-                        <div class="movie-content" title="{{ movie.status | status }}">
-                            <span class="movie-name">{{ movie.name }}</span>
+                        <div class="movie-content" title="{{ movie.name }}">
+                            <div class="movie-info">
+                                <span class="movie-ep">
+                                    {{ (movie.episodes).length }}
+                                    <span ng-if="movie.status == 0">/ ??</span>
+                                    <span ng-if="movie.status == 1">/ {{ (movie.episodes).length }}</span>
+                                    Ep
+                                </span>
+                                <span class="movie-name col-xs-12">
+                                    {{ movie.name }}
+                                </span>
+                            </div>
                             <span class="movie-release">{{ movie.release | date:"MM/yyyy" }}</span>
                             <span class="movie-view">{{ movie.view }} <i class="fa fa-eye"></i></span>
                             <img class="movie-img img-rounded img-responsive" src="{{ movie.image }}" alt="{{ movie.name }}" asp-append-version="true">

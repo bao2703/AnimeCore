@@ -39,18 +39,19 @@ namespace Repositories
 
         public IEnumerable<Movie> FindByNameContains(string searchString)
         {
-            return DbSet.Include(x => x.GenreMovies)
+            return DbSet.Include(x => x.Episodes)
+                .Include(x => x.GenreMovies)
                 .Where(x => x.Name.Contains(searchString));
         }
 
         public IEnumerable<Movie> FindNewestMovie(int take)
         {
-            return DbSet.OrderByDescending(x => x.Release).Take(take);
+            return DbSet.Include(x => x.Episodes).OrderByDescending(x => x.Release).Take(take);
         }
 
         public IEnumerable<Movie> FindPopularMovie(int take)
         {
-            return DbSet.OrderByDescending(x => x.View).Take(take);
+            return DbSet.Include(x => x.Episodes).OrderByDescending(x => x.View).Take(take);
         }
 
         public bool IsPopular(int id)

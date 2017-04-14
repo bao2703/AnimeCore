@@ -27,8 +27,16 @@
                             {
                                 <div class="col-xs-6 col-sm-3">
                                     <a asp-action="Details" asp-controller="Movie" asp-route-id="@item.Id">
-                                        <div class="movie-content">
-                                            <span class="movie-name">@item.Name</span>
+                                        <div class="movie-content" title="@item.Name">
+                                            <div class="movie-info">
+                                                <span class="movie-ep">
+                                                    @item.Episodes.Count / @(item.Status == Status.Ongoing ? "??" : item.Episodes.Count.ToString())
+                                                    Ep
+                                                </span>
+                                                <span class="movie-name col-xs-12">
+                                                    @item.Name
+                                                </span>
+                                            </div>
                                             <span class="movie-release">@item.Release.Month/@item.Release.Year</span>
                                             <span class="movie-view">
                                                 @item.View <i class="fa fa-eye"></i>
