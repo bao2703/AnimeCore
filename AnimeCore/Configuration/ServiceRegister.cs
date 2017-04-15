@@ -20,6 +20,7 @@ namespace AnimeCore.Configuration
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<IAdvertisementRepository, AdvertisementRepository>();
             services.AddTransient<IAdsLocationRepository, AdsLocationRepository>();
+            services.AddTransient<IInvoiceRepository, InvoiceRepository>();
             services.AddSingleton<Helper>();
         }
     }
