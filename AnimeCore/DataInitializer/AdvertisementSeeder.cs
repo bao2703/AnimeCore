@@ -88,7 +88,6 @@ namespace AnimeCore.DataInitializer
                     Name = "Popular",
                     Desciption = "Show ads on Popular movie",
                     AdsType = AdsType.Video,
-                    LocationType = LocationType.Share,
                     Price = 100000
                 },
                 new AdsLocation
@@ -96,7 +95,6 @@ namespace AnimeCore.DataInitializer
                     Name = "Newest",
                     Desciption = "Show ads on Newest movie",
                     AdsType = AdsType.Video,
-                    LocationType = LocationType.Share,
                     Price = 200000
                 },
                 new AdsLocation
@@ -104,7 +102,6 @@ namespace AnimeCore.DataInitializer
                     Name = "Normal",
                     Desciption = "Show ads on Normal movie",
                     AdsType = AdsType.Video,
-                    LocationType = LocationType.Share,
                     Price = 200000
                 }
             };

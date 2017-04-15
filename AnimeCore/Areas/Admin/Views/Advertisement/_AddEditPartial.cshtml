@@ -1,4 +1,6 @@
+@inject IAdsLocationRepository AdsLocationRepository
 @using Models.ModalViewModels
+@using Repositories
 @model Advertisement
 
 @{
@@ -13,7 +15,7 @@
     }
 }
 
-<form asp-action="@ViewData["Action"]" method="post" class="modal-form">
+<form asp-action="@ViewData["Action"]" asp-route-customerId="@ViewData["CustomerId"]" method="post" class="modal-form">
     @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = modalHeading})
     <div class="modal-body form-horizontal">
         <div class="row">
@@ -80,6 +82,15 @@
             </div>
             <div class="col-sm-offset-1 col-sm-10">
                 <div class="form-group">
+                    <label class="col-sm-3 control-label">Location</label>
+                    <div class="col-sm-9">
+                        <select asp-for="AdsLocationId" class="selectpicker show-tick form-control" id="ads-location"></select>
+                        <span asp-validation-for="AdsLocationId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-offset-1 col-sm-10">
+                <div class="form-group">
                     <label asp-for="StartDate" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
                         <div class="input-group" id="start">
@@ -106,15 +117,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-offset-1 col-sm-10">
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Location</label>
-                    <div class="col-sm-9">
-                        <select asp-for="AdsLocationId" asp-items="@(new SelectList((List<AdsLocation>) ViewData["AdsLocationList"], "Id", "Name"))" class="selectpicker show-tick form-control"></select>
-                        <span asp-validation-for="AdsLocationId" class="text-danger"></span>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     @await Html.PartialAsync("Modal/_FooterPartial", new ModalFooter {SubmitButtonText = submitButtonText, SubmitButtonClass = submitButtonClass})
@@ -122,6 +124,28 @@
 
 <script>
     $(".selectpicker").selectpicker();
+
+    $('.selectpicker').on('change',
+        function() {
+            var selected = $(this).find("option:selected").text();
+            var option = "";
+            if (selected === "@AdsType.Banner") {
+                @foreach (var item in AdsLocationRepository.FindBy(x => x.AdsType == AdsType.Banner))
+                {
+                    <text>option += '<option value="@item.Id">@item.Name</option>';</text>
+                }
+            } else {
+                @foreach (var item in AdsLocationRepository.FindBy(x => x.AdsType == AdsType.Video))
+                {
+                    <text>option += '<option value="@item.Id">@item.Name</option>';</text>
+                }
+            }
+            $("#ads-location").html(option);
+            $("#ads-location").selectpicker('refresh');
+        });
+
+    $(".selectpicker").trigger("change");
+
     $('#start').datetimepicker({
         locale: 'en',
         format: 'MM/DD/YYYY'
@@ -135,6 +159,7 @@
         function(e) {
             $('#end').data("DateTimePicker").minDate(e.date);
         });
+    $("#start").trigger("dp.change");
     $("#end").on("dp.change",
         function(e) {
             $('#start').data("DateTimePicker").maxDate(e.date);

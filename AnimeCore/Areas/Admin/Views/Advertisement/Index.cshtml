@@ -22,11 +22,7 @@
                     <thead>
                     <tr>
                         <th>
-                            <div class="btn-group">
-                                <a asp-action="Add" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#advertisement-action-modal">
-                                    <i class="fa fa-plus"></i>
-                                </a>
-                            </div>
+                            #
                         </th>
                         <th>
                             <display name-for="@Model.First().Name"></display>
@@ -85,20 +81,20 @@
                             <td>@item.AdsLocation.Name</td>
                             @{
                                 var status = "Actice";
-                                var statusColor = "green";
+                                var statusClass = "success";
                                 if (item.EndDate < DateTime.Today)
                                 {
                                     status = "Expired";
-                                    statusColor = "red";
+                                    statusClass = "danger";
                                 }
                                 else if (item.StartDate > DateTime.Today)
                                 {
                                     status = "Not start";
-                                    statusColor = "blue";
+                                    statusClass = "info";
                                 }
                             }
                             <td>
-                                <span style="color: @statusColor">@status</span>
+                                <label class="label label-@statusClass">@status</label>
                             </td>
                             <td>@item.Click</td>
                             <td>@item.View</td>

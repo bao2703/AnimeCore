@@ -74,17 +74,30 @@
                         <div class="movie-content" title="{{ movie.name }}">
                             <div class="movie-info">
                                 <span class="movie-ep">
-                                    {{ (movie.episodes).length }}
-                                    <span ng-if="movie.status == 0">/ ??</span>
-                                    <span ng-if="movie.status == 1">/ {{ (movie.episodes).length }}</span>
-                                    Ep
+                                    <label class="label label-info">
+                                        {{ (movie.episodes).length }}
+                                        <span ng-if="movie.status == 0">/ ??</span>
+                                        <span ng-if="movie.status == 1">/ {{ (movie.episodes).length }}</span>
+                                        Ep
+                                    </label>
                                 </span>
                                 <span class="movie-name col-xs-12">
-                                    {{ movie.name }}
+                                    <label style="margin: 2px">
+                                        {{ movie.name }}
+                                    </label>
                                 </span>
                             </div>
-                            <span class="movie-release">{{ movie.release | date:"MM/yyyy" }}</span>
-                            <span class="movie-view">{{ movie.view }} <i class="fa fa-eye"></i></span>
+                            <span class="movie-release">
+                                <label class="label label-danger">
+                                    {{ movie.release | date:"MM/yyyy" }}
+                                </label>
+                            </span>
+                            <span class="movie-view">
+                                <label class="label label-success">
+                                    <i class="fa fa-eye"></i>
+                                    {{ movie.view }}
+                                </label>
+                            </span>
                             <img class="movie-img img-rounded img-responsive" src="{{ movie.image }}" alt="{{ movie.name }}" asp-append-version="true">
                         </div>
                     </a>
@@ -95,8 +108,6 @@
             <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true"></dir-pagination-controls>
         </div>
     </div>
-
-
 </div>
 
 @section scripts {

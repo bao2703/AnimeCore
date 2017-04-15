@@ -34,8 +34,6 @@ namespace Entities.Domain
         [Display(Name = "End date")]
         public DateTime EndDate { get; set; }
 
-        public Customer Customer { get; set; }
-
         public int AdsLocationId { get; set; }
 
         public AdsLocation AdsLocation { get; set; }

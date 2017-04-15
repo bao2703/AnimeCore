@@ -3,12 +3,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Domain
 {
-    public enum LocationType
-    {
-        Monopoly,
-        Share
-    }
-
     public enum AdsType
     {
         Video,
@@ -26,9 +20,6 @@ namespace Entities.Domain
 
         [Display(Name = "Ads type")]
         public AdsType AdsType { get; set; }
-
-        [Display(Name = "Location type")]
-        public LocationType LocationType { get; set; }
 
         public ICollection<Advertisement> Advertisements { get; set; }
     }

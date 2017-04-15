@@ -30,16 +30,27 @@
                                         <div class="movie-content" title="@item.Name">
                                             <div class="movie-info">
                                                 <span class="movie-ep">
-                                                    @item.Episodes.Count / @(item.Status == Status.Ongoing ? "??" : item.Episodes.Count.ToString())
-                                                    Ep
+                                                    <label class="label label-info">
+                                                        @item.Episodes.Count / @(item.Status == Status.Ongoing ? "??" : item.Episodes.Count.ToString())
+                                                        Ep
+                                                    </label>
                                                 </span>
                                                 <span class="movie-name col-xs-12">
-                                                    @item.Name
+                                                    <label style="margin: 2px">
+                                                        @item.Name
+                                                    </label>
                                                 </span>
                                             </div>
-                                            <span class="movie-release">@item.Release.Month/@item.Release.Year</span>
+                                            <span class="movie-release">
+                                                <label class="label label-danger">
+                                                    @item.Release.Month/@item.Release.Year
+                                                </label>
+                                            </span>
                                             <span class="movie-view">
-                                                @item.View <i class="fa fa-eye"></i>
+                                                <label class="label label-success">
+                                                    <i class="fa fa-eye"></i>
+                                                    @item.View
+                                                </label>
                                             </span>
                                             <img class="movie-img img-responsive img-rounded" src="@item.Image" alt="@item.Name" asp-append-version="true"/>
                                         </div>
