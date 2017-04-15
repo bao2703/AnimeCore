@@ -30,13 +30,35 @@ namespace AnimeCore.DataInitializer
                 {
                     Name = "Bảo",
                     Email = "bao@gmail.com",
-                    Address = "Neptune"
+                    Address = "Neptune",
+                    Invoices = new List<Invoice>
+                    {
+                        new Invoice
+                        {
+                            TotalPrice = 50
+                        },
+                        new Invoice
+                        {
+                            TotalPrice = 60
+                        }
+                    }
                 },
                 new Customer
                 {
                     Name = "Bảo2",
                     Email = "bao2@gmail.com",
-                    Address = "Neptune"
+                    Address = "Neptune",
+                    Invoices = new List<Invoice>
+                    {
+                        new Invoice
+                        {
+                            TotalPrice = 40
+                        },
+                        new Invoice
+                        {
+                            TotalPrice = 10
+                        }
+                    }
                 },
                 new Customer
                 {

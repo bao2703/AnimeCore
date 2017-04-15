@@ -1,54 +1,28 @@
-using System;
-using System.Threading.Tasks;
 using Entities.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Repositories;
 
 namespace AnimeCore.Areas.Admin.Controllers
 {
-    public class AdvertisementController : DefaultController<Advertisement, IAdvertisementRepository>
+    public class AdvertisementController : AdminController
     {
         private readonly IAdsLocationRepository _adsLocationRepository;
+        private readonly IAdvertisementRepository _advertisementRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public AdvertisementController(IUnitOfWork unitOfWork, IAdvertisementRepository repository,
-            IAdsLocationRepository adsLocationRepository) : base(unitOfWork, repository)
+        public AdvertisementController(IUnitOfWork unitOfWork, IAdvertisementRepository advertisementRepository,
+            IAdsLocationRepository adsLocationRepository)
         {
+            _unitOfWork = unitOfWork;
+            _advertisementRepository = advertisementRepository;
             _adsLocationRepository = adsLocationRepository;
         }
 
-        protected override string AddPartialViewName { get; set; } = "_AddEditPartial";
-        protected override string EditPartialViewName { get; set; } = "_AddEditPartial";
-
-        public override IActionResult Add()
+        public IActionResult Add(int customerId)
         {
             ViewData["Action"] = "Add";
             ViewData["AdsLocationList"] = _adsLocationRepository.ToList();
-            return base.Add();
-        }
-
-        public override Task<IActionResult> Add(Advertisement model)
-        {
-            ViewData["Action"] = "Add";
-            ViewData["AdsLocationList"] = _adsLocationRepository.ToList();
-            if (model.StartDate < DateTime.Today)
-            {
-                ModelState.AddModelError(string.Empty, "Start date must be greater than current date.");
-            }
-            return base.Add(model);
-        }
-
-        public override IActionResult Edit(int id)
-        {
-            ViewData["Action"] = "Edit";
-            ViewData["AdsLocationList"] = _adsLocationRepository.ToList();
-            return base.Edit(id);
-        }
-
-        public override Task<IActionResult> Edit(Advertisement model)
-        {
-            ViewData["Action"] = "Edit";
-            ViewData["AdsLocationList"] = _adsLocationRepository.ToList();
-            return base.Edit(model);
+            return PartialView("_AddEditPartial", new Advertisement());
         }
     }
 }
