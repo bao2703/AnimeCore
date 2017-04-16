@@ -11,13 +11,11 @@ namespace AnimeCore.Areas.Admin.Controllers
 {
     public class UserController : AdminIdentityController
     {
-        private readonly IRoleService _roleService;
         private readonly IUserService _userService;
 
-        public UserController(IUserService userService, IRoleService roleService)
+        public UserController(IUserService userService)
         {
             _userService = userService;
-            _roleService = roleService;
         }
 
         public async Task<IActionResult> Index()
@@ -39,7 +37,6 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         public IActionResult Add()
         {
-            ViewData["RoleList"] = _roleService.ToList();
             return PartialView("_AddPartial");
         }
 
@@ -61,7 +58,6 @@ namespace AnimeCore.Areas.Admin.Controllers
                 }
                 AddErrors(result);
             }
-            ViewData["RoleList"] = _roleService.ToList();
             return PartialView("_AddPartial", model);
         }
 
@@ -79,7 +75,6 @@ namespace AnimeCore.Areas.Admin.Controllers
                 UserName = user.UserName,
                 RoleName = (await _userService.GetRolesAsync(user)).FirstOrDefault()
             };
-            ViewData["RoleList"] = _roleService.ToList();
             return PartialView("_EditPartial", model);
         }
 
@@ -103,7 +98,6 @@ namespace AnimeCore.Areas.Admin.Controllers
                 }
                 AddErrors(result);
             }
-            ViewData["RoleList"] = _roleService.ToList();
             return PartialView("_EditPartial", model);
         }
 
