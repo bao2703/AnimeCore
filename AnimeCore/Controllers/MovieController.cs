@@ -8,16 +8,16 @@ namespace AnimeCore.Controllers
 {
     public class MovieController : Controller
     {
-        private readonly IAdvertisementRepository _advertisementRepository;
         private readonly AppSettings _appSettings;
         private readonly IMovieRepository _movieRepository;
+        private readonly IVideoAdsRepository _videoAdsRepository;
 
         public MovieController(IOptions<AppSettings> appSettings, IUnitOfWork unitOfWork,
-            IMovieRepository movieRepository, IAdvertisementRepository advertisementRepository)
+            IMovieRepository movieRepository, IVideoAdsRepository videoAdsRepository)
         {
             _appSettings = appSettings.Value;
             _movieRepository = movieRepository;
-            _advertisementRepository = advertisementRepository;
+            _videoAdsRepository = videoAdsRepository;
         }
 
         // GET: /Movie/Index
@@ -54,15 +54,15 @@ namespace AnimeCore.Controllers
             Advertisement advertisement;
             if (_movieRepository.IsPopular(movie.Id))
             {
-                advertisement = _advertisementRepository.GetAvailableVideoAdvertisements("Popular").PickRandom();
+                advertisement = _videoAdsRepository.GetAvailableVideoAdvertisements("Popular").PickRandom();
             }
             else if (_movieRepository.IsNewest(movie.Id))
             {
-                advertisement = _advertisementRepository.GetAvailableVideoAdvertisements("Newest").PickRandom();
+                advertisement = _videoAdsRepository.GetAvailableVideoAdvertisements("Newest").PickRandom();
             }
             else
             {
-                advertisement = _advertisementRepository.GetAvailableVideoAdvertisements("Normal").PickRandom();
+                advertisement = _videoAdsRepository.GetAvailableVideoAdvertisements("Normal").PickRandom();
             }
             ViewData["Advertisement"] = advertisement;
             return View(movie);

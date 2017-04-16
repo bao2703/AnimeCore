@@ -7,25 +7,23 @@ using Repositories;
 
 namespace AnimeCore.Areas.Admin.Controllers
 {
-    public class AdvertisementController : AdminController
+    public class VideoAdsController : AdminController
     {
-        private readonly IAdsLocationRepository _adsLocationRepository;
-        private readonly IAdvertisementRepository _advertisementRepository;
         private readonly IInvoiceRepository _invoiceRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IVideoAdsRepository _videoAdsRepository;
 
-        public AdvertisementController(IUnitOfWork unitOfWork, IAdvertisementRepository advertisementRepository,
-            IAdsLocationRepository adsLocationRepository, IInvoiceRepository invoiceRepository)
+        public VideoAdsController(IUnitOfWork unitOfWork, IVideoAdsRepository videoAdsRepository,
+            IInvoiceRepository invoiceRepository)
         {
             _unitOfWork = unitOfWork;
-            _advertisementRepository = advertisementRepository;
-            _adsLocationRepository = adsLocationRepository;
+            _videoAdsRepository = videoAdsRepository;
             _invoiceRepository = invoiceRepository;
         }
 
         public IActionResult Index()
         {
-            var model = _advertisementRepository.GetAll();
+            var model = _videoAdsRepository.GetAll();
             return View(model);
         }
 
@@ -33,12 +31,12 @@ namespace AnimeCore.Areas.Admin.Controllers
         {
             ViewData["Action"] = "Add";
             ViewData["CustomerId"] = customerId;
-            return PartialView("_AddEditPartial", new Advertisement());
+            return PartialView("_AddEditPartial", new VideoAds());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Add(Advertisement model, int customerId)
+        public async Task<IActionResult> Add(VideoAds model, int customerId)
         {
             ViewData["Action"] = "Add";
             ViewData["CustomerId"] = customerId;

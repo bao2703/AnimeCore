@@ -1,7 +1,5 @@
-@inject IAdsLocationRepository AdsLocationRepository
 @using Models.ModalViewModels
-@using Repositories
-@model Advertisement
+@model VideoAds
 
 @{
     var modalHeading = "Add Advertisement";
@@ -74,18 +72,10 @@
             </div>
             <div class="col-sm-offset-1 col-sm-10">
                 <div class="form-group">
-                    <label asp-for="AdsLocation.AdsType" class="col-sm-3 control-label"></label>
-                    <div class="col-sm-9">
-                        <select asp-items="Html.GetEnumSelectList<AdsType>()" class="selectpicker show-tick form-control"></select>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-offset-1 col-sm-10">
-                <div class="form-group">
                     <label class="col-sm-3 control-label">Location</label>
                     <div class="col-sm-9">
-                        <select asp-for="AdsLocationId" class="selectpicker show-tick form-control" id="ads-location"></select>
-                        <span asp-validation-for="AdsLocationId" class="text-danger"></span>
+                        <select asp-for="VideoAdsLocationId" class="selectpicker show-tick form-control" id="ads-location"></select>
+                        <span asp-validation-for="VideoAdsLocationId" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -124,27 +114,6 @@
 
 <script>
     $(".selectpicker").selectpicker();
-
-    $('.selectpicker').on('change',
-        function() {
-            var selected = $(this).find("option:selected").text();
-            var option = "";
-            if (selected === "@AdsType.Banner") {
-                @foreach (var item in AdsLocationRepository.FindBy(x => x.AdsType == AdsType.Banner))
-                {
-                    <text>option += '<option value="@item.Id">@item.Name</option>';</text>
-                }
-            } else {
-                @foreach (var item in AdsLocationRepository.FindBy(x => x.AdsType == AdsType.Video))
-                {
-                    <text>option += '<option value="@item.Id">@item.Name</option>';</text>
-                }
-            }
-            $("#ads-location").html(option);
-            $("#ads-location").selectpicker('refresh');
-        });
-
-    $(".selectpicker").trigger("change");
 
     $('#start').datetimepicker({
         locale: 'en',

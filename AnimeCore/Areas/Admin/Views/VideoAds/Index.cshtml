@@ -1,11 +1,8 @@
 @using Models.ModalViewModels
-@model IEnumerable<Advertisement>
+@model IEnumerable<VideoAds>
 @{
     ViewData[Constant.Title] = "Advertisement List";
 }
-<style>
-    .even { background-color: #f9f9f9; }
-</style>
 
 @await Html.PartialAsync("Modal/_ModalPartial", new Modal {Id = "advertisement-action-modal", ModalSize = ModalSize.Medium})
 
@@ -43,9 +40,6 @@
                             Date
                         </th>
                         <th>
-                            <display name-for="@Model.First().AdsLocation.AdsType"></display>
-                        </th>
-                        <th>
                             Location
                         </th>
                         <th>
@@ -77,8 +71,7 @@
                             <td>@item.Url</td>
                             <td>@item.Source</td>
                             <td>@item.StartDate.Format()-@item.EndDate.Format()</td>
-                            <td>@item.AdsLocation.AdsType</td>
-                            <td>@item.AdsLocation.Name</td>
+                            <td>@item.VideoAdsLocation.Name</td>
                             @{
                                 var status = "Actice";
                                 var statusClass = "success";

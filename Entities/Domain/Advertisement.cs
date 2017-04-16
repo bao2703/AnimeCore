@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Domain
 {
-    public class Advertisement : TimestampEntity, IValidatableObject
+    public abstract class Advertisement : TimestampEntity, IValidatableObject
     {
-        public Advertisement()
+        protected Advertisement()
         {
             StartDate = DateTime.Today;
             EndDate = DateTime.Today;
@@ -33,10 +33,6 @@ namespace Entities.Domain
 
         [Display(Name = "End date")]
         public DateTime EndDate { get; set; }
-
-        public int AdsLocationId { get; set; }
-
-        public AdsLocation AdsLocation { get; set; }
 
         public ICollection<InvoiceDetail> InvoiceDetails { get; set; }
 
