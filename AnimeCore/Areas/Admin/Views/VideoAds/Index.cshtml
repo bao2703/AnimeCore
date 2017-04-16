@@ -1,7 +1,7 @@
 @using Models.ModalViewModels
 @model IEnumerable<VideoAds>
 @{
-    ViewData[Constant.Title] = "Advertisement List";
+    ViewData[Constant.Title] = "Video Advertisement List";
 }
 
 @await Html.PartialAsync("Modal/_ModalPartial", new Modal {Id = "advertisement-action-modal", ModalSize = ModalSize.Medium})

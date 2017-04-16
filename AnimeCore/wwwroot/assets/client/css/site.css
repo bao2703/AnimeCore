@@ -92,7 +92,6 @@ div.footer {
 /********************************/
 
 .movie-ep {
-    float: left;
     font-size: 17px;
     margin-bottom: 5px;
     margin-left: 5px;
@@ -146,6 +145,6 @@ div.footer {
 
 #ads-skip {
     bottom: 0;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     position: absolute;
 }

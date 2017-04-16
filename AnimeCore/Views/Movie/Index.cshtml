@@ -73,8 +73,8 @@
                     <a href="@Url.Action("Details")/{{ movie.id }}">
                         <div class="movie-content" title="{{ movie.name }}">
                             <div class="movie-info">
-                                <span class="movie-ep">
-                                    <label class="label label-info">
+                                <span class="movie-ep pull-left">
+                                    <label class="label label-primary">
                                         {{ (movie.episodes).length }}
                                         <span ng-if="movie.status == 0">/ ??</span>
                                         <span ng-if="movie.status == 1">/ {{ (movie.episodes).length }}</span>

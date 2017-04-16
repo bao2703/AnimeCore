@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AnimeCore.Common;
@@ -40,6 +41,10 @@ namespace AnimeCore.Areas.Admin.Controllers
         {
             ViewData["Action"] = "Add";
             ViewData["CustomerId"] = customerId;
+            if (model.StartDate < DateTime.Today)
+            {
+                ModelState.AddModelError(string.Empty, "Start date must be greater than current day");
+            }
             if (ModelState.IsValid)
             {
                 var invoice = new Invoice

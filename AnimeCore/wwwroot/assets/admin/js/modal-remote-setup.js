@@ -2,6 +2,8 @@
     function() {
     }).on("hidden.bs.modal",
     function() {
-        $(this).find("video")[0].remove();
         $(this).removeData("bs.modal");
+        $(this).find("video").each(function() {
+            $(this).get(0).remove();
+        });
     });

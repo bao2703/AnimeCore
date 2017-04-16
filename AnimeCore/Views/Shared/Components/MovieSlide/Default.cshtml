@@ -29,8 +29,8 @@
                                     <a asp-action="Details" asp-controller="Movie" asp-route-id="@item.Id">
                                         <div class="movie-content" title="@item.Name">
                                             <div class="movie-info">
-                                                <span class="movie-ep">
-                                                    <label class="label label-info">
+                                                <span class="movie-ep pull-left">
+                                                    <label class="label label-primary">
                                                         @item.Episodes.Count / @(item.Status == Status.Ongoing ? "??" : item.Episodes.Count.ToString())
                                                         Ep
                                                     </label>
