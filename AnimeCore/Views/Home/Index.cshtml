@@ -1,12 +1,24 @@
 ﻿@inject IMovieRepository MovieRepository
+@inject IBannerAdsRepository BannerAdsRepository
 @{
     ViewData["Title"] = "Home Page";
 }
 
-@section slide {
+@section Slide {
     @await Html.PartialAsync("_SlidePartial")
 }
 
 @await Component.InvokeAsync("MovieSlide", new {model = MovieRepository.FindPopularMovie(16), title = "Popular"})
 
 @await Component.InvokeAsync("MovieSlide", new {model = MovieRepository.FindNewestMovie(16), title = "Newest"})
+
+@section RightAds{
+    @foreach (var item in BannerAdsRepository.GetActiveBanners("Right"))
+    {
+        <div title="@item.Title" style="margin-bottom: 10px">
+            <a href="@item.Url">
+                <img src="@item.Source" alt="" class="img-responsive"/>
+            </a>
+        </div>
+    }
+}

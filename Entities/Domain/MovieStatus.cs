@@ -1,6 +1,6 @@
 ﻿namespace Entities.Domain
 {
-    public enum Status
+    public enum MovieStatus
     {
         Ongoing,
         Completed

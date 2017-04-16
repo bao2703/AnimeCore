@@ -183,8 +183,8 @@ namespace AnimeCore.DataInitializer
                 },
                 new BannerAdsLocation
                 {
-                    Name = "Footer",
-                    Desciption = "Show ads on footer page",
+                    Name = "Bottom",
+                    Desciption = "Show ads on bottom page",
                     Price = 220000
                 },
                 new BannerAdsLocation

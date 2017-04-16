@@ -68,22 +68,10 @@
                             <td>@item.Name</td>
                             <td>@item.StartDate.Format()-@item.EndDate.Format()</td>
                             <td>@item.VideoAdsLocation.Name</td>
-                            @{
-                                var status = "Actice";
-                                var statusClass = "success";
-                                if (item.EndDate < DateTime.Today)
-                                {
-                                    status = "Expired";
-                                    statusClass = "danger";
-                                }
-                                else if (item.StartDate > DateTime.Today)
-                                {
-                                    status = "Not start";
-                                    statusClass = "info";
-                                }
-                            }
                             <td>
-                                <label class="label label-@statusClass">@status</label>
+                                <label class="label label-@Helper.GetStatusClass(item.Status)">
+                                    @item.Status
+                                </label>
                             </td>
                             <td>@item.Click</td>
                             <td>@item.View</td>
@@ -101,7 +89,7 @@
     </div>
 </div>
 
-@section scripts {
+@section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
     <script src="~/assets/admin/js/modal-remote-setup.js"></script>
 }

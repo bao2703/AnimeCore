@@ -11,7 +11,7 @@ namespace Entities.Domain
             GenreMovies = new HashSet<GenreMovie>();
             Episodes = new HashSet<Episode>();
             Release = DateTime.Now;
-            Status = Status.Ongoing;
+            Status = MovieStatus.Ongoing;
         }
 
         [Required]
@@ -35,7 +35,7 @@ namespace Entities.Domain
 
         public string Fansub { get; set; }
 
-        public Status Status { get; set; }
+        public MovieStatus Status { get; set; }
 
         public ICollection<GenreMovie> GenreMovies { get; set; }
 

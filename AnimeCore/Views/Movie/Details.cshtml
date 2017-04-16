@@ -3,7 +3,7 @@
     ViewData[Constant.Title] = "Details";
 }
 
-@section slide {
+@section Slide {
     @await Html.PartialAsync("_SlidePartial")
 }
 
@@ -43,7 +43,7 @@
                     <div class="row">
                         <div class="col-sm-4">
                             Episodes:
-                            @Model.Episodes.Count / @(Model.Status == Status.Ongoing ? "??" : Model.Episodes.Count.ToString())
+                            @Model.Episodes.Count / @(Model.Status == MovieStatus.Ongoing ? "??" : Model.Episodes.Count.ToString())
                         </div>
                         <div class="col-sm-4">
                             <display name-for="View"/>:

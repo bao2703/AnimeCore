@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Entities;
 using Entities.Domain;
@@ -10,7 +9,7 @@ namespace Repositories
 {
     public interface IVideoAdsRepository : IBaseRepository<VideoAds>
     {
-        IEnumerable<VideoAds> GetAvailableVideoAdvertisements(string locationName);
+        IEnumerable<VideoAds> GetActiveVideos(string locationName);
     }
 
     public class VideoAdsRepository : BaseRepository<VideoAds>, IVideoAdsRepository
@@ -29,13 +28,12 @@ namespace Repositories
             return DbSet.Include(x => x.VideoAdsLocation);
         }
 
-        public IEnumerable<VideoAds> GetAvailableVideoAdvertisements(string locationName)
+        public IEnumerable<VideoAds> GetActiveVideos(string locationName)
         {
             return
                 DbSet.Include(x => x.VideoAdsLocation)
                     .Where(x => x.VideoAdsLocation.Name == locationName)
-                    .Where(x => x.StartDate <= DateTime.Now)
-                    .Where(x => x.EndDate >= DateTime.Today);
+                    .Where(x => x.Status == AdsStatus.Active);
         }
     }
 }

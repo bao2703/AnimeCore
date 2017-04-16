@@ -48,10 +48,11 @@
 
 <!-- top-ads -->
 @await Html.PartialAsync("Advertisement/_TopAdsPartial")
+@RenderSection("TopAds", false)
 <!-- /.top-ads -->
 
 <!-- slide -->
-@RenderSection("slide", false)
+@RenderSection("Slide", false)
 <!-- /.slide -->
 
 <!-- body-content -->
@@ -64,6 +65,7 @@
             <div class="col-sm-3">
                 <!-- right-ads -->
                 @await Html.PartialAsync("Advertisement/_RightAdsPartial")
+                @RenderSection("RightAds", false)
                 <!-- /.right-ads -->
             </div>
         </div>
@@ -73,6 +75,7 @@
 
 <!-- bottom-ads -->
 @await Html.PartialAsync("Advertisement/_BottomAdsPartial")
+@RenderSection("BottomAds", false)
 <!-- /.bottom-ads -->
 
 <footer></footer>
@@ -99,7 +102,7 @@
     </script>
     <script src="~/assets/client/js/site.min.js" asp-append-version="true"></script>
 </environment>
-@RenderSection("scripts", false)
+@RenderSection("Scripts", false)
 
 </body>
 </html>

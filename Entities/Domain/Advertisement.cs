@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entities.Domain
 {
@@ -35,6 +36,23 @@ namespace Entities.Domain
         public DateTime EndDate { get; set; }
 
         public ICollection<InvoiceDetail> InvoiceDetails { get; set; }
+
+        [NotMapped]
+        public AdsStatus Status
+        {
+            get
+            {
+                if (EndDate < DateTime.Today)
+                {
+                    return AdsStatus.Expired;
+                }
+                if (StartDate > DateTime.Today)
+                {
+                    return AdsStatus.NotStart;
+                }
+                return AdsStatus.Active;
+            }
+        }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

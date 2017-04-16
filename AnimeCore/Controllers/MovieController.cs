@@ -54,15 +54,15 @@ namespace AnimeCore.Controllers
             Advertisement advertisement;
             if (_movieRepository.IsPopular(movie.Id))
             {
-                advertisement = _videoAdsRepository.GetAvailableVideoAdvertisements("Popular").PickRandom();
+                advertisement = _videoAdsRepository.GetActiveVideos("Popular").PickRandom();
             }
             else if (_movieRepository.IsNewest(movie.Id))
             {
-                advertisement = _videoAdsRepository.GetAvailableVideoAdvertisements("Newest").PickRandom();
+                advertisement = _videoAdsRepository.GetActiveVideos("Newest").PickRandom();
             }
             else
             {
-                advertisement = _videoAdsRepository.GetAvailableVideoAdvertisements("Normal").PickRandom();
+                advertisement = _videoAdsRepository.GetActiveVideos("Normal").PickRandom();
             }
             ViewData["Advertisement"] = advertisement;
             return View(movie);
