@@ -211,6 +211,7 @@ namespace AnimeCore.DataInitializer
                     StartDate = new DateTime(2017, 3, 10),
                     EndDate = new DateTime(2017, 5, 10),
                     LocationType = LocationType.Home,
+                    Height = "100px",
                     BannerAdsLocation = adsLocations.Single(x => x.Name == "Top")
                 },
                 new BannerAds

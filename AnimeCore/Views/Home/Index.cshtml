@@ -8,17 +8,26 @@
     @await Html.PartialAsync("_SlidePartial")
 }
 
-@await Component.InvokeAsync("MovieSlide", new {model = MovieRepository.FindPopularMovie(16), title = "Popular"})
+<vc:movie-slide model="@MovieRepository.FindPopularMovie(16)" title="Popular" rows="1"></vc:movie-slide>
 
-@await Component.InvokeAsync("MovieSlide", new {model = MovieRepository.FindNewestMovie(16), title = "Newest"})
+<vc:movie-slide model="@MovieRepository.FindNewestMovie(16)" title="Newest" rows="1"></vc:movie-slide>
+
+<vc:movie-slide model="@MovieRepository.GetAll().PickRandom(36)" title="Random" rows="3"></vc:movie-slide>
+
+@section TopAds {
+    @foreach (var item in BannerAdsRepository.GetActiveBanners("Top", LocationType.Home))
+    {
+        <div style="margin-bottom: 10px">
+            <vc:banner model="@item"></vc:banner>
+        </div>
+    }
+}
 
 @section RightAds{
-    @foreach (var item in BannerAdsRepository.GetActiveBanners("Right"))
+    @foreach (var item in BannerAdsRepository.GetActiveBanners("Right", LocationType.Home))
     {
-        <div title="@item.Title" style="margin-bottom: 10px">
-            <a href="@item.Url">
-                <img src="@item.Source" alt="" class="img-responsive"/>
-            </a>
+        <div style="margin-bottom: 10px">
+            <vc:banner model="@item"></vc:banner>
         </div>
     }
 }

@@ -47,8 +47,9 @@
 <!-- /navbar -->
 
 <!-- top-ads -->
-@await Html.PartialAsync("Advertisement/_TopAdsPartial")
-@RenderSection("TopAds", false)
+<div class="container" id="top-ads">
+    @RenderSection("TopAds", false)
+</div>
 <!-- /.top-ads -->
 
 <!-- slide -->
@@ -64,7 +65,6 @@
             </div>
             <div class="col-sm-3">
                 <!-- right-ads -->
-                @await Html.PartialAsync("Advertisement/_RightAdsPartial")
                 @RenderSection("RightAds", false)
                 <!-- /.right-ads -->
             </div>
@@ -74,8 +74,9 @@
 <!-- /.body-content -->
 
 <!-- bottom-ads -->
-@await Html.PartialAsync("Advertisement/_BottomAdsPartial")
-@RenderSection("BottomAds", false)
+<div class="container" id="bottom-ads">
+    @RenderSection("BottomAds", false)
+</div>
 <!-- /.bottom-ads -->
 
 <footer></footer>
