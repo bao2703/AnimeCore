@@ -7,23 +7,23 @@ using Repositories;
 
 namespace AnimeCore.Areas.Admin.Controllers
 {
-    public class VideoAdsController : AdminController
+    public class BannerAdsController : AdminController
     {
+        private readonly IBannerAdsRepository _bannerAdsRepository;
         private readonly IInvoiceRepository _invoiceRepository;
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IVideoAdsRepository _videoAdsRepository;
 
-        public VideoAdsController(IUnitOfWork unitOfWork, IVideoAdsRepository videoAdsRepository,
+        public BannerAdsController(IUnitOfWork unitOfWork, IBannerAdsRepository bannerAdsRepository,
             IInvoiceRepository invoiceRepository)
         {
             _unitOfWork = unitOfWork;
-            _videoAdsRepository = videoAdsRepository;
+            _bannerAdsRepository = bannerAdsRepository;
             _invoiceRepository = invoiceRepository;
         }
 
         public IActionResult Index()
         {
-            var model = _videoAdsRepository.GetAll();
+            var model = _bannerAdsRepository.GetAll();
             return View(model);
         }
 
@@ -31,12 +31,12 @@ namespace AnimeCore.Areas.Admin.Controllers
         {
             ViewData["Action"] = "Add";
             ViewData["CustomerId"] = customerId;
-            return PartialView("_AddEditPartial", new VideoAds());
+            return PartialView("_AddEditPartial", new BannerAds());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Add(VideoAds model, int customerId)
+        public async Task<IActionResult> Add(BannerAds model, int customerId)
         {
             ViewData["Action"] = "Add";
             ViewData["CustomerId"] = customerId;
@@ -58,11 +58,6 @@ namespace AnimeCore.Areas.Admin.Controllers
                 return JsonStatus.Ok;
             }
             return PartialView("_AddEditPartial", model);
-        }
-
-        public IActionResult Review(string source)
-        {
-            return PartialView("_ReviewPartial", source);
         }
     }
 }

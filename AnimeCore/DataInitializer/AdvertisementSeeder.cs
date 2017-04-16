@@ -171,6 +171,86 @@ namespace AnimeCore.DataInitializer
 
         private static async Task InitializeBannerAdvertisementAsync(IApplicationBuilder app)
         {
+            var adsLocationRepository = app.ApplicationServices.GetService<IBannerAdsLocationRepository>();
+
+            var adsLocations = new List<BannerAdsLocation>
+            {
+                new BannerAdsLocation
+                {
+                    Name = "Top",
+                    Desciption = "Show ads on top page",
+                    Price = 110000
+                },
+                new BannerAdsLocation
+                {
+                    Name = "Footer",
+                    Desciption = "Show ads on footer page",
+                    Price = 220000
+                },
+                new BannerAdsLocation
+                {
+                    Name = "Right",
+                    Desciption = "Show ads on right side page",
+                    Price = 250000
+                }
+            };
+
+            await adsLocationRepository.AddRangeAsync(adsLocations);
+
+            var adsRepository = app.ApplicationServices.GetService<IBannerAdsRepository>();
+
+            var videoAds = new List<BannerAds>
+            {
+                new BannerAds
+                {
+                    Name = "Example",
+                    Description = "Example",
+                    Title = "Example",
+                    Url = "http://localhost.com/",
+                    Source = "/assets/client/ads-example/banner/example-top-banner.png",
+                    StartDate = new DateTime(2017, 3, 10),
+                    EndDate = new DateTime(2017, 5, 10),
+                    LocationType = LocationType.Home,
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Top")
+                },
+                new BannerAds
+                {
+                    Name = "Pepsi",
+                    Description = "Pepsi",
+                    Title = "Pepsi",
+                    Url = "http://www.pepsi.com/",
+                    Source = "/assets/client/ads-example/banner/pepsi_halloween.jpg",
+                    StartDate = new DateTime(2017, 4, 1),
+                    EndDate = new DateTime(2017, 5, 1),
+                    LocationType = LocationType.Home,
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right")
+                },
+                new BannerAds
+                {
+                    Name = "Razer",
+                    Description = "Razer",
+                    Title = "Razer",
+                    Url = "https://www.razerzone.com/store/razer-kraken-71-chroma",
+                    Source = "/assets/client/ads-example/banner/razer-kraken-7-1-usb-gaming-headset.jpg",
+                    StartDate = new DateTime(2017, 4, 1),
+                    EndDate = new DateTime(2017, 5, 1),
+                    LocationType = LocationType.Home,
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right")
+                },
+                new BannerAds
+                {
+                    Name = "steelseries",
+                    Description = "steelseries",
+                    Title = "steelseries",
+                    Url = "https://steelseries.com/",
+                    Source = "/assets/client/ads-example/banner/steelseries_minimalistic.png",
+                    StartDate = new DateTime(2017, 4, 1),
+                    EndDate = new DateTime(2017, 5, 1),
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right")
+                }
+            };
+
+            await adsRepository.AddRangeAsync(videoAds);
         }
     }
 }
