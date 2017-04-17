@@ -1,5 +1,6 @@
 ﻿@using Microsoft.ApplicationInsights.AspNetCore
 @using Microsoft.Extensions.Options
+@inject IBannerAdsRepository BannerAdsRepository
 @inject IOptions<Authentication> Authentication
 @inject JavaScriptSnippet JavaScriptSnippet
 <!DOCTYPE html>
@@ -49,6 +50,7 @@
 <!-- top-ads -->
 <div class="container" id="top-ads">
     @RenderSection("TopAds", false)
+    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Top", LocationType.Both)"></vc:banner>
 </div>
 <!-- /.top-ads -->
 
@@ -65,7 +67,10 @@
             </div>
             <div class="col-sm-3">
                 <!-- right-ads -->
-                @RenderSection("RightAds", false)
+                <div id="right-ads">
+                    @RenderSection("RightAds", false)
+                    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Right", LocationType.Both)"></vc:banner>
+                </div>
                 <!-- /.right-ads -->
             </div>
         </div>
@@ -76,6 +81,7 @@
 <!-- bottom-ads -->
 <div class="container" id="bottom-ads">
     @RenderSection("BottomAds", false)
+    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Bottom", LocationType.Both)"></vc:banner>
 </div>
 <!-- /.bottom-ads -->
 

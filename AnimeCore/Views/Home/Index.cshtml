@@ -12,31 +12,15 @@
 
 <vc:movie-slide model="@MovieRepository.FindNewestMovie(16)" title="Newest" rows="1"></vc:movie-slide>
 
-<vc:movie-slide model="@MovieRepository.GetAll().PickRandom(36)" title="Random" rows="3"></vc:movie-slide>
 
 @section TopAds {
-    @foreach (var item in BannerAdsRepository.GetActiveBanners("Top", LocationType.Home))
-    {
-        <div style="margin-bottom: 10px">
-            <vc:banner model="@item"></vc:banner>
-        </div>
-    }
+    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Top", LocationType.Home)"></vc:banner>
 }
 
 @section RightAds {
-    @foreach (var item in BannerAdsRepository.GetActiveBanners("Right", LocationType.Home))
-    {
-        <div style="margin-bottom: 10px">
-            <vc:banner model="@item"></vc:banner>
-        </div>
-    }
+    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Right", LocationType.Home)"></vc:banner>
 }
 
 @section BottomAds {
-    @foreach (var item in BannerAdsRepository.GetActiveBanners("Bottom", LocationType.Home))
-    {
-        <div style="margin-bottom: 10px">
-            <vc:banner model="@item"></vc:banner>
-        </div>
-    }
+    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Bottom", LocationType.Home)"></vc:banner>
 }

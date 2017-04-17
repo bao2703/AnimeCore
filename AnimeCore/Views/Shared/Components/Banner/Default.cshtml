@@ -1,7 +1,12 @@
-@model BannerAds
+@model IEnumerable<BannerAds>
 
-<div title="@Model.Title" id="@Model.Id">
-    <a href="@Model.Url" target="_blank">
-        <img src="@Model.Source" alt="@Model.Name" class="img-responsive center-block" style="height: @Model.Height; width: @Model.Width"/>
-    </a>
-</div>
+@foreach (var item in Model)
+{
+    <div id="@item.Id" style="margin-bottom: 10px">
+        <div title="@item.Title">
+            <a href="@item.Url" target="_blank">
+                <img src="@item.Source" alt="@item.Name" class="img-responsive center-block" style="height: @item.Height; width: @item.Width"/>
+            </a>
+        </div>
+    </div>
+}

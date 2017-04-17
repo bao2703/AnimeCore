@@ -1,4 +1,5 @@
-﻿using Entities.Domain;
+﻿using System.Collections.Generic;
+using Entities.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AnimeCore.ViewComponents
@@ -6,7 +7,7 @@ namespace AnimeCore.ViewComponents
     [ViewComponent(Name = "Banner")]
     public class BannerViewComponent : ViewComponent
     {
-        public IViewComponentResult Invoke(BannerAds model)
+        public IViewComponentResult Invoke(IEnumerable<BannerAds> model)
         {
             return View(model);
         }

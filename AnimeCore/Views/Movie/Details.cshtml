@@ -1,10 +1,23 @@
 @model Movie
+@inject IBannerAdsRepository BannerAdsRepository
 @{
     ViewData[Constant.Title] = "Details";
 }
 
 @section Slide {
     @await Html.PartialAsync("_SlidePartial")
+}
+
+@section TopAds {
+    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Top", LocationType.Child)"></vc:banner>
+}
+
+@section RightAds {
+    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Right", LocationType.Child)"></vc:banner>
+}
+
+@section BottomAds {
+    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Bottom", LocationType.Child)"></vc:banner>
 }
 
 <ol class="breadcrumb">

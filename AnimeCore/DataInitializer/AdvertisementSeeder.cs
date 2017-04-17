@@ -122,6 +122,17 @@ namespace AnimeCore.DataInitializer
                 },
                 new VideoAds
                 {
+                    Name = "Eat24",
+                    Description = "Eat24",
+                    Title = "Eat24",
+                    Url = "https://eat24.com/",
+                    Source = "/assets/client/ads-example/skip-this-ad.mp4",
+                    StartDate = new DateTime(2017, 3, 1),
+                    EndDate = new DateTime(2017, 5, 1),
+                    VideoAdsLocation = adsLocations.Single(x => x.Name == "Popular")
+                },
+                new VideoAds
+                {
                     Name = "Asus ROG G752",
                     Description = "Asus ROG G752",
                     Title = "Asus ROG G752 Gaming Laptop",
@@ -260,6 +271,31 @@ namespace AnimeCore.DataInitializer
                     Source = "/assets/client/ads-example/banner/steelseries_minimalistic.png",
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 5, 1),
+                    LocationType = LocationType.Both,
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right")
+                },
+                new BannerAds
+                {
+                    Name = "Challenge Accepted",
+                    Description = "Challenge Accepted",
+                    Title = "Challenge Accepted",
+                    Url = "https://lerageshirts.com/product/challenge-accepted-meme-rage-face-t-shirt/",
+                    Source = "/assets/client/ads-example/banner/challenge-accepted-shirt-meme-rage-face-funny-tee.jpg",
+                    StartDate = new DateTime(2017, 4, 1),
+                    EndDate = new DateTime(2017, 5, 1),
+                    LocationType = LocationType.Child,
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right")
+                },
+                new BannerAds
+                {
+                    Name = "Buzz Ad Demo",
+                    Description = "Buzz Ad Demo",
+                    Title = "Buzz Ad Demo",
+                    Url = "http://BuzzAdDemo.com",
+                    Source = "/assets/client/ads-example/banner/buzz-ad-demo.jpg",
+                    StartDate = new DateTime(2017, 4, 1),
+                    EndDate = new DateTime(2017, 5, 1),
+                    LocationType = LocationType.Both,
                     BannerAdsLocation = adsLocations.Single(x => x.Name == "Right")
                 }
             };

@@ -4,12 +4,12 @@
 @model VideoAds
 
 @{
-    var modalHeading = "Add Advertisement";
+    var modalHeading = "Add Video Advertisement";
     var submitButtonText = "Add";
     var submitButtonClass = "btn-primary";
     if (ViewData["Action"].ToString() == "Edit")
     {
-        modalHeading = "Edit Advertisement";
+        modalHeading = "Edit Video Advertisement";
         submitButtonText = "Edit";
         submitButtonClass = "btn-info";
     }

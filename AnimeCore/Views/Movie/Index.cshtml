@@ -1,10 +1,23 @@
 @inject IGenreRepository GenreRepository
+@inject IBannerAdsRepository BannerAdsRepository
 @{
     ViewData[Constant.Title] = "Index";
 }
 
 @section Slide {
     @await Html.PartialAsync("_SlidePartial")
+}
+
+@section TopAds {
+    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Top", LocationType.Child)"></vc:banner>
+}
+
+@section RightAds {
+    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Right", LocationType.Child)"></vc:banner>
+}
+
+@section BottomAds {
+    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Bottom", LocationType.Child)"></vc:banner>
 }
 
 <div ng-app="app" ng-controller="movie-controller">

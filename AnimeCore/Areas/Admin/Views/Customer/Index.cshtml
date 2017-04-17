@@ -21,7 +21,7 @@
                         <th>
                             <div class="btn-group">
                                 <a asp-action="Add" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#customer-action-modal">
-                                    <i class="fa fa-plus"></i>
+                                    <i class="fa fa-plus"></i> Add Customer
                                 </a>
                             </div>
                         </th>
@@ -45,7 +45,10 @@
                         <tr>
                             <td>
                                 <a asp-action="Add" asp-controller="VideoAds" asp-route-customerId="@item.Id" data-toggle="modal" data-target="#customer-action-modal" class="btn btn-success btn-sm">
-                                    <i class="fa fa-plus"></i>
+                                    <i class="fa fa-plus"></i> <i class="fa fa-video-camera"></i>
+                                </a>
+                                <a asp-action="Add" asp-controller="BannerAds" asp-route-customerId="@item.Id" data-toggle="modal" data-target="#customer-action-modal" class="btn btn-default btn-sm">
+                                    <i class="fa fa-plus"></i> <i class="fa fa-image"></i>
                                 </a>
                                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm" data-toggle="modal" data-target="#customer-action-modal">
                                     <i class="fa fa-pencil"></i>

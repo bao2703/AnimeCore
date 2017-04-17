@@ -1,4 +1,5 @@
 @model Movie
+@inject IBannerAdsRepository BannerAdsRepository
 @inject IEpisodeRepository EpisodeRepository
 
 @{
@@ -33,6 +34,18 @@
             </div>
         </div>
     </div>
+}
+
+@section TopAds {
+    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Top", LocationType.Child)"></vc:banner>
+}
+
+@section RightAds {
+    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Right", LocationType.Child)"></vc:banner>
+}
+
+@section BottomAds {
+    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Bottom", LocationType.Child)"></vc:banner>
 }
 
 <div class="panel panel-info" id="panel-movie-detail">
