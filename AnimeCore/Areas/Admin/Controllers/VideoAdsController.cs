@@ -67,7 +67,7 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         public IActionResult Review(string source)
         {
-            return PartialView("_ReviewPartial", source);
+            return PartialView("_PreviewPartial", source);
         }
     }
 }

@@ -1,7 +1,7 @@
 @using Models.ModalViewModels
 @model string
 
-@await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = "Review"})
+@await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = "Preview"})
 <div class="modal-body">
     <div class="embed-responsive embed-responsive-16by9">
         <iframe class="embed-responsive-item" src="@Model" autoplay="" controls=""></iframe>

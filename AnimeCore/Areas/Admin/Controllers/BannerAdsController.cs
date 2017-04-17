@@ -40,6 +40,7 @@ namespace AnimeCore.Areas.Admin.Controllers
         {
             ViewData["Action"] = "Add";
             ViewData["CustomerId"] = customerId;
+
             if (ModelState.IsValid)
             {
                 var invoice = new Invoice

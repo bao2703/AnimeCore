@@ -15,7 +15,7 @@
     }
 }
 
-<form asp-action="@ViewData["Action"]" asp-route-customerId="@ViewData["CustomerId"]" method="post" class="modal-form">
+<form asp-action="@ViewData["Action"]" asp-route-customerId="@ViewData["CustomerId"]" enctype="multipart/form-data" method="post" class="modal-form">
     @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = modalHeading})
     <div class="modal-body form-horizontal">
         <div class="row">
@@ -78,15 +78,7 @@
                 <div class="form-group">
                     <label asp-for="Source" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <div class="input-group">
-                            <label class="input-group-btn">
-                                <span class="btn btn-primary">
-                                    Browse... <input type="file" style="display: none;">
-                                </span>
-                            </label>
-                            <input type="text" class="form-control" readonly="">
-                        </div>
-                        <span asp-validation-for="Source" class="text-danger"></span>
+                        <input id="file" type="file" name="file" data-show-upload="false" data-show-remove="true" data-allowed-file-extensions='["jpeg", "gif", "png", "jpg"]'/>
                     </div>
                 </div>
             </div>
@@ -142,6 +134,8 @@
 </form>
 
 <script>
+    $("#file").fileinput();
+
     $(".selectpicker").selectpicker();
 
     $('#start').datetimepicker({
