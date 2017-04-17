@@ -1,7 +1,7 @@
 @model BannerAds
 
 <div title="@Model.Title" id="@Model.Id">
-    <a href="@Model.Url">
+    <a href="@Model.Url" target="_blank">
         <img src="@Model.Source" alt="@Model.Name" class="img-responsive center-block" style="height: @Model.Height; width: @Model.Width"/>
     </a>
 </div>

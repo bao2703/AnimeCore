@@ -212,6 +212,19 @@ namespace AnimeCore.DataInitializer
                     EndDate = new DateTime(2017, 5, 10),
                     LocationType = LocationType.Home,
                     Height = "100px",
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Bottom")
+                },
+                new BannerAds
+                {
+                    Name = "C# vs Java",
+                    Description = "C# vs Java",
+                    Title = "C# vs Java",
+                    Url = "http://C#vsJava.com/",
+                    Source = "/assets/client/ads-example/banner/c_vs_java_play_the_match.gif",
+                    StartDate = new DateTime(2017, 3, 10),
+                    EndDate = new DateTime(2017, 5, 10),
+                    LocationType = LocationType.Home,
+                    Height = "150px",
                     BannerAdsLocation = adsLocations.Single(x => x.Name == "Top")
                 },
                 new BannerAds

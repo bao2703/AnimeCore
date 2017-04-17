@@ -3,7 +3,6 @@
     }).on("hidden.bs.modal",
     function() {
         $(this).removeData("bs.modal");
-        $(this).find("video").each(function() {
-            $(this).get(0).remove();
-        });
+        $(this).find("video").remove();
+        $("iframe").remove();
     });

@@ -11,6 +11,6 @@ namespace Models.EpisodeViewModels
         public string Name { get; set; }
 
         [Required]
-        public string Url { get; set; }
+        public string Source { get; set; }
     }
 }

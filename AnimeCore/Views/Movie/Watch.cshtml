@@ -44,7 +44,7 @@
             <div class="col-sm-12">
                 @foreach (var item in EpisodeRepository.OrderByName(Model.Episodes))
                 {
-                    <button class="btn btn-primary btn-episode" data-url="@item.Url" style="margin-bottom: 10px">@(item.Name.Length == 1 ? "0" : "")@item.Name</button>
+                    <button class="btn btn-primary btn-episode" data-src="@item.Source" style="margin-bottom: 10px">@(item.Name.Length == 1 ? "0" : "")@item.Name</button>
                 }
             </div>
         </div>
@@ -102,7 +102,7 @@
 
             $('.btn-episode').on('click',
                 function() {
-                    $('#movie').attr("src", $(this).data("url"));
+                    $('#movie').attr("src", $(this).data("src"));
                     $('.btn-episode').removeClass("active");
                     $(this).addClass("active");
                 });

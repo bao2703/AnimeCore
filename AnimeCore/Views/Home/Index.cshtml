@@ -23,8 +23,17 @@
     }
 }
 
-@section RightAds{
+@section RightAds {
     @foreach (var item in BannerAdsRepository.GetActiveBanners("Right", LocationType.Home))
+    {
+        <div style="margin-bottom: 10px">
+            <vc:banner model="@item"></vc:banner>
+        </div>
+    }
+}
+
+@section BottomAds {
+    @foreach (var item in BannerAdsRepository.GetActiveBanners("Bottom", LocationType.Home))
     {
         <div style="margin-bottom: 10px">
             <vc:banner model="@item"></vc:banner>

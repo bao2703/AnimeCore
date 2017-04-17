@@ -35,7 +35,7 @@ namespace AnimeCore.Areas.Admin.Controllers
             {
                 Id = x.Id,
                 Name = x.Name,
-                Url = x.Url
+                Source = x.Source
             });
             return View(model);
         }
@@ -60,7 +60,7 @@ namespace AnimeCore.Areas.Admin.Controllers
                 var episode = new Episode
                 {
                     Name = model.Name,
-                    Url = model.Url,
+                    Source = model.Source,
                     Movie = new Movie {Id = model.MovieId}
                 };
                 _movieRepository.Attach(episode.Movie);
@@ -83,7 +83,7 @@ namespace AnimeCore.Areas.Admin.Controllers
             {
                 Id = episode.Id,
                 Name = episode.Name,
-                Url = episode.Url
+                Source = episode.Source
             };
             return PartialView("_AddEditPartial", model);
         }
@@ -101,7 +101,7 @@ namespace AnimeCore.Areas.Admin.Controllers
                     return NotFound();
                 }
                 episode.Name = model.Name;
-                episode.Url = model.Url;
+                episode.Source = model.Source;
                 _episodeRepository.Update(episode);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;
@@ -120,7 +120,7 @@ namespace AnimeCore.Areas.Admin.Controllers
             {
                 Id = episode.Id,
                 Name = episode.Name,
-                Url = episode.Url
+                Source = episode.Source
             };
             return PartialView("_DeletePartial", model);
         }
@@ -141,6 +141,11 @@ namespace AnimeCore.Areas.Admin.Controllers
                 return JsonStatus.Ok;
             }
             return PartialView("_DeletePartial", model);
+        }
+
+        public IActionResult Review(string source)
+        {
+            return PartialView("_ReviewPartial", source);
         }
     }
 }

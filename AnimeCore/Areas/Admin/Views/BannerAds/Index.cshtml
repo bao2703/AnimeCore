@@ -46,10 +46,10 @@
                             <display name-for="@Model.First().Description"></display>
                         </th>
                         <th>
-                            <display name-for="@Model.First().Url"></display>
+                            H-W
                         </th>
                         <th>
-                            <display name-for="@Model.First().Source"></display>
+                            <display name-for="@Model.First().Url"></display>
                         </th>
                     </tr>
                     </thead>
@@ -65,7 +65,10 @@
                                     <i class="fa fa-trash"></i>
                                 </a>
                             </td>
-                            <td>@item.Name</td>
+                            <td class="text-center">
+                                @item.Name
+                                <img src="@item.Source" alt="@item.Name" class="img-responsive img-rounded"/>
+                            </td>
                             <td>@item.StartDate.Format()-@item.EndDate.Format()</td>
                             <td>@item.BannerAdsLocation.Name - @item.LocationType.ToString()</td>
                             @{
@@ -89,11 +92,9 @@
                             <td>@item.View</td>
                             <td>@item.Title</td>
                             <td>@item.Description</td>
+                            <td>@item.Height-@item.Width</td>
                             <td>
                                 <a href="@item.Url">@item.Url</a>
-                            </td>
-                            <td>
-                                <img src="@item.Source" alt="@item.Name" class="img-responsive img-rounded"/>
                             </td>
                         </tr>
                     }
