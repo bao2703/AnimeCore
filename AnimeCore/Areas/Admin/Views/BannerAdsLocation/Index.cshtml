@@ -1,4 +1,6 @@
+@inject IBannerAdsRepository BannerAdsRepository
 @using Models.ModalViewModels
+@using Repositories
 @model IEnumerable<BannerAdsLocation>
 @{
     ViewData[Constant.Title] = "Banner Location List";
@@ -19,9 +21,6 @@
                     <thead>
                     <tr>
                         <th>
-                            #
-                        </th>
-                        <th>
                             <display name-for="@Model.First().Id"></display>
                         </th>
                         <th>
@@ -34,7 +33,9 @@
                             <display name-for="@Model.First().Price"></display>
                         </th>
                         <th>
-                            # Banner
+                            <label class="label label-success" style="font-size: 12px">
+                                Active
+                            </label>
                         </th>
                     </tr>
                     </thead>
@@ -42,19 +43,11 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm" data-toggle="modal" data-target="#advertisement-action-modal">
-                                    <i class="fa fa-pencil"></i>
-                                </a>
-                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#advertisement-action-modal">
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                            </td>
                             <td>@item.Id</td>
                             <td>@item.Name</td>
                             <td>@item.Desciption</td>
                             <td>@item.Price</td>
-                            <td>@item.BannerAdses.Count</td>
+                            <td>@BannerAdsRepository.GetActiveBanners(item.Name).Count()</td>
                         </tr>
                     }
                     </tbody>

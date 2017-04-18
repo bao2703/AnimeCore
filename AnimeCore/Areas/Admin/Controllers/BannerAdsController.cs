@@ -70,5 +70,26 @@ namespace AnimeCore.Areas.Admin.Controllers
             }
             return PartialView("_AddEditPartial", model);
         }
+
+        public IActionResult Edit(int id)
+        {
+            ViewData["Action"] = "Edit";
+            var model = _bannerAdsRepository.FindById(id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return PartialView("_AddEditPartial", model);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var model = _bannerAdsRepository.FindById(id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return PartialView("_DeletePartial", model);
+        }
     }
 }
