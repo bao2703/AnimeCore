@@ -2,6 +2,10 @@
 {
     public class Constant
     {
+        public static string ImagesFolderPath => "/app-data/upload/images/";
+
+        public static string RootPath => "wwwroot";
+
         public static string Title => "Title";
 
         public static string ReturnUrl => "ReturnUrl";

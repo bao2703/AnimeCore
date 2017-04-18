@@ -5,7 +5,9 @@ $(".modal-form").submit(function(e) {
         $.ajax({
             type: this.method,
             url: this.action,
-            data: $(this).serialize(),
+            data: new FormData(this),
+            processData: false,
+            contentType: false,
             success: function(data) {
                 if (data.status === "Ok") {
                     window.location = window.location;

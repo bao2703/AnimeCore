@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using AnimeCore.Common;
 using Entities.Domain;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Repositories;
 
@@ -36,13 +39,20 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Add(BannerAds model, int customerId)
+        public async Task<IActionResult> Add(BannerAds model, int customerId, IFormFile file)
         {
             ViewData["Action"] = "Add";
             ViewData["CustomerId"] = customerId;
 
+            var filePath = Constant.ImagesFolderPath + DateTime.Now.ToFileTime() + file.FileName;
+
             if (ModelState.IsValid)
             {
+                using (var stream = new FileStream(Constant.RootPath + filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+                model.Source = filePath;
                 var invoice = new Invoice
                 {
                     CustomerId = customerId,
