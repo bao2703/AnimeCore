@@ -203,6 +203,12 @@ namespace AnimeCore.DataInitializer
                     Name = "Right",
                     Desciption = "Show ads on right side page",
                     Price = 250000
+                },
+                new BannerAdsLocation
+                {
+                    Name = "Right Balloon",
+                    Desciption = "Show ads on bottom right page",
+                    Price = 2500000
                 }
             };
 
@@ -264,18 +270,6 @@ namespace AnimeCore.DataInitializer
                 },
                 new BannerAds
                 {
-                    Name = "steelseries",
-                    Description = "steelseries",
-                    Title = "steelseries",
-                    Url = "https://steelseries.com/",
-                    Source = "/assets/client/ads-example/banner/steelseries_minimalistic.png",
-                    StartDate = new DateTime(2017, 4, 1),
-                    EndDate = new DateTime(2017, 5, 1),
-                    LocationType = LocationType.Both,
-                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right")
-                },
-                new BannerAds
-                {
                     Name = "Challenge Accepted",
                     Description = "Challenge Accepted",
                     Title = "Challenge Accepted",
@@ -297,6 +291,20 @@ namespace AnimeCore.DataInitializer
                     EndDate = new DateTime(2017, 5, 1),
                     LocationType = LocationType.Both,
                     BannerAdsLocation = adsLocations.Single(x => x.Name == "Right")
+                },
+                new BannerAds
+                {
+                    Name = "steelseries",
+                    Description = "steelseries",
+                    Title = "steelseries",
+                    Url = "https://steelseries.com/",
+                    Source = "/assets/client/ads-example/banner/steelseries_minimalistic.png",
+                    StartDate = new DateTime(2017, 4, 1),
+                    EndDate = new DateTime(2017, 5, 1),
+                    LocationType = LocationType.Both,
+                    Height = "200px",
+                    Width = "250px",
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right Balloon")
                 }
             };
 

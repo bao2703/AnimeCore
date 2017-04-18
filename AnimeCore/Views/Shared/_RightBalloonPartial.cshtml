@@ -1,0 +1,28 @@
+﻿@model BannerAds
+
+<style>
+    .fa-close:hover {
+        color: black
+    }
+</style>
+
+<div id="right-balloon-ads" style="bottom: 0; position: fixed; right: 0;">
+    <a class="pull-left" id="right-balloon-ads-close" style="position: absolute; margin-top: -2px">
+        <label class="label label-info" style="cursor: pointer">
+            <i class="fa fa-close"></i>
+        </label>
+    </a>
+    <div id="@Model.Id">
+        <div title="@Model.Title">
+            <a href="@Model.Url" target="_blank">
+                <img src="@Model.Source" alt="@Model.Name" class="img-responsive center-block" style="height: @Model.Height; width: @Model.Width"/>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#right-balloon-ads-close").click(function() {
+        $("#right-balloon-ads").remove();
+    })
+</script>

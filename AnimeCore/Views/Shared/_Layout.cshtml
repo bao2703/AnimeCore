@@ -92,7 +92,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/assets/js/facebook-sdk.js"></script>
     <script src="~/lib/bootstrap-select/dist/js/bootstrap-select.js"></script>
-    <script src="~/assets/client/js/site.js"></script>
+    <script src="~/assets/client/js/site.js" asp-append-version="true"></script>
 </environment>
 <environment names="Staging,Production">
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"
@@ -110,6 +110,8 @@
     <script src="~/assets/client/js/site.min.js" asp-append-version="true"></script>
 </environment>
 @RenderSection("Scripts", false)
+
+@await Html.PartialAsync("_RightBalloonPartial", BannerAdsRepository.GetActiveBanners("Right Balloon", LocationType.Both).PickRandom())
 
 </body>
 </html>
