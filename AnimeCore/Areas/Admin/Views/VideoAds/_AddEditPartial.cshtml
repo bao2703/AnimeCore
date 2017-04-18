@@ -60,14 +60,7 @@
                 <div class="form-group">
                     <label asp-for="Source" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <div class="input-group">
-                            <label class="input-group-btn">
-                                <span class="btn btn-primary">
-                                    Browse... <input type="file" style="display: none;">
-                                </span>
-                            </label>
-                            <input type="text" class="form-control" readonly="">
-                        </div>
+                        <input asp-for="Source" class="form-control"/>
                         <span asp-validation-for="Source" class="text-danger"></span>
                     </div>
                 </div>

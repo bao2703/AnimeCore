@@ -50,7 +50,7 @@
 <!-- top-ads -->
 <div class="container" id="top-ads">
     @RenderSection("TopAds", false)
-    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Top", LocationType.Both)"></vc:banner>
+    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Top", LocationType.HomeChild)"></vc:banner>
 </div>
 <!-- /.top-ads -->
 
@@ -69,7 +69,7 @@
                 <!-- right-ads -->
                 <div id="right-ads">
                     @RenderSection("RightAds", false)
-                    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Right", LocationType.Both)"></vc:banner>
+                    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Right", LocationType.HomeChild)"></vc:banner>
                 </div>
                 <!-- /.right-ads -->
             </div>
@@ -81,7 +81,7 @@
 <!-- bottom-ads -->
 <div class="container" id="bottom-ads">
     @RenderSection("BottomAds", false)
-    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Bottom", LocationType.Both)"></vc:banner>
+    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Bottom", LocationType.HomeChild)"></vc:banner>
 </div>
 <!-- /.bottom-ads -->
 
@@ -111,7 +111,7 @@
 </environment>
 @RenderSection("Scripts", false)
 
-@await Html.PartialAsync("_RightBalloonPartial", BannerAdsRepository.GetActiveBanners("Right Balloon", LocationType.Both).PickRandom())
+@await Html.PartialAsync("_RightBalloonPartial", BannerAdsRepository.GetActiveBanners("Right Balloon", LocationType.HomeChild).PickRandom())
 
 </body>
 </html>

@@ -229,6 +229,7 @@ namespace AnimeCore.DataInitializer
                     EndDate = new DateTime(2017, 5, 10),
                     LocationType = LocationType.Home,
                     Height = "100px",
+                    Width = "100%",
                     BannerAdsLocation = adsLocations.Single(x => x.Name == "Bottom")
                 },
                 new BannerAds
@@ -242,6 +243,7 @@ namespace AnimeCore.DataInitializer
                     EndDate = new DateTime(2017, 5, 10),
                     LocationType = LocationType.Home,
                     Height = "150px",
+                    Width = "100%",
                     BannerAdsLocation = adsLocations.Single(x => x.Name == "Top")
                 },
                 new BannerAds
@@ -289,7 +291,7 @@ namespace AnimeCore.DataInitializer
                     Source = "/assets/client/ads-example/banner/buzz-ad-demo.jpg",
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 5, 1),
-                    LocationType = LocationType.Both,
+                    LocationType = LocationType.HomeChild,
                     BannerAdsLocation = adsLocations.Single(x => x.Name == "Right")
                 },
                 new BannerAds
@@ -301,7 +303,7 @@ namespace AnimeCore.DataInitializer
                     Source = "/assets/client/ads-example/banner/steelseries_minimalistic.png",
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 5, 1),
-                    LocationType = LocationType.Both,
+                    LocationType = LocationType.HomeChild,
                     Height = "200px",
                     Width = "250px",
                     BannerAdsLocation = adsLocations.Single(x => x.Name == "Right Balloon")

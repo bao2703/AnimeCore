@@ -1,3 +1,4 @@
+@inject Helper Helper
 @using Models.ModalViewModels
 @model IEnumerable<BannerAds>
 @{
@@ -70,23 +71,11 @@
                                 <img src="@item.Source" alt="@item.Name" class="img-responsive img-rounded"/>
                             </td>
                             <td>@item.StartDate.Format()-@item.EndDate.Format()</td>
-                            <td>@item.BannerAdsLocation.Name - @item.LocationType.ToString()</td>
-                            @{
-                                var status = "Actice";
-                                var statusClass = "success";
-                                if (item.EndDate < DateTime.Today)
-                                {
-                                    status = "Expired";
-                                    statusClass = "danger";
-                                }
-                                else if (item.StartDate > DateTime.Today)
-                                {
-                                    status = "Not start";
-                                    statusClass = "info";
-                                }
-                            }
+                            <td>@item.BannerAdsLocation.Name - @item.LocationType.EnumValue()</td>
                             <td>
-                                <label class="label label-@statusClass">@status</label>
+                                <label class="label label-@Helper.GetStatusClass(item.Status)">
+                                    @item.Status
+                                </label>
                             </td>
                             <td>@item.Click</td>
                             <td>@item.View</td>

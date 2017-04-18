@@ -1,13 +1,11 @@
 ﻿@model BannerAds
 
 <style>
-    .fa-close:hover {
-        color: black
-    }
+    .fa-close:hover { color: black }
 </style>
 
 <div id="right-balloon-ads" style="bottom: 0; position: fixed; right: 0;">
-    <a class="pull-left" id="right-balloon-ads-close" style="position: absolute; margin-top: -2px">
+    <a class="pull-left" id="right-balloon-ads-close" style="margin-top: -2px; position: absolute;">
         <label class="label label-info" style="cursor: pointer">
             <i class="fa fa-close"></i>
         </label>
@@ -23,6 +21,9 @@
 
 <script>
     $("#right-balloon-ads-close").click(function() {
-        $("#right-balloon-ads").remove();
+        $("#right-balloon-ads").fadeOut(1000,
+            function() {
+                $(this).remove();
+            });
     })
 </script>

@@ -1,5 +1,7 @@
-﻿using Entities;
+﻿using System.Collections.Generic;
+using Entities;
 using Entities.Domain;
+using Microsoft.EntityFrameworkCore;
 using Repositories.Core;
 
 namespace Repositories
@@ -12,6 +14,11 @@ namespace Repositories
     {
         public BannerAdsLocationRepository(NeptuneContext context) : base(context)
         {
+        }
+
+        public override IEnumerable<BannerAdsLocation> GetAll()
+        {
+            return DbSet.Include(x => x.BannerAdses);
         }
     }
 }

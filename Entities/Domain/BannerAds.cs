@@ -6,17 +6,11 @@ namespace Entities.Domain
     {
         Home,
         Child,
-        Both
+        [Display(Name = "Home & Child")] HomeChild
     }
 
     public class BannerAds : Advertisement
     {
-        public BannerAds()
-        {
-            Height = "100%";
-            Width = "100%";
-        }
-
         [Display(Name = "Location type")]
         public LocationType LocationType { get; set; }
 
