@@ -69,7 +69,8 @@ namespace AnimeCore.DataInitializer
             {
                 foreach (var action in Helper.GetActions(controller))
                 {
-                    await roleService.AddClaimAsync(roles[Administrator], new Claim(controller.Name, action));
+                    var controllerName = controller.Name.Replace("Controller", "");
+                    await roleService.AddClaimAsync(roles[Administrator], new Claim(controllerName, action));
                 }
             }
         }

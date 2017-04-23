@@ -40,7 +40,7 @@ namespace AnimeCore
                     options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });
 
             services.AddAuthorization(options =>
-                options.AddPolicy("User", policy => policy.RequireClaim("UserController"))
+                options.AddPolicy("User", policy => policy.RequireClaim("User"))
             );
 
             IdentityConfiguration.Configure(services);
