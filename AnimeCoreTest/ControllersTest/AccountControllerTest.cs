@@ -144,7 +144,7 @@ namespace AnimeCoreTest.ControllersTest
         }
 
         [Fact]
-        public async Task LogOff()
+        public async Task Logout()
         {
             //Arrange
             var mockAccountService = new Mock<IAccountService>();
@@ -152,7 +152,7 @@ namespace AnimeCoreTest.ControllersTest
             var accountController = new AccountController(mockAccountService.Object, mockUserService.Object);
 
             //Act
-            var result = await accountController.LogOff() as RedirectToActionResult;
+            var result = await accountController.Logout() as RedirectToActionResult;
 
             //Assert
             mockAccountService.Verify(m => m.SignOutAsync(), Times.Once);

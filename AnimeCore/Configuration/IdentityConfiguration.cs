@@ -37,7 +37,8 @@ namespace AnimeCore.Configuration
                 ApplicationCookie = new CookieAuthenticationOptions
                 {
                     LoginPath = "/Account/Login",
-                    LogoutPath = "/Account/LogOff",
+                    LogoutPath = "/Account/Logout",
+                    AccessDeniedPath = "/Error/403",
                     ExpireTimeSpan = TimeSpan.FromDays(1),
                     AutomaticAuthenticate = true,
                     AutomaticChallenge = true

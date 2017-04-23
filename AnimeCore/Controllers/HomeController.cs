@@ -9,9 +9,18 @@ namespace AnimeCore.Controllers
             return View();
         }
 
-        public IActionResult Error()
+        [Route("/Error/{statusCode}")]
+        public IActionResult Error(int? statusCode)
         {
-            return View();
+            switch (statusCode)
+            {
+                case 403:
+                    return View("AccessDenied");
+                case 404:
+                    return View("NotFound");
+                default:
+                    return View();
+            }
         }
     }
 }

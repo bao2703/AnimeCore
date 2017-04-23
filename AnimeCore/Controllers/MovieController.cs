@@ -29,34 +29,30 @@ namespace AnimeCore.Controllers
         }
 
         // GET: /Movie/Details/5
-        public IActionResult Details(int? id)
+        public IActionResult Details(int id)
         {
-            if (id == null)
+            var model = _movieRepository.FindById(id);
+            if (model == null)
             {
-                return View("Error");
+                return NotFound();
             }
-            var movie = _movieRepository.FindById((int) id);
-            return movie == null ? View("Error") : View(movie);
+            return View(model);
         }
 
         // GET: /Movie/Watch/5
-        public IActionResult Watch(int? id)
+        public IActionResult Watch(int id)
         {
-            if (id == null)
+            var model = _movieRepository.FindById(id);
+            if (model == null)
             {
-                return View("Error");
-            }
-            var movie = _movieRepository.FindById((int) id);
-            if (movie == null)
-            {
-                return View("Error");
+                return NotFound();
             }
             Advertisement advertisement;
-            if (_movieRepository.IsPopular(movie.Id))
+            if (_movieRepository.IsPopular(model.Id))
             {
                 advertisement = _videoAdsRepository.GetActiveVideos("Popular").PickRandom();
             }
-            else if (_movieRepository.IsNewest(movie.Id))
+            else if (_movieRepository.IsNewest(model.Id))
             {
                 advertisement = _videoAdsRepository.GetActiveVideos("Newest").PickRandom();
             }
@@ -65,7 +61,7 @@ namespace AnimeCore.Controllers
                 advertisement = _videoAdsRepository.GetActiveVideos("Normal").PickRandom();
             }
             ViewData["Advertisement"] = advertisement;
-            return View(movie);
+            return View(model);
         }
     }
 }

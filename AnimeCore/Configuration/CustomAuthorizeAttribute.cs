@@ -21,8 +21,8 @@ namespace AnimeCore.Configuration
                 context.Result = new UnauthorizedResult();
                 return;
             }
-
-            if (user.Claims.Any(x => x.Value == action && x.Type == controller))
+            
+            if (user.HasClaim(controller, action))
             {
                 return;
             }

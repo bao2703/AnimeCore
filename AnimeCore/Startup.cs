@@ -57,8 +57,10 @@ namespace AnimeCore
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
             }
+
+            //app.UseStatusCodePagesWithRedirects("/Error/{0}");
 
             app.UseStaticFiles();
 

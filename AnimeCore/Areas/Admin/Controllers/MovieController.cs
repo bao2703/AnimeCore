@@ -14,6 +14,11 @@ namespace AnimeCore.Areas.Admin.Controllers
         protected override string AddPartialViewName { get; set; } = "_AddEditPartial";
         protected override string EditPartialViewName { get; set; } = "_AddEditPartial";
 
+        public override IActionResult Index()
+        {
+            return base.Index();
+        }
+
         public override IActionResult Add()
         {
             ViewData["Action"] = "Add";
@@ -36,6 +41,16 @@ namespace AnimeCore.Areas.Admin.Controllers
         {
             ViewData["Action"] = "Edit";
             return base.Edit(model);
+        }
+
+        public override IActionResult Delete(int id)
+        {
+            return base.Delete(id);
+        }
+
+        public override Task<IActionResult> Delete(Movie model)
+        {
+            return base.Delete(model);
         }
     }
 }

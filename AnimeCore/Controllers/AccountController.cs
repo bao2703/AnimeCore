@@ -82,7 +82,7 @@ namespace AnimeCore.Controllers
         // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> LogOff()
+        public async Task<IActionResult> Logout()
         {
             await _accountService.SignOutAsync();
             return RedirectToAction("Index", "Home");
