@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
@@ -10,6 +11,8 @@ namespace Services
         Task<IdentityResult> UpdateAsync(TEntity entity);
         Task<IdentityResult> DeleteAsync(TEntity entity);
         Task<TEntity> FindByIdAsync(string id);
+        Task<TEntity> FindByNameAsync(string entityName);
         List<TEntity> ToList();
+        Task<IList<Claim>> GetClaimsAsync(TEntity entity);
     }
 }

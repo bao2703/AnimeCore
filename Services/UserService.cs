@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Entities.Domain;
 using Microsoft.AspNetCore.Identity;
@@ -17,6 +19,7 @@ namespace Services
         Task<IdentityResult> RemoveFromRoleAsync(User user, string role);
         Task<IdentityResult> RemoveFromRolesAsync(User user, IEnumerable<string> role);
         Task<IList<string>> GetRolesAsync(User user);
+        Task<User> GetUserAsync(ClaimsPrincipal user);
     }
 
     public class UserService : IUserService
@@ -63,6 +66,11 @@ namespace Services
             return _userManager.FindByIdAsync(id);
         }
 
+        public Task<User> FindByNameAsync(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<IdentityResult> UpdateAsync(User user)
         {
             return _userManager.UpdateAsync(user);
@@ -102,6 +110,16 @@ namespace Services
         public Task<IList<string>> GetRolesAsync(User user)
         {
             return _userManager.GetRolesAsync(user);
+        }
+
+        public Task<User> GetUserAsync(ClaimsPrincipal user)
+        {
+            return _userManager.GetUserAsync(user);
+        }
+
+        public Task<IList<Claim>> GetClaimsAsync(User user)
+        {
+            return _userManager.GetClaimsAsync(user);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AnimeCore.Common;
+using AnimeCore.Configuration;
 using Entities.Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,7 @@ using Services;
 
 namespace AnimeCore.Areas.Admin.Controllers
 {
+    [CustomAuthorize(Roles = "Administrator")]
     public class RoleController : AdminIdentityController
     {
         private readonly IRoleService _roleService;
