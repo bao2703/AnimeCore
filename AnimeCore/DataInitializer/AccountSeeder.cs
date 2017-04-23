@@ -1,6 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using AnimeCore.Areas.Admin.Controllers;
+using AnimeCore.Common;
 using Entities.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,33 +39,34 @@ namespace AnimeCore.DataInitializer
                 {
                     SuperUser, new Role
                     {
-                        Name = Administrator,
+                        Name = SuperUser,
                         Description = "Administrator"
                     }
                 },
                 {
                     Manager, new Role
                     {
-                        Name = Administrator,
+                        Name = Manager,
                         Description = "Administrator"
                     }
                 },
                 {
                     User, new Role
                     {
-                        Name = Administrator,
+                        Name = User,
                         Description = "Administrator"
                     }
                 }
             };
-
-            foreach (var role in roles)
+            
+            foreach (var role in roles.Values)
             {
-                await roleService.CreateAsync(role.Value);
+                await roleService.CreateAsync(role);
             }
 
-            var claim = new Claim("Role", "Index");
-            await roleService.AddClaimAsync(roles[Administrator], claim);
+            var controllers = Helper.GetControllers(typeof(AdminController).Namespace);
+
+            var actions = Helper.GetActions(controllers.ToList()[0]);
         }
 
         private static async Task InitializeUserAsync(IApplicationBuilder app)

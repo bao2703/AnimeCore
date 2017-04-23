@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -7,18 +8,18 @@ using Services;
 
 namespace AnimeCore.Configuration
 {
-    public class CustomActionFilterAttribute : ActionFilterAttribute
+    public class CustomAuthorizeAttribute : AuthorizeAttribute, IAsyncAuthorizationFilter
     {
         private readonly IRoleService _roleService;
         private readonly IUserService _userService;
 
-        public CustomActionFilterAttribute(IRoleService roleService, IUserService userService)
+        public CustomAuthorizeAttribute(IRoleService roleService, IUserService userService)
         {
             _roleService = roleService;
             _userService = userService;
         }
 
-        public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+        public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
         {
             var actionDescriptor = (ControllerActionDescriptor) context.ActionDescriptor;
             var controller = actionDescriptor.ControllerName;
@@ -37,7 +38,6 @@ namespace AnimeCore.Configuration
 
             if (claims.Any(x => x.Type == controller && x.Value == action))
             {
-                await next();
                 return;
             }
 

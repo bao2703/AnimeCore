@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using Entities.Domain;
 using Microsoft.AspNetCore.Mvc;
 
@@ -55,8 +56,22 @@ namespace AnimeCore.Common
             var asm = Assembly.GetEntryAssembly();
 
             return asm.GetTypes()
-                .Where(type => typeof(Controller).IsAssignableFrom(type) && type.Namespace.Contains(namespaces))
+                .Where(
+                    type =>
+                        typeof(Controller).IsAssignableFrom(type) && type.Namespace.Contains(namespaces) &&
+                        !type.GetTypeInfo().IsAbstract)
                 .OrderBy(x => x.Name);
+        }
+
+        public static IEnumerable<string> GetActions(Type controller)
+        {
+            var methodInfos = 
+                controller.GetMethods(BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.Public);
+
+            return
+                methodInfos.Where(method => method.IsPublic && !method.IsDefined(typeof(NonActionAttribute)))
+                    .OrderBy(x => x.Name)
+                    .Select(x => x.Name);
         }
     }
 }
