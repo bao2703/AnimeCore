@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using AnimeCore.Common;
 using Entities.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,28 +20,6 @@ namespace AnimeCore.DataInitializer
         {
             await InitializeRoleAsync(app);
             await InitializeUserAsync(app);
-        }
-
-        private static async Task InitializeUserAsync(IApplicationBuilder app)
-        {
-            var userService = app.ApplicationServices.GetService<IUserService>();
-            var users = new List<User>
-            {
-                new User
-                {
-                    UserName = "admin@gmail.com",
-                    Email = "admin@gmail.com"
-                },
-                new User
-                {
-                    UserName = "superuser@gmail.com",
-                    Email = "superuser@gmail.com"
-                }
-            };
-            foreach (var user in users)
-            {
-                await userService.CreateAsync(user, "Bao@2703", Administrator);
-            }
         }
 
         private static async Task InitializeRoleAsync(IApplicationBuilder app)
@@ -71,6 +51,28 @@ namespace AnimeCore.DataInitializer
             foreach (var role in roles)
             {
                 await roleService.CreateAsync(role);
+            }
+        }
+
+        private static async Task InitializeUserAsync(IApplicationBuilder app)
+        {
+            var userService = app.ApplicationServices.GetService<IUserService>();
+            var users = new List<User>
+            {
+                new User
+                {
+                    UserName = "bao2703@gmail.com",
+                    Email = "bao2703@gmail.com"
+                },
+                new User
+                {
+                    UserName = "bao2703@gmail.com2",
+                    Email = "bao2703@gmail.com2"
+                }
+            };
+            foreach (var user in users)
+            {
+                await userService.CreateAsync(user, "1", Administrator);
             }
         }
     }

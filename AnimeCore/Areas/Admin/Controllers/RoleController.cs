@@ -10,7 +10,7 @@ using Services;
 
 namespace AnimeCore.Areas.Admin.Controllers
 {
-    [CustomAuthorize(Roles = "Administrator")]
+    [CustomAuthorize]
     public class RoleController : AdminIdentityController
     {
         private readonly IRoleService _roleService;

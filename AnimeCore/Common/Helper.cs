@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Entities.Domain;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AnimeCore.Common
 {
@@ -45,6 +48,15 @@ namespace AnimeCore.Common
                     break;
             }
             return statusClass;
+        }
+
+        public static IEnumerable<Type> GetControllers(string namespaces)
+        {
+            var asm = Assembly.GetEntryAssembly();
+
+            return asm.GetTypes()
+                .Where(type => typeof(Controller).IsAssignableFrom(type) && type.Namespace.Contains(namespaces))
+                .OrderBy(x => x.Name);
         }
     }
 }
