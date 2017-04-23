@@ -13,6 +13,7 @@ namespace Services
         Task<TEntity> FindByIdAsync(string id);
         Task<TEntity> FindByNameAsync(string entityName);
         List<TEntity> ToList();
+        Task<IdentityResult> AddClaimAsync(TEntity entity, Claim claim);
         Task<IList<Claim>> GetClaimsAsync(TEntity entity);
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using Entities.Domain;
 using Microsoft.AspNetCore.Mvc;
 
@@ -65,7 +64,7 @@ namespace AnimeCore.Common
 
         public static IEnumerable<string> GetActions(Type controller)
         {
-            var methodInfos = 
+            var methodInfos =
                 controller.GetMethods(BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.Public);
 
             return

@@ -22,7 +22,7 @@ namespace AnimeCore.Configuration
         public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
         {
             var actionDescriptor = (ControllerActionDescriptor) context.ActionDescriptor;
-            var controller = actionDescriptor.ControllerName;
+            var controller = actionDescriptor.ControllerName + "Controller";
             var action = actionDescriptor.ActionName;
 
             if (!context.HttpContext.User.Identity.IsAuthenticated)
@@ -36,7 +36,9 @@ namespace AnimeCore.Configuration
             var role = await _roleService.FindByNameAsync(roleName.First());
             var claims = await _roleService.GetClaimsAsync(role);
 
-            if (claims.Any(x => x.Type == controller && x.Value == action))
+            var permissions = _roleService.GetPermissions(role);
+
+            if (permissions.Any(x => x.Action == action && x.Controller == controller))
             {
                 return;
             }

@@ -117,6 +117,11 @@ namespace Services
             return _userManager.GetUserAsync(user);
         }
 
+        public Task<IdentityResult> AddClaimAsync(User user, Claim claim)
+        {
+            return _userManager.AddClaimAsync(user, claim);
+        }
+
         public Task<IList<Claim>> GetClaimsAsync(User user)
         {
             return _userManager.GetClaimsAsync(user);

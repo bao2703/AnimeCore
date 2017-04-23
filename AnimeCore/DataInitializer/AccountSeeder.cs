@@ -1,9 +1,6 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using AnimeCore.Areas.Admin.Controllers;
-using AnimeCore.Common;
 using Entities.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -40,33 +37,47 @@ namespace AnimeCore.DataInitializer
                     SuperUser, new Role
                     {
                         Name = SuperUser,
-                        Description = "Administrator"
+                        Description = "SuperUser"
                     }
                 },
                 {
                     Manager, new Role
                     {
                         Name = Manager,
-                        Description = "Administrator"
+                        Description = "Manager"
                     }
                 },
                 {
                     User, new Role
                     {
                         Name = User,
-                        Description = "Administrator"
+                        Description = "User"
                     }
                 }
             };
-            
+
             foreach (var role in roles.Values)
             {
                 await roleService.CreateAsync(role);
             }
 
-            var controllers = Helper.GetControllers(typeof(AdminController).Namespace);
+            await roleService.AddClaimAsync(roles[Manager], new Claim(ClaimTypes.Role, Administrator));
 
-            var actions = Helper.GetActions(controllers.ToList()[0]);
+            //var permissionRepository = app.ApplicationServices.GetService<IPermissionRepository>();
+
+            //var controllers = Helper.GetControllers(typeof(AdminController).Namespace).ToList();
+            //foreach (var controller in controllers)
+            //{
+            //    foreach (var action in Helper.GetActions(controller))
+            //    {
+            //        permissionRepository.Add(new Permission
+            //        {
+            //            Role = roles[Administrator],
+            //            Action = action,
+            //            Controller = controller.Name
+            //        });
+            //    }
+            //}
         }
 
         private static async Task InitializeUserAsync(IApplicationBuilder app)

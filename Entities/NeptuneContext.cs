@@ -14,6 +14,8 @@ namespace Entities
         {
         }
 
+        public DbSet<Permission> Permissions { get; set; }
+
         public DbSet<Movie> Movies { get; set; }
 
         public DbSet<Genre> Genres { get; set; }
@@ -61,7 +63,6 @@ namespace Entities
                 .HasOne(x => x.Advertisement)
                 .WithMany(x => x.InvoiceDetails)
                 .HasForeignKey(x => x.AdvertisementId);
-
 
             base.OnModelCreating(builder);
 
