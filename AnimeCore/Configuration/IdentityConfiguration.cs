@@ -32,15 +32,24 @@ namespace AnimeCore.Configuration
                 MaxFailedAccessAttempts = 10
             };
 
+            var cookieOptions = new IdentityCookieOptions
+            {
+                ApplicationCookie = new CookieAuthenticationOptions
+                {
+                    LoginPath = "/Account/Login",
+                    LogoutPath = "/Account/LogOff",
+                    ExpireTimeSpan = TimeSpan.FromDays(1),
+                    AutomaticAuthenticate = true,
+                    AutomaticChallenge = true
+                }
+            };
+
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password = passwordOptions;
                 options.Lockout = lockoutOptions;
                 options.User = userOptions;
-
-                options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromDays(1);
-                options.Cookies.ApplicationCookie.LoginPath = "/Account/Login";
-                options.Cookies.ApplicationCookie.LogoutPath = "/Account/LogOff";
+                options.Cookies = cookieOptions;
             });
         }
     }

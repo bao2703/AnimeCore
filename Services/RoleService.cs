@@ -11,7 +11,6 @@ namespace Services
     public interface IRoleService : IIdentityService<Role>
     {
         Task<bool> RoleExistsAsync(string role);
-        IEnumerable<Permission> GetPermissions(Role role);
     }
 
     public class RoleService : IRoleService
@@ -66,11 +65,6 @@ namespace Services
         public Task<IList<Claim>> GetClaimsAsync(Role role)
         {
             return _roleManager.GetClaimsAsync(role);
-        }
-
-        public IEnumerable<Permission> GetPermissions(Role role)
-        {
-            return _roleManager.Roles.Include(x => x.Permissions).SelectMany(x => x.Permissions);
         }
     }
 }

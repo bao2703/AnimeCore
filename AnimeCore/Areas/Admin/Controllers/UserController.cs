@@ -3,12 +3,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using AnimeCore.Common;
 using Entities.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models.UserViewModels;
 using Services;
 
 namespace AnimeCore.Areas.Admin.Controllers
 {
+    [Authorize(Policy = "User")]
     public class UserController : AdminIdentityController
     {
         private readonly IUserService _userService;

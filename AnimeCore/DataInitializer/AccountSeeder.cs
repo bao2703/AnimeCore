@@ -1,6 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using AnimeCore.Areas.Admin.Controllers;
+using AnimeCore.Common;
 using Entities.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -61,23 +64,14 @@ namespace AnimeCore.DataInitializer
                 await roleService.CreateAsync(role);
             }
 
-            await roleService.AddClaimAsync(roles[Manager], new Claim(ClaimTypes.Role, Administrator));
-
-            //var permissionRepository = app.ApplicationServices.GetService<IPermissionRepository>();
-
-            //var controllers = Helper.GetControllers(typeof(AdminController).Namespace).ToList();
-            //foreach (var controller in controllers)
-            //{
-            //    foreach (var action in Helper.GetActions(controller))
-            //    {
-            //        permissionRepository.Add(new Permission
-            //        {
-            //            Role = roles[Administrator],
-            //            Action = action,
-            //            Controller = controller.Name
-            //        });
-            //    }
-            //}
+            var controllers = Helper.GetControllers(typeof(AdminController).Namespace).ToList();
+            foreach (var controller in controllers)
+            {
+                foreach (var action in Helper.GetActions(controller))
+                {
+                    await roleService.AddClaimAsync(roles[Administrator], new Claim(controller.Name, action));
+                }
+            }
         }
 
         private static async Task InitializeUserAsync(IApplicationBuilder app)

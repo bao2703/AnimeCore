@@ -39,6 +39,10 @@ namespace AnimeCore
                 .AddJsonOptions(
                     options => { options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore; });
 
+            services.AddAuthorization(options =>
+                options.AddPolicy("User", policy => policy.RequireClaim("UserController"))
+            );
+
             IdentityConfiguration.Configure(services);
             ServiceRegister.Configure(services);
             PagerConfiguration.Configure(services);
