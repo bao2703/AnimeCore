@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 
@@ -20,6 +21,7 @@ namespace AnimeCore.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            var a = User.Claims.ToList();
             var model = await _roleService.GetClaimsAsync(role);
             return View(model);
         }
