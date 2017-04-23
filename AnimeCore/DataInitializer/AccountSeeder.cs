@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using AnimeCore.Common;
 using Entities.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,33 +24,45 @@ namespace AnimeCore.DataInitializer
         private static async Task InitializeRoleAsync(IApplicationBuilder app)
         {
             var roleService = app.ApplicationServices.GetService<IRoleService>();
-            var roles = new List<Role>
+            var roles = new Dictionary<string, Role>
             {
-                new Role
                 {
-                    Name = Administrator,
-                    Description = "Administrator"
+                    Administrator, new Role
+                    {
+                        Name = Administrator,
+                        Description = "Administrator"
+                    }
                 },
-                new Role
                 {
-                    Name = SuperUser,
-                    Description = "Super User"
+                    SuperUser, new Role
+                    {
+                        Name = Administrator,
+                        Description = "Administrator"
+                    }
                 },
-                new Role
                 {
-                    Name = Manager,
-                    Description = "Manager"
+                    Manager, new Role
+                    {
+                        Name = Administrator,
+                        Description = "Administrator"
+                    }
                 },
-                new Role
                 {
-                    Name = User,
-                    Description = "User"
+                    User, new Role
+                    {
+                        Name = Administrator,
+                        Description = "Administrator"
+                    }
                 }
             };
+
             foreach (var role in roles)
             {
-                await roleService.CreateAsync(role);
+                await roleService.CreateAsync(role.Value);
             }
+
+            var claim = new Claim("Role", "Index");
+            await roleService.AddClaimAsync(roles[Administrator], claim);
         }
 
         private static async Task InitializeUserAsync(IApplicationBuilder app)
@@ -70,10 +81,9 @@ namespace AnimeCore.DataInitializer
                     Email = "bao2703@gmail.com2"
                 }
             };
-            foreach (var user in users)
-            {
-                await userService.CreateAsync(user, "1", Administrator);
-            }
+
+            await userService.CreateAsync(users[0], "1", Administrator);
+            await userService.CreateAsync(users[1], "1", Manager);
         }
     }
 }
