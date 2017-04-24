@@ -1,6 +1,7 @@
-@model IEnumerable<System.Security.Claims.Claim>
+@model IEnumerable<Models.ClaimViewModels.ClaimViewModel>
 @{
-    ViewData[Constant.Title] = " Claim List";
+    dynamic role = ViewData["Role"];
+    ViewData[Constant.Title] = role.Name + " Claims";
 }
 
 <div class="panel panel-info">
@@ -12,7 +13,7 @@
     <div class="panel-body">
         <div class="col-xs-12">
             <div class="btn-group">
-                <a asp-action="Add" class="btn btn-primary @(User.HasClaim("Claim", "Add") ? "" : "disabled")">
+                <a asp-action="Add" asp-route-roleId="@role.Id" class="btn btn-primary @(User.HasClaim("Claim", "Add") ? "" : "disabled")">
                     <i class="fa fa-plus"></i> Add Claims
                 </a>
             </div>
@@ -22,10 +23,10 @@
                     <thead>
                     <tr>
                         <th>
-                            Controller
+                            <display name-for="@Model.First().Controller"></display>
                         </th>
                         <th>
-                            Action
+                            <display name-for="@Model.First().Action"></display>
                         </th>
                     </tr>
                     </thead>
@@ -33,8 +34,8 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.Type</td>
-                            <td>@item.Value</td>
+                            <td>@item.Controller</td>
+                            <td>@item.Action</td>
                         </tr>
                     }
                     </tbody>

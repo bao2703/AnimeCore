@@ -55,10 +55,9 @@ namespace AnimeCore.Common
             var asm = Assembly.GetEntryAssembly();
 
             return asm.GetTypes()
-                .Where(
-                    type =>
-                        typeof(Controller).IsAssignableFrom(type) && type.Namespace.Contains(namespaces) &&
-                        !type.GetTypeInfo().IsAbstract)
+                .Where(type =>
+                    typeof(Controller).IsAssignableFrom(type) && type.Namespace.Contains(namespaces) &&
+                    !type.GetTypeInfo().IsAbstract)
                 .OrderBy(x => x.Name);
         }
 
@@ -71,6 +70,15 @@ namespace AnimeCore.Common
                 methodInfos.Where(method => method.IsPublic && !method.IsDefined(typeof(NonActionAttribute)))
                     .OrderBy(x => x.Name)
                     .Select(x => x.Name);
+        }
+
+        public static IEnumerable<string> GetActions(string controllerName, string namespaces)
+        {
+            var controllers = GetControllers(namespaces);
+
+            var controllerType = controllers.First(x => x.Name.Replace("Controller", "") == controllerName);
+
+            return GetActions(controllerType);
         }
     }
 }

@@ -1,0 +1,50 @@
+@{
+    dynamic role = ViewData["Role"];
+    dynamic controllerList = ViewData["ControllerList"];
+    ViewData[Constant.Title] = "Add Claims to " + role.Name;
+}
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            @ViewData[Constant.Title]
+        </h4>
+    </div>
+    <div class="panel-body">
+        <form>
+            <div class="row">
+                <div class="col-sm-2">
+                    <select id="controller-select" asp-items="@controllerList" class="form-control" size="@controllerList.Count"></select>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <div class="checkbox" style="text-align: center">
+                            <label>
+                                <input type="checkbox"/>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $("#controller-select").on('change',
+            function() {
+                $.ajax({
+                    method: "GET",
+                    url: "@Url.Action("GetActions", "Claim")",
+                    data: {
+                        roleId: "@role.Id",
+                        controllerName: $(this).val()
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+            })
+    </script>
+}

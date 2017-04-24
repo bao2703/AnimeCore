@@ -13,7 +13,7 @@ namespace AnimeCoreTest.ControllersTest
             var homeController = new HomeController();
 
             //Act
-            var result = homeController.Error() as ViewResult;
+            var result = homeController.Error(null) as ViewResult;
 
             //Assert
             Assert.NotNull(result);

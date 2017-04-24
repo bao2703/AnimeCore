@@ -15,7 +15,7 @@
     <div class="panel-body">
         <div class="col-xs-12">
             <div class="btn-group">
-                <a asp-action="AddEdit" class="btn btn-primary @(User.HasClaim("Role", "Add") ? "" : "disabled")" data-toggle="modal" data-target="#role-action-modal">
+                <a asp-action="AddEdit" class="btn btn-primary @(User.HasClaim("Role", "AddEdit") ? "" : "disabled")" data-toggle="modal" data-target="#role-action-modal">
                     <i class="fa fa-plus"></i> Add Role
                 </a>
             </div>
@@ -56,12 +56,12 @@
                             <td>@item.NumberOfUsers</td>
                             <td>@item.Description</td>
                             <td>
-                                <a asp-action="AddEdit" asp-route-id="@item.Id" class="btn btn-info @(User.HasClaim("Episode", "Edit") ? "" : "disabled")" data-toggle="modal" data-target="#role-action-modal">
+                                <a asp-action="AddEdit" asp-route-id="@item.Id" class="btn btn-info @(User.HasClaim("Role", "AddEdit") ? "" : "disabled")" data-toggle="modal" data-target="#role-action-modal">
                                     <i class="fa fa-pencil"></i> Edit
                                 </a>
                             </td>
                             <td>
-                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger @(User.HasClaim("Episode", "Delete") ? "" : "disabled")" data-toggle="modal" data-target="#role-action-modal">
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger @(User.HasClaim("Role", "Delete") ? "" : "disabled")" data-toggle="modal" data-target="#role-action-modal">
                                     <i class="fa fa-trash"></i> Delete
                                 </a>
                             </td>
