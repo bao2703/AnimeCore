@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -21,7 +20,7 @@ namespace AnimeCore.Configuration
                 context.Result = new UnauthorizedResult();
                 return;
             }
-            
+
             if (user.HasClaim(controller, action))
             {
                 return;

@@ -15,7 +15,7 @@
     <div class="panel-body">
         <div class="col-xs-12">
             <div class="btn-group">
-                <a asp-action="Add" class="btn btn-primary" data-toggle="modal" data-target="#genre-action-modal">
+                <a asp-action="Add" class="btn btn-primary @(User.HasClaim("Genre", "Add") ? "" : "disabled")" data-toggle="modal" data-target="#genre-action-modal">
                     <i class="fa fa-plus"></i> Add Genre
                 </a>
             </div>
@@ -45,12 +45,12 @@
                             <td>@item.Name</td>
                             <td>@item.Title</td>
                             <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info" data-toggle="modal" data-target="#genre-action-modal">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info @(User.HasClaim("Genre", "Edit") ? "" : "disabled")" data-toggle="modal" data-target="#genre-action-modal">
                                     <i class="fa fa-pencil"></i> Edit
                                 </a>
                             </td>
                             <td>
-                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" data-toggle="modal" data-target="#genre-action-modal">
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger @(User.HasClaim("Genre", "Delete") ? "" : "disabled")" data-toggle="modal" data-target="#genre-action-modal">
                                     <i class="fa fa-trash"></i> Delete
                                 </a>
                             </td>

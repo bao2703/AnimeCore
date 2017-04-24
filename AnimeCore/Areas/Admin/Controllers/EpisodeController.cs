@@ -143,7 +143,7 @@ namespace AnimeCore.Areas.Admin.Controllers
             return PartialView("_DeletePartial", model);
         }
 
-        public IActionResult Review(string source)
+        public IActionResult Preview(string source)
         {
             return PartialView("_PreviewPartial", source);
         }

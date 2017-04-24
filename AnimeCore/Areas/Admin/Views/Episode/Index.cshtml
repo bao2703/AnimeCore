@@ -16,7 +16,7 @@
     <div class="panel-body">
         <div class="col-xs-12">
             <div class="btn-group">
-                <a asp-action="Add" asp-route-movieId="@movie.Id" class="btn btn-primary" data-toggle="modal" data-target="#ep-action-modal">
+                <a asp-action="Add" asp-route-movieId="@movie.Id" class="btn btn-primary @(User.HasClaim("Episode", "Add") ? "" : "disabled")" data-toggle="modal" data-target="#ep-action-modal">
                     <i class="fa fa-plus"></i> Add Episode
                 </a>
             </div>
@@ -41,17 +41,17 @@
                         <tr>
                             <td>@item.Name</td>
                             <td>
-                                <a asp-action="Review" asp-route-source="@item.Source" class="btn btn-info btn-sm" data-toggle="modal" data-target="#ep-action-modal">
+                                <a asp-action="Preview" asp-route-source="@item.Source" class="btn btn-info btn-sm @(User.HasClaim("Episode", "Preview") ? "" : "disabled")" data-toggle="modal" data-target="#ep-action-modal">
                                     <i class="fa fa-video-camera"></i>
                                 </a>
                             </td>
                             <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info" data-toggle="modal" data-target="#ep-action-modal">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info @(User.HasClaim("Episode", "Edit") ? "" : "disabled")" data-toggle="modal" data-target="#ep-action-modal">
                                     <i class="fa fa-pencil"></i> Edit
                                 </a>
                             </td>
                             <td>
-                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" data-toggle="modal" data-target="#ep-action-modal">
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger @(User.HasClaim("Episode", "Delete") ? "" : "disabled")" data-toggle="modal" data-target="#ep-action-modal">
                                     <i class="fa fa-trash"></i> Delete
                                 </a>
                             </td>

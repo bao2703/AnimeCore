@@ -15,7 +15,7 @@
     <div class="panel-body">
         <div class="col-xs-12">
             <div class="btn-group">
-                <a asp-action="Add" class="btn btn-primary" data-toggle="modal" data-target="#user-action-modal">
+                <a asp-action="Add" class="btn btn-primary @(User.HasClaim("User", "Add") ? "" : "disabled")" data-toggle="modal" data-target="#user-action-modal">
                     <i class="fa fa-plus"></i> Add User
                 </a>
             </div>
@@ -56,12 +56,12 @@
                             <td>@item.Email</td>
                             <td>@item.EmailConfirmed</td>
                             <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info" data-toggle="modal" data-target="#user-action-modal">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info @(User.HasClaim("User", "Edit") ? "" : "disabled")" data-toggle="modal" data-target="#user-action-modal">
                                     <i class="fa fa-pencil"></i> Edit
                                 </a>
                             </td>
                             <td>
-                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" data-toggle="modal" data-target="#user-action-modal">
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger @(User.HasClaim("User", "Delete") ? "" : "disabled")" data-toggle="modal" data-target="#user-action-modal">
                                     <i class="fa fa-trash"></i> Delete
                                 </a>
                             </td>

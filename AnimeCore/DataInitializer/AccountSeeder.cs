@@ -67,9 +67,15 @@ namespace AnimeCore.DataInitializer
             var controllers = Helper.GetControllers(typeof(AdminController).Namespace).ToList();
             foreach (var controller in controllers)
             {
+                var temp = "";
                 foreach (var action in Helper.GetActions(controller))
                 {
+                    if (temp == action)
+                    {
+                        continue;
+                    }
                     var controllerName = controller.Name.Replace("Controller", "");
+                    temp = action;
                     await roleService.AddClaimAsync(roles[Administrator], new Claim(controllerName, action));
                 }
             }
