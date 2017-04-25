@@ -1,4 +1,9 @@
-﻿namespace AnimeCore.Common
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using AnimeCore.Areas.Admin.Controllers;
+
+namespace AnimeCore.Common
 {
     public class Constant
     {
@@ -19,5 +24,17 @@
         public static string SlideTitle => "SlideTitle";
 
         public static string DateFormat => "MM/dd/yyyy";
+
+        public static IEnumerable<Claim> Claims
+        {
+            get
+            {
+                return
+                    Helper.GetControllers(typeof(AdminController).Namespace)
+                        .SelectMany(controller => Helper.GetActions(controller).Distinct(),
+                            (controller, action) =>
+                                new Claim(controller.Name.Replace("Controller", ""), action));
+            }
+        }
     }
 }

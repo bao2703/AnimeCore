@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using AnimeCore.Areas.Admin.Controllers;
 using AnimeCore.Common;
 using Entities.Domain;
 using Microsoft.AspNetCore.Builder;
@@ -64,14 +62,9 @@ namespace AnimeCore.DataInitializer
                 await roleService.CreateAsync(role);
             }
 
-            var controllers = Helper.GetControllers(typeof(AdminController).Namespace).ToList();
-            foreach (var controller in controllers)
+            foreach (var claim in Constant.Claims)
             {
-                foreach (var action in Helper.GetActions(controller).Distinct())
-                {
-                    var controllerName = controller.Name.Replace("Controller", "");
-                    await roleService.AddClaimAsync(roles[Administrator], new Claim(controllerName, action));
-                }
+                await roleService.AddClaimAsync(roles[Administrator], new Claim(claim.Type, claim.Value));
             }
         }
 
