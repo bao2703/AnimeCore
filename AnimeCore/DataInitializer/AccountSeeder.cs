@@ -65,6 +65,14 @@ namespace AnimeCore.DataInitializer
             foreach (var claim in Constant.Claims)
             {
                 await roleService.AddClaimAsync(roles[Administrator], new Claim(claim.Type, claim.Value));
+                if (claim.Type == "User" || claim.Type == "Role" || claim.Type == "Claim")
+                {
+                    await roleService.AddClaimAsync(roles[SuperUser], new Claim(claim.Type, claim.Value));
+                }
+                if (claim.Type == "Movie" || claim.Type == "Episode")
+                {
+                    await roleService.AddClaimAsync(roles[Manager], new Claim(claim.Type, claim.Value));
+                }
             }
         }
 

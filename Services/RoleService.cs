@@ -11,6 +11,7 @@ namespace Services
     public interface IRoleService : IIdentityService<Role>
     {
         Task<bool> RoleExistsAsync(string role);
+        Task<IdentityResult> RemoveClaimAsync(Role role, Claim claim);
     }
 
     public class RoleService : IRoleService
@@ -60,6 +61,11 @@ namespace Services
         public Task<IdentityResult> AddClaimAsync(Role role, Claim claim)
         {
             return _roleManager.AddClaimAsync(role, claim);
+        }
+
+        public Task<IdentityResult> RemoveClaimAsync(Role role, Claim claim)
+        {
+            return _roleManager.RemoveClaimAsync(role, claim);
         }
 
         public Task<IList<Claim>> GetClaimsAsync(Role role)
