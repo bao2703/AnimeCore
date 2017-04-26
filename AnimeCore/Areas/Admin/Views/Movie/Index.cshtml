@@ -21,7 +21,7 @@
                     <tr>
                         <th>
                             <div class="btn-group">
-                                <a asp-action="Add" class="btn btn-primary btn-sm @(User.HasClaim("Movie", "Add") ? "" : "disabled")" data-toggle="modal" data-target="#movie-action-modal">
+                                <a asp-action="Add" class="btn btn-primary btn-sm @(User.HasClaim("Movie", "Add") ? "" : "disabled")">
                                     <i class="fa fa-plus"></i>
                                 </a>
                             </div>

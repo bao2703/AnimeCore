@@ -44,10 +44,10 @@ namespace AnimeCore.Areas.Admin.Controllers
             ViewData["Action"] = "Add";
             ViewData["CustomerId"] = customerId;
 
-            var filePath = Constant.ImagesFolderPath + DateTime.Now.ToFileTime() + file.FileName;
-
             if (ModelState.IsValid)
             {
+                var filePath = Constant.ImagesFolderPath + DateTime.Now.ToFileTime() + file.FileName;
+
                 using (var stream = new FileStream(Constant.RootPath + filePath, FileMode.Create))
                 {
                     await file.CopyToAsync(stream);

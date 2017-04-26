@@ -1,56 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
+using AnimeCore.Common;
 using Entities.Domain;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Repositories;
 
 namespace AnimeCore.Areas.Admin.Controllers
 {
-    public class MovieController : DefaultController<Movie, IMovieRepository>
+    public class MovieController : AdminController
     {
-        public MovieController(IUnitOfWork unitOfWork, IMovieRepository repository) : base(unitOfWork, repository)
+        private readonly IMovieRepository _movieRepository;
+        private readonly IUnitOfWork _unitOfWork;
+
+        public MovieController(IUnitOfWork unitOfWork, IMovieRepository movieRepository)
         {
+            _unitOfWork = unitOfWork;
+            _movieRepository = movieRepository;
         }
 
-        protected override string AddPartialViewName { get; set; } = "_AddEditPartial";
-        protected override string EditPartialViewName { get; set; } = "_AddEditPartial";
-
-        public override IActionResult Index()
+        public IActionResult Index()
         {
-            return base.Index();
+            var model = _movieRepository.GetAll();
+            return View(model);
         }
 
-        public override IActionResult Add()
+        public IActionResult Add()
         {
-            ViewData["Action"] = "Add";
-            return base.Add();
+            return View();
         }
 
-        public override Task<IActionResult> Add(Movie model)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Add(Movie model, int[] genres, IFormFile file)
         {
-            ViewData["Action"] = "Add";
-            return base.Add(model);
-        }
+            if (ModelState.IsValid)
+            {
+                var filePath = Constant.ImagesFolderPath + DateTime.Now.ToFileTime() + file.FileName;
 
-        public override IActionResult Edit(int id)
-        {
-            ViewData["Action"] = "Edit";
-            return base.Edit(id);
-        }
+                using (var stream = new FileStream(Constant.RootPath + filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
 
-        public override Task<IActionResult> Edit(Movie model)
-        {
-            ViewData["Action"] = "Edit";
-            return base.Edit(model);
-        }
-
-        public override IActionResult Delete(int id)
-        {
-            return base.Delete(id);
-        }
-
-        public override Task<IActionResult> Delete(Movie model)
-        {
-            return base.Delete(model);
+                model.Image = filePath;
+                model.GenreMovies = new List<GenreMovie>();
+                foreach (var genre in genres)
+                {
+                    model.GenreMovies.Add(new GenreMovie
+                    {
+                        GenreId = genre
+                    });
+                }
+                _movieRepository.Add(model);
+                await _unitOfWork.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(model);
         }
     }
 }

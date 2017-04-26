@@ -1,7 +1,9 @@
-﻿@inject Helper Helper
+﻿@inject IGenreRepository GenreRepository
+@using Repositories
 @model Movie
 @{
     ViewData[Constant.Title] = "Add Anime";
+    var genres = GenreRepository.GetAll();
 }
 
 <div class="panel panel-info">
@@ -12,11 +14,97 @@
     </div>
     <div class="panel-body">
         <div class="col-xs-12">
-            
+            <form asp-action="Add" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger col-sm-offset-1 col-sm-10 text-center"></div>
+                <div class="row">
+                    <div class="col-sm-offset-1 col-sm-5">
+                        <div class="form-group">
+                            <label asp-for="Name"></label>
+                            <input asp-for="Name" class="form-control"/>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label asp-for="Fansub"></label>
+                            <input asp-for="Fansub" class="form-control"/>
+                            <span asp-validation-for="Fansub" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-offset-1 col-sm-5">
+                        <div class="form-group">
+                            <label>Genre</label>
+                            <select class="form-control selectpicker" data-live-search="true" multiple name="genres[]">
+                                @foreach (var gerne in genres)
+                                {
+                                    <option value="@gerne.Id">@gerne.Name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label asp-for="Status"></label>
+                            <select asp-for="Status" asp-items="Html.GetEnumSelectList<MovieStatus>()" class="form-control selectpicker"></select>
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-offset-1 col-sm-5">
+                        <div class="form-group">
+                            <label asp-for="Image"></label>
+                            <input id="file" type="file" name="file" data-show-upload="false" data-show-remove="true" data-allowed-file-extensions='["jpeg", "gif", "png", "jpg"]'/>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label asp-for="Release"></label>
+                            <div class="input-group">
+                                <input asp-for="Release" class="form-control" id="datetimepicker"/>
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                            <span asp-validation-for="Release" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-offset-1 col-sm-10">
+                        <div class="form-group">
+                            <label asp-for="Description"></label>
+                            <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <button class="btn btn-primary btn-block" type="submit">Add</button>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a asp-action="Index" class="btn btn-danger btn-block">Back to list</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        $(document).ready(function() {
+            $("#file").fileinput();
+            $('#datetimepicker').datetimepicker({
+                locale: 'en',
+                format: 'MM/DD/YYYY'
+            });
+        });
+    </script>
 }
