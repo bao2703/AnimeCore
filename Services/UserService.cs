@@ -20,6 +20,8 @@ namespace Services
         Task<IdentityResult> RemoveFromRolesAsync(User user, IEnumerable<string> role);
         Task<IList<string>> GetRolesAsync(User user);
         Task<User> GetUserAsync(ClaimsPrincipal user);
+        IEnumerable<User> GetUsersInRole(string roleId);
+        Task<IdentityResult> UpdateSecurityStampAsync(User user);
     }
 
     public class UserService : IUserService
@@ -125,6 +127,16 @@ namespace Services
         public Task<IList<Claim>> GetClaimsAsync(User user)
         {
             return _userManager.GetClaimsAsync(user);
+        }
+
+        public IEnumerable<User> GetUsersInRole(string roleId)
+        {
+            return _userManager.Users.Where(x => x.Roles.Any(r => r.RoleId == roleId));
+        }
+
+        public Task<IdentityResult> UpdateSecurityStampAsync(User user)
+        {
+            return _userManager.UpdateSecurityStampAsync(user);
         }
     }
 }

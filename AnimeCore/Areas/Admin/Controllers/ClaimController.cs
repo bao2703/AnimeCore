@@ -8,13 +8,17 @@ using Services;
 
 namespace AnimeCore.Areas.Admin.Controllers
 {
-    public class ClaimController : AdminController
+    public class ClaimController : AdminIdentityController
     {
+        private readonly IAccountService _accountService;
         private readonly IRoleService _roleService;
+        private readonly IUserService _userService;
 
-        public ClaimController(IRoleService roleService)
+        public ClaimController(IRoleService roleService, IAccountService accountService, IUserService userService)
         {
             _roleService = roleService;
+            _accountService = accountService;
+            _userService = userService;
         }
 
         public async Task<IActionResult> Index(string roleId)
@@ -66,8 +70,11 @@ namespace AnimeCore.Areas.Admin.Controllers
             }
             if (result.Succeeded)
             {
+                var users = _userService.GetUsersInRole(role.Id).ToList();
+                users.ForEach(async x => await _accountService.RefreshSignInAsync(x));
                 return JsonStatus.Ok;
             }
+            AddErrors(result);
             return JsonStatus.Error;
         }
     }

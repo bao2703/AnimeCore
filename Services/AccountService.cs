@@ -13,6 +13,7 @@ namespace Services
         bool IsSignedIn(ClaimsPrincipal principal);
         Task<SignInResult> PasswordSignInAsync(string email, string password, bool rememberMe, bool lockoutOnFailure);
         Task SignInAsync(User user, bool isPersistent, string authenticationMethod = null);
+        Task RefreshSignInAsync(User user);
         Task SignOutAsync();
         AuthenticationProperties ConfigureExternalAuthenticationProperties(string provider, string redirectUrl);
         Task<ExternalLoginInfo> GetExternalLoginInfoAsync();
@@ -43,6 +44,11 @@ namespace Services
         public async Task SignInAsync(User user, bool isPersistent, string authenticationMethod = null)
         {
             await _signInManager.SignInAsync(user, isPersistent, authenticationMethod);
+        }
+
+        public async Task RefreshSignInAsync(User user)
+        {
+            await _signInManager.RefreshSignInAsync(user);
         }
 
         public async Task SignOutAsync()

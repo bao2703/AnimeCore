@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Models;
 
 namespace AnimeCore.Controllers
 {
@@ -12,15 +13,25 @@ namespace AnimeCore.Controllers
         [Route("/Error/{statusCode}")]
         public IActionResult Error(int? statusCode)
         {
+            var model = new ErrorViewModel
+            {
+                Title = "Error",
+                Description = " Sorry, an error has occured!"
+            };
             switch (statusCode)
             {
                 case 403:
-                    return View("AccessDenied");
+                    model.Title = "Access Denied";
+                    model.Description = "Sorry, an error has occured, you need permission to access!";
+                    break;
                 case 404:
-                    return View("NotFound");
+                    model.Title = "404 Not Found";
+                    model.Description = "Sorry, an error has occured, requested page not found!";
+                    break;
                 default:
-                    return View();
+                    break;
             }
+            return View(model);
         }
     }
 }
