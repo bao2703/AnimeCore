@@ -51,7 +51,7 @@ namespace AnimeCore.Configuration
                 options.Lockout = lockoutOptions;
                 options.User = userOptions;
                 options.Cookies = cookieOptions;
-                options.SecurityStampValidationInterval = TimeSpan.FromSeconds(2);
+                options.SecurityStampValidationInterval = TimeSpan.Zero;
             });
         }
     }

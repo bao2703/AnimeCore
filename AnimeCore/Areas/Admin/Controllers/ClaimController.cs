@@ -10,15 +10,11 @@ namespace AnimeCore.Areas.Admin.Controllers
 {
     public class ClaimController : AdminIdentityController
     {
-        private readonly IAccountService _accountService;
         private readonly IRoleService _roleService;
-        private readonly IUserService _userService;
 
-        public ClaimController(IRoleService roleService, IAccountService accountService, IUserService userService)
+        public ClaimController(IRoleService roleService)
         {
             _roleService = roleService;
-            _accountService = accountService;
-            _userService = userService;
         }
 
         public async Task<IActionResult> Index(string roleId)
@@ -70,15 +66,6 @@ namespace AnimeCore.Areas.Admin.Controllers
             }
             if (result.Succeeded)
             {
-                var users = _userService.GetUsersInRole(role.Id).ToList();
-                foreach (var user in users)
-                {
-                    result = await _userService.UpdateSecurityStampAsync(user);
-                    if (!result.Succeeded)
-                    {
-                        return JsonStatus.Error;
-                    }
-                }
                 return JsonStatus.Ok;
             }
             AddErrors(result);

@@ -32,6 +32,7 @@ namespace AnimeCore
         {
             services.AddDbContext<NeptuneContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.Configure<Authentication>(Configuration.GetSection("Authentication"));
 

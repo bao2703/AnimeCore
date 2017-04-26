@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace AnimeCore.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [CustomAuthorize]
+    [TypeFilter(typeof(CustomAuthorizeAttribute))]
     public abstract class AdminController : Controller
     {
     }
