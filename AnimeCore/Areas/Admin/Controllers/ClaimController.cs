@@ -71,7 +71,14 @@ namespace AnimeCore.Areas.Admin.Controllers
             if (result.Succeeded)
             {
                 var users = _userService.GetUsersInRole(role.Id).ToList();
-                users.ForEach(async x => await _accountService.RefreshSignInAsync(x));
+                foreach (var user in users)
+                {
+                    result = await _userService.UpdateSecurityStampAsync(user);
+                    if (!result.Succeeded)
+                    {
+                        return JsonStatus.Error;
+                    }
+                }
                 return JsonStatus.Ok;
             }
             AddErrors(result);
