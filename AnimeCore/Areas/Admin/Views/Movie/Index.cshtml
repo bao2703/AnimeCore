@@ -67,7 +67,7 @@
                             <td class="text-center">
                                 <a asp-action="Index" asp-controller="Episode" asp-route-movieId="@item.Id" style="@(User.HasClaim("Episode", "Index") ? "" : "cursor: not-allowed")">
                                     @item.Name
-                                    <img src="@item.Image" alt="@item.Name" class="img-responsive" asp-append-version="true"/>
+                                    <img src="@item.Image" alt="@item.Name" class="img-responsive" asp-append-version="true" style="max-height: 200px"/>
                                 </a>
                             </td>
                             <td>
@@ -81,7 +81,7 @@
                             </td>
                             <td>@item.Episodes.Count</td>
                             <td>@item.View</td>
-                            <td>@item.Release.ToString("MM/dd/yyyy")</td>
+                            <td>@item.Release.Format()</td>
                             <td style="font-size: 11px">@item.Description</td>
                         </tr>
                     }

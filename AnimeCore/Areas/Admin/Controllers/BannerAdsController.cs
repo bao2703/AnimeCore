@@ -81,6 +81,28 @@ namespace AnimeCore.Areas.Admin.Controllers
             return PartialView("_AddEditPartial", model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(BannerAds model, IFormFile file)
+        {
+            ViewData["Action"] = "Edit";
+            if (file == null)
+            {
+                ModelState.AddModelError(string.Empty, "Image is required.");
+            }
+            if (ModelState.IsValid)
+            {
+                var filePath = Constant.ImagesFolderPath + DateTime.Now.ToFileTime() + file.FileName;
+                await Helper.CopyFileToAsync(filePath, file);
+
+                model.Source = filePath;
+                _bannerAdsRepository.Update(model);
+                await _unitOfWork.SaveChangesAsync();
+                return JsonStatus.Ok;
+            }
+            return PartialView("_AddEditPartial", model);
+        }
+
         public IActionResult Delete(int id)
         {
             var model = _bannerAdsRepository.FindById(id);
