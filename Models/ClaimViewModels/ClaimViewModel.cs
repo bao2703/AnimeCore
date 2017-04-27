@@ -6,6 +6,6 @@
 
         public string Controller { get; set; }
 
-        public bool IsLocked { get; set; }
+        public bool IsEnabled { get; set; }
     }
 }

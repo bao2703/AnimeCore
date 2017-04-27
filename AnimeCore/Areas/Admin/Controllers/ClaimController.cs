@@ -30,7 +30,7 @@ namespace AnimeCore.Areas.Admin.Controllers
             {
                 Controller = x.Type,
                 Action = x.Value,
-                IsLocked = false
+                IsEnabled = false
             }).ToList();
 
             var claims = await _roleService.GetClaimsAsync(role);
@@ -40,7 +40,7 @@ namespace AnimeCore.Areas.Admin.Controllers
                 if (claims.Any(roleClaim =>
                     roleClaim.Type == item.Controller && roleClaim.Value == item.Action))
                 {
-                    item.IsLocked = true;
+                    item.IsEnabled = true;
                 }
             }
 
@@ -56,13 +56,16 @@ namespace AnimeCore.Areas.Admin.Controllers
                 return JsonStatus.Error;
             }
             dynamic result;
-            if (operation == "Add")
+            switch (operation)
             {
-                result = await _roleService.AddClaimAsync(role, new Claim(controllerName, actionName));
-            }
-            else
-            {
-                result = await _roleService.RemoveClaimAsync(role, new Claim(controllerName, actionName));
+                case "Enable":
+                    result = await _roleService.AddClaimAsync(role, new Claim(controllerName, actionName));
+                    break;
+                case "Disable":
+                    result = await _roleService.RemoveClaimAsync(role, new Claim(controllerName, actionName));
+                    break;
+                default:
+                    return JsonStatus.Error;
             }
             if (result.Succeeded)
             {

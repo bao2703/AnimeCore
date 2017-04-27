@@ -14,7 +14,8 @@
     "eonasdan-bootstrap-datetimepicker": "bootstrap3-datetimepicker#v4.17.45",
     "moment": "2.18.1",
     "datatables-bootstrap": "1.0.0",
-    "bootstrap-fileinput": "v4.3.9"
+    "bootstrap-fileinput": "v4.3.9",
+    "bootstrap-toggle": "2.2.2"
   },
   "resolutions": {
     "font-awesome": "v4.7.0"

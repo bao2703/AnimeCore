@@ -34,18 +34,7 @@
                             <td>@item.Controller</td>
                             <td>@item.Action</td>
                             <td>
-                                @if (item.IsLocked)
-                                {
-                                    <button class="btn btn-claim-unlock btn-primary">
-                                        <i class="fa fa-unlock"></i>
-                                    </button>
-                                }
-                                else
-                                {
-                                    <button class="btn btn-claim-lock btn-danger">
-                                        <i class="fa fa-lock"></i>
-                                    </button>
-                                }
+                                <input class="toggle" @(item.IsEnabled ? "checked" : "") type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" data-onstyle="success" data-offstyle="danger">
                             </td>
                         </tr>
                     }
@@ -58,24 +47,16 @@
 
 @section Scripts {
     <script>
-        $(document).on("click",
-            ".btn-claim-lock",
-            function() {
-                var btnUnclock =
-                    '<button class="btn btn-claim-unlock btn-primary"><i class="fa fa-unlock"></i></button>';
-                updateClaim("Add", $(this), btnUnclock);
-            });
+        $('.toggle').change(function() {
+            if ($(this).prop('checked') === true) {
+                updateClaim("Enable", $(this));
+            } else {
+                updateClaim("Disable", $(this));
+            }
+        });
 
-        $(document).on("click",
-            ".btn-claim-unlock",
-            function() {
-                var btnClock =
-                    '<button class="btn btn-claim-lock btn-danger"><i class="fa fa-lock"></i></button>';
-                updateClaim("Remove", $(this), btnClock);
-            });
-
-        function updateClaim(operation, btnClick, btnChangeHtml) {
-            var td = btnClick.closest("tr").find("td");
+        function updateClaim(operation, toggle) {
+            var td = toggle.closest("tr").find("td");
             var controllerName = td.first().text();
             var action = td.first().next().text();
             $.ajax({
@@ -89,11 +70,15 @@
                 },
                 success: function(response) {
                     if (response.status === "Ok") {
-                        btnClick.parent()
-                            .html(btnChangeHtml);
+
                     } else {
-                        alert("error");
+                        toggle.bootstrapToggle('toggle');
+                        console.log(response);
                     }
+                },
+                error: function (response) {
+                    toggle.bootstrapToggle('toggle');
+                    console.log(response);
                 }
             });
         }

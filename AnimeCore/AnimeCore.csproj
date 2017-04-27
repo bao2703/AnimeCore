@@ -62,6 +62,7 @@
     <Folder Include="Views\Movie\" />
     <Folder Include="Views\Shared\Components\MovieSlide\" />
     <Folder Include="Views\Shared\Components\MovieSlide\" />
+    <Folder Include="wwwroot\app-data\upload\images\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web">
