@@ -57,7 +57,7 @@
                     {
                         <tr>
                             <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm @(User.HasClaim("Movie", "Edit") ? "" : "disabled")" data-toggle="modal" data-target="#movie-action-modal">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm @(User.HasClaim("Movie", "Edit") ? "" : "disabled")">
                                     <i class="fa fa-pencil"></i>
                                 </a>
                                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm @(User.HasClaim("Movie", "Delete") ? "" : "disabled")" data-toggle="modal" data-target="#movie-action-modal">
