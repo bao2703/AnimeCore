@@ -14,7 +14,6 @@ namespace AnimeCore.DataInitializer
         private const string Administrator = "Administrator";
         private const string SuperUser = "Super User";
         private const string Manager = "Manager";
-        private const string User = "User";
 
         public static async Task InitializeAsync(IApplicationBuilder app)
         {
@@ -47,13 +46,6 @@ namespace AnimeCore.DataInitializer
                         Name = Manager,
                         Description = "Manager"
                     }
-                },
-                {
-                    User, new Role
-                    {
-                        Name = User,
-                        Description = "User"
-                    }
                 }
             };
 
@@ -83,13 +75,13 @@ namespace AnimeCore.DataInitializer
             {
                 new User
                 {
-                    UserName = "bao2703@gmail.com",
-                    Email = "bao2703@gmail.com"
+                    UserName = "admin@gmail.com",
+                    Email = "admin@gmail.com"
                 },
                 new User
                 {
-                    UserName = "bao2703@gmail.com2",
-                    Email = "bao2703@gmail.com2"
+                    UserName = "manager@gmail.com",
+                    Email = "manager@gmail.com"
                 }
             };
 

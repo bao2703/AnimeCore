@@ -1,6 +1,5 @@
 ﻿using AnimeCore.Common;
 using AnimeCore.Configuration;
-using AnimeCore.DataInitializer;
 using Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,7 +30,7 @@ namespace AnimeCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<NeptuneContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("AzureConnection")));
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.Configure<Authentication>(Configuration.GetSection("Authentication"));
@@ -46,7 +45,7 @@ namespace AnimeCore
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public async void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -86,7 +85,7 @@ namespace AnimeCore
                     "{controller=Home}/{action=Index}/{id?}");
             });
 
-            await DataSeeder.InitializeAsync(app);
+            //await DataSeeder.InitializeAsync(app);
         }
     }
 }
