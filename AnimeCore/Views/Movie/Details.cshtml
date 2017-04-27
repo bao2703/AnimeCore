@@ -90,14 +90,3 @@
 </div>
 
 <div class="fb-comments" data-href="@($"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}")" data-numposts="10" data-width="100%" data-mobile="true" data-colorscheme="dark"></div>
-
-@section scripts {
-    <script>
-        $(document).ready(function() {
-            $("html, body").animate({
-                    scrollTop: $("#panel-movie-detail").offset().top - 120
-                },
-                1000);
-        })
-    </script>
-}

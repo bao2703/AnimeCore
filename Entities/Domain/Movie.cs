@@ -25,6 +25,10 @@ namespace Entities.Domain
 
         public string Image { get; set; }
 
+        public string Slide { get; set; }
+
+        public bool ShowInHome { get; set; }
+
         public string Slug { get; set; }
 
         public string Fansub { get; set; }
