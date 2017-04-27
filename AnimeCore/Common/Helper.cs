@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using Entities.Domain;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AnimeCore.Common
@@ -72,13 +75,12 @@ namespace AnimeCore.Common
                     .Select(x => x.Name);
         }
 
-        public static IEnumerable<string> GetActions(string controllerName, string namespaces)
+        public static async Task CopyFileToAsync(string filePath, IFormFile file)
         {
-            var controllers = GetControllers(namespaces);
-
-            var controllerType = controllers.First(x => x.Name.Replace("Controller", "") == controllerName);
-
-            return GetActions(controllerType);
+            using (var stream = new FileStream(Constant.RootPath + filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
         }
     }
 }

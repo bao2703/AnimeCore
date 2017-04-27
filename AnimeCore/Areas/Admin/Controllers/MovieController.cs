@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 using AnimeCore.Common;
 using Entities.Domain;
@@ -36,14 +35,14 @@ namespace AnimeCore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(Movie model, int[] genres, IFormFile file)
         {
+            if (file == null)
+            {
+                ModelState.AddModelError(string.Empty, "Image is required.");
+            }
             if (ModelState.IsValid)
             {
                 var filePath = Constant.ImagesFolderPath + DateTime.Now.ToFileTime() + file.FileName;
-
-                using (var stream = new FileStream(Constant.RootPath + filePath, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
+                await Helper.CopyFileToAsync(filePath, file);
 
                 model.Image = filePath;
                 model.GenreMovies = new List<GenreMovie>();

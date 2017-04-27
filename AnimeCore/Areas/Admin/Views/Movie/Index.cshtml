@@ -42,12 +42,6 @@
                             Ep
                         </th>
                         <th>
-                            <display name-for="@Model.First().Rating"></display>
-                        </th>
-                        <th>
-                            <display name-for="@Model.First().Vote"></display>
-                        </th>
-                        <th>
                             <display name-for="@Model.First().View"></display>
                         </th>
                         <th>
@@ -86,8 +80,6 @@
                                 </label>
                             </td>
                             <td>@item.Episodes.Count</td>
-                            <td>@item.Rating</td>
-                            <td>@item.Vote</td>
                             <td>@item.View</td>
                             <td>@item.Release.ToString("MM/dd/yyyy")</td>
                             <td style="font-size: 11px">@item.Description</td>

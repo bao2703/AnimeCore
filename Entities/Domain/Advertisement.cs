@@ -10,7 +10,7 @@ namespace Entities.Domain
         protected Advertisement()
         {
             StartDate = DateTime.Today;
-            EndDate = DateTime.Today;
+            EndDate = StartDate.Add(TimeSpan.FromDays(1));
         }
 
         [Required]

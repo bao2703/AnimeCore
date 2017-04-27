@@ -10,7 +10,7 @@ $(".modal-form").submit(function(e) {
             contentType: false,
             success: function(data) {
                 if (data.status === "Ok") {
-                    window.location = window.location;
+                    location.reload();
                     console.log("Ok");
                 } else {
                     console.log("not valid");

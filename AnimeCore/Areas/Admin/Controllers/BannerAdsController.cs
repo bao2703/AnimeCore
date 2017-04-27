@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 using AnimeCore.Common;
 using Entities.Domain;
@@ -43,15 +42,15 @@ namespace AnimeCore.Areas.Admin.Controllers
         {
             ViewData["Action"] = "Add";
             ViewData["CustomerId"] = customerId;
-
+            if (file == null)
+            {
+                ModelState.AddModelError(string.Empty, "Image is required.");
+            }
             if (ModelState.IsValid)
             {
                 var filePath = Constant.ImagesFolderPath + DateTime.Now.ToFileTime() + file.FileName;
+                await Helper.CopyFileToAsync(filePath, file);
 
-                using (var stream = new FileStream(Constant.RootPath + filePath, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
                 model.Source = filePath;
                 var invoice = new Invoice
                 {

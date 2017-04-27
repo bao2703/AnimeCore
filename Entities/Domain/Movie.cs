@@ -17,12 +17,6 @@ namespace Entities.Domain
         [Required]
         public string Name { get; set; }
 
-        public float Rating { get; set; }
-
-        public int Vote { get; set; }
-
-        public string Quality { get; set; }
-
         public DateTime Release { get; set; }
 
         public string Description { get; set; }
