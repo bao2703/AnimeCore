@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using AnimeCore.Common;
 using Entities.Domain;
@@ -12,15 +11,12 @@ namespace AnimeCore.Areas.Admin.Controllers
     public class BannerAdsController : AdminController
     {
         private readonly IBannerAdsRepository _bannerAdsRepository;
-        private readonly IInvoiceRepository _invoiceRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public BannerAdsController(IUnitOfWork unitOfWork, IBannerAdsRepository bannerAdsRepository,
-            IInvoiceRepository invoiceRepository)
+        public BannerAdsController(IUnitOfWork unitOfWork, IBannerAdsRepository bannerAdsRepository)
         {
             _unitOfWork = unitOfWork;
             _bannerAdsRepository = bannerAdsRepository;
-            _invoiceRepository = invoiceRepository;
         }
 
         public IActionResult Index()
@@ -50,20 +46,9 @@ namespace AnimeCore.Areas.Admin.Controllers
             {
                 var filePath = Constant.ImagesFolderPath + DateTime.Now.ToFileTime() + file.FileName;
                 await Helper.CopyFileToAsync(filePath, file);
-
                 model.Source = filePath;
-                var invoice = new Invoice
-                {
-                    CustomerId = customerId,
-                    InvoiceDetails = new List<InvoiceDetail>
-                    {
-                        new InvoiceDetail
-                        {
-                            Advertisement = model
-                        }
-                    }
-                };
-                await _invoiceRepository.AddAsync(invoice);
+                model.CustomerId = customerId;
+                await _bannerAdsRepository.AddAsync(model);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;
             }

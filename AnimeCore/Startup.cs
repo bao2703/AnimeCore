@@ -1,5 +1,6 @@
 ﻿using AnimeCore.Common;
 using AnimeCore.Configuration;
+using AnimeCore.DataInitializer;
 using Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -45,7 +46,7 @@ namespace AnimeCore
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public async void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -85,7 +86,10 @@ namespace AnimeCore
                     "{controller=Home}/{action=Index}/{id?}");
             });
 
-            //await DataSeeder.InitializeAsync(app);
+            if (env.IsDevelopment())
+            {
+                await DataSeeder.InitializeAsync(app);
+            }
         }
     }
 }

@@ -20,8 +20,6 @@ namespace Entities
 
         public DbSet<Episode> Episodes { get; set; }
 
-        public DbSet<Invoice> Invoices { get; set; }
-
         public DbSet<Customer> Customers { get; set; }
 
         public DbSet<Advertisement> Advertisements { get; set; }
@@ -49,18 +47,6 @@ namespace Entities
                 .HasOne(x => x.Genre)
                 .WithMany(x => x.GenreMovies)
                 .HasForeignKey(x => x.GenreId);
-
-            builder.Entity<InvoiceDetail>().HasKey(x => new {x.InvoiceId, x.AdvertisementId});
-
-            builder.Entity<InvoiceDetail>()
-                .HasOne(x => x.Invoice)
-                .WithMany(x => x.InvoiceDetails)
-                .HasForeignKey(x => x.InvoiceId);
-
-            builder.Entity<InvoiceDetail>()
-                .HasOne(x => x.Advertisement)
-                .WithMany(x => x.InvoiceDetails)
-                .HasForeignKey(x => x.AdvertisementId);
 
             base.OnModelCreating(builder);
 

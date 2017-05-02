@@ -16,65 +16,7 @@ namespace AnimeCore.DataInitializer
             var unitOfWork = app.ApplicationServices.GetService<IUnitOfWork>();
             await InitializeVideoAdvertisementAsync(app);
             await InitializeBannerAdvertisementAsync(app);
-            await InitializeCustomerAsync(app);
             await unitOfWork.SaveChangesAsync();
-        }
-
-        private static async Task InitializeCustomerAsync(IApplicationBuilder app)
-        {
-            var repository = app.ApplicationServices.GetService<ICustomerRepository>();
-
-            var customers = new List<Customer>
-            {
-                new Customer
-                {
-                    Name = "Bảo",
-                    Email = "bao@gmail.com",
-                    Address = "Neptune",
-                    Invoices = new List<Invoice>
-                    {
-                        new Invoice
-                        {
-                            TotalPrice = 50
-                        },
-                        new Invoice
-                        {
-                            TotalPrice = 60
-                        }
-                    }
-                },
-                new Customer
-                {
-                    Name = "Bảo2",
-                    Email = "bao2@gmail.com",
-                    Address = "Neptune",
-                    Invoices = new List<Invoice>
-                    {
-                        new Invoice
-                        {
-                            TotalPrice = 40
-                        },
-                        new Invoice
-                        {
-                            TotalPrice = 10
-                        }
-                    }
-                },
-                new Customer
-                {
-                    Name = "Bảo3",
-                    Email = "bao3@gmail.com",
-                    Address = "Neptune"
-                },
-                new Customer
-                {
-                    Name = "Bảo4",
-                    Email = "bao4@gmail.com",
-                    Address = "Neptune"
-                }
-            };
-
-            await repository.AddRangeAsync(customers);
         }
 
         private static async Task InitializeVideoAdvertisementAsync(IApplicationBuilder app)
@@ -103,6 +45,17 @@ namespace AnimeCore.DataInitializer
                 }
             };
 
+            var customerRepository = app.ApplicationServices.GetService<ICustomerRepository>();
+
+            var customer = new Customer
+            {
+                Name = "Bảo",
+                Email = "bao@gmail.com",
+                Address = "Neptune"
+            };
+
+            customerRepository.Add(customer);
+
             await adsLocationRepository.AddRangeAsync(adsLocations);
 
             var adsRepository = app.ApplicationServices.GetService<IVideoAdsRepository>();
@@ -118,7 +71,8 @@ namespace AnimeCore.DataInitializer
                     Source = "/assets/client/ads-example/coca-cola-coke-mini-hulk-vs-ant-man.mp4",
                     StartDate = new DateTime(2017, 3, 1),
                     EndDate = new DateTime(2017, 6, 1),
-                    VideoAdsLocation = adsLocations.Single(x => x.Name == "Popular")
+                    VideoAdsLocation = adsLocations.Single(x => x.Name == "Popular"),
+                    Customer = customer
                 },
                 new VideoAds
                 {
@@ -129,7 +83,8 @@ namespace AnimeCore.DataInitializer
                     Source = "/assets/client/ads-example/skip-this-ad.mp4",
                     StartDate = new DateTime(2017, 3, 1),
                     EndDate = new DateTime(2017, 6, 1),
-                    VideoAdsLocation = adsLocations.Single(x => x.Name == "Popular")
+                    VideoAdsLocation = adsLocations.Single(x => x.Name == "Popular"),
+                    Customer = customer
                 },
                 new VideoAds
                 {
@@ -140,7 +95,8 @@ namespace AnimeCore.DataInitializer
                     Source = "/assets/client/ads-example/asus-rog-g752-gaming-laptop.mp4",
                     StartDate = new DateTime(2017, 2, 1),
                     EndDate = new DateTime(2017, 6, 1),
-                    VideoAdsLocation = adsLocations.Single(x => x.Name == "Newest")
+                    VideoAdsLocation = adsLocations.Single(x => x.Name == "Newest"),
+                    Customer = customer
                 },
                 new VideoAds
                 {
@@ -151,7 +107,8 @@ namespace AnimeCore.DataInitializer
                     Source = "/assets/client/ads-example/dell-alienware-17-2016-official-video-trailer-commercial.mp4",
                     StartDate = new DateTime(2017, 3, 1),
                     EndDate = new DateTime(2017, 6, 1),
-                    VideoAdsLocation = adsLocations.Single(x => x.Name == "Newest")
+                    VideoAdsLocation = adsLocations.Single(x => x.Name == "Newest"),
+                    Customer = customer
                 },
                 new VideoAds
                 {
@@ -162,7 +119,8 @@ namespace AnimeCore.DataInitializer
                     Source = "/assets/client/ads-example/ford.mp4",
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 6, 1),
-                    VideoAdsLocation = adsLocations.Single(x => x.Name == "Normal")
+                    VideoAdsLocation = adsLocations.Single(x => x.Name == "Normal"),
+                    Customer = customer
                 },
                 new VideoAds
                 {
@@ -173,7 +131,8 @@ namespace AnimeCore.DataInitializer
                     Source = "C:/",
                     StartDate = new DateTime(2017, 1, 1),
                     EndDate = new DateTime(2017, 2, 1),
-                    VideoAdsLocation = adsLocations.Single(x => x.Name == "Newest")
+                    VideoAdsLocation = adsLocations.Single(x => x.Name == "Newest"),
+                    Customer = customer
                 }
             };
 
@@ -214,6 +173,17 @@ namespace AnimeCore.DataInitializer
 
             await adsLocationRepository.AddRangeAsync(adsLocations);
 
+            var customerRepository = app.ApplicationServices.GetService<ICustomerRepository>();
+
+            var customer = new Customer
+            {
+                Name = "Bảo2",
+                Email = "bao2@gmail.com",
+                Address = "Neptune2"
+            };
+
+            customerRepository.Add(customer);
+
             var adsRepository = app.ApplicationServices.GetService<IBannerAdsRepository>();
 
             var videoAds = new List<BannerAds>
@@ -230,7 +200,8 @@ namespace AnimeCore.DataInitializer
                     LocationType = LocationType.Home,
                     Height = "100px",
                     Width = "100%",
-                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Bottom")
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Bottom"),
+                    Customer = customer
                 },
                 new BannerAds
                 {
@@ -244,7 +215,8 @@ namespace AnimeCore.DataInitializer
                     LocationType = LocationType.Home,
                     Height = "150px",
                     Width = "100%",
-                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Top")
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Top"),
+                    Customer = customer
                 },
                 new BannerAds
                 {
@@ -256,7 +228,8 @@ namespace AnimeCore.DataInitializer
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 6, 1),
                     LocationType = LocationType.Home,
-                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right")
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right"),
+                    Customer = customer
                 },
                 new BannerAds
                 {
@@ -268,7 +241,8 @@ namespace AnimeCore.DataInitializer
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 6, 1),
                     LocationType = LocationType.Home,
-                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right")
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right"),
+                    Customer = customer
                 },
                 new BannerAds
                 {
@@ -280,7 +254,8 @@ namespace AnimeCore.DataInitializer
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 6, 1),
                     LocationType = LocationType.Child,
-                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right")
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right"),
+                    Customer = customer
                 },
                 new BannerAds
                 {
@@ -292,7 +267,8 @@ namespace AnimeCore.DataInitializer
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 6, 1),
                     LocationType = LocationType.HomeChild,
-                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right")
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right"),
+                    Customer = customer
                 },
                 new BannerAds
                 {
@@ -306,7 +282,8 @@ namespace AnimeCore.DataInitializer
                     LocationType = LocationType.HomeChild,
                     Height = "200px",
                     Width = "250px",
-                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right Balloon")
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right Balloon"),
+                    Customer = customer
                 }
             };
 

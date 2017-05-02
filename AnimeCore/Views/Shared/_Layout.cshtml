@@ -39,7 +39,7 @@
 @await Html.PartialAsync("_NavbarPartial")
 <!-- /navbar -->
 <!-- top-ads -->
-<div class="container" id="top-ads">
+<div class="container" id="top-ads" style="max-height: 150px">
     @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Top", LocationType.HomeChild).PickRandom())
     @RenderSection("TopAds", false)
 </div>
@@ -67,7 +67,7 @@
 </div>
 <!-- /.body-content -->
 <!-- bottom-ads -->
-<div class="container" id="bottom-ads">
+<div class="container" id="bottom-ads" style="max-height: 150px">
     @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Bottom", LocationType.HomeChild).PickRandom())
     @RenderSection("BottomAds", false)
 </div>

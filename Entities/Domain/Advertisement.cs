@@ -29,13 +29,17 @@ namespace Entities.Domain
 
         public long Click { get; set; }
 
+        public long Price { get; set; }
+
         [Display(Name = "Start date")]
         public DateTime StartDate { get; set; }
 
         [Display(Name = "End date")]
         public DateTime EndDate { get; set; }
 
-        public ICollection<InvoiceDetail> InvoiceDetails { get; set; }
+        public int CustomerId { get; set; }
+
+        public Customer Customer { get; set; }
 
         [NotMapped]
         public AdsStatus Status

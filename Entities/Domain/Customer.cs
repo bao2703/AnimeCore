@@ -7,7 +7,7 @@ namespace Entities.Domain
     {
         public Customer()
         {
-            Invoices = new HashSet<Invoice>();
+            Advertisements = new HashSet<Advertisement>();
         }
 
         [Required]
@@ -25,6 +25,6 @@ namespace Entities.Domain
 
         public string Address { get; set; }
 
-        public ICollection<Invoice> Invoices { get; set; }
+        public ICollection<Advertisement> Advertisements { get; set; }
     }
 }

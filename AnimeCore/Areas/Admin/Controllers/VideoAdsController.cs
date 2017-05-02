@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using AnimeCore.Common;
 using Entities.Domain;
@@ -10,16 +9,13 @@ namespace AnimeCore.Areas.Admin.Controllers
 {
     public class VideoAdsController : AdminController
     {
-        private readonly IInvoiceRepository _invoiceRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IVideoAdsRepository _videoAdsRepository;
 
-        public VideoAdsController(IUnitOfWork unitOfWork, IVideoAdsRepository videoAdsRepository,
-            IInvoiceRepository invoiceRepository)
+        public VideoAdsController(IUnitOfWork unitOfWork, IVideoAdsRepository videoAdsRepository)
         {
             _unitOfWork = unitOfWork;
             _videoAdsRepository = videoAdsRepository;
-            _invoiceRepository = invoiceRepository;
         }
 
         public IActionResult Index()
@@ -47,18 +43,8 @@ namespace AnimeCore.Areas.Admin.Controllers
             }
             if (ModelState.IsValid)
             {
-                var invoice = new Invoice
-                {
-                    CustomerId = customerId,
-                    InvoiceDetails = new List<InvoiceDetail>
-                    {
-                        new InvoiceDetail
-                        {
-                            Advertisement = model
-                        }
-                    }
-                };
-                await _invoiceRepository.AddAsync(invoice);
+                model.CustomerId = customerId;
+                await _videoAdsRepository.AddAsync(model);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;
             }
