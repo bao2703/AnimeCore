@@ -14,13 +14,13 @@
 
 
 @section TopAds {
-    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Top", LocationType.Home)"></vc:banner>
+    @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Top", LocationType.Home).PickRandom())
 }
 
 @section RightAds {
-    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Right", LocationType.Home)"></vc:banner>
+    @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Right", LocationType.Home).PickRandom())
 }
 
 @section BottomAds {
-    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Bottom", LocationType.Home)"></vc:banner>
+    @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Bottom", LocationType.Home).PickRandom())
 }

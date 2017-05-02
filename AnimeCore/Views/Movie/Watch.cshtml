@@ -37,15 +37,15 @@
 }
 
 @section TopAds {
-    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Top", LocationType.Child)"></vc:banner>
+    @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Top", LocationType.Child).PickRandom())
 }
 
 @section RightAds {
-    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Right", LocationType.Child)"></vc:banner>
+    @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Right", LocationType.Child).PickRandom())
 }
 
 @section BottomAds {
-    <vc:banner model="@BannerAdsRepository.GetActiveBanners("Bottom", LocationType.Child)"></vc:banner>
+    @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Bottom", LocationType.Child).PickRandom())
 }
 
 <div class="panel panel-info" id="panel-movie-detail">

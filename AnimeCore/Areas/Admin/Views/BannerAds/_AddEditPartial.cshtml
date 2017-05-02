@@ -80,6 +80,7 @@
                     <div class="col-sm-9">
                         <input id="file" type="file" name="file" data-show-upload="false" data-show-remove="true" data-allowed-file-extensions='["jpeg", "gif", "png", "jpg"]'/>
                     </div>
+                    <input asp-for="Source" type="hidden" value="@Model.Source"/>
                 </div>
             </div>
             <div class="col-sm-12">

@@ -1,0 +1,12 @@
+@model BannerAds
+
+@if (Model != null)
+{
+    <div id="@Model.Id" style="margin-bottom: 10px">
+        <div title="@Model.Title">
+            <a href="@Model.Url" target="_blank">
+                <img src="@Model.Source" alt="@Model.Name" class="img-responsive center-block" style="height: @Model.Height; width: @Model.Width"/>
+            </a>
+        </div>
+    </div>
+}
