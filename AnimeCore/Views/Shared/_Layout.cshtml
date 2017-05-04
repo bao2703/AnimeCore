@@ -40,7 +40,6 @@
 <!-- /navbar -->
 <!-- top-ads -->
 <div class="container" id="top-ads" style="max-height: 150px">
-    @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Top", LocationType.HomeChild).PickRandom())
     @RenderSection("TopAds", false)
 </div>
 <!-- /.top-ads -->
@@ -57,7 +56,6 @@
             <div class="col-sm-3">
                 <!-- right-ads -->
                 <div id="right-ads">
-                    @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Right", LocationType.HomeChild).PickRandom())
                     @RenderSection("RightAds", false)
                 </div>
                 <!-- /.right-ads -->
@@ -68,7 +66,6 @@
 <!-- /.body-content -->
 <!-- bottom-ads -->
 <div class="container" id="bottom-ads" style="max-height: 150px">
-    @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Bottom", LocationType.HomeChild).PickRandom())
     @RenderSection("BottomAds", false)
 </div>
 <!-- /.bottom-ads -->
@@ -83,7 +80,7 @@
 
 @RenderSection("Scripts", false)
 
-@await Html.PartialAsync("_RightBalloonPartial", BannerAdsRepository.GetActiveBanners("Right Balloon", LocationType.HomeChild).PickRandom())
+@RenderSection("Balloon", false)
 
 </body>
 </html>

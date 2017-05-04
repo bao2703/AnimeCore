@@ -13,11 +13,16 @@
 }
 
 @section RightAds {
-    @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Right", LocationType.Child).PickRandom())
+    @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Right 1", LocationType.Child).PickRandom())
+    @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Right 2", LocationType.Child).PickRandom())
 }
 
 @section BottomAds {
     @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Bottom", LocationType.Child).PickRandom())
+}
+
+@section Balloon {
+    @await Html.PartialAsync("_RightBalloonPartial", BannerAdsRepository.GetActiveBanners("Right Balloon", LocationType.Child).PickRandom())
 }
 
 <ol class="breadcrumb">

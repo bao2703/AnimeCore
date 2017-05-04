@@ -39,7 +39,9 @@ namespace Repositories
 
         public IEnumerable<BannerAds> GetActiveBanners(string locationName, LocationType locationType)
         {
-            return GetActiveBanners(locationName).Where(x => x.LocationType == locationType);
+            return
+                GetActiveBanners(locationName)
+                    .Where(x => x.LocationType == locationType || x.LocationType == LocationType.HomeChild);
         }
     }
 }

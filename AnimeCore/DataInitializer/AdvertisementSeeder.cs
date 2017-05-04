@@ -159,7 +159,13 @@ namespace AnimeCore.DataInitializer
                 },
                 new BannerAdsLocation
                 {
-                    Name = "Right",
+                    Name = "Right 1",
+                    Desciption = "Show ads on right side page",
+                    Price = 250000
+                },
+                new BannerAdsLocation
+                {
+                    Name = "Right 2",
                     Desciption = "Show ads on right side page",
                     Price = 250000
                 },
@@ -228,7 +234,7 @@ namespace AnimeCore.DataInitializer
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 6, 1),
                     LocationType = LocationType.Home,
-                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right"),
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right 1"),
                     Customer = customer
                 },
                 new BannerAds
@@ -241,7 +247,7 @@ namespace AnimeCore.DataInitializer
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 6, 1),
                     LocationType = LocationType.Home,
-                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right"),
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right 2"),
                     Customer = customer
                 },
                 new BannerAds
@@ -254,7 +260,7 @@ namespace AnimeCore.DataInitializer
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 6, 1),
                     LocationType = LocationType.Child,
-                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right"),
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right 1"),
                     Customer = customer
                 },
                 new BannerAds
@@ -267,7 +273,7 @@ namespace AnimeCore.DataInitializer
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 6, 1),
                     LocationType = LocationType.HomeChild,
-                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right"),
+                    BannerAdsLocation = adsLocations.Single(x => x.Name == "Right 2"),
                     Customer = customer
                 },
                 new BannerAds
