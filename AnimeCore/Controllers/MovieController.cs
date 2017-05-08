@@ -12,7 +12,7 @@ namespace AnimeCore.Controllers
         private readonly IMovieRepository _movieRepository;
         private readonly IVideoAdsRepository _videoAdsRepository;
 
-        public MovieController(IOptions<AppSettings> appSettings, IUnitOfWork unitOfWork,
+        public MovieController(IOptionsSnapshot<AppSettings> appSettings, IUnitOfWork unitOfWork,
             IMovieRepository movieRepository, IVideoAdsRepository videoAdsRepository)
         {
             _appSettings = appSettings.Value;

@@ -14,86 +14,84 @@
         </h4>
     </div>
     <div class="panel-body">
-        <div class="col-xs-12">
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover" id="dataTables">
-                    <thead>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover" id="dataTables">
+                <thead>
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().Name"></display>
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Location
+                    </th>
+                    <th>
+                        Display on
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().Click"></display>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().View"></display>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().Title"></display>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().Description"></display>
+                    </th>
+                    <th>
+                        H-W
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().Url"></display>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model)
+                {
                     <tr>
-                        <th>
-                            #
-                        </th>
-                        <th>
-                            <display name-for="@Model.First().Name"></display>
-                        </th>
-                        <th>
-                            Date
-                        </th>
-                        <th>
-                            Location
-                        </th>
-                        <th>
-                            Display on
-                        </th>
-                        <th>
-                            Status
-                        </th>
-                        <th>
-                            <display name-for="@Model.First().Click"></display>
-                        </th>
-                        <th>
-                            <display name-for="@Model.First().View"></display>
-                        </th>
-                        <th>
-                            <display name-for="@Model.First().Title"></display>
-                        </th>
-                        <th>
-                            <display name-for="@Model.First().Description"></display>
-                        </th>
-                        <th>
-                            H-W
-                        </th>
-                        <th>
-                            <display name-for="@Model.First().Url"></display>
-                        </th>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm @(User.HasClaim("BannerAds", "Edit") ? "" : "disabled")" data-toggle="modal" data-target="#advertisement-action-modal">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm @(User.HasClaim("BannerAds", "Delete") ? "" : "disabled")" data-toggle="modal" data-target="#advertisement-action-modal">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            @item.Name
+                            <img src="@item.Source" alt="@item.Name" class="img-responsive img-rounded"/>
+                        </td>
+                        <td>@item.StartDate.Format()-@item.EndDate.Format()</td>
+                        <td>@item.BannerAdsLocation.Name</td>
+                        <td>@item.LocationType.EnumValue()</td>
+                        <td>
+                            <label class="label label-@Helper.GetStatusClass(item.Status)">
+                                @item.Status
+                            </label>
+                        </td>
+                        <td>@item.Click</td>
+                        <td>@item.View</td>
+                        <td>@item.Title</td>
+                        <td>@item.Description</td>
+                        <td>@item.Height-@item.Width</td>
+                        <td>
+                            <a href="@item.Url">@item.Url</a>
+                        </td>
                     </tr>
-                    </thead>
-                    <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm @(User.HasClaim("BannerAds", "Edit") ? "" : "disabled")" data-toggle="modal" data-target="#advertisement-action-modal">
-                                    <i class="fa fa-pencil"></i>
-                                </a>
-                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm @(User.HasClaim("BannerAds", "Delete") ? "" : "disabled")" data-toggle="modal" data-target="#advertisement-action-modal">
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                @item.Name
-                                <img src="@item.Source" alt="@item.Name" class="img-responsive img-rounded"/>
-                            </td>
-                            <td>@item.StartDate.Format()-@item.EndDate.Format()</td>
-                            <td>@item.BannerAdsLocation.Name</td>
-                            <td>@item.LocationType.EnumValue()</td>
-                            <td>
-                                <label class="label label-@Helper.GetStatusClass(item.Status)">
-                                    @item.Status
-                                </label>
-                            </td>
-                            <td>@item.Click</td>
-                            <td>@item.View</td>
-                            <td>@item.Title</td>
-                            <td>@item.Description</td>
-                            <td>@item.Height-@item.Width</td>
-                            <td>
-                                <a href="@item.Url">@item.Url</a>
-                            </td>
-                        </tr>
-                    }
-                    </tbody>
-                </table>
-            </div>
+                }
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

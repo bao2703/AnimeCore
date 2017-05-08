@@ -20,7 +20,7 @@ namespace AnimeCore
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", false, true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true, true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -70,7 +70,7 @@ namespace AnimeCore
 
             app.UseIdentity();
 
-            var authentication = app.ApplicationServices.GetService<IOptions<Authentication>>().Value;
+            var authentication = app.ApplicationServices.GetService<IOptionsSnapshot<Authentication>>().Value;
 
             app.UseFacebookAuthentication(new FacebookOptions
             {

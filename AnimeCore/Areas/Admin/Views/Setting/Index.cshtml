@@ -1,0 +1,49 @@
+@model Models.SettingViewModel
+@{
+    ViewData[Constant.Title] = "Settings";
+}
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            @ViewData[Constant.Title]
+        </h4>
+    </div>
+    <div class="panel-body">
+        <form asp-action="Index" method="post">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger col-sm-offset-1 col-sm-10 text-center"></div>
+            <div class="row">
+                <div class="col-sm-offset-1 col-sm-10">
+                    <div class="form-group">
+                        <label asp-for="PageSize"></label>
+                        <input asp-for="PageSize" class="form-control"/>
+                        <span asp-validation-for="PageSize" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-sm-offset-1 col-sm-5">
+                    <div class="form-group">
+                        <label asp-for="FacebookAppId"></label>
+                        <input asp-for="FacebookAppId" class="form-control"/>
+                        <span asp-validation-for="FacebookAppId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="form-group">
+                        <label asp-for="FacebookAppSecret"></label>
+                        <input asp-for="FacebookAppSecret" class="form-control"/>
+                        <span asp-validation-for="FacebookAppSecret" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-sm-offset-1 col-sm-10">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

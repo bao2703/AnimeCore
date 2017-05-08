@@ -14,80 +14,78 @@
         </h4>
     </div>
     <div class="panel-body">
-        <div class="col-xs-12">
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover" id="dataTables">
-                    <thead>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover" id="dataTables">
+                <thead>
+                <tr>
+                    <th>
+                        <div class="btn-group">
+                            <a asp-action="Add" class="btn btn-primary btn-sm @(User.HasClaim("Movie", "Add") ? "" : "disabled")">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </div>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().Name"></display>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().GenreMovies"></display>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().Fansub"></display>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().Status"></display>
+                    </th>
+                    <th>
+                        Ep
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().View"></display>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().Release"></display>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().Description"></display>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model)
+                {
                     <tr>
-                        <th>
-                            <div class="btn-group">
-                                <a asp-action="Add" class="btn btn-primary btn-sm @(User.HasClaim("Movie", "Add") ? "" : "disabled")">
-                                    <i class="fa fa-plus"></i>
-                                </a>
-                            </div>
-                        </th>
-                        <th>
-                            <display name-for="@Model.First().Name"></display>
-                        </th>
-                        <th>
-                            <display name-for="@Model.First().GenreMovies"></display>
-                        </th>
-                        <th>
-                            <display name-for="@Model.First().Fansub"></display>
-                        </th>
-                        <th>
-                            <display name-for="@Model.First().Status"></display>
-                        </th>
-                        <th>
-                            Ep
-                        </th>
-                        <th>
-                            <display name-for="@Model.First().View"></display>
-                        </th>
-                        <th>
-                            <display name-for="@Model.First().Release"></display>
-                        </th>
-                        <th>
-                            <display name-for="@Model.First().Description"></display>
-                        </th>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm @(User.HasClaim("Movie", "Edit") ? "" : "disabled")">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm @(User.HasClaim("Movie", "Delete") ? "" : "disabled")" data-toggle="modal" data-target="#movie-action-modal">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a asp-action="Index" asp-controller="Episode" asp-route-movieId="@item.Id" style="@(User.HasClaim("Episode", "Index") ? "" : "cursor: not-allowed")">
+                                @item.Name
+                                <img src="@item.Image" alt="@item.Name" class="img-responsive" asp-append-version="true" style="max-height: 200px"/>
+                            </a>
+                        </td>
+                        <td>
+                            @string.Join(", ", item.GenreMovies.Select(x => x.Genre.Name))
+                        </td>
+                        <td>@item.Fansub</td>
+                        <td>
+                            <label class="label label-@Helper.GetStatusClass(item.Status)">
+                                @item.Status
+                            </label>
+                        </td>
+                        <td>@item.Episodes.Count</td>
+                        <td>@item.View</td>
+                        <td>@item.Release.Format()</td>
+                        <td style="font-size: 11px">@item.Description</td>
                     </tr>
-                    </thead>
-                    <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm @(User.HasClaim("Movie", "Edit") ? "" : "disabled")">
-                                    <i class="fa fa-pencil"></i>
-                                </a>
-                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm @(User.HasClaim("Movie", "Delete") ? "" : "disabled")" data-toggle="modal" data-target="#movie-action-modal">
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <a asp-action="Index" asp-controller="Episode" asp-route-movieId="@item.Id" style="@(User.HasClaim("Episode", "Index") ? "" : "cursor: not-allowed")">
-                                    @item.Name
-                                    <img src="@item.Image" alt="@item.Name" class="img-responsive" asp-append-version="true" style="max-height: 200px"/>
-                                </a>
-                            </td>
-                            <td>
-                                @string.Join(", ", item.GenreMovies.Select(x => x.Genre.Name))
-                            </td>
-                            <td>@item.Fansub</td>
-                            <td>
-                                <label class="label label-@Helper.GetStatusClass(item.Status)">
-                                    @item.Status
-                                </label>
-                            </td>
-                            <td>@item.Episodes.Count</td>
-                            <td>@item.View</td>
-                            <td>@item.Release.Format()</td>
-                            <td style="font-size: 11px">@item.Description</td>
-                        </tr>
-                    }
-                    </tbody>
-                </table>
-            </div>
+                }
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

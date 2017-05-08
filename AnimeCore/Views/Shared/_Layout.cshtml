@@ -1,7 +1,7 @@
 ﻿@using Microsoft.ApplicationInsights.AspNetCore
 @using Microsoft.Extensions.Options
 @inject IBannerAdsRepository BannerAdsRepository
-@inject IOptions<Authentication> Authentication
+@inject IOptionsSnapshot<Authentication> Authentication
 @inject JavaScriptSnippet JavaScriptSnippet
 <!DOCTYPE html>
 <html>
@@ -18,22 +18,9 @@
     <link href="~/assets/css/styles.css" rel="stylesheet" asp-append-version="true"/>
     <link href="~/assets/client/css/site.css" rel="stylesheet" asp-append-version="true"/>
 
-    @Html.Raw(JavaScriptSnippet.FullScript)
+    @*@Html.Raw(JavaScriptSnippet.FullScript)*@
 </head>
 <body>
-
-@*<div id="fb-root"></div>*@
-<script>
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId: "@Authentication.Value.Facebook.AppId",
-            xfbml: true,
-            version: "v2.8",
-            status: true
-        });
-        FB.AppEvents.logPageView();
-    };
-</script>
 
 <!-- navbar -->
 @await Html.PartialAsync("_NavbarPartial")
@@ -77,6 +64,18 @@
 <script src="~/assets/js/facebook-sdk.js" asp-append-version="true"></script>
 <script src="~/lib/bootstrap-select/dist/js/bootstrap-select.js" asp-append-version="true"></script>
 <script src="~/assets/client/js/site.js" asp-append-version="true"></script>
+
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId: "@Authentication.Value.Facebook.AppId",
+            xfbml: true,
+            version: "v2.8",
+            status: true
+        });
+        FB.AppEvents.logPageView();
+    };
+</script>
 
 @RenderSection("Scripts", false)
 
