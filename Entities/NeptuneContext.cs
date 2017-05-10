@@ -48,6 +48,18 @@ namespace Entities
                 .WithMany(x => x.GenreMovies)
                 .HasForeignKey(x => x.GenreId);
 
+            builder.Entity<Like>().HasKey(x => new {x.MovieId, x.UserId});
+
+            builder.Entity<Like>()
+                .HasOne(x => x.Movie)
+                .WithMany(x => x.Likes)
+                .HasForeignKey(x => x.MovieId);
+
+            builder.Entity<Like>()
+                .HasOne(x => x.User)
+                .WithMany(x => x.Likes)
+                .HasForeignKey(x => x.UserId);
+
             base.OnModelCreating(builder);
 
             builder.Entity<User>().ToTable("Users");

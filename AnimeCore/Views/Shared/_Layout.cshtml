@@ -1,8 +1,7 @@
-﻿@using Microsoft.ApplicationInsights.AspNetCore
-@using Microsoft.Extensions.Options
+﻿@using Microsoft.Extensions.Options
 @inject IBannerAdsRepository BannerAdsRepository
 @inject IOptionsSnapshot<Authentication> Authentication
-@inject JavaScriptSnippet JavaScriptSnippet
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +17,6 @@
     <link href="~/assets/css/styles.css" rel="stylesheet" asp-append-version="true"/>
     <link href="~/assets/client/css/site.css" rel="stylesheet" asp-append-version="true"/>
 
-    @*@Html.Raw(JavaScriptSnippet.FullScript)*@
 </head>
 <body>
 

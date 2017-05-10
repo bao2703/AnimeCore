@@ -1,7 +1,6 @@
-﻿@using Microsoft.ApplicationInsights.AspNetCore
-@using Microsoft.Extensions.Options
+﻿@using Microsoft.Extensions.Options
 @inject IOptions<Authentication> Authentication
-@inject JavaScriptSnippet JavaScriptSnippet
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +19,6 @@
     <link href="~/assets/css/styles.css" rel="stylesheet" asp-append-version="true"/>
     <link href="~/assets/admin/css/site.css" rel="stylesheet" asp-append-version="true"/>
 
-    @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body>
 <!-- navbar -->
