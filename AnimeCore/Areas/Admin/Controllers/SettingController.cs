@@ -29,12 +29,18 @@ namespace AnimeCore.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Index(SettingViewModel model)
         {
             _appSettings.PageSize = model.PageSize;
             _authentication.Facebook.AppId = model.FacebookAppId;
             _authentication.Facebook.AppSecret = model.FacebookAppSecret;
             return View(model);
+        }
+
+        public IActionResult Slide()
+        {
+            return View();
         }
     }
 }
