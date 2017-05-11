@@ -24,12 +24,14 @@
 @await Html.PartialAsync("_NavbarPartial")
 <!-- /navbar -->
 <!-- top-ads -->
-<div class="container" id="top-ads" style="max-height: 150px">
+<div class="container form-group" id="top-ads" style="max-height: 150px">
     @RenderSection("TopAds", false)
 </div>
 <!-- /.top-ads -->
 <!-- slide -->
-@RenderSection("Slide", false)
+<div class="container form-group">
+    @RenderSection("Slide", false)
+</div>
 <!-- /.slide -->
 <!-- body-content -->
 <div class="body-content">
@@ -62,6 +64,7 @@
 <script src="~/assets/js/facebook-sdk.js" asp-append-version="true"></script>
 <script src="~/lib/bootstrap-select/dist/js/bootstrap-select.js" asp-append-version="true"></script>
 <script src="~/assets/client/js/site.js" asp-append-version="true"></script>
+<script src="~/assets/js/script.js" asp-append-version="true"></script>
 
 <script>
     window.fbAsyncInit = function() {
