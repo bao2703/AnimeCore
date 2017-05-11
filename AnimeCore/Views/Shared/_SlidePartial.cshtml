@@ -8,15 +8,17 @@
             @foreach (var item in MovieRepository.FindSlide(AppSettings.Value.Slide.Split(',')))
             {
                 <div class="item" style="min-height: 300px">
-                    <img src="@item.Image" alt="@item.Name" class="img-responsive center-block" asp-append-version="true">
-                    <div class="carousel-caption">
-                        <div>
-                            <h3>@item.Name</h3>
+                    <a asp-action="Details" asp-controller="Movie" asp-route-id="@item.Id">
+                        <img src="@item.Slide" alt="@item.Name" class="img-responsive center-block" asp-append-version="true">
+                        <div class="carousel-caption">
+                            <div>
+                                <h3>@item.Name</h3>
+                            </div>
+                            <div class="description">
+                                <p>@item.Description</p>
+                            </div>
                         </div>
-                        <div class="description">
-                            <p>@item.Description</p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             }
             <a class="left carousel-control" href="#carousel-movie" role="button" data-slide="prev">

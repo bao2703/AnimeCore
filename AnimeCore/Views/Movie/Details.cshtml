@@ -5,7 +5,9 @@
 }
 
 @section Slide {
-
+    <a asp-action="Watch" asp-controller="Movie" asp-route-id="@Model.Id">
+        <img src="@Model.Slide" alt="@Model.Name" class="img-responsive center-block" asp-append-version="true">
+    </a>
 }
 
 @section TopAds {
