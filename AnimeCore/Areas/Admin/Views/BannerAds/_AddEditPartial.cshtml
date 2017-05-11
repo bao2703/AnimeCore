@@ -19,6 +19,7 @@
     @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = modalHeading})
     <div class="modal-body form-horizontal">
         <div class="row">
+            <input asp-for="CustomerId" type="hidden"/>
             <div asp-validation-summary="ModelOnly" class="alert alert-danger col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 text-center"></div>
             <div class="col-sm-12">
                 <div class="form-group">
@@ -157,5 +158,5 @@
         function(e) {
             $('#start').data("DateTimePicker").maxDate(e.date);
         });
+    $.validator.unobtrusive.parse(".modal-form");
 </script>
-<script src="~/assets/admin/js/modal-form.js" asp-append-version="true"></script>

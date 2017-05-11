@@ -1,5 +1,6 @@
 using AnimeCore.Common;
 using Entities.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Repositories;
@@ -62,6 +63,13 @@ namespace AnimeCore.Controllers
             }
             ViewData["Advertisement"] = advertisement;
             return View(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Like(int id)
+        {
+            return View();
         }
     }
 }

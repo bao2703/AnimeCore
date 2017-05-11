@@ -214,7 +214,7 @@ namespace AnimeCore.DataInitializer
                     Name = "C# vs Java",
                     Description = "C# vs Java",
                     Title = "C# vs Java",
-                    Url = "http://C#vsJava.com/",
+                    Url = "http://CsvsJava.com/",
                     Source = "/assets/client/ads-example/banner/c_vs_java_play_the_match.gif",
                     StartDate = new DateTime(2017, 3, 10),
                     EndDate = new DateTime(2017, 6, 10),
