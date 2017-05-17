@@ -30,11 +30,13 @@ namespace AnimeCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            const string connection = "DefaultConnection";
+            //const string connection = "DefaultConnection";
             //const string connection = "AzureConnection";
 
-            services.AddDbContext<NeptuneContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString(connection)));
+            //services.AddDbContext<NeptuneContext>(options =>
+                //options.UseSqlServer(Configuration.GetConnectionString(connection)));
+
+            services.AddEntityFrameworkSqlite().AddDbContext<NeptuneContext>();
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.Configure<Authentication>(Configuration.GetSection("Authentication"));

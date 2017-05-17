@@ -14,6 +14,11 @@ namespace Entities
         {
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite("Data Source=neptune.db");
+        }
+
         public DbSet<Movie> Movies { get; set; }
 
         public DbSet<Genre> Genres { get; set; }
