@@ -59,9 +59,11 @@
                             <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm @(User.HasClaim("Movie", "Edit") ? "" : "disabled")">
                                 <i class="fa fa-pencil"></i>
                             </a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm @(User.HasClaim("Movie", "Delete") ? "" : "disabled")" data-toggle="modal" data-target="#movie-action-modal">
-                                <i class="fa fa-trash"></i>
-                            </a>
+                            <form asp-action="Delete" asp-controller="Movie" asp-route-id="@item.Id">
+                                <button class="btn btn-danger btn-sm @(User.HasClaim("Movie", "Delete") ? "" : "disabled")">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
                         </td>
                         <td class="text-center">
                             <a asp-action="Index" asp-controller="Episode" asp-route-movieId="@item.Id" style="@(User.HasClaim("Episode", "Index") ? "" : "cursor: not-allowed")">

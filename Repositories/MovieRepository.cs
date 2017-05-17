@@ -60,7 +60,7 @@ namespace Repositories
             return id.Select(item => DbSet.Include(x => x.Episodes)
                 .Include(x => x.GenreMovies)
                 .ThenInclude(x => x.Genre)
-                .SingleOrDefault(x => x.Id.ToString() == item)).ToList();
+                .SingleOrDefault(x => x.Id.ToString() == item)).Where(item => item != null).ToList();
         }
 
         public bool IsPopular(int id)

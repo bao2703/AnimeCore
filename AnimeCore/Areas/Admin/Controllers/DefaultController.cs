@@ -85,13 +85,9 @@ namespace AnimeCore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public virtual async Task<IActionResult> Delete(TEntity model)
         {
-            if (ModelState.IsValid)
-            {
-                _repository.Remove(model);
-                await _unitOfWork.SaveChangesAsync();
-                return JsonStatus.Ok;
-            }
-            return PartialView(DeletePartialViewName, model);
+            _repository.Remove(model);
+            await _unitOfWork.SaveChangesAsync();
+            return JsonStatus.Ok;
         }
     }
 }

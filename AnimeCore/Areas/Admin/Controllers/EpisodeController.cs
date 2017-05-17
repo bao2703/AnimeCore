@@ -129,18 +129,14 @@ namespace AnimeCore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(EpisodeViewModel model)
         {
-            if (ModelState.IsValid)
+            var episode = _episodeRepository.FindById(model.Id);
+            if (episode == null)
             {
-                var episode = _episodeRepository.FindById(model.Id);
-                if (episode == null)
-                {
-                    return NotFound();
-                }
-                _episodeRepository.Remove(episode);
-                await _unitOfWork.SaveChangesAsync();
-                return JsonStatus.Ok;
+                return NotFound();
             }
-            return PartialView("_DeletePartial", model);
+            _episodeRepository.Remove(episode);
+            await _unitOfWork.SaveChangesAsync();
+            return JsonStatus.Ok;
         }
 
         public IActionResult Preview(string source)

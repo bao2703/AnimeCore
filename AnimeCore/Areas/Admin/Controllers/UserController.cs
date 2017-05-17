@@ -122,20 +122,17 @@ namespace AnimeCore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(UserViewModel model)
         {
-            if (ModelState.IsValid)
+            var user = await _userService.FindByIdAsync(model.Id);
+            if (user == null)
             {
-                var user = await _userService.FindByIdAsync(model.Id);
-                if (user == null)
-                {
-                    return NotFound();
-                }
-                var result = await _userService.DeleteAsync(user);
-                if (result.Succeeded)
-                {
-                    return JsonStatus.Ok;
-                }
-                AddErrors(result);
+                return NotFound();
             }
+            var result = await _userService.DeleteAsync(user);
+            if (result.Succeeded)
+            {
+                return JsonStatus.Ok;
+            }
+            AddErrors(result);
             return PartialView("_DeletePartial", model);
         }
     }

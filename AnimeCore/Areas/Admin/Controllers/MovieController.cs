@@ -103,9 +103,12 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            return JsonStatus.Error;
+            var model = _movieRepository.FindById(id);
+            _movieRepository.Remove(model);
+            await _unitOfWork.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
     }
 }
