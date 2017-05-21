@@ -47,7 +47,6 @@ namespace AnimeCore
 
             IdentityConfiguration.Configure(services);
             ServiceRegister.Configure(services);
-            //PagerConfiguration.Configure(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -90,7 +89,7 @@ namespace AnimeCore
                     "default",
                     "{controller=Home}/{action=Index}/{id?}");
             });
-
+            
             if (env.IsDevelopment())
             {
                 await DataSeeder.InitializeAsync(app);
