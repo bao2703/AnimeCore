@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.10
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeCore", "AnimeCore\AnimeCore.csproj", "{D66A565B-A711-4224-A609-B7B1DDA5B718}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{1FD57D8E-A1E5-4F09-87B7-40F343CE2ABF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "Repositories\Repositories.csproj", "{375AE486-8E69-4F00-888F-7F28C2DBABC7}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{8B98E30A-3A97-4738-B782-2CC51C2835E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{375AE486-8E69-4F00-888F-7F28C2DBABC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{375AE486-8E69-4F00-888F-7F28C2DBABC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{375AE486-8E69-4F00-888F-7F28C2DBABC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B98E30A-3A97-4738-B782-2CC51C2835E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B98E30A-3A97-4738-B782-2CC51C2835E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B98E30A-3A97-4738-B782-2CC51C2835E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B98E30A-3A97-4738-B782-2CC51C2835E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

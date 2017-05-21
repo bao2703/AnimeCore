@@ -12,6 +12,8 @@ namespace Entities.Domain
             Episodes = new HashSet<Episode>();
             Release = DateTime.Now;
             Status = MovieStatus.Ongoing;
+            Image = "null";
+            Slide = "null";
         }
 
         [Required]
