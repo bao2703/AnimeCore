@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>8b98e30a-3a97-4738-b782-2cc51c2835e6</ProjectGuid>
     <DockerLaunchBrowser>True</DockerLaunchBrowser>
-    <DockerServiceUrl>http://localhost:{ServicePort}/http://localhost:51454/</DockerServiceUrl>
+    <DockerServiceUrl>http://localhost:{ServicePort}</DockerServiceUrl>
     <DockerServiceName>animecore</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>

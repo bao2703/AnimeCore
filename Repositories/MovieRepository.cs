@@ -13,6 +13,9 @@ namespace Repositories
         IEnumerable<Movie> FindNewestMovie(int take);
         IEnumerable<Movie> FindPopularMovie(int take);
         IEnumerable<Movie> FindSlide(string[] id);
+        void Like(User user, Movie movie);
+        void UnLike(User user, Movie movie);
+        bool HasLikeTo(User user, Movie movie);
         bool IsPopular(int id);
         bool IsNewest(int id);
     }
@@ -26,6 +29,7 @@ namespace Repositories
         public override Movie FindById(object id)
         {
             return DbSet.Include(x => x.Episodes)
+                .Include(x => x.Likes)
                 .Include(x => x.GenreMovies)
                 .ThenInclude(x => x.Genre)
                 .SingleOrDefault(x => x.Id == (int) id);
@@ -34,6 +38,7 @@ namespace Repositories
         public override IEnumerable<Movie> GetAll()
         {
             return DbSet.Include(x => x.Episodes)
+                .Include(x => x.Likes)
                 .Include(x => x.GenreMovies)
                 .ThenInclude(x => x.Genre);
         }
@@ -41,6 +46,7 @@ namespace Repositories
         public IEnumerable<Movie> FindByNameContains(string searchString)
         {
             return DbSet.Include(x => x.Episodes)
+                .Include(x => x.Likes)
                 .Include(x => x.GenreMovies)
                 .Where(x => x.Name.Contains(searchString));
         }
@@ -61,6 +67,24 @@ namespace Repositories
                 .Include(x => x.GenreMovies)
                 .ThenInclude(x => x.Genre)
                 .SingleOrDefault(x => x.Id.ToString() == item)).Where(item => item != null).ToList();
+        }
+
+        public void Like(User user, Movie movie)
+        {
+            movie.Likes.Add(new Like
+            {
+                User = user
+            });
+        }
+
+        public void UnLike(User user, Movie movie)
+        {
+            movie.Likes.Remove(movie.Likes.SingleOrDefault(x => x.UserId == user.Id));
+        }
+
+        public bool HasLikeTo(User user, Movie movie)
+        {
+            return movie.Likes.Any(x => x.UserId == user.Id);
         }
 
         public bool IsPopular(int id)

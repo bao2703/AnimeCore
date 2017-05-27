@@ -1,9 +1,11 @@
+using System.Threading.Tasks;
 using AnimeCore.Common;
 using Entities.Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Repositories;
+using Services;
 
 namespace AnimeCore.Controllers
 {
@@ -11,14 +13,19 @@ namespace AnimeCore.Controllers
     {
         private readonly AppSettings _appSettings;
         private readonly IMovieRepository _movieRepository;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUserService _userService;
         private readonly IVideoAdsRepository _videoAdsRepository;
 
-        public MovieController(IOptionsSnapshot<AppSettings> appSettings, IUnitOfWork unitOfWork,
-            IMovieRepository movieRepository, IVideoAdsRepository videoAdsRepository)
+        public MovieController(IOptionsSnapshot<AppSettings> appSettings,
+            IMovieRepository movieRepository, IVideoAdsRepository videoAdsRepository, IUnitOfWork unitOfWork,
+            IUserService userService)
         {
             _appSettings = appSettings.Value;
             _movieRepository = movieRepository;
             _videoAdsRepository = videoAdsRepository;
+            _unitOfWork = unitOfWork;
+            _userService = userService;
         }
 
         // GET: /Movie/Index
@@ -30,13 +37,14 @@ namespace AnimeCore.Controllers
         }
 
         // GET: /Movie/Details/5
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
             var model = _movieRepository.FindById(id);
             if (model == null)
             {
                 return NotFound();
             }
+            ViewData["HasLike"] = _movieRepository.HasLikeTo(await _userService.GetUserAsync(User), model);
             return View(model);
         }
 
@@ -67,9 +75,30 @@ namespace AnimeCore.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult Like(int id)
+        public async Task<IActionResult> Like(int id)
         {
-            return View();
+            var movie = _movieRepository.FindById(id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+            _movieRepository.Like(await _userService.GetUserAsync(User), movie);
+            _unitOfWork.SaveChanges();
+            return RedirectToAction("Details", new {id});
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> UnLike(int id)
+        {
+            var movie = _movieRepository.FindById(id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+            _movieRepository.UnLike(await _userService.GetUserAsync(User), movie);
+            _unitOfWork.SaveChanges();
+            return RedirectToAction("Details", new {id});
         }
     }
 }

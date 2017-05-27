@@ -32,11 +32,12 @@ namespace AnimeCore
         {
             //const string connection = "DefaultConnection";
             //const string connection = "AzureConnection";
-
-            //services.AddDbContext<NeptuneContext>(options =>
-                //options.UseSqlServer(Configuration.GetConnectionString(connection)));
-
-            services.AddEntityFrameworkSqlite().AddDbContext<NeptuneContext>();
+            
+            services.AddDbContext<NeptuneContext>(options =>
+            {
+                options.UseSqlite("Data Source=neptune.db");
+                //options.UseSqlServer(Configuration.GetConnectionString(connection));
+            });
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.Configure<Authentication>(Configuration.GetSection("Authentication"));

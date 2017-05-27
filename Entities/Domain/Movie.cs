@@ -10,6 +10,7 @@ namespace Entities.Domain
         {
             GenreMovies = new HashSet<GenreMovie>();
             Episodes = new HashSet<Episode>();
+            Likes = new HashSet<Like>();
             Release = DateTime.Now;
             Status = MovieStatus.Ongoing;
             Image = "null";

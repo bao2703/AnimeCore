@@ -9,12 +9,12 @@ namespace Repositories
 {
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
-        private readonly NeptuneContext _context;
+        protected readonly NeptuneContext Context;
 
         protected Repository(NeptuneContext context)
         {
-            _context = context;
-            DbSet = _context.Set<TEntity>();
+            Context = context;
+            DbSet = Context.Set<TEntity>();
         }
 
         protected DbSet<TEntity> DbSet { get; }
@@ -31,7 +31,7 @@ namespace Repositories
 
         public void Update(TEntity entity)
         {
-            _context.Entry(entity).State = EntityState.Modified;
+            Context.Entry(entity).State = EntityState.Modified;
         }
 
         public void Remove(TEntity entity)
