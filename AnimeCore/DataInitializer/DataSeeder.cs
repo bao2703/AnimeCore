@@ -1827,7 +1827,8 @@ namespace AnimeCore.DataInitializer
                 }
             };
 
-            swordArtOnline2.ForEach(x => x.Movie = movies.Single(m => m.Name == "Sword Art Online II : Phantom Bullet"));
+            swordArtOnline2.ForEach(x => x.Movie =
+                movies.Single(m => m.Name == "Sword Art Online II : Phantom Bullet"));
             episodes.Add(swordArtOnline2);
 
             #endregion

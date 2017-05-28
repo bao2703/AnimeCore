@@ -1,4 +1,4 @@
-@inject IVideoAdsLocationRepository VideoAdsLocationRepository
+@inject IAdsLocationRepository AdsLocationRepository
 @using Models.ModalViewModels
 @using Repositories
 @model VideoAds
@@ -69,8 +69,8 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Location</label>
                     <div class="col-sm-9">
-                        <select asp-for="VideoAdsLocationId" asp-items="@(new SelectList(VideoAdsLocationRepository.GetAll(), "Id", "Name"))" class="selectpicker show-tick form-control" id="ads-location"></select>
-                        <span asp-validation-for="VideoAdsLocationId" class="text-danger"></span>
+                        <select asp-for="AdsLocationId" asp-items="@(new SelectList(AdsLocationRepository.GetAll(LocationType.Video), "Id", "Name"))" class="selectpicker show-tick form-control" id="ads-location"></select>
+                        <span asp-validation-for="AdsLocationId" class="text-danger"></span>
                     </div>
                 </div>
             </div>

@@ -32,7 +32,7 @@ namespace AnimeCore
         {
             //const string connection = "DefaultConnection";
             //const string connection = "AzureConnection";
-            
+
             services.AddDbContext<NeptuneContext>(options =>
             {
                 options.UseSqlite("Data Source=neptune.db");
@@ -90,7 +90,7 @@ namespace AnimeCore
                     "default",
                     "{controller=Home}/{action=Index}/{id?}");
             });
-            
+
             if (env.IsDevelopment())
             {
                 await DataSeeder.InitializeAsync(app);

@@ -59,7 +59,7 @@
                                 <i class="fa fa-pencil"></i> Edit
                             </a>
                         </td>
-                        <td>                            
+                        <td>
                             <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger @(User.HasClaim("User", "Delete") && item.UserName != User.Identity.Name ? "" : "disabled")" data-toggle="modal" data-target="#user-action-modal">
                                 <i class="fa fa-trash"></i> Delete
                             </a>

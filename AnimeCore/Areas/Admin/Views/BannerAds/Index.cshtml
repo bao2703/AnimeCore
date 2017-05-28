@@ -73,8 +73,8 @@
                             <img src="@item.Source" alt="@item.Name" class="img-responsive img-rounded"/>
                         </td>
                         <td>@item.StartDate.Format()-@item.EndDate.Format()</td>
-                        <td>@item.BannerAdsLocation.Name</td>
-                        <td>@item.LocationType.EnumValue()</td>
+                        <td>@item.AdsLocation.Name</td>
+                        <td>@item.BannerType.EnumValue()</td>
                         <td>
                             <label class="label label-@Helper.GetStatusClass(item.Status)">
                                 @item.Status

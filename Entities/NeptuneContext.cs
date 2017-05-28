@@ -30,10 +30,6 @@ namespace Entities
 
         public DbSet<AdsLocation> AdsLocations { get; set; }
 
-        public DbSet<VideoAdsLocation> VideoAdsLocations { get; set; }
-
-        public DbSet<BannerAdsLocation> BannerAdsLocations { get; set; }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<GenreMovie>().HasKey(x => new {x.MovieId, x.GenreId});

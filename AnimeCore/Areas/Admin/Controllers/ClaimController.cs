@@ -48,7 +48,8 @@ namespace AnimeCore.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(string controllerName, string actionName, string roleId, string operation)
+        public async Task<IActionResult> Index(string controllerName, string actionName, string roleId,
+            string operation)
         {
             var role = await _roleService.FindByIdAsync(roleId);
             if (role == null)

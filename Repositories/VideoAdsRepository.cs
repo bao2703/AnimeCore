@@ -20,19 +20,19 @@ namespace Repositories
 
         public override VideoAds FindById(object id)
         {
-            return DbSet.Include(x => x.VideoAdsLocation).SingleOrDefault(x => x.Id == (int) id);
+            return DbSet.Include(x => x.AdsLocation).SingleOrDefault(x => x.Id == (int) id);
         }
 
         public override IEnumerable<VideoAds> GetAll()
         {
-            return DbSet.Include(x => x.VideoAdsLocation);
+            return DbSet.Include(x => x.AdsLocation);
         }
 
         public IEnumerable<VideoAds> GetActiveVideos(string locationName)
         {
             return
-                DbSet.Include(x => x.VideoAdsLocation)
-                    .Where(x => x.VideoAdsLocation.Name == locationName)
+                DbSet.Include(x => x.AdsLocation)
+                    .Where(x => x.AdsLocation.Name == locationName)
                     .Where(x => x.Status == AdsStatus.Active);
         }
     }

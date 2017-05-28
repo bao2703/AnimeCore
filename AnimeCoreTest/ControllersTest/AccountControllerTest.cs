@@ -99,7 +99,8 @@ namespace AnimeCoreTest.ControllersTest
             var mockUserService = new Mock<IUserService>();
             mockAccountService.Setup(
                     m =>
-                        m.PasswordSignInAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()))
+                        m.PasswordSignInAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(),
+                            It.IsAny<bool>()))
                 .Returns(Task.FromResult(SignInResult.Failed));
 
             var accountController = new AccountController(mockAccountService.Object, mockUserService.Object);

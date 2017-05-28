@@ -94,7 +94,7 @@ namespace AnimeCore.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(RoleViewModel model)
-        {            
+        {
             var role = await _roleService.FindByIdAsync(model.Id);
             if (role == null)
             {
@@ -105,7 +105,7 @@ namespace AnimeCore.Areas.Admin.Controllers
             {
                 return JsonStatus.Ok;
             }
-            AddErrors(result);            
+            AddErrors(result);
             return PartialView("_DeletePartial", model);
         }
     }

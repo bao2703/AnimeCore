@@ -41,7 +41,8 @@ namespace AnimeCore.Controllers
             {
                 return View(model);
             }
-            var result = await _accountService.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+            var result =
+                await _accountService.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
             if (result.Succeeded)
             {
                 return RedirectToLocal(returnUrl);

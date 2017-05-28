@@ -2,8 +2,8 @@ namespace Entities.Domain
 {
     public class VideoAds : Advertisement
     {
-        public int? VideoAdsLocationId { get; set; }
+        public int? AdsLocationId { get; set; }
 
-        public VideoAdsLocation VideoAdsLocation { get; set; }
+        public AdsLocation AdsLocation { get; set; }
     }
 }

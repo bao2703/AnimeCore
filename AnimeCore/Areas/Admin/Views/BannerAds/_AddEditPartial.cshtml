@@ -1,4 +1,4 @@
-@inject IBannerAdsLocationRepository BannerAdsLocationRepository
+@inject IAdsLocationRepository AdsLocationRepository
 @using Models.ModalViewModels
 @using Repositories
 @model BannerAds
@@ -86,10 +86,10 @@
             </div>
             <div class="col-sm-12">
                 <div class="form-group">
-                    <label asp-for="LocationType" class="col-sm-3 control-label"></label>
+                    <label asp-for="BannerType" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <select asp-for="LocationType" asp-items="Html.GetEnumSelectList<LocationType>()" class="selectpicker show-tick form-control" id="ads-location"></select>
-                        <span asp-validation-for="LocationType" class="text-danger"></span>
+                        <select asp-for="BannerType" asp-items="Html.GetEnumSelectList<BannerType>()" class="selectpicker show-tick form-control" id="ads-location"></select>
+                        <span asp-validation-for="BannerType" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -97,8 +97,8 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Location</label>
                     <div class="col-sm-9">
-                        <select asp-for="BannerAdsLocationId" asp-items="@(new SelectList(BannerAdsLocationRepository.GetAll(), "Id", "Name"))" class="selectpicker show-tick form-control" id="ads-location"></select>
-                        <span asp-validation-for="BannerAdsLocationId" class="text-danger"></span>
+                        <select asp-for="AdsLocationId" asp-items="@(new SelectList(AdsLocationRepository.GetAll(LocationType.Banner), "Id", "Name"))" class="selectpicker show-tick form-control" id="ads-location"></select>
+                        <span asp-validation-for="AdsLocationId" class="text-danger"></span>
                     </div>
                 </div>
             </div>

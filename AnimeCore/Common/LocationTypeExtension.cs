@@ -4,14 +4,14 @@ namespace AnimeCore.Common
 {
     public static class LocationTypeExtension
     {
-        public static string EnumValue(this LocationType locationType)
+        public static string EnumValue(this BannerType bannerType)
         {
-            switch (locationType)
+            switch (bannerType)
             {
-                case LocationType.HomeChild:
+                case BannerType.HomeChild:
                     return "Home & Child";
             }
-            return locationType.ToString();
+            return bannerType.ToString();
         }
     }
 }
