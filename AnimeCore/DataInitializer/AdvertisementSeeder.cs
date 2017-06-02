@@ -73,7 +73,7 @@ namespace AnimeCore.DataInitializer
                     Url = "http://www.coca-colacompany.com/",
                     Source = "/assets/client/ads-example/coca-cola-coke-mini-hulk-vs-ant-man.mp4",
                     StartDate = new DateTime(2017, 3, 1),
-                    EndDate = new DateTime(2017, 6, 1),
+                    EndDate = new DateTime(2017, 7, 1),
                     AdsLocation = adsLocations.Single(x => x.Name == "Popular"),
                     Customer = customer
                 },
@@ -85,7 +85,7 @@ namespace AnimeCore.DataInitializer
                     Url = "https://eat24.com/",
                     Source = "/assets/client/ads-example/skip-this-ad.mp4",
                     StartDate = new DateTime(2017, 3, 1),
-                    EndDate = new DateTime(2017, 6, 1),
+                    EndDate = new DateTime(2017, 7, 1),
                     AdsLocation = adsLocations.Single(x => x.Name == "Popular"),
                     Customer = customer
                 },
@@ -97,7 +97,7 @@ namespace AnimeCore.DataInitializer
                     Url = "https://www.asus.com/vn/ROG-Republic-Of-Gamers/ROG-G752VM/",
                     Source = "/assets/client/ads-example/asus-rog-g752-gaming-laptop.mp4",
                     StartDate = new DateTime(2017, 2, 1),
-                    EndDate = new DateTime(2017, 6, 1),
+                    EndDate = new DateTime(2017, 7, 1),
                     AdsLocation = adsLocations.Single(x => x.Name == "Newest"),
                     Customer = customer
                 },
@@ -109,7 +109,7 @@ namespace AnimeCore.DataInitializer
                     Url = "http://www.dell.com/en-us/gaming/alienware?cs=19",
                     Source = "/assets/client/ads-example/dell-alienware-17-2016-official-video-trailer-commercial.mp4",
                     StartDate = new DateTime(2017, 3, 1),
-                    EndDate = new DateTime(2017, 6, 1),
+                    EndDate = new DateTime(2017, 7, 1),
                     AdsLocation = adsLocations.Single(x => x.Name == "Newest"),
                     Customer = customer
                 },
@@ -121,7 +121,7 @@ namespace AnimeCore.DataInitializer
                     Url = "https://www.ford.com.vn/",
                     Source = "/assets/client/ads-example/ford.mp4",
                     StartDate = new DateTime(2017, 4, 1),
-                    EndDate = new DateTime(2017, 6, 1),
+                    EndDate = new DateTime(2017, 7, 1),
                     AdsLocation = adsLocations.Single(x => x.Name == "Normal"),
                     Customer = customer
                 },
@@ -133,7 +133,7 @@ namespace AnimeCore.DataInitializer
                     Url = "http://www.localhost.com",
                     Source = "C:/",
                     StartDate = new DateTime(2017, 1, 1),
-                    EndDate = new DateTime(2017, 2, 1),
+                    EndDate = new DateTime(2017, 7, 1),
                     AdsLocation = adsLocations.Single(x => x.Name == "Newest"),
                     Customer = customer
                 }
@@ -165,14 +165,14 @@ namespace AnimeCore.DataInitializer
                 new AdsLocation
                 {
                     Name = "Right 1",
-                    Desciption = "Show ads on right side page",
+                    Desciption = "Show ads on right page",
                     Price = 250000,
                     LocationType = LocationType.Banner
                 },
                 new AdsLocation
                 {
                     Name = "Right 2",
-                    Desciption = "Show ads on right side page",
+                    Desciption = "Show ads on right page",
                     Price = 250000,
                     LocationType = LocationType.Banner
                 },
@@ -210,7 +210,7 @@ namespace AnimeCore.DataInitializer
                     Url = "http://localhost.com/",
                     Source = "/assets/client/ads-example/banner/example-top-banner.png",
                     StartDate = new DateTime(2017, 3, 10),
-                    EndDate = new DateTime(2017, 6, 10),
+                    EndDate = new DateTime(2017, 7, 10),
                     BannerType = BannerType.Home,
                     Height = "100px",
                     Width = "100%",
@@ -225,7 +225,7 @@ namespace AnimeCore.DataInitializer
                     Url = "http://CsvsJava.com/",
                     Source = "/assets/client/ads-example/banner/c_vs_java_play_the_match.gif",
                     StartDate = new DateTime(2017, 3, 10),
-                    EndDate = new DateTime(2017, 6, 10),
+                    EndDate = new DateTime(2017, 7, 10),
                     BannerType = BannerType.Home,
                     Height = "150px",
                     Width = "100%",
@@ -240,7 +240,7 @@ namespace AnimeCore.DataInitializer
                     Url = "http://www.pepsi.com/",
                     Source = "/assets/client/ads-example/banner/pepsi_halloween.jpg",
                     StartDate = new DateTime(2017, 4, 1),
-                    EndDate = new DateTime(2017, 6, 1),
+                    EndDate = new DateTime(2017, 7, 1),
                     BannerType = BannerType.Home,
                     AdsLocation = adsLocations.Single(x => x.Name == "Right 1"),
                     Customer = customer
@@ -253,7 +253,7 @@ namespace AnimeCore.DataInitializer
                     Url = "https://www.razerzone.com/store/razer-kraken-71-chroma",
                     Source = "/assets/client/ads-example/banner/razer-kraken-7-1-usb-gaming-headset.jpg",
                     StartDate = new DateTime(2017, 4, 1),
-                    EndDate = new DateTime(2017, 6, 1),
+                    EndDate = new DateTime(2017, 7, 1),
                     BannerType = BannerType.Home,
                     AdsLocation = adsLocations.Single(x => x.Name == "Right 2"),
                     Customer = customer
@@ -266,7 +266,7 @@ namespace AnimeCore.DataInitializer
                     Url = "https://lerageshirts.com/product/challenge-accepted-meme-rage-face-t-shirt/",
                     Source = "/assets/client/ads-example/banner/challenge-accepted-shirt-meme-rage-face-funny-tee.jpg",
                     StartDate = new DateTime(2017, 4, 1),
-                    EndDate = new DateTime(2017, 6, 1),
+                    EndDate = new DateTime(2017, 7, 1),
                     BannerType = BannerType.Child,
                     AdsLocation = adsLocations.Single(x => x.Name == "Right 1"),
                     Customer = customer
@@ -279,7 +279,7 @@ namespace AnimeCore.DataInitializer
                     Url = "http://BuzzAdDemo.com",
                     Source = "/assets/client/ads-example/banner/buzz-ad-demo.jpg",
                     StartDate = new DateTime(2017, 4, 1),
-                    EndDate = new DateTime(2017, 6, 1),
+                    EndDate = new DateTime(2017, 7, 1),
                     BannerType = BannerType.HomeChild,
                     AdsLocation = adsLocations.Single(x => x.Name == "Right 2"),
                     Customer = customer
@@ -292,7 +292,7 @@ namespace AnimeCore.DataInitializer
                     Url = "https://steelseries.com/",
                     Source = "/assets/client/ads-example/banner/steelseries_minimalistic.png",
                     StartDate = new DateTime(2017, 4, 1),
-                    EndDate = new DateTime(2017, 6, 1),
+                    EndDate = new DateTime(2017, 7, 1),
                     BannerType = BannerType.HomeChild,
                     Height = "200px",
                     Width = "250px",

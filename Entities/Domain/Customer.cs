@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Domain
 {
-    public class Customer : TimestampEntity
+    public class Customer : Entity
     {
         public Customer()
         {

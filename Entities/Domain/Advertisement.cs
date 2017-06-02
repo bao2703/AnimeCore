@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entities.Domain
 {
-    public abstract class Advertisement : TimestampEntity, IValidatableObject
+    public abstract class Advertisement : Entity, IValidatableObject
     {
         protected Advertisement()
         {
@@ -40,6 +40,10 @@ namespace Entities.Domain
         public int CustomerId { get; set; }
 
         public Customer Customer { get; set; }
+
+        public int? AdsLocationId { get; set; }
+
+        public AdsLocation AdsLocation { get; set; }
 
         [NotMapped]
         public AdsStatus Status

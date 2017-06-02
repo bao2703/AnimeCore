@@ -17,8 +17,6 @@ namespace Entities.Domain
 
         public string Title { get; set; }
 
-        public string Slug { get; set; }
-
         public ICollection<GenreMovie> GenreMovies { get; set; }
     }
 }

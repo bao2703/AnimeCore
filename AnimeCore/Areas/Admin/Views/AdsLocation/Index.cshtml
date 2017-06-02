@@ -1,0 +1,56 @@
+@using Models.ModalViewModels
+@model IEnumerable<AdsLocation>
+@{
+    ViewData[Constant.Title] = "AdsLocation List";
+}
+
+@await Html.PartialAsync("Modal/_ModalPartial", new Modal {Id = "action-modal", ModalSize = ModalSize.Medium})
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            @ViewData[Constant.Title]
+        </h4>
+    </div>
+    <div class="panel-body">
+
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover" id="dataTables">
+                <thead>
+                <tr>
+                    <th>
+                        <display name-for="@Model.First().Name"></display>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().Price"></display>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().Desciption"></display>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Price</td>
+                        <td>@item.Desciption</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function() {
+            $("#dataTables_filter")
+                .prepend(
+                    '<select class="form-control" style="margin-right: 10px" onchange="location = this.value;"><option id="@LocationType.Banner" value="@Url.Action("Index", "AdsLocation", new {locationType = LocationType.Banner})">Banner Ads</option><option id="@LocationType.Video" value="@Url.Action("Index", "AdsLocation", new {locationType = LocationType.Video})">Video Ads</option></select>');
+            $("#@ViewData["LocationType"]").attr("selected", "");
+        });
+    </script>
+}

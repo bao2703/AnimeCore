@@ -17,9 +17,5 @@ namespace Entities.Domain
         public string Height { get; set; }
 
         public string Width { get; set; }
-
-        public int? AdsLocationId { get; set; }
-
-        public AdsLocation AdsLocation { get; set; }
     }
 }

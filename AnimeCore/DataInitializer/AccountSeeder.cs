@@ -75,12 +75,12 @@ namespace AnimeCore.DataInitializer
             {
                 new User
                 {
-                    UserName = "admin@gmail.com",
+                    UserName = "admin",
                     Email = "admin@gmail.com"
                 },
                 new User
                 {
-                    UserName = "manager@gmail.com",
+                    UserName = "manager",
                     Email = "manager@gmail.com"
                 }
             };

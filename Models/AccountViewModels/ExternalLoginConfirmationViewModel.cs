@@ -5,7 +5,7 @@ namespace Models.AccountViewModels
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
     }
 }
