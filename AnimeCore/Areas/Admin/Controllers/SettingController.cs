@@ -46,6 +46,17 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        public IActionResult AddSlide(int movieId)
+        {
+            if (!_appSettings.Slide.Contains($"{movieId},"))
+            {
+                _appSettings.Slide = _appSettings.Slide + $"{movieId},";
+            }
+            return RedirectToAction("Slide");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult DeleteSlide(int movieId)
         {
             _appSettings.Slide = _appSettings.Slide.Replace($"{movieId},", string.Empty);

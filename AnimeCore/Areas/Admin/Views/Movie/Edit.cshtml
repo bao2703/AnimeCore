@@ -3,7 +3,6 @@
 @model Movie
 @{
     ViewData[Constant.Title] = "Edit Anime";
-    var genres = GenreRepository.GetAll();
 }
 
 <div class="panel panel-info">
@@ -37,7 +36,7 @@
                         <div class="form-group">
                             <label>Genre</label>
                             <select id="select-genre" class="form-control selectpicker" data-live-search="true" multiple name="genres[]">
-                                @foreach (var gerne in genres)
+                                @foreach (var gerne in GenreRepository.GetAll())
                                 {
                                     <option value="@gerne.Id">@gerne.Name</option>
                                 }
@@ -82,7 +81,7 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <button class="btn btn-primary btn-block" type="submit">Add</button>
+                                    <button class="btn btn-info btn-block" type="submit">Edit</button>
                                 </div>
                                 <div class="col-sm-4">
                                     <a asp-action="Index" class="btn btn-danger btn-block">Back to list</a>

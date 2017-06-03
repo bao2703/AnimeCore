@@ -39,7 +39,7 @@ namespace AnimeCore.Configuration
                     LoginPath = "/Account/Login",
                     LogoutPath = "/Account/Logout",
                     AccessDeniedPath = "/Error/403",
-                    ExpireTimeSpan = TimeSpan.FromMinutes(10),
+                    ExpireTimeSpan = TimeSpan.FromMinutes(30),
                     AutomaticAuthenticate = true,
                     AutomaticChallenge = true
                 }
@@ -51,7 +51,6 @@ namespace AnimeCore.Configuration
                 options.Lockout = lockoutOptions;
                 options.User = userOptions;
                 options.Cookies = cookieOptions;
-                options.SecurityStampValidationInterval = TimeSpan.Zero;
             });
         }
     }

@@ -4,6 +4,7 @@
 @inject IMovieRepository MovieRepository
 @{
     ViewData[Constant.Title] = "Slide Settings";
+    var slideMovies = MovieRepository.FindSlide(AppSettings.Value.Slide.Split(',')).ToList();
 }
 
 <div class="panel panel-info">
@@ -13,11 +14,11 @@
         </h4>
     </div>
     <div class="panel-body">
-        <div class="form-group" style="background-color: #1e1e1e">
+        <div class="form-group">
             @await Html.PartialAsync("_SlidePartial")
         </div>
         <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover">
+            <table class="table table-striped table-bordered table-hover" id="dataTables">
                 <thead>
                 <tr>
                     <th>#</th>
@@ -26,15 +27,27 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach (var item in MovieRepository.FindSlide(AppSettings.Value.Slide.Split(',')))
+                @foreach (var item in MovieRepository.GetAll())
                 {
                     <tr>
                         <td>
-                            <form asp-action="DeleteSlide" asp-route-movieId="@item.Id">
-                                <button class="btn btn-danger btn-sm @(User.HasClaim("Setting", "DeleteSlide") ? "" : "disabled")" type="submit">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </form>
+                            @if (slideMovies.Contains(item))
+                            {
+                                <form asp-action="DeleteSlide" asp-route-movieId="@item.Id">
+                                    <button class="btn btn-danger btn-sm @(User.HasClaim("Setting", "DeleteSlide") ? "" : "disabled")" type="submit">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
+                            }
+                            else
+                            {
+                                <div style="display: none">plus</div>
+                                <form asp-action="AddSlide" asp-route-movieId="@item.Id">
+                                    <button class="btn btn-primary btn-sm @(User.HasClaim("Setting", "AddSlide") ? "" : "disabled")" type="submit">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </form>
+                            }
                         </td>
                         <td class="text-center">
                             <a asp-action="Edit" asp-controller="Movie" asp-route-id="@item.Id">
