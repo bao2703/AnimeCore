@@ -16,7 +16,7 @@ namespace Entities.Domain
 
         public LocationType LocationType { get; set; }
 
-        public int Price { get; set; }
+        public long Price { get; set; }
 
         public string Desciption { get; set; }
 

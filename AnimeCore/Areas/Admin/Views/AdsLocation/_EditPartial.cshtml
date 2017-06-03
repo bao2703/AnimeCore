@@ -1,0 +1,52 @@
+@using Models.ModalViewModels
+@model AdsLocation
+
+<form asp-action="Edit" asp-controller="AdsLocation" method="post" class="modal-form">
+    @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = "Edit Location"})
+    <div class="modal-body form-horizontal">
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8 text-center"></div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label asp-for="Name" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="Name" class="form-control" readonly=""/>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label asp-for="LocationType" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="LocationType" class="form-control" readonly="" />
+                        <span asp-validation-for="LocationType" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label asp-for="Price" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="Price" class="form-control"/>
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label asp-for="Desciption" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="Desciption" class="form-control" />
+                        <span asp-validation-for="Desciption" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @await Html.PartialAsync("Modal/_FooterPartial", new ModalFooter {SubmitButtonText = "Edit", SubmitButtonClass = "btn-info"})
+</form>
+
+<script>
+    $.validator.unobtrusive.parse(".modal-form");
+</script>
