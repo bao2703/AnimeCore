@@ -26,7 +26,7 @@ namespace Repositories
 
         public override IEnumerable<BannerAds> GetAll()
         {
-            return DbSet.Include(x => x.AdsLocation);
+            return DbSet.Include(x => x.AdsLocation).Include(x => x.Customer);
         }
 
         public IEnumerable<BannerAds> GetActiveBanners(string locationName)

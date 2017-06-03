@@ -24,7 +24,10 @@
                         <display name-for="@Model.First().Name"></display>
                     </th>
                     <th>
-                        Date
+                        <display name-for="@Model.First().StartDate"></display>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().EndDate"></display>
                     </th>
                     <th>
                         Location
@@ -65,7 +68,8 @@
                             </a>
                         </td>
                         <td>@item.Name</td>
-                        <td>@item.StartDate.Format()-@item.EndDate.Format()</td>
+                        <td>@item.StartDate.Format()</td>
+                        <td>@item.EndDate.Format()</td>
                         <td>@item.AdsLocation.Name</td>
                         <td>
                             <label class="label label-@Helper.GetStatusClass(item.Status)">

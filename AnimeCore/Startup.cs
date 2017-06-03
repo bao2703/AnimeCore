@@ -93,7 +93,7 @@ namespace AnimeCore
 
             if (env.IsDevelopment())
             {
-                //await DataSeeder.InitializeAsync(app);
+                await DataSeeder.InitializeAsync(app);
             }
         }
     }

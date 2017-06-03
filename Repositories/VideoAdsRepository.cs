@@ -25,7 +25,7 @@ namespace Repositories
 
         public override IEnumerable<VideoAds> GetAll()
         {
-            return DbSet.Include(x => x.AdsLocation);
+            return DbSet.Include(x => x.AdsLocation).Include(x => x.Customer);
         }
 
         public IEnumerable<VideoAds> GetActiveVideos(string locationName)

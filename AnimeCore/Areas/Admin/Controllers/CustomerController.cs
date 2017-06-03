@@ -7,8 +7,12 @@ namespace AnimeCore.Areas.Admin.Controllers
 {
     public class CustomerController : DefaultController<Customer, ICustomerRepository>
     {
-        public CustomerController(IUnitOfWork unitOfWork, ICustomerRepository repository) : base(unitOfWork, repository)
+        private readonly ICustomerRepository _customerRepository;
+
+        public CustomerController(IUnitOfWork unitOfWork, ICustomerRepository customerRepository) : base(unitOfWork,
+            customerRepository)
         {
+            _customerRepository = customerRepository;
         }
 
         protected override string AddPartialViewName { get; set; } = "_AddEditPartial";
@@ -51,6 +55,16 @@ namespace AnimeCore.Areas.Admin.Controllers
         public override Task<IActionResult> Delete(Customer model)
         {
             return base.Delete(model);
+        }
+
+        public IActionResult Info(int id)
+        {
+            var model = _customerRepository.FindById(id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return PartialView("_InfoPartial", model);
         }
     }
 }

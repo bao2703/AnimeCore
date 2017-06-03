@@ -9,39 +9,8 @@
             <div class="text-center col-sm-12">
                 <h4>Are you want to delete this customer?</h4>
             </div>
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <label asp-for="Name" class="col-sm-3 control-label"></label>
-                    <div class="col-sm-9">
-                        <input asp-for="Name" class="form-control" readonly=""/>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <label asp-for="Email" class="col-sm-3 control-label"></label>
-                    <div class="col-sm-9">
-                        <input asp-for="Email" class="form-control" readonly=""/>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <label asp-for="PhoneNumber" class="col-sm-3 control-label"></label>
-                    <div class="col-sm-9">
-                        <input asp-for="PhoneNumber" class="form-control" readonly=""/>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <label asp-for="Address" class="col-sm-3 control-label"></label>
-                    <div class="col-sm-9">
-                        <input asp-for="Address" class="form-control" readonly=""/>
-                    </div>
-                </div>
-            </div>
         </div>
+        @await Html.PartialAsync("_CustomerReadOnlyInfoPartial")
     </div>
     @await Html.PartialAsync("Modal/_FooterPartial", new ModalFooter {SubmitButtonText = "Delete", SubmitButtonClass = "btn-danger"})
 </form>

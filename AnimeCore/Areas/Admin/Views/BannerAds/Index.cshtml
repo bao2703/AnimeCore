@@ -25,7 +25,10 @@
                         <display name-for="@Model.First().Name"></display>
                     </th>
                     <th>
-                        Date
+                        <display name-for="@Model.First().StartDate"></display>
+                    </th>
+                    <th>
+                        <display name-for="@Model.First().EndDate"></display>
                     </th>
                     <th>
                         Location
@@ -54,6 +57,9 @@
                     <th>
                         <display name-for="@Model.First().Url"></display>
                     </th>
+                    <th>
+                        <display name-for="@Model.First().Customer.PhoneNumber"></display>
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -67,12 +73,16 @@
                             <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm @(User.HasClaim("BannerAds", "Delete") ? "" : "disabled")" data-toggle="modal" data-target="#advertisement-action-modal">
                                 <i class="fa fa-trash"></i>
                             </a>
+                            <a asp-action="Info" asp-controller="Customer" asp-route-id="@item.CustomerId" class="btn btn-success btn-sm @(User.HasClaim("Customer", "Info") ? "" : "disabled")" data-toggle="modal" data-target="#advertisement-action-modal">
+                                <i class="fa fa-info-circle"></i>
+                            </a>
                         </td>
                         <td class="text-center">
                             @item.Name
                             <img src="@item.Source" alt="@item.Name" class="img-responsive img-rounded"/>
                         </td>
-                        <td>@item.StartDate.Format()-@item.EndDate.Format()</td>
+                        <td>@item.StartDate.Format()</td>
+                        <td>@item.EndDate.Format()</td>
                         <td>@item.AdsLocation.Name</td>
                         <td>@item.BannerType.EnumValue()</td>
                         <td>
@@ -87,6 +97,9 @@
                         <td>@item.Height-@item.Width</td>
                         <td>
                             <a href="@item.Url">@item.Url</a>
+                        </td>
+                        <td>
+                            @item.Customer.PhoneNumber
                         </td>
                     </tr>
                 }

@@ -1,0 +1,10 @@
+@using Models.ModalViewModels
+@model Customer
+
+<form asp-action="Delete" method="post" class="modal-form">
+    @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = "Customer Info"})
+    <div class="modal-body form-horizontal">
+        @await Html.PartialAsync("_CustomerReadOnlyInfoPartial")
+    </div>
+    @await Html.PartialAsync("Modal/_FooterPartial", new ModalFooter {OnlyCancelButton = true})
+</form>
