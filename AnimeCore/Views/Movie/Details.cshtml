@@ -6,7 +6,7 @@
 
 @section Slide {
     <a asp-action="Watch" asp-controller="Movie" asp-route-id="@Model.Id">
-        <img src="@Model.Slide" alt="@Model.Name" class="img-responsive center-block" asp-append-version="true">
+        <img src="@Model.Slide" alt="@Model.Name" class="img-responsive center-block" asp-append-version="true" style="width: 100%">
     </a>
 }
 
@@ -98,8 +98,16 @@
                             </a>
                             <form asp-action="@((bool) ViewData["HasLike"] ? "UnLike" : "Like")" asp-controller="Movie" asp-route-id="@Model.Id" style="display: inline">
                                 <button type="submit" class="btn btn-danger">
-                                    <i class="fa fa-heart"></i>
-                                    @((bool) ViewData["HasLike"] ? "UnLike" : "Like")
+                                    @if ((bool) ViewData["HasLike"])
+                                    {
+                                        <i class="fa fa-heart-o"></i>
+                                        <span>UnLike</span>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-heart"></i>
+                                        <span>Like</span>
+                                    }
                                 </button>
                             </form>
                         </div>

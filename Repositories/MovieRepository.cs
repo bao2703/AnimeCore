@@ -15,7 +15,7 @@ namespace Repositories
         IEnumerable<Movie> FindSlide(string[] id);
         void Like(User user, Movie movie);
         void UnLike(User user, Movie movie);
-        bool HasLikeTo(User user, Movie movie);
+        bool HasLike(User user, Movie movie);
         bool IsPopular(int id);
         bool IsNewest(int id);
     }
@@ -53,12 +53,12 @@ namespace Repositories
 
         public IEnumerable<Movie> FindNewestMovie(int take)
         {
-            return DbSet.Include(x => x.Episodes).OrderByDescending(x => x.Release).Take(take);
+            return DbSet.Include(x => x.Episodes).Include(x => x.Likes).OrderByDescending(x => x.Release).Take(take);
         }
 
         public IEnumerable<Movie> FindPopularMovie(int take)
         {
-            return DbSet.Include(x => x.Episodes).OrderByDescending(x => x.View).Take(take);
+            return DbSet.Include(x => x.Episodes).Include(x => x.Likes).OrderByDescending(x => x.View).Take(take);
         }
 
         public IEnumerable<Movie> FindSlide(string[] id)
@@ -82,7 +82,7 @@ namespace Repositories
             movie.Likes.Remove(movie.Likes.SingleOrDefault(x => x.UserId == user.Id));
         }
 
-        public bool HasLikeTo(User user, Movie movie)
+        public bool HasLike(User user, Movie movie)
         {
             return movie.Likes.Any(x => x.UserId == user.Id);
         }

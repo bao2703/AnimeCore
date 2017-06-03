@@ -292,7 +292,8 @@ namespace AnimeCore.DataInitializer
                     Fansub = "SONGOKU Fanpage",
                     Description =
                         "Reuniting the franchise's iconic characters, Dragon Ball Super will follow the aftermath of Goku's fierce battle with Majin Buu as he attempts to maintain earth's fragile peace.",
-                    Slide = "http://img.animevsub.com/images/2017/02/06/[animevsub.com]-7-vien-ngoc-rong-sieu-cap,-dragon-ball-chou_96c235adfae41aefdaebdd2dbce407a6_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2017/02/06/[animevsub.com]-7-vien-ngoc-rong-sieu-cap,-dragon-ball-chou_96c235adfae41aefdaebdd2dbce407a6_big.jpg"
                 },
                 new Movie
                 {
@@ -311,7 +312,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Naruto: Shippuuden is the continuation of the original animated TV series Naruto.The story revolves around an older and slightly more matured Uzumaki Naruto and his quest to save his friend Uchiha Sasuke from the grips of the snake-like Shinobi, Orochimaru. After 2 and a half years Naruto finally returns to his village of Konoha, and sets about putting his ambitions to work, though it will not be easy, as he has amassed a few (more dangerous) enemies, in the likes of the shinobi organization; Akatsuki.",
-                    Slide = "http://img.animevsub.com/images/2016/10/21/[animevsub.com]-naruto-shippuuden_fa0a400dbdff22e80923fcd5ceb7e196_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/10/21/[animevsub.com]-naruto-shippuuden_fa0a400dbdff22e80923fcd5ceb7e196_big.jpg"
                 },
                 new Movie
                 {
@@ -331,7 +333,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "One Piece xoay quanh 1 nhóm cướp biển được gọi là Băng Hải tặc Mũ Rơm - Straw Hat Pirates - được thành lập và lãnh đạo bởi thuyền trưởng Monkey D. Luffy. Cậu bé Luffy có ước mơ tìm thấy kho báu vĩ đại nhất. One Piece, của Vua Hải Tặc đời trước Gold D. Roger và trở thành Vua Hải Tặc đời kế tiếp.",
-                    Slide = "http://img.animevsub.com/images/2016/03/25/[animevsub.com]-one-piece_a7faba1383a4a7b3e9aef56fafc27cc1_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/03/25/[animevsub.com]-one-piece_a7faba1383a4a7b3e9aef56fafc27cc1_big.jpg"
                 },
                 new Movie
                 {
@@ -349,7 +352,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Naruto là một chàng trai trẻ đầy nhiệt huyết cũng như rất nghịch ngợm. Sau tất cả thì cậu cũng đã đạt được ước mơ của mình trở thành một Hokage vĩ đại nhất. Nhưng câu chuyện này không phải về Naruto, mà là câu chuyện về con trai của Naruto.... Chính là Boruto, thế hệ Ninja tiếp theo.",
-                    Slide = "http://img.animevsub.com/images/2017/04/20/[animevsub.com]-boruto-naruto-next-generations-naruto-season-3_f17d476809a97b097ea6ef0199daf59b_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2017/04/20/[animevsub.com]-boruto-naruto-next-generations-naruto-season-3_f17d476809a97b097ea6ef0199daf59b_big.jpg"
                 },
                 new Movie
                 {
@@ -366,7 +370,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Nishimiya Shouko, một cô bé bị điếc từ nhỏ, đã chuyển trường vào lớp của cậu bé Ishida Shouya. Để thỏa mãn sự tò mò của mình, cậu bé Shouya đã khơi mào trò bắt nạt Shouko vì tật khiếm thính. Trong một lần bắt nạt quá đà, Shouko đã bị chảy máu tai, và sau đó cô bé phải tiếp tục chuyển trường.",
-                    Slide = "http://img.animevsub.com/images/2016/11/05/[animevsub.com]-a-silent-voice,-the-shape-of-voice_d788b1c1798fbd79f1a56be5fa3048dc_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/11/05/[animevsub.com]-a-silent-voice,-the-shape-of-voice_d788b1c1798fbd79f1a56be5fa3048dc_big.jpg"
                 },
                 new Movie
                 {
@@ -385,7 +390,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Câu chuyện về phép màu và tình yêu xoay xung quanh Mitsuha và Taki. Mitsuha là một cô bé học sinh cấp 3 sống tại một vùng nông thôn nằm rúc sâu trong núi. Cha cô là thị trưởng và rất ít khi ở nhà, bản thân cô sống với đứa em gái đang học tiểu học và bà nội.",
-                    Slide = "http://img.animevsub.com/images/2016/09/19/[animevsub.com]-kimi-no-na-wa--your-name_cbb9dd473ce101561b9b2d72674834ce_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/09/19/[animevsub.com]-kimi-no-na-wa--your-name_cbb9dd473ce101561b9b2d72674834ce_big.jpg"
                 },
                 new Movie
                 {
@@ -405,7 +411,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Phép thuật không phải là sản phẩm của huyền thoại hay chuyện cổ tích, mà thay vào đó đã trở thành công nghệ thực tiễn từ một thời mà không ai biết được. Năng lực siêu nhiên đã trở thành một công nghệ được hệ thống hóa thông qua phép thuật, trong khi đó phép thuật thì đã trở thành một kỹ năng chuyên môn.",
-                    Slide = "http://img.animevsub.com/images/2016/04/12/[animevsub.com]-the-irregular-at-magic-high-school_e83d8ad9e923ccf2d153e11636f8707f_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/04/12/[animevsub.com]-the-irregular-at-magic-high-school_e83d8ad9e923ccf2d153e11636f8707f_big.jpg"
                 },
                 new Movie
                 {
@@ -427,7 +434,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Tatsumi là một kiếm sĩ, đến thủ đô để tìm cách làm giàu cho ngôi làng nghèo khó của mình và trở thành nạn nhân của một vụ lừa tình lột tiền. Sau đó, cậu được một tiểu thư quý tộc tên là Aria cho tá túc. Đêm tiếp theo, nhóm sát thủ Night Raid do Akame chỉ huy tấn công vào tư dinh của Aria.",
-                    Slide = "http://img.animevsub.com/images/2016/03/25/[animevsub.com]-akame-ga-kiru_2699d93021613a823fcb7aa8f331a02b_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/03/25/[animevsub.com]-akame-ga-kiru_2699d93021613a823fcb7aa8f331a02b_big.jpg"
                 },
                 new Movie
                 {
@@ -445,7 +453,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Mở đầu câu truyện, cậu học sinh trung học 17 tuổi Shinichi Kudo bị biến thành cậu bé Conan Edogawa. Shinichi trong phần đầu của Thám tử lừng danh Conan được miêu tả là một thám tử học đường xuất sắc. Trong một lần đi chơi công viên Miền Nhiệt đới với cô bạn từ thuở nhỏ Ran Mori, cậu tình cờ chứng kiến vụ một án giết người, Kishida - một hành khách trong trò chơi Chuyến tàu tốc hành đã bị giết một cách dã man. Cậu đã giúp cảnh sát làm sáng tỏ vụ án. ",
-                    Slide = "http://img.animevsub.com/images/2015/02/27/[animevsub.com]-detective-conan_7763f4488982e45c952782721980e2e1_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2015/02/27/[animevsub.com]-detective-conan_7763f4488982e45c952782721980e2e1_big.jpg"
                 },
                 new Movie
                 {
@@ -463,7 +472,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Câu chuyện xoay quanh Houtarou, người có cách sống khá xa cách và thờ ơ, luôn tìm cách để tiết kiệm năng lượng hết mức có thể. Cậu bị chị mình ép phải gia nhập câu lạc bộ văn học. Tại đó, cậu đã cùng những người bạn của mình tìm thấy một tuyển tập có tên là Hyouka, và đến gần hơn với những bí ẩn 33 năm trước.",
-                    Slide = "http://img.animevsub.com/images/2016/04/07/[animevsub.com]-hyouka_c363b6113a1098affc9b6fdf0ac76695_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/04/07/[animevsub.com]-hyouka_c363b6113a1098affc9b6fdf0ac76695_big.jpg"
                 },
                 new Movie
                 {
@@ -483,7 +493,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Câu chuyện bắt đầu trong những giây phút cuối tại tại Yggdrasil, một game online đình đám sắp phải đóng cửa. Nhân vật chính Momonga của chúng ta quyết định ở lại đến tận những phút cuối cùng với trò chơi yêu thích của mình và chờ server down. Bất ngờ, server không shutdown và Momonga bị mắc kẹt trong nhân vật của chính mình và xuyên việt tới thế giới khác.",
-                    Slide = "http://img.animevsub.com/images/2016/05/29/[animevsub.com]-overlord-[bd]_5ed0a3e528a8044dfe8e853be057af9e_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/05/29/[animevsub.com]-overlord-[bd]_5ed0a3e528a8044dfe8e853be057af9e_big.jpg"
                 },
                 new Movie
                 {
@@ -506,7 +517,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Năm 2022 thế hệ game chạy trên NERvGear tiếp theo đã được công bố người dùng có thể kết nối với thế giới ảo thông qua chức năng FullDive. Sword Art Online - dòng game VRMMORPG chính thống đầu tiên trên nền NERvGear đã gây xôn xao trên toàn thế giới. Một trong số rất nhiều người chơi. Kirito quyết tâm chinh phục trò chơi này. Thế nhưng người sáng tạo ra SAO, Akihiko Kayaba lại thông báo rằng một khi đã tham gia thì không người chơi nào có thể thoát ra ngoài cho đến khi phá đảo.",
-                    Slide = "http://img.animevsub.com/images/2016/03/23/[animevsub.com]-sword-art-online-ss1-sao_4dab266a870047d9709b2221058ff8d2_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/03/23/[animevsub.com]-sword-art-online-ss1-sao_4dab266a870047d9709b2221058ff8d2_big.jpg"
                 },
                 new Movie
                 {
@@ -529,7 +541,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Một năm sau khi phá đảo Sword Art Online (SAO), Kirito đã được Kikuoka mời khám phá thử Gun Gale Online, mà cụ thể là Death Gun, một vũ khí dường như là liên kết những cái chết trong thế giới thực tế ảo và thế giới thật. Khi vào game, Kirito gặp Sinon, người hướng dẫn cậu cách chơi (cày cuốc, sắm đồ, PK này nọ). Dần dần Kirito phát hiện ra những cái chết bí ẩn đều có liên quan đến một Guild có tên là Laughing Coffin trong SAO ngày xưa.",
-                    Slide = "http://img.animevsub.com/images/2015/01/30/[animevsub.com]-sword-art-online-ii_6bbd812bad405ca302a721b3554a2862_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2015/01/30/[animevsub.com]-sword-art-online-ii_6bbd812bad405ca302a721b3554a2862_big.jpg"
                 },
                 new Movie
                 {
@@ -548,7 +561,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Câu chuyện kể về Arima Kosei, một thần đồng piano. Nhưng kể từ sau chấn động tâm lí do cái sự qua đời của mẹ cậu, Kosei đã không thể nghe thấy bất kì âm thanh nào. Cứ tưởng là cậu sẽ không bao giờ động vào những phím piano nữa nhưng đó là trước khi cậu đã gặp Miyazono Kawori...",
-                    Slide = "http://img.animevsub.com/images/2016/03/28/[animevsub.com]-[bd]-thang-tu-la-loi-noi-doi-cua-em_9b9c9a15f19cdcd62b79d6e6dfde127c_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/03/28/[animevsub.com]-[bd]-thang-tu-la-loi-noi-doi-cua-em_9b9c9a15f19cdcd62b79d6e6dfde127c_big.jpg"
                 },
                 new Movie
                 {
@@ -565,7 +579,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Trung tâm câu chuyện là một học sinh năm 2 trung học tên là Akihito Kanbara. Dù mang hình dáng con người, nhưng cậu lại mang trong mình dòng máu của quỷ nên sẽ không bao giờ bị thương tích vì có khả năng hồi phục nhanh chóng. Một ngày nọ, Akihito tình cờ làm quen với Mirai Kuriyama-một cô bé năm nhất-vì tưởng cô bé định… nhảy lầu. Mirai bị cô lập bởi khả năng điều khiển máu của mình, một quyền năng đặc biệt trong thế giới của cô. Nhiều sự việc bất thường bắt đầu diễn ra sau khi Akihito cứu Mirai.",
-                    Slide = "http://img.animevsub.com/images/2016/06/03/[animevsub.com]-kyoukai-no-kanata-bd_9049dbf612c250ee5aa0bd445cf74c43_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/06/03/[animevsub.com]-kyoukai-no-kanata-bd_9049dbf612c250ee5aa0bd445cf74c43_big.jpg"
                 },
                 new Movie
                 {
@@ -587,7 +602,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Được chuyển thể dựa trên light novel cùng tên của tác giả Kawahara Reki. Bối cảnh diễn ra vào năm 2046. Cậu Haruyuki Arita cảm thấy mình luôn bị xã hội hắt hủi. Tủi thân với thực tại, cậu đi tìm cảm giác hơn người trong thế giới game ảo. Tất cả đã thay đổi khi cậu gặp Kuroyuki Hime, cô gái nổi tiếng nhất của trường. Cậu nhận được từ cô 1 phần mềm cho phép cậu bước vào thế giới ảo Accel World. Tại đây Haruyuki trở thành Burst Linker một hiệp sĩ bảo vệ công chúa..",
-                    Slide = "http://img.animevsub.com/images/2016/09/26/[animevsub.com]-[bd]-accel-world_c662769199ce8ad4509d7d3c88cb7285_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/09/26/[animevsub.com]-[bd]-accel-world_c662769199ce8ad4509d7d3c88cb7285_big.jpg"
                 },
                 new Movie
                 {
@@ -640,7 +656,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "2 anh em Sora và Shiro là người đã tạo ra [ ], một huyền thoại của thế giới ảo, một gamer được mệnh danh là bất khả chiến bại. Nhưng đằng sau hào quang trong thế giới ảo, 2 anh em họ lại là những NEET, những người vô dụng của xã hội. Một ngày nọ họ được một người tự xưng là Chúa đưa tới một thế giới của ông ta, thế giới Board World, nơi mà mọi thứ đều được quyết định bằng các trò chơi, từ tính mạng con người cho đến biên giới quốc gia.",
-                    Slide = "http://img.animevsub.com/images/2015/02/16/[animevsub.com]-no-game-no-life-bd_b958b34c8b8360f4cda5c3281dda291c_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2015/02/16/[animevsub.com]-no-game-no-life-bd_b958b34c8b8360f4cda5c3281dda291c_big.jpg"
                 },
                 new Movie
                 {
@@ -658,7 +675,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Câu chuyện đẫm máu xảy ra tại một trường trung học luôn sống trong sợ hãi, là nơi được cai trị bởi hội học sinh đáng sợ, dẫn đầu là chủ tịch hội đồng sinh viên Satsuki Kiryuin chuyên sử dụng vũ lực để đè bẹp bất cứ ai trong trường. Ryuuko Matoi đã đứng lên chống lại Satsuki, đồng thời mục đích của cô là tìm ra kẻ đã giết cha mình. Thế nhưng, để không chỉ có Satsuki, Ryuuko còn phải đối đầu với 4 vị vua của hội học sinh.",
-                    Slide = "http://img.animevsub.com/images/2016/05/14/[animevsub.com]-kill-la-kill_240b1920f88c76b4b7771318930d95a0_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/05/14/[animevsub.com]-kill-la-kill_240b1920f88c76b4b7771318930d95a0_big.jpg"
                 },
                 new Movie
                 {
@@ -677,7 +695,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Thế giới tồn tại hai thế giới song song. Một là thế giới con người, Assiah. Một là thế giới ác quỷ, Gehenna. Hai thế giới cơ bản không thể thông với nhau. Tuy nhiên, loài quỷ có thể tới Assiah bằng cách chiếm hữu thể xác con người. Nhưng không có thể xác nào có thể chứa được chúa tể ác quỷ, Satan.Rin Okumura, con trai của cha Satan và mẹ là con người, được tạo ra nhằm mục đích giúp Satan tồn tại ở Assiah. Cha nuôi của Rin đã hy sinh để cứu cậu thoát khỏi quỷ dữ. Và để trả thù cho cha nuôi, cũng như để khẳng định bản thân mình, Rin đã quyết định đi theo con đường pháp sư trừ ma...",
-                    Slide = "http://img.animevsub.com/images/2016/03/21/[animevsub.com]-ao-no-exorcist_178844a31fbc4e109f3e3c94c986833c_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/03/21/[animevsub.com]-ao-no-exorcist_178844a31fbc4e109f3e3c94c986833c_big.jpg"
                 },
                 new Movie
                 {
@@ -693,7 +712,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Lấy bối cảnh trong tthế chiến thứ hai, năm 1937, câu chuyện kể về một tổ chức đào tạo điệp viên bí mật với tên gọi “văn phòng D”. Tổ chức này đuợc thành lập bởi trung tá Yuuki trực thuộc quân đội quốc gia Nhật Bản. Ý tuởng của ông là tập hợp các tân binh tốt nghiệp từ các học viện quân đội và các quân dân, để đào tạo họ thành các điệp viên chuyên nghiệp. Những điệp viên này đuợc tập hợp thành một nhóm để thực hiện các nhiệm vụ đặc biệt. Jorou Gamou a.k.a nhân vật phản diện, cũng là một điệp viên, với sứ mệnh cao cả nhưng vất vả là tự lực cánh sinh truy tìm tài liệu mật “the black note” a.k.a sổ đen.",
-                    Slide = "http://img.animevsub.com/images/2016/09/27/[animevsub.com]-joker-game_f94219480ad6470b8a51c6c234303140_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/09/27/[animevsub.com]-joker-game_f94219480ad6470b8a51c6c234303140_big.jpg"
                 },
                 new Movie
                 {
@@ -716,7 +736,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Đây là một bộ phim thuộc thể loại kinh dị với đồ họa mang tính chất bóng tối và được diễn ra tại thành phố Tokyo, nơi mọi người bị ám ảnh bởi những thứ gọi là Ghoul bởi vì chúng chuyên đi ăn tươi nuốt sống con người. Mọi người luôn phải sống trong lo sợ bởi những con Ghoul đeo mặt nạ bí ẩn. Một cậu sinh viên đại học Kaneki đã gặp một cô gái tên là Rize tại quán cafe mà cậu ta thường hay lui tới và cô gái đó có cùng sở thích đọc sách giống cậu....",
-                    Slide = "http://img.animevsub.com/images/2016/09/27/[animevsub.com]-tokyo-ghoul_9fa77da667dbebfcf03379a3911e86ff_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/09/27/[animevsub.com]-tokyo-ghoul_9fa77da667dbebfcf03379a3911e86ff_big.jpg"
                 },
                 new Movie
                 {
@@ -739,7 +760,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Phim là một câu chuyện mang bầu sắc u tối của thành phố Tokyo, nơi xảy ra hàng loạt các vụ án mạng được gây ra bởi các con quỷ đội lốt con người. Main chính nhà ta là sinh viên đại học tên Kaneki gặp gỡ được em Rize, do 2 người có cùng sở thích nên đã phải lòng nhau. Vào buổi tối hôm hẹn hò, em và ảnh cùng nhau đi vào một con phố hẻo rồi cuộc đời anh main thay đổi ngay trong đêm hôm đó.",
-                    Slide = "http://img.animevsub.com/images/2015/04/09/[animevsub.com]-tokyo-ghoul-√a_b1289f822e55b732f7fb47e22b28b170_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2015/04/09/[animevsub.com]-tokyo-ghoul-√a_b1289f822e55b732f7fb47e22b28b170_big.jpg"
                 },
                 new Movie
                 {
@@ -779,7 +801,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Eren Jaeger sống trong một thành phố bao bọc bởi tường đá. Titan giết người ở ngoài đó. Trong nhiều thập kỉ, thành viên của Nhóm trinh thám Legion là những con người duy nhất dám bước ra khỏi bức tường và thu thập thông tin về những Titan. Eren, một người yêu hòa bình, không còn nguyện vọng nào to lớn việc gia nhập họ.",
-                    Slide = "http://img.animevsub.com/images/2016/03/25/[animevsub.com]-attack-on-titan_8f705cc2b0ecd9c3146ed874b47dd61c_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/03/25/[animevsub.com]-attack-on-titan_8f705cc2b0ecd9c3146ed874b47dd61c_big.jpg"
                 },
                 new Movie
                 {
@@ -796,7 +819,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Đây là một câu chuyện tình buồn diễn ra tại Nhật Bản, với xuất phát điểm là từ những năm 90 khi Takaki Tono mới 13 tuổi cho tới hiện tại khi anh đã đi làm. Film gồm 3 chương nhỏ gộp lại dài 62 phút: 1. Oukashou (The Chosen Cherry Blossoms), 2. Cosmonaut và 3. Byousoku 5 Centimeter (5 Centimeters per Second). Chương một mở đầu câu chuyện bằng một lời hứa trẻ con, đã dẫn dắt cả người xem lần lượt đi qua 3 quãng thời gian quan trọng trong cuộc đời Takaki Tono và đều liên quan tới tình yêu của anh dành cho một người con gái.",
-                    Slide = "http://1.bp.blogspot.com/-EjwJcZjwuxQ/VIlQeBKkBeI/AAAAAAAAA9Y/W_SQlEkDIxg/s1600/5%2BCentimeters%2BPer%2BSecond%2Bbanner.jpg"
+                    Slide =
+                        "http://1.bp.blogspot.com/-EjwJcZjwuxQ/VIlQeBKkBeI/AAAAAAAAA9Y/W_SQlEkDIxg/s1600/5%2BCentimeters%2BPer%2BSecond%2Bbanner.jpg"
                 },
                 new Movie
                 {
@@ -813,7 +837,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Thế giới biết được có các loài nửa người nửa thú và đặt ra Bộ Luật Giao Lưu Văn Hóa giữa các loại, anh main nhà ta chả hiểu sao bị chính phủ đưa nhầm một em Lamia nửa người nửa rắn đến, và tiếp theo đó là nhiều em các loài khác nữa.",
-                    Slide = "http://img.animevsub.com/images/2016/11/19/[animevsub.com]-everyday-life-with-monster-girls_4ab4d3d3e16375b9f81272a3706cca98_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/11/19/[animevsub.com]-everyday-life-with-monster-girls_4ab4d3d3e16375b9f81272a3706cca98_big.jpg"
                 },
                 new Movie
                 {
@@ -834,7 +859,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Bạn đã từng đọc các bộ truyện về High School---- Học viện tư thục Hachimitsu ở Tokyo đó giờ là một trường học danh giá chỉ dành riêng cho con gái. Nhưng mà “lại” nhờ ơn cái chính sách nào đó của bộ giáo dục mà giờ đây nam sinh có thể nhập học vô trường này. Nghe tin “lành” thì tất nhiên là sẽ có những thanh niên tiên phong đăng ký vào trường rồi...",
-                    Slide = "http://img.animevsub.com/images/2016/09/27/[animevsub.com]-prison-school-bd_a945a71574c84d5f3b6fae75eeba572a_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/09/27/[animevsub.com]-prison-school-bd_a945a71574c84d5f3b6fae75eeba572a_big.jpg"
                 },
                 new Movie
                 {
@@ -854,7 +880,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Câu chuyện bắt đầu với anh main tên là Hyoudou Issei, một thằng đực rựa trẻ người còn non dạ hay không thì vẫn chưa biết. Anh main này có tình sử khá là hào hùng với số tuổi bằng số năm chưa có bạn gái. Một ngày đẹp trời, ý nhầm, một đêm đẹp trời, Cô Bạn Gái Xinh Đẹp Quyến Rũ Ku Te Amano Yuuma bỗng rủ cậu đến một nơi vắng vẻ và thỉnh cầu cậu một điều hết sức dễ thương: Cậu có thể tắt hơi thở ngay bây giờ được không ?.Hôm sau cậu tỉnh dậy và phát hiện mình vẫn chưa đi ngắm gà. Giấc mơ ? Có thể vậy, cũng có thể là không. Chỉ có một điều là chắc chắn: Từ đó về sau, cuộc đời cậu hoàn toàn bẻ sang một hướng khác...",
-                    Slide = "http://img.animevsub.com/images/2016/09/27/[animevsub.com]-[bd]-high-school-dxd_cfef4fc537ad4d0938de102fc9b2c78c_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/09/27/[animevsub.com]-[bd]-high-school-dxd_cfef4fc537ad4d0938de102fc9b2c78c_big.jpg"
                 },
                 new Movie
                 {
@@ -874,7 +901,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Tiếp tục cuộc chiến giành lại vị trí bá vương cho gia tộc của Rias đang dở dang ở phần 1. Hyoudou Issei đã trở lại một lần nữa lợi hại gấp đôi ecchi gấp bội trong Season thứ hai của bộ anime High School DxD chuyện gì sẽ xảy ra với con Oppai Dragon này mọi người hãy cùng theo dõi.",
-                    Slide = "http://img.animevsub.com/images/2016/03/23/[animevsub.com]-high-school-dxd-new-bd_f7f11c9d784e051216d53599e88433e9_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/03/23/[animevsub.com]-high-school-dxd-new-bd_f7f11c9d784e051216d53599e88433e9_big.jpg"
                 },
                 new Movie
                 {
@@ -894,7 +922,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Bộ anime High School DxD BorN là phần thứ 3 của bộ High School DxD",
-                    Slide = "http://img.animevsub.com/images/2015/04/05/[animevsub.com]-high-school-dxd-ss3_1560f6a8aa873146f874501f74999d3d_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2015/04/05/[animevsub.com]-high-school-dxd-ss3_1560f6a8aa873146f874501f74999d3d_big.jpg"
                 },
                 new Movie
                 {
@@ -910,7 +939,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Cha của Shikada Kokonotsu làm chủ một cửa hàng bánh kẹo ở vùng quê, và kế hoạch của ông là để cho Kokonotsu kế thừa nó vào một ngày không xa. Tuy nhiên, thay vì theo ý ông, Kokonotsu lại muốn thành một mangaka. Một ngày mùa hè, cô gái nhìn đáng yêu nhưng lại có vẻ kỳ quái Shidare Hotaru, từ công ty đồ ngọt nổi tiếng đến thăm nơi đây. Cha của Kokonotsu nổi tiếng nên lẽ dĩ nhiên cô ta muốn ông vào công ty của gia đình. Tuy vậy, ông chỉ đồng ý nếu cô ấy có thể thuyết phục Kokonotsu nối nghiệp kinh doanh của gia đình!",
-                    Slide = "http://img.animevsub.com/images/2016/03/23/[animevsub.com]-dagashikashi_57b30301f8441ede2c4fa3e46e2a4820_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/03/23/[animevsub.com]-dagashikashi_57b30301f8441ede2c4fa3e46e2a4820_big.jpg"
                 },
                 new Movie
                 {
@@ -932,7 +962,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Fairy Tail nói về Lucy là 1 cô gái trẻ 17 tuổi, với mong ước trở thành một pháp sư đầy quyền năng. Trên đường phiêu lưu thực hiện ước mơ, Lucy tình cờ gặp được một bộ đôi quái gở - Natsu và Happy, đang trên đường tìm kiếm Hỏa Long Igneel - tại Thị trấn Hargeon. Ước mơ của Lucy là được tham gia vào Bang hội Fairy Tail, nơi tập trung đầy pháp sư tài giỏi. Và vì mong muốn được gia nhập, cô đã mắc bẫy của tên tự xưng là Salamander (Hỏa Long) của Fairy Tail. Đúng lúc đó thì Natsu xuất hiện giúp đỡ Lucy..",
-                    Slide = "http://img.animevsub.com/images/2016/12/29/[animevsub.com]-hoi-phap-su-fairy-tail-season-1_df4179aafca78c3f8e6eba1abbb1d7e1_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/12/29/[animevsub.com]-hoi-phap-su-fairy-tail-season-1_df4179aafca78c3f8e6eba1abbb1d7e1_big.jpg"
                 },
                 new Movie
                 {
@@ -954,7 +985,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Câu chuyện về một cô thiếu nữ tên Lucy Heartfilia, khao khát của cô là gia nhập Hội Pháp sư nổi tiếng Fairy Tail. Trên đường phiêu lưu, Lucy đã vô tình gặp gỡ Natsu Salamander Dragneel, một thành viên của Fairy Tail, người sở hữu pháp thuật cổ đại Sát Long. Thế rồi Lucy được Natsu giới thiệu vào Hội Pháp sư Fairy Tail và cùng anh chàng này tham gia vô số nhiệm vụ khó khăn nhưng cũng không kém phần thú vị.",
-                    Slide = "http://img.animevsub.com/images/2016/10/01/[animevsub.com]-fairy-tail-2014-fairy-tail-season-2_ef7555b2e4aa5ee8b61b3e0d874825f3_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/10/01/[animevsub.com]-fairy-tail-2014-fairy-tail-season-2_ef7555b2e4aa5ee8b61b3e0d874825f3_big.jpg"
                 },
                 new Movie
                 {
@@ -975,7 +1007,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Xoay quanh học sinh nam tên Itsuka Shidou, người đã gặp một cô gái tinh linh đến từ một thế giới đã bị phá hủy, người đã gây nên nhiều cơn chấn động thời không.Và chàng trai phải ngăn chặn cô gái bằng cách hẹn hò với cô ta.",
-                    Slide = "http://img.animevsub.com/images/2016/09/26/[animevsub.com]-date-a-live_769ffe5e962abc579f3bc1c60406962a_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/09/26/[animevsub.com]-date-a-live_769ffe5e962abc579f3bc1c60406962a_big.jpg"
                 },
                 new Movie
                 {
@@ -996,7 +1029,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Date A Live II tiếp tục câu chuyện của chàng trai Shido Itsuka. 30 năm trước, một hiện tượng kỳ lạ được gọi là spacequake đã tàn phá trung tâm của đại lục Á-Âu, đe dọa mạng sống của ít nhất 150 triệu người và đã làm thế giới trở nên bất thường. Khi đó thì Shidou Itsuka là anh chàng có khả năng bí ẩn có thể phong ấn Tinh linh. Tuy nhiên, điều kiện để phong ấn là phải làm họ yêu cậu. Phần 2 sẽ xuất hiện thêm 3 Tinh linh mới, và lần này Shidou buộc phải cưa đổ cô nàng Miku....",
-                    Slide = "http://img.animevsub.com/images/2016/10/01/[animevsub.com]-date-a-live-ss2_d4e43a89e4018c64f4769fb2a15a71ea_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/10/01/[animevsub.com]-date-a-live-ss2_d4e43a89e4018c64f4769fb2a15a71ea_big.jpg"
                 },
                 new Movie
                 {
@@ -1018,7 +1052,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Trong tương lai không xa, con người phải đối mặt với một loại vi-rút bí ẩn tên là Gastrea, có khả năng lây lan nhanh và vô cùng nguy hiểm. Rintarou - học sinh trung học và cũng là thành viên của Civil Security, một tổ chức chuyên đào tạo kỹ năng chiến đấu chống vi-rút Gastrea, luôn can đảm nhận những nhiệm vụ nguy hiểm khó ai gánh vác nổi. Cộng sự của cậu tên là Enju, cùng nhau chiến đấu bằng các kỹ năng bùm chéo xoẹt xoẹt. Một ngày kia, họ nhận được một nhiệm vụ quan trọng từ chính phủ: ngăn chặn nguy cơ diệt vong của Tokyo... Trong chiến trường khốc liệt ấy, một câu chuyện về các anh hùng đầy hồi hộp và hấp dẫn lại bắt đầu...",
-                    Slide = "http://img.animevsub.com/images/2016/03/25/[animevsub.com]-black-bullet_e8a553eb2b40f085d41a6ed33a1c5810_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/03/25/[animevsub.com]-black-bullet_e8a553eb2b40f085d41a6ed33a1c5810_big.jpg"
                 },
                 new Movie
                 {
@@ -1039,7 +1074,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Nisekoi xoay quanh Raku Ichijo, cậu ấm lãnh đạo băng yakuza thuộc phe Shuei-Gumi và Chitoge Kirisaki, con gái của ông trùm băng đảng giang hồ Beehive khét tiếng. Raku Ichijo đã có 1 lời hứa bí mật với người yêu thời thơ ấu của mình, giữ một mặt dây chuyền như một vật lưu niệm và người yêu của cậu giữ lấy chiếc chìa khóa. Cậu mong rằng một ngày nào đó được gặp lại người yêu đó, nhiều năm sau, thực tế đập tan hy vọng của cậu khi Chitoge Kirisaki vô tình cho cậu ăn đầu gối vào mặt. ",
-                    Slide = "http://img.animevsub.com/images/2016/03/25/[animevsub.com]-nisekoi-false-love_4b4ddc22db0a504d2805953c7fc2a4e6_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/03/25/[animevsub.com]-nisekoi-false-love_4b4ddc22db0a504d2805953c7fc2a4e6_big.jpg"
                 },
                 new Movie
                 {
@@ -1057,7 +1093,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Hotarubi no Mori e kể về Hotaru, trong một lần cô bé đi lạc vào rừng thì gặp được Gin, một chàng trai trẻ kì lạ mà khi bị con người chạm vào thì cậu ta sẽ biến mất, Gin dẫn Hotaru rời khỏi khu rừng và câu chuyện bắt đầu từ đó...",
-                    Slide = "http://img.animevsub.com/images/2016/03/26/[animevsub.com]-hotarubi-no-mori-e_bec84fc0a3526a5cb87ec35149ed7c45_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/03/26/[animevsub.com]-hotarubi-no-mori-e_bec84fc0a3526a5cb87ec35149ed7c45_big.jpg"
                 },
                 new Movie
                 {
@@ -1076,7 +1113,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Trong thế giới cõi âm các thiên sứ chiến đấu cho tương lai và số phận của mình. Nhân vật chính là Yuri, người đứng đầu tổ chức Shinda Sekai Sensen (chiến tuyến thế giới cõi âm) chống lại thánh thần và những kẻ đã gán cho cô một cuộc sống vô nghĩa. Bên cạnh đó Tenshi vị nữ chủ tịch hội học sinh thế giới cõi âm, cũng lãnh đạo các Thiên sứ ngăn chặn cuộc bạo động của tổ chức Shinda Sekai Sensen.",
-                    Slide = "http://img.animevsub.com/images/2016/09/26/[animevsub.com]-[bd]-angel-beats_8d8989a8add329ec44651be4b755ca97_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/09/26/[animevsub.com]-[bd]-angel-beats_8d8989a8add329ec44651be4b755ca97_big.jpg"
                 },
                 new Movie
                 {
@@ -1094,7 +1132,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Togashi Yuuta là một cậu học sinh từng mắc hội chứng cấp 2 (chuunibyo), và Takanashi Rikka là một cô bạn hiện đang bị mắc hội chứng này. Cả hai đã lập giao ước với nhau để có những tháng ngày học sinh tuyệt vời nhất. Tuy nhiên, Shichimiya Satone, hay còn gọi là Sophia Ring SP Saturn VII, một người bạn hồi học cấp 2 bị nhiễm hội chứng nặng nhất đã xuất hiện, đảo lộn cuộc sống của Togashi. Và thế là cuộc chiến giữa Saturn và Tà vương chân nhãn bắt đầu.",
-                    Slide = "http://1.bp.blogspot.com/-4j44DU_66Uo/VKZ6Mv5Q9HI/AAAAAAAABJ0/GwWVYG4PD6I/s1600/Chuunibyou%2BDemo%2BKoi%2Bga%2BShitai%2Bbanner.jpg"
+                    Slide =
+                        "http://1.bp.blogspot.com/-4j44DU_66Uo/VKZ6Mv5Q9HI/AAAAAAAABJ0/GwWVYG4PD6I/s1600/Chuunibyou%2BDemo%2BKoi%2Bga%2BShitai%2Bbanner.jpg"
                 },
                 new Movie
                 {
@@ -1112,7 +1151,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Thế giới bị bao trùm bởi một căn bênh dịch chết người ,nó biến người ta trở thành xác chết biết đi. Tại Nhật một số học sinh và cô y tá trường trung học Fujimi cùng nhau vượt qua chiến đấu chống chọi với cơn dịch này.",
-                    Slide = "http://img.animevsub.com/images/2016/10/07/[animevsub.com]-truong-hoc-thay-ma_5407880d3a22733631fe9d53e04d383d_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/10/07/[animevsub.com]-truong-hoc-thay-ma_5407880d3a22733631fe9d53e04d383d_big.jpg"
                 },
                 new Movie
                 {
@@ -1132,7 +1172,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Đất nước của những Samurai. Có một thời đất nước chúng tôi được gọi như vậy.20 năm trước…Những kẻ ngoài hành tinh tự xưng là Amanto đột ngột đổ bộ xuống và thiết lập lệnh cấm mang kiếm. Samurai giờ đây bị khinh rẻ, coi thường. Trong thời đại như thế, vẫn còn một người đầy tinh thần samurai. Tên anh ta là Sakata Gintoki. Và tôi, Shimura Shinpachi, cùng Kagura-chan vì một số việc đưa đẩy mà bắt đầu làm việc cho cái tên vô trách nhiệm, hảo ngọt đó tại Vạn Sự Ốc.",
-                    Slide = "http://img.animevsub.com/images/2016/09/29/[animevsub.com]-gintama_0e631fa2a535e8f27745cebbd3920070_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/09/29/[animevsub.com]-gintama_0e631fa2a535e8f27745cebbd3920070_big.jpg"
                 },
                 new Movie
                 {
@@ -1149,7 +1190,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Bộ anime vietsub Ore Monogatari được chuyển thể từ bộ manga cùng tên kể về anh chàng Gouda Takeo là một sinh viên năm nhất tại trường trung học. Anh ấy rất to con và cao 2m. Nói về anh chàng này với cô gái thời thơ ấu...",
-                    Slide = "http://img.animevsub.com/images/2015/04/09/[animevsub.com]-my-love-story-_ee5a8b17dc9f65a6c7c037e6f36834b4_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2015/04/09/[animevsub.com]-my-love-story-_ee5a8b17dc9f65a6c7c037e6f36834b4_big.jpg"
                 },
                 new Movie
                 {
@@ -1165,7 +1207,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Kanie Seiya, một cựu thiên tài mang cái tên Kodama Seiya, muốn sống một cuộc sống yên ổn, thì bỗng dưng bị một cô nàng cùng lớp mời đi công viên giải trí bằng cách dí một khẩu súng vào ngay mặt cậu. Đi hẹn hò cho đã xong, cậu bị một bé loli mời làm quản lý của cái công viên giải trí xập xệ này với mục tiêu là kiếm đủ 10 vạn khách trong thời hạn 2 tuần.",
-                    Slide = "http://img.animevsub.com/images/2017/02/20/[animevsub.com]-amaburi-bd-amagi-cong-vien-ruc-ro-bd_7f1567acc92e791e1503564a82953e53_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2017/02/20/[animevsub.com]-amaburi-bd-amagi-cong-vien-ruc-ro-bd_7f1567acc92e791e1503564a82953e53_big.jpg"
                 },
                 new Movie
                 {
@@ -1184,7 +1227,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Câu chuyện là một dòng chảy của số phận và cuộc chiến bảo vệ thế giới đi theo con đường lẽ phải. Aladin, nhân vật chính của bộ phim, đã đặt ra mục tiêu khám phá thế giới sau khi gần hết quãng đời mình bị mắc kẹt trong một căn phòng. Người bạn thân nhất của cậu ta là cây sáo và linh hồn của lửa mang tên Ugo.",
-                    Slide = "http://img.animevsub.com/images/2017/03/13/[animevsub.com]-magi-season-1-|-vuong-quoc-ma-thuat_0c1acd5480b8f27dc7ad5318f253a0b4_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2017/03/13/[animevsub.com]-magi-season-1-|-vuong-quoc-ma-thuat_0c1acd5480b8f27dc7ad5318f253a0b4_big.jpg"
                 },
                 new Movie
                 {
@@ -1203,7 +1247,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Aladdin, Alibaba và Morgiana tiếp tục cuộc phiêu lưu ở vương quốc phép thuật Magnostadt. Một đất nước bị cai trị bởi các pháp sư và đế chế Reim hùng mạnh.",
-                    Slide = "http://1.bp.blogspot.com/-u4StIZjGyco/VKkq8T6z1nI/AAAAAAAABVw/mOSVeXUT7E4/s1600/Magi%2BThe%2BKingdom%2BOf%2BMagic%2Bbanner.jpg"
+                    Slide =
+                        "http://1.bp.blogspot.com/-u4StIZjGyco/VKkq8T6z1nI/AAAAAAAABVw/mOSVeXUT7E4/s1600/Magi%2BThe%2BKingdom%2BOf%2BMagic%2Bbanner.jpg"
                 },
                 new Movie
                 {
@@ -1221,7 +1266,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Đôi khi chả vì một lý do nào đó chúng ta để ý đến một người. Người đó chả cần có gì nổi bật nhưng ta vẫn để ý. Thật là khó để giải thích cảm giác đó...từ để ý rồi dần đến quan tâm và thích. Tưởng chừng một câu truyện đơn giản về học đường, về một đôi bạn trẻ sống một cuộc sống cấp 3 bình thường và sẽ kết thúc như bao câu truyện bình thường khác thì bất ngờ nó lại bất bình thường theo nhiều phương diện.",
-                    Slide = "http://3.bp.blogspot.com/-1tR3CPMV-FQ/VGssgyNxK6I/AAAAAAAAALs/gbqVj49relo/s1600/Isshuukan%2BFriends%2Banimevsub%2Bbanner.jpg"
+                    Slide =
+                        "http://3.bp.blogspot.com/-1tR3CPMV-FQ/VGssgyNxK6I/AAAAAAAAALs/gbqVj49relo/s1600/Isshuukan%2BFriends%2Banimevsub%2Bbanner.jpg"
                 },
                 new Movie
                 {
@@ -1260,7 +1306,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Love Live kể về Otonokizaka, ngôi trường cấp 3 hiện đang đứng trước nguy cơ bị đóng cửa do có ngày càng ít đơn xin vào nhập học. Trong bối cảnh đó, 9 nữ sinh đã quyết tâm lập nên một nhóm Idol nữ để gây tiếng vang, giúp trường thoát khỏi tình cảnh éo le này. Nói ngắn gọn thì đây là project về các bé nữ sinh trên con đường trở thành thần tượng...",
-                    Slide = "http://img.animevsub.com/images/2016/09/26/[animevsub.com]-love-live-school-idol-project_96239f8d8398d39ace49010573f44607_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/09/26/[animevsub.com]-love-live-school-idol-project_96239f8d8398d39ace49010573f44607_big.jpg"
                 },
                 new Movie
                 {
@@ -1280,7 +1327,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Fate Stay Night xoay quanh Holy Grail War. Cuộc Chiến Giành Chén Thánh. Chén Thánh sẽ thực hiện điều ước của người chiến thắng cuộc chiến. Ở mỗi Holy Grail War bảy pháp sư được chọn sẽ triệu hồi cho mình một Servant và cùng nhau chiến đấu. Servant đều là những anh hùng trong truyền thuyết được triệu tập đến thế giới này theo 7 class : Saber, Archer, Lancer, Berserker, Caster, Assasin và Rider.",
-                    Slide = "https://lh6.googleusercontent.com/-L7yBQ4QVTzs/VGuSD9GapEI/AAAAAAAABDg/y9NeH8IAB0k/w702-h395-no/fate%2Bstay%2Bnight%2B2-animevsub.jpg"
+                    Slide =
+                        "https://lh6.googleusercontent.com/-L7yBQ4QVTzs/VGuSD9GapEI/AAAAAAAABDg/y9NeH8IAB0k/w702-h395-no/fate%2Bstay%2Bnight%2B2-animevsub.jpg"
                 },
                 new Movie
                 {
@@ -1299,7 +1347,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Một thần chết tên Ryuuku cố tình đánh rơi quyển sổ Death Note xuống thế giới loài người với mong muốn rằng hắn sẽ tìm được một thú vui nào đó từ việc này. Một học sinh trung học tên Yagami Light (hay Yagami Raito) là người nhặt được quyển sổ này và vì thế mà có khả năng giết bất cứ người nào chỉ bằng cách cách viết tên người đó vào quyển sổ và tưởng tượng ra khuôn mặt họ khi viết. Cậu quyết định dùng Death Note để tiêu diệt những kẻ tội phạm và những kẻ giết người tàn ác thông qua cuốn sổ.",
-                    Slide = "http://img.animevsub.com/images/2017/01/25/[animevsub.com]-death-note-bluray_6b9efeae2313bac4f3010e13b4e182f8_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2017/01/25/[animevsub.com]-death-note-bluray_6b9efeae2313bac4f3010e13b4e182f8_big.jpg"
                 },
                 new Movie
                 {
@@ -1315,7 +1364,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Chuyển thể từ bộ manga cùng tên. Một thằng bựa, tên Kazama Kenji, đang có một cuộc sống oanh liệt của một đầu gấu, thì bỗng dưng bị dính bẫy của 4 cô nàng não phẳng + 1 bà giáo viên đầu to óc trái nho. Hệ quả là cậu phải vào cái clb chuyên ăn không ngồi rồi. Thế là một chuỗi sự kiện hài trong mơ bắt đầu xảy đến với cậu.",
-                    Slide = "http://img.animevsub.com/images/2017/03/19/[animevsub.com]-d-frag-_5da4d97cb606a9c7be6d13d9c76ca119_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2017/03/19/[animevsub.com]-d-frag-_5da4d97cb606a9c7be6d13d9c76ca119_big.jpg"
                 },
                 new Movie
                 {
@@ -1356,7 +1406,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Câu chuyện xoay quanh Kinomoto Sakura, một học sinh tiểu học tình cờ phát hiện ra mình đang nắm giữ một sức mạnh kì diệu sau khi vô tình giải phóng một bộ thẻ bài ma thuật đã được niêm phong nhiều năm trong một quyển sách. Sau đó cô được giao nhiệm vụ phải thu phục lại tất cả các thẻ bài đã chạy thoát nhằm ngăn chặn chúng phá hủy thế giới.",
-                    Slide = "http://1.bp.blogspot.com/-du3RsFWdjco/VK-TDlUbfVI/AAAAAAAAFvA/OzKIx9DkAUk/s1600/5085975_orig.jpg"
+                    Slide =
+                        "http://1.bp.blogspot.com/-du3RsFWdjco/VK-TDlUbfVI/AAAAAAAAFvA/OzKIx9DkAUk/s1600/5085975_orig.jpg"
                 },
                 new Movie
                 {
@@ -1372,7 +1423,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Nói về một cô gái 16 tuổi sống chung với anh cô ấy là Taihei. Cô ấy là một người em gái hoàn hảo với một tấm lòng nhân hậu, thông minh và sự nổi tiếng, mọi người đều ngưỡng mộ.Tuy nhiên, Himouto (cô em gái xinh đẹp) có một bí mật không thể để người ngoài khám phá…",
-                    Slide = "http://img.animevsub.com/images/2016/09/21/[animevsub.com]-my-two-faced-little-sister_db405dbeb69942510ed5e2c68e013f72_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/09/21/[animevsub.com]-my-two-faced-little-sister_db405dbeb69942510ed5e2c68e013f72_big.jpg"
                 },
                 new Movie
                 {
@@ -1407,7 +1459,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Chuyện về một anh chàng học sinh đào hoa, bắt cá 4-5 tay một lúc nhiều em. Cuối Film anh ấy đã chọn một được một người và cả hai cùng đi trên một cái Nice Boat đến một nơi chỉ của riêng hai người. ",
-                    Slide = "http://img.animevsub.com/images/2016/11/04/[animevsub.com]-school-days-[bd]_c53555eb9ed0a897ec05f0e8c9caebc4_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/11/04/[animevsub.com]-school-days-[bd]_c53555eb9ed0a897ec05f0e8c9caebc4_big.jpg"
                 },
                 new Movie
                 {
@@ -1425,7 +1478,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Các học sinh của lớp 3-E có một nhiệm vụ: Giết thầy trước khi tốt nghiệp! Hắn đã phá hủy mặt trăng, hắn bay được với vận tốc 20 mach, hắn là một con bạch tuộc? Hắn vân vân và vân vân... Và ai có thể là thầy giáo tốt hơn hắn?!",
-                    Slide = "http://img.animevsub.com/images/2016/10/02/[animevsub.com]-assassination-classroom_e3bb01b5e06ae775da407317648c8adc_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2016/10/02/[animevsub.com]-assassination-classroom_e3bb01b5e06ae775da407317648c8adc_big.jpg"
                 },
                 new Movie
                 {
@@ -1442,7 +1496,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Nekopara là gì?Tại sao, đây là con mèo của thiên đường. Kashou Minazuki, một hàng dài người Nhật chuyển ra, con trai của nhà sản xuất kẹo tự mở La Circus như một tiệm bánh ngọt. Nhưng trong di chuyển, ẩn trong đồ của hắn đều ở Catgirls (Cat), hay Carat và vani, gia đình này đã tăng.Khi hắn đang cố đưa họ đi, họ cầu xin cho đến khi hắn bây giờ họ đã mở rạp xiếc. Los Angeles cùng nhau. Hai nekos ai thực sự yêu chủ nhân của chúng trong họ nhất thỉnh thoảng thất bại... Chân thành hài, mở cửa!",
-                    Slide = "http://img.animevsub.com/images/2017/01/24/[animevsub.com]-neko-para_13386a17985e08f930e9b62672a04d8d_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2017/01/24/[animevsub.com]-neko-para_13386a17985e08f930e9b62672a04d8d_big.jpg"
                 },
                 new Movie
                 {
@@ -1460,7 +1515,8 @@ namespace AnimeCore.DataInitializer
                     },
                     Description =
                         "Mọi chuyện bắt đầu từ một sự kiện được nhắc đi nhắc lại nhan nhản trong phim, và sẽ được ra mắt trong movie Kizumonogatari trong 1 tương lai xa ngoài vùng phủ sóng (tạm gọi là X). Kể từ sau sự kiện X đó, Araragi Koyomi đã không còn là một học sinh cấp ba bình thường. Cậu sở hữu một sức mạnh cho phép cậu đeo đuổi một trong những sở thích ít ỏi của mình - nhúng mũi vào những rắc rối của người khác - đặc biệt là những rắc rối có liên quan đến hiện tượng siêu linh, do tinh linh gây ra..",
-                    Slide = "http://img.animevsub.com/images/2015/02/05/[animevsub.com]-bakemonogatari_51dc872a3d10a982e41920ef3532bd96_big.jpg"
+                    Slide =
+                        "http://img.animevsub.com/images/2015/02/05/[animevsub.com]-bakemonogatari_51dc872a3d10a982e41920ef3532bd96_big.jpg"
                 }
             };
 

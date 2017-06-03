@@ -7,10 +7,10 @@
         <div class="carousel-inner" role="listbox">
             @foreach (var item in MovieRepository.FindSlide(AppSettings.Value.Slide.Split(',')))
             {
-                <div class="item" style="min-height: 300px">
-                    <a asp-action="Details" asp-controller="Movie" asp-route-id="@item.Id">
-                        <img src="@item.Slide" alt="@item.Name" class="img-responsive center-block" asp-append-version="true">
-                        <div class="carousel-caption">
+                <div class="item" style="min-height: 300px; max-height: 500px;">
+                    <a asp-area="" asp-action="Details" asp-controller="Movie" asp-route-id="@item.Id">
+                        <img src="@item.Slide" alt="@item.Name" class="img-responsive center-block" asp-append-version="true" style="width: 100%">
+                        <div class="carousel-caption" style="margin-bottom: -40px">
                             <div>
                                 <h3>@item.Name</h3>
                             </div>

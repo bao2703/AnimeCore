@@ -45,7 +45,7 @@ namespace AnimeCore.Controllers
             {
                 return NotFound();
             }
-            ViewData["HasLike"] = _movieRepository.HasLikeTo(await _userService.GetUserAsync(User), model);
+            ViewData["HasLike"] = _movieRepository.HasLike(await _userService.GetUserAsync(User), model);
             return View(model);
         }
 
