@@ -56,7 +56,7 @@ namespace Entities.Domain
                 }
                 if (StartDate > DateTime.Today)
                 {
-                    return AdsStatus.NotStart;
+                    return AdsStatus.Idle;
                 }
                 return AdsStatus.Active;
             }

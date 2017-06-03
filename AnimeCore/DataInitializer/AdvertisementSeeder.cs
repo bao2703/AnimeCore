@@ -85,8 +85,8 @@ namespace AnimeCore.DataInitializer
                     Title = "Eat24",
                     Url = "https://eat24.com/",
                     Source = "/assets/client/ads-example/skip-this-ad.mp4",
-                    StartDate = new DateTime(2017, 3, 1),
-                    EndDate = new DateTime(2017, 7, 1),
+                    StartDate = new DateTime(2017, 9, 1),
+                    EndDate = new DateTime(2017, 10, 1),
                     AdsLocation = adsLocations.Single(x => x.Name == "Popular"),
                     Customer = customer
                 },
@@ -134,7 +134,7 @@ namespace AnimeCore.DataInitializer
                     Url = "http://www.localhost.com",
                     Source = "C:/",
                     StartDate = new DateTime(2017, 1, 1),
-                    EndDate = new DateTime(2017, 7, 1),
+                    EndDate = new DateTime(2017, 3, 1),
                     AdsLocation = adsLocations.Single(x => x.Name == "Newest"),
                     Customer = customer
                 }
@@ -209,7 +209,7 @@ namespace AnimeCore.DataInitializer
                     Name = "Example",
                     Description = "Example",
                     Title = "Example",
-                    Url = "http://localhost",
+                    Url = "http://localhost.com/",
                     Source = "/assets/client/ads-example/banner/example-top-banner.png",
                     StartDate = new DateTime(2017, 3, 10),
                     EndDate = new DateTime(2017, 7, 10),

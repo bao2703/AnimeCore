@@ -29,19 +29,17 @@
                                     <a asp-action="Details" asp-controller="Movie" asp-route-id="@item.Id">
                                         <div class="movie-content" title="@item.Name">
                                             <div class="movie-info">
-                                                <div style="font-size: 17px;">
-                                                    <span class="pull-left" style="margin-bottom: 5px; margin-left: 5px;">
-                                                        <label class="label label-primary">
-                                                            @item.Episodes.Count / @(item.Status == MovieStatus.Ongoing ? "??" : item.Episodes.Count.ToString())
-                                                            Ep
-                                                        </label>
-                                                    </span>
-                                                    <span class="pull-right" style="margin-right: 5px;">
-                                                        <label class="label label-danger">
-                                                            <i class="fa fa-heart"></i> @item.Likes.Count
-                                                        </label>
-                                                    </span>
-                                                </div>
+                                                <span class="pull-left" style="margin-bottom: 5px; margin-left: 5px;">
+                                                    <label class="label label-primary">
+                                                        @item.Episodes.Count / @(item.Status == MovieStatus.Ongoing ? "??" : item.Episodes.Count.ToString())
+                                                        Ep
+                                                    </label>
+                                                </span>
+                                                <span class="pull-right" style="margin-right: 5px;">
+                                                    <label class="label label-danger">
+                                                        <i class="fa fa-heart"></i> @item.Likes.Count
+                                                    </label>
+                                                </span>
                                                 <span class="movie-name col-xs-12">
                                                     <label style="margin: 2px">
                                                         @item.Name

@@ -91,21 +91,19 @@
                     <a href="@Url.Action("Details")/{{ movie.id }}">
                         <div class="movie-content" title="{{ movie.name }}">
                             <div class="movie-info">
-                                <div style="font-size: 17px;">
-                                    <span class="pull-left" style="margin-bottom: 5px; margin-left: 5px;">
-                                        <label class="label label-primary">
-                                            {{ (movie.episodes).length }}
-                                            <span ng-if="movie.status == 0">/ ??</span>
-                                            <span ng-if="movie.status == 1">/ {{ movie.episodes.length }}</span>
-                                            Ep
-                                        </label>
-                                    </span>
-                                    <span class="pull-right" style="margin-right: 5px;">
-                                        <label class="label label-danger">
-                                            <i class="fa fa-heart"></i> {{ movie.likes.length }}
-                                        </label>
-                                    </span>
-                                </div>
+                                <span class="pull-left" style="margin-bottom: 5px; margin-left: 5px;">
+                                    <label class="label label-primary">
+                                        {{ (movie.episodes).length }}
+                                        <span ng-if="movie.status == 0">/ ??</span>
+                                        <span ng-if="movie.status == 1">/ {{ movie.episodes.length }}</span>
+                                        Ep
+                                    </label>
+                                </span>
+                                <span class="pull-right" style="margin-right: 5px;">
+                                    <label class="label label-danger">
+                                        <i class="fa fa-heart"></i> {{ movie.likes.length }}
+                                    </label>
+                                </span>
                                 <span class="movie-name col-xs-12">
                                     <label style="margin: 2px">
                                         {{ movie.name }}

@@ -6,6 +6,6 @@ namespace Entities.Domain
     {
         Active,
         Expired,
-        [Display(Name = "Not start")] NotStart
+        Idle
     }
 }

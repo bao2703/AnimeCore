@@ -31,7 +31,7 @@ namespace AnimeCore.Common
                 case AdsStatus.Expired:
                     statusClass = "danger";
                     break;
-                case AdsStatus.NotStart:
+                case AdsStatus.Idle:
                     statusClass = "info";
                     break;
             }

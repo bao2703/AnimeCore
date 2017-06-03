@@ -51,6 +51,50 @@ namespace AnimeCore.Areas.Admin.Controllers
             return PartialView("_AddEditPartial", model);
         }
 
+        public IActionResult Edit(int id)
+        {
+            ViewData["Action"] = "Edit";
+            var model = _videoAdsRepository.FindById(id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return PartialView("_AddEditPartial", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(VideoAds model)
+        {
+            ViewData["Action"] = "Edit";
+            if (ModelState.IsValid)
+            {
+                _videoAdsRepository.Update(model);
+                await _unitOfWork.SaveChangesAsync();
+                return JsonStatus.Ok;
+            }
+            return PartialView("_AddEditPartial", model);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var model = _videoAdsRepository.FindById(id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return PartialView("_DeletePartial", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual async Task<IActionResult> Delete(VideoAds model)
+        {
+            _videoAdsRepository.Remove(model);
+            await _unitOfWork.SaveChangesAsync();
+            return JsonStatus.Ok;
+        }
+
         public IActionResult Preview(string source)
         {
             return PartialView("_PreviewPartial", source);

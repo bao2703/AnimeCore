@@ -44,9 +44,8 @@ namespace AnimeCore.Areas.Admin.Controllers
             }
             if (ModelState.IsValid)
             {
-                var filePath = Constant.ImagesFolderPath + DateTime.Now.ToFileTime() + file.FileName;
-                await Helper.CopyFileToAsync(filePath, file);
-                model.Source = filePath;
+                await UpdateFileIfExistAsync(model, file);
+
                 model.CustomerId = customerId;
                 await _bannerAdsRepository.AddAsync(model);
                 await _unitOfWork.SaveChangesAsync();
@@ -74,12 +73,7 @@ namespace AnimeCore.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                if (file != null)
-                {
-                    var filePath = Constant.ImagesFolderPath + DateTime.Now.ToFileTime() + file.FileName;
-                    model.Source = filePath;
-                    await Helper.CopyFileToAsync(filePath, file);
-                }
+                await UpdateFileIfExistAsync(model, file);
 
                 _bannerAdsRepository.Update(model);
                 await _unitOfWork.SaveChangesAsync();
@@ -96,6 +90,23 @@ namespace AnimeCore.Areas.Admin.Controllers
                 return NotFound();
             }
             return PartialView("_DeletePartial", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual async Task<IActionResult> Delete(BannerAds model)
+        {
+            _bannerAdsRepository.Remove(model);
+            await _unitOfWork.SaveChangesAsync();
+            return JsonStatus.Ok;
+        }
+
+        private async Task UpdateFileIfExistAsync(BannerAds banner, IFormFile file)
+        {
+            if (file != null)
+            {
+                banner.Source = await UploadAsync(file);
+            }
         }
     }
 }
