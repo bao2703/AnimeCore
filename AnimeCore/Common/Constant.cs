@@ -7,7 +7,7 @@ namespace AnimeCore.Common
 {
     public class Constant
     {
-        public static string ImagesFolderPath => "/app-data/upload/images/";
+        public static string ImagesFolderPath => "/upload/images/";
 
         public static string RootPath => "wwwroot";
 
