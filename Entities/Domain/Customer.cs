@@ -21,8 +21,10 @@ namespace Entities.Domain
 
         [Display(Name = "Phone number")]
         [RegularExpression("(\\+84|0)\\d{9,10}", ErrorMessage = "The {0} is not valid.")]
+        [Required]
         public string PhoneNumber { get; set; }
 
+        [Required]
         public string Address { get; set; }
 
         public ICollection<Advertisement> Advertisements { get; set; }

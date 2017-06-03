@@ -1,3 +1,4 @@
+using System;
 using AnimeCore.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -41,6 +42,14 @@ namespace AnimeCore.Areas.Admin.Controllers
         public IActionResult Slide()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteSlide(int movieId)
+        {
+            _appSettings.Slide = _appSettings.Slide.Replace($"{movieId},", string.Empty);
+            return RedirectToAction("Slide");
         }
     }
 }

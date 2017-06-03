@@ -1,4 +1,7 @@
 @using Models.ModalViewModels
+@using Repositories
+@inject IBannerAdsRepository BannerAdsRepository
+@inject IVideoAdsRepository VideoAdsRepository
 @model IEnumerable<AdsLocation>
 @{
     ViewData[Constant.Title] = "AdsLocation List";
@@ -23,6 +26,11 @@
                         <display name-for="@Model.First().Name"></display>
                     </th>
                     <th>
+                        <label class="label label-success">
+                            Active
+                        </label>
+                    </th>
+                    <th>
                         <display name-for="@Model.First().Price"></display>
                     </th>
                     <th>
@@ -40,6 +48,16 @@
                             </a>
                         </td>
                         <td>@item.Name</td>
+                        <td>
+                            @if (ViewData["LocationType"].ToString() == LocationType.Banner.ToString())
+                            {
+                                @BannerAdsRepository.GetActiveBanners(item.Name).Count()
+                            }
+                            else
+                            {
+                                @VideoAdsRepository.GetActiveVideos(item.Name).Count()
+                            }
+                        </td>
                         <td>@item.Price</td>
                         <td>@item.Desciption</td>
                     </tr>

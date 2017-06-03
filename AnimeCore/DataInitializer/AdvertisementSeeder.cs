@@ -54,6 +54,7 @@ namespace AnimeCore.DataInitializer
             {
                 Name = "Bảo",
                 Email = "bao@gmail.com",
+                PhoneNumber = "01223602166",
                 Address = "Neptune"
             };
 
@@ -193,6 +194,7 @@ namespace AnimeCore.DataInitializer
             {
                 Name = "Bảo2",
                 Email = "bao2@gmail.com",
+                PhoneNumber = "01223602166",
                 Address = "Neptune2"
             };
 
@@ -207,14 +209,14 @@ namespace AnimeCore.DataInitializer
                     Name = "Example",
                     Description = "Example",
                     Title = "Example",
-                    Url = "http://localhost.com/",
+                    Url = "http://localhost",
                     Source = "/assets/client/ads-example/banner/example-top-banner.png",
                     StartDate = new DateTime(2017, 3, 10),
                     EndDate = new DateTime(2017, 7, 10),
                     BannerType = BannerType.Home,
                     Height = "100px",
                     Width = "100%",
-                    AdsLocation = adsLocations.Single(x => x.Name == "Bottom"),
+                    AdsLocation = adsLocations.Single(x => x.Name == "Top"),
                     Customer = customer
                 },
                 new BannerAds
@@ -229,7 +231,7 @@ namespace AnimeCore.DataInitializer
                     BannerType = BannerType.Home,
                     Height = "150px",
                     Width = "100%",
-                    AdsLocation = adsLocations.Single(x => x.Name == "Top"),
+                    AdsLocation = adsLocations.Single(x => x.Name == "Bottom"),
                     Customer = customer
                 },
                 new BannerAds

@@ -22,10 +22,6 @@
                 <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Genres</th>
-                    <th>Status</th>
-                    <th>Ep</th>
-                    <th>Release</th>
                     <th>Description</th>
                 </tr>
                 </thead>
@@ -34,26 +30,18 @@
                 {
                     <tr>
                         <td>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm @(User.HasClaim("Setting", "Delete") ? "" : "disabled")">
-                                <i class="fa fa-trash"></i>
-                            </a>
+                            <form asp-action="DeleteSlide" asp-route-movieId="@item.Id">
+                                <button class="btn btn-danger btn-sm @(User.HasClaim("Setting", "DeleteSlide") ? "" : "disabled")" type="submit">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
                         </td>
                         <td class="text-center">
-                            <a asp-action="Index" asp-controller="Episode" asp-route-movieId="@item.Id">
+                            <a asp-action="Edit" asp-controller="Movie" asp-route-id="@item.Id">
                                 @item.Name
-                                <img src="@item.Image" alt="@item.Name" class="img-responsive" asp-append-version="true" style="max-height: 200px"/>
+                                <img src="@item.Slide" alt="@item.Name" class="img-responsive" asp-append-version="true" style="max-height: 200px"/>
                             </a>
                         </td>
-                        <td>
-                            @string.Join(", ", item.GenreMovies.Select(x => x.Genre.Name))
-                        </td>
-                        <td>
-                            <label class="label label-@Helper.GetStatusClass(item.Status)">
-                                @item.Status
-                            </label>
-                        </td>
-                        <td>@item.Episodes.Count</td>
-                        <td>@item.Release.Format()</td>
                         <td style="font-size: 11px">@item.Description</td>
                     </tr>
                 }
