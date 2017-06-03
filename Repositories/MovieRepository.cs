@@ -12,6 +12,7 @@ namespace Repositories
         IEnumerable<Movie> FindByNameContains(string searchString);
         IEnumerable<Movie> FindNewestMovie(int take);
         IEnumerable<Movie> FindPopularMovie(int take);
+        IEnumerable<Movie> FindMostLikedMovie(int take);
         IEnumerable<Movie> FindSlide(string[] id);
         void Like(User user, Movie movie);
         void UnLike(User user, Movie movie);
@@ -59,6 +60,11 @@ namespace Repositories
         public IEnumerable<Movie> FindPopularMovie(int take)
         {
             return DbSet.Include(x => x.Episodes).Include(x => x.Likes).OrderByDescending(x => x.View).Take(take);
+        }
+
+        public IEnumerable<Movie> FindMostLikedMovie(int take)
+        {
+            return DbSet.Include(x => x.Episodes).Include(x => x.Likes).OrderByDescending(x => x.Likes.Count).Take(take);
         }
 
         public IEnumerable<Movie> FindSlide(string[] id)

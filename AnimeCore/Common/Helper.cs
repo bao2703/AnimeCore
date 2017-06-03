@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Entities.Domain;
 using Microsoft.AspNetCore.Http;
@@ -81,6 +83,24 @@ namespace AnimeCore.Common
             {
                 await file.CopyToAsync(stream);
             }
+        }
+
+        public string GenerateSlug(string input)
+        {
+            var str = RemoveAccent(input).ToLower();
+            // invalid chars        
+            str = Regex.Replace(str, @"[^a-z0-9\s-]", "");
+            // convert multiple spaces into one space   
+            str = Regex.Replace(str, @"\s+", " ").Trim();
+            // replace space with -
+            str = Regex.Replace(str, @"\s", "-"); 
+            return str;
+        }
+
+        private string RemoveAccent(string text)
+        {
+            var bytes = Encoding.UTF8.GetBytes(text);
+            return Encoding.ASCII.GetString(bytes);
         }
     }
 }

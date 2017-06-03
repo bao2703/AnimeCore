@@ -8,10 +8,11 @@
     @await Html.PartialAsync("_SlidePartial")
 }
 
-<vc:movie-slide model="@MovieRepository.FindPopularMovie(16)" title="Popular" rows="1"></vc:movie-slide>
+<vc:movie-slide model="@MovieRepository.FindMostLikedMovie(16)" title="Most Liked" rows="1"></vc:movie-slide>
+
+<vc:movie-slide model="@MovieRepository.FindPopularMovie(16)" title="Most Viewed" rows="1"></vc:movie-slide>
 
 <vc:movie-slide model="@MovieRepository.FindNewestMovie(16)" title="Newest" rows="1"></vc:movie-slide>
-
 
 @section TopAds {
     @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Top", BannerType.Home).PickRandom())

@@ -1,5 +1,8 @@
 @model IEnumerable<Movie>
 @inject Helper Helper
+@{
+    var slug = Helper.GenerateSlug(ViewData[Constant.SlideTitle].ToString());
+}
 
 <div class="panel panel-primary">
     <div class="panel-heading clearfix">
@@ -7,16 +10,16 @@
             @ViewData[Constant.SlideTitle]
         </h4>
         <div class="btn-group pull-right">
-            <button class="btn btn-default btn-sm" href="#@ViewData[Constant.SlideTitle]" role="button" data-slide="prev">
+            <button class="btn btn-default btn-sm" href="#@slug" role="button" data-slide="prev">
                 <i class="fa fa-chevron-left"></i>
             </button>
-            <button class="btn btn-default btn-sm" href="#@ViewData[Constant.SlideTitle]" role="button" data-slide="next">
+            <button class="btn btn-default btn-sm" href="#@slug" role="button" data-slide="next">
                 <i class="fa fa-chevron-right"></i>
             </button>
         </div>
     </div>
     <div class="panel-body">
-        <div id="@ViewData[Constant.SlideTitle]" class="carousel slide" data-ride="carousel">
+        <div id="@slug" class="carousel slide" data-ride="carousel">
             <!-- carousel-inner -->
             <div class="carousel-inner" role="listbox">
                 @foreach (var list in Helper.SplitList(Model.ToList(), (int) ViewData["Rows"] * 4))
