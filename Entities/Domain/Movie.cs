@@ -30,12 +30,11 @@ namespace Entities.Domain
 
         public string Slide { get; set; }
 
-        public string Slug { get; set; }
-
         public string Fansub { get; set; }
 
         public MovieStatus Status { get; set; }
 
+        [Display(Name = "Genre")]
         public ICollection<GenreMovie> GenreMovies { get; set; }
 
         public ICollection<Episode> Episodes { get; set; }

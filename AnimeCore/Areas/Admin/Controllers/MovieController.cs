@@ -1,4 +1,4 @@
-using System;
+using System.Linq;
 using System.Threading.Tasks;
 using AnimeCore.Common;
 using Entities.Domain;
@@ -34,18 +34,16 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Add(Movie model, int[] genres, IFormFile file)
+        public async Task<IActionResult> Add(Movie model, int[] genres, IFormFile image, IFormFile slide)
         {
-            if (file == null)
+            if (image == null)
             {
                 ModelState.AddModelError(string.Empty, "Image is required.");
             }
 
             if (ModelState.IsValid)
             {
-                var filePath = Constant.ImagesFolderPath + DateTime.Now.ToFileTime() + file.FileName;
-                await Helper.CopyFileToAsync(filePath, file);
-                model.Image = filePath;
+                await UpdateFileIfExistAsync(model, image, slide);
 
                 foreach (var genre in genres)
                 {
@@ -75,26 +73,26 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Movie model, int[] genres, IFormFile file)
+        public async Task<IActionResult> Edit(Movie model, int[] genres, IFormFile image, IFormFile slide)
         {
             if (ModelState.IsValid)
             {
-                if (file != null)
+                var movie = _movieRepository.FindById(model.Id);
+                if (movie == null)
                 {
-                    var filePath = Constant.ImagesFolderPath + DateTime.Now.ToFileTime() + file.FileName;
-                    model.Image = filePath;
-                    await Helper.CopyFileToAsync(filePath, file);
+                    return NotFound();
                 }
 
-                foreach (var genre in genres)
-                {
-                    model.GenreMovies.Add(new GenreMovie
-                    {
-                        GenreId = genre
-                    });
-                }
+                await UpdateFileIfExistAsync(movie, image, slide);
 
-                _movieRepository.Add(model);
+                UpdateGenre(movie, genres);
+
+                movie.Name = model.Name;
+                movie.Status = model.Status;
+                movie.Release = model.Release;
+                movie.Description = model.Description;
+
+                _movieRepository.Update(movie);
                 await _unitOfWork.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -118,6 +116,40 @@ namespace AnimeCore.Areas.Admin.Controllers
             _movieRepository.Remove(model);
             await _unitOfWork.SaveChangesAsync();
             return JsonStatus.Ok;
+        }
+
+        private void UpdateGenre(Movie movie, int[] genres)
+        {
+            foreach (var genre in genres)
+            {
+                if (movie.GenreMovies.All(x => x.GenreId != genre))
+                {
+                    movie.GenreMovies.Add(new GenreMovie
+                    {
+                        GenreId = genre
+                    });
+                }
+            }
+
+            foreach (var gm in movie.GenreMovies.ToList())
+            {
+                if (genres.All(x => x != gm.GenreId))
+                {
+                    movie.GenreMovies.Remove(gm);
+                }
+            }
+        }
+
+        private async Task UpdateFileIfExistAsync(Movie movie, IFormFile image, IFormFile slide)
+        {
+            if (image != null)
+            {
+                movie.Image = await UploadAsync(image);
+            }
+            if (slide != null)
+            {
+                movie.Slide = await UploadAsync(slide);
+            }
         }
     }
 }
