@@ -39,7 +39,7 @@
                             </a>
                         </td>
                         <td class="text-center">
-                            <a asp-action="Index" asp-controller="Episode" asp-route-movieId="@item.Id" style="@(User.HasClaim("Episode", "Index") ? "" : "cursor: not-allowed")">
+                            <a asp-action="Index" asp-controller="Episode" asp-route-movieId="@item.Id">
                                 @item.Name
                                 <img src="@item.Image" alt="@item.Name" class="img-responsive" asp-append-version="true" style="max-height: 200px"/>
                             </a>

@@ -48,7 +48,7 @@ namespace Repositories
             return DbSet.Include(x => x.Episodes)
                 .Include(x => x.Likes)
                 .Include(x => x.GenreMovies)
-                .Where(x => x.Name.Contains(searchString));
+                .Where(x => x.Name.ToLower().Contains(searchString.ToLower()));
         }
 
         public IEnumerable<Movie> FindNewestMovie(int take)

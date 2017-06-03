@@ -14,7 +14,7 @@ namespace Models.UserViewModels
         [EmailAddress]
         public string Email { get; set; }
 
-        [Display(Name = "Role name")]
+        [Display(Name = "Role")]
         public string RoleName { get; set; }
     }
 }

@@ -29,10 +29,11 @@ namespace AnimeCore.Controllers
         }
 
         // GET: /Movie/Index
-        public IActionResult Index(string searchString)
+        public IActionResult Index(string searchString, string releaseYear)
         {
             ViewData["SearchString"] = searchString;
             ViewData[Constant.PageSize] = _appSettings.PageSize;
+            ViewData["ReleaseYear"] = releaseYear;
             return View();
         }
 
@@ -74,7 +75,6 @@ namespace AnimeCore.Controllers
         }
 
         [Authorize]
-        [HttpPost]
         public async Task<IActionResult> Like(int id)
         {
             var movie = _movieRepository.FindById(id);
@@ -88,7 +88,6 @@ namespace AnimeCore.Controllers
         }
 
         [Authorize]
-        [HttpPost]
         public async Task<IActionResult> UnLike(int id)
         {
             var movie = _movieRepository.FindById(id);

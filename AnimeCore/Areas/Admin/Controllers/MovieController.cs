@@ -101,14 +101,23 @@ namespace AnimeCore.Areas.Admin.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
             var model = _movieRepository.FindById(id);
+            if (model == null)
+            {
+                return NotFound();
+            }
+            return PartialView("_DeletePartial", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(Movie model)
+        {
             _movieRepository.Remove(model);
             await _unitOfWork.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return JsonStatus.Ok;
         }
     }
 }

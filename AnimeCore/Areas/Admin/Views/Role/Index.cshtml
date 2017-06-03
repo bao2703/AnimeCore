@@ -48,7 +48,7 @@
                     <tr>
                         <td>@(i++)</td>
                         <td>
-                            <a asp-action="Index" asp-controller="Claim" asp-route-roleId="@item.Id" class="@(User.HasClaim("Claim", "Add") ? "" : "disabled")">
+                            <a asp-action="Index" asp-controller="Claim" asp-route-roleId="@item.Id">
                                 @item.Name
                             </a>
                         </td>

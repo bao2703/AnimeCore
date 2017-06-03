@@ -24,7 +24,7 @@
                 <thead>
                 <tr>
                     <th>
-                        <display name-for="@Model.First().Id"></display>
+                        No
                     </th>
                     <th>
                         <display name-for="@Model.First().Name"></display>
@@ -37,10 +37,13 @@
                 </tr>
                 </thead>
                 <tbody>
+                @{
+                    var i = 1;
+                }
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@item.Id</td>
+                        <td>@(i++)</td>
                         <td>@item.Name</td>
                         <td>@item.Title</td>
                         <td>

@@ -18,19 +18,19 @@
             </div>
             <div class="col-sm-12">
                 <div class="form-group">
-                    <label asp-for="RoleName" class="col-sm-3 control-label"></label>
+                    <label asp-for="Email" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <select asp-for="RoleName" asp-items="@(new SelectList(RoleService.ToList(), "Name", "Name"))" class="selectpicker form-control"></select>
-                        <span asp-validation-for="RoleName" class="text-danger"></span>
+                        <input asp-for="Email" class="form-control"/>
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="col-sm-12">
                 <div class="form-group">
-                    <label asp-for="Email" class="col-sm-3 control-label"></label>
+                    <label asp-for="RoleName" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <input asp-for="Email" class="form-control"/>
-                        <span asp-validation-for="Email" class="text-danger"></span>
+                        <select asp-for="RoleName" asp-items="@(new SelectList(RoleService.ToList(), "Name", "Name"))" class="selectpicker form-control"></select>
+                        <span asp-validation-for="RoleName" class="text-danger"></span>
                     </div>
                 </div>
             </div>

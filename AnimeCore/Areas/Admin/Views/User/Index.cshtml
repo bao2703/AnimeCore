@@ -1,4 +1,5 @@
 @using Models.ModalViewModels
+@inject IRoleService RoleService
 @model IEnumerable<Models.UserViewModels.UserListViewModel>
 @{
     ViewData[Constant.Title] = "User List";
@@ -35,9 +36,6 @@
                     <th>
                         <display name-for="@Model.First().Email"></display>
                     </th>
-                    <th>
-                        <display name-for="@Model.First().EmailConfirmed"></display>
-                    </th>
                     <th style="width: 20px;">#</th>
                     <th style="width: 20px;">#</th>
                 </tr>
@@ -51,9 +49,15 @@
                     <tr>
                         <td>@(i++)</td>
                         <td>@item.UserName</td>
-                        <td>@item.RoleName</td>
                         <td>@item.Email</td>
-                        <td>@item.EmailConfirmed</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.RoleName))
+                            {
+                                <a asp-action="Index" asp-controller="Claim" asp-route-roleId="@((await RoleService.FindByNameAsync(item.RoleName)).Id)">
+                                    @item.RoleName
+                                </a>
+                            }
+                        </td>
                         <td>
                             <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info @(User.HasClaim("User", "Edit") ? "" : "disabled")" data-toggle="modal" data-target="#user-action-modal">
                                 <i class="fa fa-pencil"></i> Edit
