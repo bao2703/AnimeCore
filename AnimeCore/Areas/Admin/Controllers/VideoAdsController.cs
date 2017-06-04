@@ -40,10 +40,6 @@ namespace AnimeCore.Areas.Admin.Controllers
         public async Task<IActionResult> Add(VideoAds model)
         {
             ViewData["Action"] = "Add";
-            if (model.StartDate < DateTime.Today)
-            {
-                ModelState.AddModelError(string.Empty, "Start date must be greater than current day");
-            }
             if (ModelState.IsValid)
             {
                 model.Price = _adsLocationRepository.FindById(model.AdsLocationId).Price;
@@ -73,7 +69,7 @@ namespace AnimeCore.Areas.Admin.Controllers
             ViewData["Action"] = "Edit";
             if (ModelState.IsValid)
             {
-                model.Price = _adsLocationRepository.FindById(model.AdsLocationId).Price;
+                //model.Price = _adsLocationRepository.FindById(model.AdsLocationId).Price;
 
                 _videoAdsRepository.Update(model);
                 await _unitOfWork.SaveChangesAsync();

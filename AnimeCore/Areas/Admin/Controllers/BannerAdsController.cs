@@ -79,7 +79,7 @@ namespace AnimeCore.Areas.Admin.Controllers
             {
                 await UpdateFileIfExistAsync(model, file);
 
-                model.Price = _adsLocationRepository.FindById(model.AdsLocationId).Price;
+                //model.Price = _adsLocationRepository.FindById(model.AdsLocationId).Price;
 
                 _bannerAdsRepository.Update(model);
                 await _unitOfWork.SaveChangesAsync();
