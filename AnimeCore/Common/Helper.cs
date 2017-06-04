@@ -93,7 +93,7 @@ namespace AnimeCore.Common
             // convert multiple spaces into one space   
             str = Regex.Replace(str, @"\s+", " ").Trim();
             // replace space with -
-            str = Regex.Replace(str, @"\s", "-"); 
+            str = Regex.Replace(str, @"\s", "-");
             return str;
         }
 

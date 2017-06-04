@@ -65,7 +65,8 @@ namespace Repositories
 
         public IEnumerable<Movie> FindMostLikedMovie(int take)
         {
-            return DbSet.Include(x => x.Episodes).Include(x => x.Likes).OrderByDescending(x => x.Likes.Count).Take(take);
+            return DbSet.Include(x => x.Episodes).Include(x => x.Likes).OrderByDescending(x => x.Likes.Count)
+                .Take(take);
         }
 
         public IEnumerable<Movie> FindSlide(string[] id)

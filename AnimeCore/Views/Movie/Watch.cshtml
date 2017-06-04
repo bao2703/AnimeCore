@@ -22,7 +22,7 @@
                             <div class="text-center" style="font-size: 20px">
                                 <label class="label label-default">
                                     <a href="#" style="color: white">
-                                        Skip Ad in 10
+                                        Skip Ad in @advertisement.SkipIn
                                     </a>
                                 </label>
                             </div>
@@ -92,12 +92,12 @@
                             skipAds();
                         });
 
-                    var counter = 10;
+                    var counter = @advertisement.SkipIn;
                     var adsSkipLink = $("#ads-skip").find("a");
                     var interval = setInterval(function() {
                             counter--;
                             adsSkipLink.html("Skip Ad in " + counter);
-                            if (counter === 0) {
+                            if (counter <= 0) {
                                 adsSkipLink.html('Skip Ad <i class="fa fa-forward"></i>');
                                 adsSkipLink.click(function(e) {
                                     e.preventDefault();

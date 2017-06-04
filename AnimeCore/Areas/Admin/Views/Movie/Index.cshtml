@@ -41,7 +41,10 @@
                         Ep
                     </th>
                     <th>
-                        <display name-for="@Model.First().View"></display>
+                        <i class="fa fa-eye" style="color: #006400"></i>
+                    </th>
+                    <th>
+                        <i class="fa fa-heart" style="color: #ff0000"></i>
                     </th>
                     <th>
                         <display name-for="@Model.First().Release"></display>
@@ -80,6 +83,7 @@
                         </td>
                         <td>@item.Episodes.Count</td>
                         <td>@item.View</td>
+                        <td>@item.Likes.Count</td>
                         <td>@item.Release.Format()</td>
                         <td style="font-size: 11px">@item.Description</td>
                     </tr>

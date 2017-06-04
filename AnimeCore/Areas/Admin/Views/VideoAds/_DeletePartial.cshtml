@@ -1,5 +1,5 @@
 @using Models.ModalViewModels
-@model Advertisement
+@model VideoAds
 
 <form asp-action="Delete" method="post" class="modal-form">
     @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = "Delete Advertisement"})
@@ -46,6 +46,14 @@
                     <label asp-for="Source" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
                         <input asp-for="Source" class="form-control" readonly=""/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label asp-for="SkipIn" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input asp-for="SkipIn" class="form-control" readonly=""/>
                     </div>
                 </div>
             </div>

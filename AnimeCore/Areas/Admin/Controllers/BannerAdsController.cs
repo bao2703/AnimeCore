@@ -28,16 +28,17 @@ namespace AnimeCore.Areas.Admin.Controllers
         public IActionResult Add(int customerId)
         {
             ViewData["Action"] = "Add";
-            ViewData["CustomerId"] = customerId;
-            return PartialView("_AddEditPartial", new BannerAds());
+            return PartialView("_AddEditPartial", new BannerAds()
+            {
+                CustomerId = customerId
+            });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Add(BannerAds model, int customerId, IFormFile file)
+        public async Task<IActionResult> Add(BannerAds model, IFormFile file)
         {
             ViewData["Action"] = "Add";
-            ViewData["CustomerId"] = customerId;
             if (file == null)
             {
                 ModelState.AddModelError(string.Empty, "Image is required.");
@@ -46,7 +47,6 @@ namespace AnimeCore.Areas.Admin.Controllers
             {
                 await UpdateFileIfExistAsync(model, file);
 
-                model.CustomerId = customerId;
                 await _bannerAdsRepository.AddAsync(model);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;

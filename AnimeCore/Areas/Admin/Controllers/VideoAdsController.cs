@@ -27,23 +27,23 @@ namespace AnimeCore.Areas.Admin.Controllers
         public IActionResult Add(int customerId)
         {
             ViewData["Action"] = "Add";
-            ViewData["CustomerId"] = customerId;
-            return PartialView("_AddEditPartial", new VideoAds());
+            return PartialView("_AddEditPartial", new VideoAds()
+            {
+                CustomerId = customerId
+            });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Add(VideoAds model, int customerId)
+        public async Task<IActionResult> Add(VideoAds model)
         {
             ViewData["Action"] = "Add";
-            ViewData["CustomerId"] = customerId;
             if (model.StartDate < DateTime.Today)
             {
                 ModelState.AddModelError(string.Empty, "Start date must be greater than current day");
             }
             if (ModelState.IsValid)
             {
-                model.CustomerId = customerId;
                 await _videoAdsRepository.AddAsync(model);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;
