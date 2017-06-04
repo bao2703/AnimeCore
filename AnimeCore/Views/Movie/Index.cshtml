@@ -15,6 +15,7 @@
 @section RightAds {
     @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Right 1", BannerType.Child).PickRandom())
     @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Right 2", BannerType.Child).PickRandom())
+    @await Html.PartialAsync("_BannerPartial", BannerAdsRepository.GetActiveBanners("Right 3", BannerType.Child).PickRandom())
 }
 
 @section BottomAds {

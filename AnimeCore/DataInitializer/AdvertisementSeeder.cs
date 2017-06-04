@@ -34,6 +34,13 @@ namespace AnimeCore.DataInitializer
                 },
                 new AdsLocation
                 {
+                    Name = "Most Liked",
+                    Desciption = "Show ads on Most Liked movie",
+                    Price = 500000,
+                    LocationType = LocationType.Video
+                },
+                new AdsLocation
+                {
                     Name = "Newest",
                     Desciption = "Show ads on Newest movie",
                     Price = 200000,
@@ -179,6 +186,13 @@ namespace AnimeCore.DataInitializer
                 },
                 new AdsLocation
                 {
+                    Name = "Right 3",
+                    Desciption = "Show ads on right page",
+                    Price = 250000,
+                    LocationType = LocationType.Banner
+                },
+                new AdsLocation
+                {
                     Name = "Right Balloon",
                     Desciption = "Show ads on bottom right page",
                     Price = 2500000,
@@ -280,6 +294,19 @@ namespace AnimeCore.DataInitializer
                     Title = "Buzz Ad Demo",
                     Url = "http://BuzzAdDemo.com",
                     Source = "/assets/client/ads-example/banner/buzz-ad-demo.jpg",
+                    StartDate = new DateTime(2017, 4, 1),
+                    EndDate = new DateTime(2017, 7, 1),
+                    BannerType = BannerType.HomeChild,
+                    AdsLocation = adsLocations.Single(x => x.Name == "Right 3"),
+                    Customer = customer
+                },
+                new BannerAds
+                {
+                    Name = "Steam sale",
+                    Description = "Steam sale",
+                    Title = "Steam sale",
+                    Url = "http://store.steampowered.com/",
+                    Source = "/assets/client/ads-example/banner/steam-gaben-sale.gif",
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 7, 1),
                     BannerType = BannerType.HomeChild,
