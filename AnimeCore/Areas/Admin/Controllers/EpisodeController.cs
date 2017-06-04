@@ -2,6 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AnimeCore.Common;
 using Entities.Domain;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models.EpisodeViewModels;
 using Repositories;
@@ -52,18 +53,22 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Add(AddEditEpisodeViewModel model)
+        public async Task<IActionResult> Add(AddEditEpisodeViewModel model, IFormFile file)
         {
             ViewData["Action"] = "Add";
+            if (file == null)
+            {
+                ModelState.AddModelError(string.Empty, "Video is required.");
+            }
             if (ModelState.IsValid)
             {
                 var episode = new Episode
                 {
                     Name = model.Name,
-                    Source = model.Source,
-                    Movie = new Movie {Id = model.MovieId}
+                    Source = await UploadAsync(file),
+                    MovieId = model.MovieId
                 };
-                _movieRepository.Attach(episode.Movie);
+
                 await _episodeRepository.AddAsync(episode);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;
@@ -90,7 +95,7 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(AddEditEpisodeViewModel model)
+        public async Task<IActionResult> Edit(AddEditEpisodeViewModel model, IFormFile file)
         {
             ViewData["Action"] = "Edit";
             if (ModelState.IsValid)
@@ -101,7 +106,10 @@ namespace AnimeCore.Areas.Admin.Controllers
                     return NotFound();
                 }
                 episode.Name = model.Name;
-                episode.Source = model.Source;
+                if (file != null)
+                {
+                    episode.Source = await UploadAsync(file);
+                }
                 _episodeRepository.Update(episode);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;

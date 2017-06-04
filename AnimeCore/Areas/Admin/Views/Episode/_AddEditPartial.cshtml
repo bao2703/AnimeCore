@@ -13,7 +13,7 @@
     }
 }
 
-<form asp-action="@ViewData["Action"]" asp-controller="Episode" method="post" class="modal-form">
+<form asp-action="@ViewData["Action"]" asp-controller="Episode" method="post" enctype="multipart/form-data" class="modal-form">
     @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = modalHeading})
     <div class="modal-body form-horizontal">
         <div class="row">
@@ -31,17 +31,19 @@
                 <div class="form-group">
                     <label asp-for="Source" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <input asp-for="Source" class="form-control"/>
-                        <span asp-validation-for="Source" class="text-danger"></span>
+                        <input id="file" type="file" name="file" data-show-upload="false" data-show-preview="false" data-show-remove="true" data-allowed-file-extensions='["mp4"]'/>
                     </div>
+                    <input asp-for="Source" type="hidden"/>
                 </div>
             </div>
         </div>
-        <input asp-for="MovieId" value="@Model.MovieId" type="hidden"/>
+        <input asp-for="MovieId" type="hidden"/>
     </div>
     @await Html.PartialAsync("Modal/_FooterPartial", new ModalFooter {SubmitButtonText = submitButtonText, SubmitButtonClass = submitButtonClass})
 </form>
 
 <script>
+    $("#file").fileinput();
+
     $.validator.unobtrusive.parse(".modal-form");
 </script>

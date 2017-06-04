@@ -9,7 +9,7 @@ namespace AnimeCore.Common
     {
         public static string DefaultRole => "Default User";
 
-        public static string ImagesFolderPath => "/upload/images/";
+        public static string ImagesFolderPath => "/upload";
 
         public static string RootPath => "wwwroot";
 

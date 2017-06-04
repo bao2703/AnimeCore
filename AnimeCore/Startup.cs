@@ -4,6 +4,7 @@ using AnimeCore.DataInitializer;
 using Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -41,6 +42,8 @@ namespace AnimeCore
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.Configure<Authentication>(Configuration.GetSection("Authentication"));
+
+            services.Configure<FormOptions>(options => { options.MultipartBodyLengthLimit = 500000000; });
 
             services.AddMvc()
                 .AddJsonOptions(

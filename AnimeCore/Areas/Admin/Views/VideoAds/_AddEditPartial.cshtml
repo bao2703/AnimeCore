@@ -15,7 +15,7 @@
     }
 }
 
-<form asp-action="@ViewData["Action"]" method="post" class="modal-form">
+<form asp-action="@ViewData["Action"]" method="post" enctype="multipart/form-data" class="modal-form">
     @await Html.PartialAsync("Modal/_HeaderPartial", new ModalHeader {Heading = modalHeading})
     <div class="modal-body form-horizontal">
         <input asp-for="CustomerId" type="hidden"/>
@@ -61,9 +61,9 @@
                 <div class="form-group">
                     <label asp-for="Source" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <input asp-for="Source" class="form-control"/>
-                        <span asp-validation-for="Source" class="text-danger"></span>
+                        <input id="file" type="file" name="file" data-show-upload="false" data-show-preview="false" data-show-remove="true" data-allowed-file-extensions='["mp4"]'/>
                     </div>
+                    <input asp-for="Source" type="hidden"/>
                 </div>
             </div>
             <div class="col-sm-12">
@@ -132,6 +132,8 @@
 </form>
 
 <script>
+    $("#file").fileinput();
+
     $(".selectpicker").selectpicker();
 
     var adsLocation = $("#ads-location");

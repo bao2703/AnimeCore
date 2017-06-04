@@ -103,13 +103,5 @@ namespace AnimeCore.Areas.Admin.Controllers
             await _unitOfWork.SaveChangesAsync();
             return JsonStatus.Ok;
         }
-
-        private async Task UpdateFileIfExistAsync(BannerAds banner, IFormFile file)
-        {
-            if (file != null)
-            {
-                banner.Source = await UploadAsync(file);
-            }
-        }
     }
 }

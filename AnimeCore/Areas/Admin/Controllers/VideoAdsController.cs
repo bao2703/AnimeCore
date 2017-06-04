@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using AnimeCore.Common;
 using Entities.Domain;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Repositories;
 
@@ -35,15 +36,21 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Add(VideoAds model)
+        public async Task<IActionResult> Add(VideoAds model, IFormFile file)
         {
             ViewData["Action"] = "Add";
             if (model.StartDate < DateTime.Today)
             {
                 ModelState.AddModelError(string.Empty, "Start date must be greater than current day");
             }
+            if (file == null)
+            {
+                ModelState.AddModelError(string.Empty, "Video is required.");
+            }
             if (ModelState.IsValid)
             {
+                await UpdateFileIfExistAsync(model, file);
+
                 await _videoAdsRepository.AddAsync(model);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;
@@ -64,11 +71,13 @@ namespace AnimeCore.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(VideoAds model)
+        public async Task<IActionResult> Edit(VideoAds model, IFormFile file)
         {
             ViewData["Action"] = "Edit";
             if (ModelState.IsValid)
             {
+                await UpdateFileIfExistAsync(model, file);
+
                 _videoAdsRepository.Update(model);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;

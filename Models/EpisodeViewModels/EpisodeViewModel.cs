@@ -10,7 +10,6 @@ namespace Models.EpisodeViewModels
         [Display(Name = "Episode")]
         public string Name { get; set; }
 
-        [Required]
         public string Source { get; set; }
     }
 }
