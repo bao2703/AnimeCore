@@ -76,6 +76,22 @@
         });
         FB.AppEvents.logPageView();
     };
+
+    $(".banner-ads-link").click(function() {
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("BannerOnClick", "Advertisement")",
+            data: {
+                id: $(this).data("id")
+            },
+            success: function(data) {
+                console.log(data);
+            },
+            error: function() {
+                console.log("error");
+            }
+        });
+    });
 </script>
 
 @RenderSection("Scripts", false)

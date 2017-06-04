@@ -54,7 +54,7 @@ namespace AnimeCore.Controllers
         }
 
         // GET: /Movie/Watch/5
-        public IActionResult Watch(int id)
+        public async Task<IActionResult> Watch(int id)
         {
             var model = _movieRepository.FindById(id);
             if (model == null)
@@ -74,6 +74,10 @@ namespace AnimeCore.Controllers
             {
                 advertisement = _videoAdsRepository.GetActiveVideos("Newest").PickRandom();
             }
+
+            model.View = model.View + 1;
+            await _unitOfWork.SaveChangesAsync();
+
             ViewData["Advertisement"] = advertisement;
             return View(model);
         }

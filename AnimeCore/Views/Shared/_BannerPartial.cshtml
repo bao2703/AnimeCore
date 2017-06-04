@@ -1,12 +1,16 @@
 @model BannerAds
+@inject IUnitOfWork UnitOfWork
 
 @if (Model != null)
 {
-    <div id="@Model.Id" style="margin-bottom: 10px">
+    <div style="margin-bottom: 10px">
         <div title="@Model.Title">
-            <a href="@Model.Url" target="_blank">
+            <a href="@Model.Url" target="_blank" class="banner-ads-link" data-id="@Model.Id">
                 <img src="@Model.Source" alt="@Model.Name" class="img-responsive center-block" style="height: @Model.Height; width: @Model.Width"/>
             </a>
         </div>
     </div>
+
+    Model.View = Model.View + 1;
+    await UnitOfWork.SaveChangesAsync();
 }

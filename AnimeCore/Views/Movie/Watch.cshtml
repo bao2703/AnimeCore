@@ -14,7 +14,7 @@
             <div id="player" class="embed-responsive embed-responsive-16by9">
                 <!-- ads-area -->
                 <div id="ads-area">
-                    <a href="#">
+                    <a href="#" class="video-ads-link">
                         <video class="embed-responsive-item" autoplay=""></video>
                     </a>
                     <div id="ads-skip" class="col-xs-12">
@@ -103,10 +103,39 @@
                                     e.preventDefault();
                                     skipAds();
                                 });
+                                $.ajax({
+                                    type: "POST",
+                                    url: "@Url.Action("VideoOnSkip", "Advertisement")",
+                                    data: {
+                                        id: "@advertisement.Id"
+                                    },
+                                    success: function(data) {
+                                        console.log(data);
+                                    },
+                                    error: function() {
+                                        console.log("error");
+                                    }
+                                });
                                 clearInterval(interval);
                             }
                         },
                         1000);
+
+                    $(".video-ads-link").click(function() {
+                        $.ajax({
+                            type: "POST",
+                            url: "@Url.Action("VideoOnClick", "Advertisement")",
+                            data: {
+                                id: "@advertisement.Id"
+                            },
+                            success: function(data) {
+                                console.log(data);
+                            },
+                            error: function() {
+                                console.log("error");
+                            }
+                        });
+                    });
                 </text>
             }
             else
