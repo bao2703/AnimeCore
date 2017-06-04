@@ -11,11 +11,13 @@ namespace AnimeCore.Areas.Admin.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IVideoAdsRepository _videoAdsRepository;
+        private readonly IAdsLocationRepository _adsLocationRepository;
 
-        public VideoAdsController(IUnitOfWork unitOfWork, IVideoAdsRepository videoAdsRepository)
+        public VideoAdsController(IUnitOfWork unitOfWork, IVideoAdsRepository videoAdsRepository, IAdsLocationRepository adsLocationRepository)
         {
             _unitOfWork = unitOfWork;
             _videoAdsRepository = videoAdsRepository;
+            _adsLocationRepository = adsLocationRepository;
         }
 
         public IActionResult Index()
@@ -27,7 +29,7 @@ namespace AnimeCore.Areas.Admin.Controllers
         public IActionResult Add(int customerId)
         {
             ViewData["Action"] = "Add";
-            return PartialView("_AddEditPartial", new VideoAds()
+            return PartialView("_AddEditPartial", new VideoAds
             {
                 CustomerId = customerId
             });
@@ -44,6 +46,8 @@ namespace AnimeCore.Areas.Admin.Controllers
             }
             if (ModelState.IsValid)
             {
+                model.Price = _adsLocationRepository.FindById(model.AdsLocationId).Price;
+
                 await _videoAdsRepository.AddAsync(model);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;
@@ -69,6 +73,8 @@ namespace AnimeCore.Areas.Admin.Controllers
             ViewData["Action"] = "Edit";
             if (ModelState.IsValid)
             {
+                model.Price = _adsLocationRepository.FindById(model.AdsLocationId).Price;
+
                 _videoAdsRepository.Update(model);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;

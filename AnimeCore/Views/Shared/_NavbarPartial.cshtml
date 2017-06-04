@@ -17,15 +17,20 @@
         <div id="navbar-collapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-left">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Genres<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Genres
+                        <span class="caret"></span>
+                    </a>
                     <ul class="dropdown-menu multi-column columns-genres">
                         <li class="row">
                             @foreach (var genre in GenreRepository.GetAll())
                             {
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <ul class="multi-column-dropdown">
                                         <li>
-                                            <a asp-action="Index", asp-controller="Movie" asp-route-id="@genre.Id" title=@genre.Title>@genre.Name</a>
+                                            <a asp-action="Index", asp-controller="Movie" asp-route-id="@genre.Id" title=@genre.Title>
+                                                @genre.Name
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -34,12 +39,15 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Product Year<b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Product Year
+                        <span class="caret"></span>
+                    </a>
                     <ul class="dropdown-menu multi-column columns-year">
                         <li class="row">
                             @for (var i = 2010; i <= DateTime.Now.Year; i++)
                             {
-                                <div class="col-md-6">
+                                <div class="col-sm-6">
                                     <ul class="multi-column-dropdown">
                                         <li>
                                             <a asp-action="Index", asp-controller="Movie" asp-route-id="" asp-route-releaseYear="@i">@i</a>

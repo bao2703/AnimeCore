@@ -17,10 +17,10 @@ namespace AnimeCore.Areas.Admin.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        public IActionResult Index(LocationType locationType)
+        public IActionResult Index(LocationType locationType = LocationType.Banner)
         {
             var model = _adsLocationRepository.GetAll(locationType);
-            ViewData["LocationType"] = locationType.ToString();
+            ViewData["LocationType"] = locationType;
             return View(model);
         }
 

@@ -82,6 +82,7 @@ namespace AnimeCore.DataInitializer
                     Source = "/assets/client/ads-example/coca-cola-coke-mini-hulk-vs-ant-man.mp4",
                     StartDate = new DateTime(2017, 3, 1),
                     EndDate = new DateTime(2017, 7, 1),
+                    Price = adsLocations.Single(x => x.Name == "Popular").Price,
                     AdsLocation = adsLocations.Single(x => x.Name == "Popular"),
                     Customer = customer
                 },
@@ -94,6 +95,7 @@ namespace AnimeCore.DataInitializer
                     Source = "/assets/client/ads-example/skip-this-ad.mp4",
                     StartDate = new DateTime(2017, 9, 1),
                     EndDate = new DateTime(2017, 10, 1),
+                    Price = adsLocations.Single(x => x.Name == "Popular").Price,
                     AdsLocation = adsLocations.Single(x => x.Name == "Popular"),
                     Customer = customer
                 },
@@ -106,6 +108,7 @@ namespace AnimeCore.DataInitializer
                     Source = "/assets/client/ads-example/2016-design-innovation-3D-animation.mp4",
                     StartDate = new DateTime(2017, 3, 1),
                     EndDate = new DateTime(2017, 10, 1),
+                    Price = adsLocations.Single(x => x.Name == "Most Liked").Price,
                     AdsLocation = adsLocations.Single(x => x.Name == "Most Liked"),
                     Customer = customer
                 },
@@ -118,6 +121,7 @@ namespace AnimeCore.DataInitializer
                     Source = "/assets/client/ads-example/asus-rog-g752-gaming-laptop.mp4",
                     StartDate = new DateTime(2017, 2, 1),
                     EndDate = new DateTime(2017, 7, 1),
+                    Price = adsLocations.Single(x => x.Name == "Newest").Price,
                     AdsLocation = adsLocations.Single(x => x.Name == "Newest"),
                     Customer = customer
                 },
@@ -130,6 +134,7 @@ namespace AnimeCore.DataInitializer
                     Source = "/assets/client/ads-example/dell-alienware-17-2016-official-video-trailer-commercial.mp4",
                     StartDate = new DateTime(2017, 3, 1),
                     EndDate = new DateTime(2017, 7, 1),
+                    Price = adsLocations.Single(x => x.Name == "Newest").Price,
                     AdsLocation = adsLocations.Single(x => x.Name == "Newest"),
                     Customer = customer
                 },
@@ -142,6 +147,7 @@ namespace AnimeCore.DataInitializer
                     Source = "/assets/client/ads-example/ford.mp4",
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 7, 1),
+                    Price = adsLocations.Single(x => x.Name == "Normal").Price,
                     AdsLocation = adsLocations.Single(x => x.Name == "Normal"),
                     Customer = customer
                 },
@@ -154,6 +160,7 @@ namespace AnimeCore.DataInitializer
                     Source = "C:/",
                     StartDate = new DateTime(2017, 1, 1),
                     EndDate = new DateTime(2017, 3, 1),
+                    Price = adsLocations.Single(x => x.Name == "Newest").Price,
                     AdsLocation = adsLocations.Single(x => x.Name == "Newest"),
                     Customer = customer
                 }
@@ -242,6 +249,7 @@ namespace AnimeCore.DataInitializer
                     BannerType = BannerType.Home,
                     Height = "100px",
                     Width = "100%",
+                    Price = adsLocations.Single(x => x.Name == "Top").Price,
                     AdsLocation = adsLocations.Single(x => x.Name == "Top"),
                     Customer = customer
                 },
@@ -257,6 +265,7 @@ namespace AnimeCore.DataInitializer
                     BannerType = BannerType.Home,
                     Height = "150px",
                     Width = "100%",
+                    Price = adsLocations.Single(x => x.Name == "Bottom").Price,
                     AdsLocation = adsLocations.Single(x => x.Name == "Bottom"),
                     Customer = customer
                 },
@@ -270,6 +279,7 @@ namespace AnimeCore.DataInitializer
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 7, 1),
                     BannerType = BannerType.Home,
+                    Price = adsLocations.Single(x => x.Name == "Right 1").Price,
                     AdsLocation = adsLocations.Single(x => x.Name == "Right 1"),
                     Customer = customer
                 },
@@ -283,6 +293,7 @@ namespace AnimeCore.DataInitializer
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 7, 1),
                     BannerType = BannerType.Home,
+                    Price = adsLocations.Single(x => x.Name == "Right 2").Price,
                     AdsLocation = adsLocations.Single(x => x.Name == "Right 2"),
                     Customer = customer
                 },
@@ -296,6 +307,7 @@ namespace AnimeCore.DataInitializer
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 7, 1),
                     BannerType = BannerType.Child,
+                    Price = adsLocations.Single(x => x.Name == "Right 1").Price,
                     AdsLocation = adsLocations.Single(x => x.Name == "Right 1"),
                     Customer = customer
                 },
@@ -309,6 +321,7 @@ namespace AnimeCore.DataInitializer
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 7, 1),
                     BannerType = BannerType.HomeChild,
+                    Price = adsLocations.Single(x => x.Name == "Right 3").Price,
                     AdsLocation = adsLocations.Single(x => x.Name == "Right 3"),
                     Customer = customer
                 },
@@ -322,6 +335,7 @@ namespace AnimeCore.DataInitializer
                     StartDate = new DateTime(2017, 4, 1),
                     EndDate = new DateTime(2017, 7, 1),
                     BannerType = BannerType.HomeChild,
+                    Price = adsLocations.Single(x => x.Name == "Right 2").Price,
                     AdsLocation = adsLocations.Single(x => x.Name == "Right 2"),
                     Customer = customer
                 },
@@ -337,6 +351,7 @@ namespace AnimeCore.DataInitializer
                     BannerType = BannerType.HomeChild,
                     Height = "200px",
                     Width = "250px",
+                    Price = adsLocations.Single(x => x.Name == "Right Balloon").Price,
                     AdsLocation = adsLocations.Single(x => x.Name == "Right Balloon"),
                     Customer = customer
                 }

@@ -36,7 +36,7 @@ namespace AnimeCore.DataInitializer
                     Constant.DefaultRole, new Role
                     {
                         Name = Constant.DefaultRole,
-                        Description = Constant.DefaultRole,
+                        Description = Constant.DefaultRole
                     }
                 },
                 {

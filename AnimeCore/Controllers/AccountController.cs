@@ -80,7 +80,7 @@ namespace AnimeCore.Controllers
             return View(model);
         }
 
-        // POST: /Account/LogOff
+        // POST: /Account/Logout
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()

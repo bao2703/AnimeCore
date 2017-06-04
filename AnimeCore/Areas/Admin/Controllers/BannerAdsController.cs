@@ -11,12 +11,14 @@ namespace AnimeCore.Areas.Admin.Controllers
     public class BannerAdsController : AdminController
     {
         private readonly IBannerAdsRepository _bannerAdsRepository;
+        private readonly IAdsLocationRepository _adsLocationRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public BannerAdsController(IUnitOfWork unitOfWork, IBannerAdsRepository bannerAdsRepository)
+        public BannerAdsController(IUnitOfWork unitOfWork, IBannerAdsRepository bannerAdsRepository, IAdsLocationRepository adsLocationRepository)
         {
             _unitOfWork = unitOfWork;
             _bannerAdsRepository = bannerAdsRepository;
+            _adsLocationRepository = adsLocationRepository;
         }
 
         public IActionResult Index()
@@ -28,7 +30,7 @@ namespace AnimeCore.Areas.Admin.Controllers
         public IActionResult Add(int customerId)
         {
             ViewData["Action"] = "Add";
-            return PartialView("_AddEditPartial", new BannerAds()
+            return PartialView("_AddEditPartial", new BannerAds
             {
                 CustomerId = customerId
             });
@@ -46,6 +48,8 @@ namespace AnimeCore.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 await UpdateFileIfExistAsync(model, file);
+
+                model.Price = _adsLocationRepository.FindById(model.AdsLocationId).Price;
 
                 await _bannerAdsRepository.AddAsync(model);
                 await _unitOfWork.SaveChangesAsync();
@@ -74,6 +78,8 @@ namespace AnimeCore.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 await UpdateFileIfExistAsync(model, file);
+
+                model.Price = _adsLocationRepository.FindById(model.AdsLocationId).Price;
 
                 _bannerAdsRepository.Update(model);
                 await _unitOfWork.SaveChangesAsync();
