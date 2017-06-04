@@ -61,18 +61,18 @@ namespace AnimeCore.Controllers
             {
                 return NotFound();
             }
-            Advertisement advertisement;
+            var advertisement = _videoAdsRepository.GetActiveVideos("Normal").PickRandom();
             if (_movieRepository.IsPopular(model.Id))
             {
                 advertisement = _videoAdsRepository.GetActiveVideos("Popular").PickRandom();
             }
+            else if (_movieRepository.IsMostLiked(model.Id))
+            {
+                advertisement = _videoAdsRepository.GetActiveVideos("Most Liked").PickRandom();
+            }
             else if (_movieRepository.IsNewest(model.Id))
             {
                 advertisement = _videoAdsRepository.GetActiveVideos("Newest").PickRandom();
-            }
-            else
-            {
-                advertisement = _videoAdsRepository.GetActiveVideos("Normal").PickRandom();
             }
             ViewData["Advertisement"] = advertisement;
             return View(model);

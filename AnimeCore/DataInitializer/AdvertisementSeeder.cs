@@ -99,6 +99,18 @@ namespace AnimeCore.DataInitializer
                 },
                 new VideoAds
                 {
+                    Name = "2016 Design Innovation 3D Animation",
+                    Description = "2016 Design Innovation 3D Animation",
+                    Title = "2016 Design Innovation 3D Animation",
+                    Url = "https://eat24.com/",
+                    Source = "/assets/client/ads-example/2016-design-innovation-3D-animation.mp4",
+                    StartDate = new DateTime(2017, 3, 1),
+                    EndDate = new DateTime(2017, 10, 1),
+                    AdsLocation = adsLocations.Single(x => x.Name == "Most Liked"),
+                    Customer = customer
+                },
+                new VideoAds
+                {
                     Name = "Asus ROG G752",
                     Description = "Asus ROG G752",
                     Title = "Asus ROG G752 Gaming Laptop",

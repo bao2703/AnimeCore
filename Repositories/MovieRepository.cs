@@ -19,6 +19,7 @@ namespace Repositories
         bool HasLike(User user, Movie movie);
         bool IsPopular(int id);
         bool IsNewest(int id);
+        bool IsMostLiked(int id);
     }
 
     public class MovieRepository : BaseRepository<Movie>, IMovieRepository
@@ -101,6 +102,11 @@ namespace Repositories
         public bool IsNewest(int id)
         {
             return FindNewestMovie(16).Any(x => x.Id == id);
+        }
+
+        public bool IsMostLiked(int id)
+        {
+            return FindMostLikedMovie(16).Any(x => x.Id == id);
         }
     }
 }
