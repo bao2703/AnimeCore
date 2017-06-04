@@ -1,4 +1,5 @@
 @model Movie
+@inject IMovieRepository MovieRepository
 @inject IBannerAdsRepository BannerAdsRepository
 @inject IEpisodeRepository EpisodeRepository
 
@@ -67,6 +68,8 @@
         </div>
     </div>
 </div>
+
+<vc:movie-slide model="@MovieRepository.GetAll().PickRandom(36)" title="Recommend" rows="3"></vc:movie-slide>
 
 @section Scripts {
     <script>

@@ -45,7 +45,11 @@ namespace AnimeCore.Controllers
             {
                 return NotFound();
             }
-            ViewData["HasLike"] = _movieRepository.HasLike(await _userService.GetUserAsync(User), model);
+            ViewData["HasLike"] = false;
+            if (User.Identity.IsAuthenticated)
+            {
+                ViewData["HasLike"] = _movieRepository.HasLike(await _userService.GetUserAsync(User), model);
+            }
             return View(model);
         }
 
@@ -82,8 +86,11 @@ namespace AnimeCore.Controllers
             {
                 return NotFound();
             }
-            _movieRepository.Like(await _userService.GetUserAsync(User), movie);
-            _unitOfWork.SaveChanges();
+            if (!_movieRepository.HasLike(await _userService.GetUserAsync(User), movie))
+            {
+                _movieRepository.Like(await _userService.GetUserAsync(User), movie);
+                _unitOfWork.SaveChanges();
+            }
             return RedirectToAction("Details", new {id});
         }
 
