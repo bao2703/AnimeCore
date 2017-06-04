@@ -24,7 +24,9 @@ namespace AnimeCore.Areas.Admin.Controllers
             {
                 PageSize = _appSettings.PageSize,
                 FacebookAppId = _authentication.Facebook.AppId,
-                FacebookAppSecret = _authentication.Facebook.AppSecret
+                FacebookAppSecret = _authentication.Facebook.AppSecret,
+                Home = _appSettings.PriceMultiple.Home,
+                Child = _appSettings.PriceMultiple.Child
             };
             return View(model);
         }
@@ -36,6 +38,8 @@ namespace AnimeCore.Areas.Admin.Controllers
             _appSettings.PageSize = model.PageSize;
             _authentication.Facebook.AppId = model.FacebookAppId;
             _authentication.Facebook.AppSecret = model.FacebookAppSecret;
+            _appSettings.PriceMultiple.Home = model.Home;
+            _appSettings.PriceMultiple.Child = model.Child;
             return View(model);
         }
 

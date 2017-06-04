@@ -12,5 +12,9 @@ namespace Models
 
         [Display(Name = "Facebook App Secret")]
         public string FacebookAppSecret { get; set; }
+
+        public double Home { get; set; }
+
+        public double Child { get; set; }
     }
 }

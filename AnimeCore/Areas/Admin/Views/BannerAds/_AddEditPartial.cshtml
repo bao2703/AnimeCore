@@ -1,6 +1,8 @@
-@inject IAdsLocationRepository AdsLocationRepository
+@using Microsoft.Extensions.Options
 @using Models.ModalViewModels
 @using Repositories
+@inject IAdsLocationRepository AdsLocationRepository
+@inject IOptionsSnapshot<AppSettings> AppSettings
 @model BannerAds
 
 @{
@@ -88,7 +90,11 @@
                 <div class="form-group">
                     <label asp-for="BannerType" class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <select asp-for="BannerType" asp-items="Html.GetEnumSelectList<BannerType>()" class="selectpicker show-tick form-control" id="ads-location"></select>
+                        <select asp-for="BannerType" class="selectpicker show-tick form-control" data-show-subtext="true" id="banner-type">
+                            <option value="@BannerType.Home.ToString("D")" data-subtext="@AppSettings.Value.PriceMultiple.Home">@BannerType.Home</option>
+                            <option value="@BannerType.Child.ToString("D")" data-subtext="@AppSettings.Value.PriceMultiple.Child">@BannerType.Child</option>
+                            <option value="@BannerType.HomeChild.ToString("D")" data-subtext="@(AppSettings.Value.PriceMultiple.Home + AppSettings.Value.PriceMultiple.Child)">@BannerType.HomeChild.EnumValue()</option>
+                        </select>
                         <span asp-validation-for="BannerType" class="text-danger"></span>
                     </div>
                 </div>
@@ -97,13 +103,22 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Location</label>
                     <div class="col-sm-9">
-                        <select asp-for="AdsLocationId" class="selectpicker show-tick form-control" data-show-subtext="true">
+                        <select asp-for="AdsLocationId" class="selectpicker show-tick form-control" data-show-subtext="true" id="ads-location">
                             @foreach (var item in AdsLocationRepository.GetAll(LocationType.Banner))
                             {
                                 <option value="@item.Id" data-subtext="@item.Price">@item.Name</option>
                             }
                         </select>
                         <span asp-validation-for="AdsLocationId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label asp-for="Price" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input id="price" asp-for="Price" class="form-control" readonly=""/>
+                        <span asp-validation-for="Price" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -144,6 +159,29 @@
     $("#file").fileinput();
 
     $(".selectpicker").selectpicker();
+
+    var bannerType = $("#banner-type");
+    var adsLocation = $("#ads-location");
+
+    bannerType.on("change",
+        function() {
+            updatePrice();
+        });
+
+    adsLocation.on("change",
+        function() {
+            updatePrice();
+        });
+
+    function updatePrice() {
+        $("#price").val(parseFloat(bannerType.find("option:selected").data("subtext")) *
+            parseFloat(adsLocation.find("option:selected").data("subtext")));
+    }
+
+    @if (ViewData["Action"].ToString() == "Add")
+    {
+        <text>adsLocation.trigger("change");</text>
+    }
 
     $('#start').datetimepicker({
         locale: 'en',

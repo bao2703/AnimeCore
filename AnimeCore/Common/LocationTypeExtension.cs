@@ -2,7 +2,7 @@
 
 namespace AnimeCore.Common
 {
-    public static class LocationTypeExtension
+    public static class BannerTypeExtension
     {
         public static string EnumValue(this BannerType bannerType)
         {

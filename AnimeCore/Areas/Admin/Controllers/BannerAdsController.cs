@@ -11,14 +11,12 @@ namespace AnimeCore.Areas.Admin.Controllers
     public class BannerAdsController : AdminController
     {
         private readonly IBannerAdsRepository _bannerAdsRepository;
-        private readonly IAdsLocationRepository _adsLocationRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public BannerAdsController(IUnitOfWork unitOfWork, IBannerAdsRepository bannerAdsRepository, IAdsLocationRepository adsLocationRepository)
+        public BannerAdsController(IUnitOfWork unitOfWork, IBannerAdsRepository bannerAdsRepository)
         {
             _unitOfWork = unitOfWork;
             _bannerAdsRepository = bannerAdsRepository;
-            _adsLocationRepository = adsLocationRepository;
         }
 
         public IActionResult Index()
@@ -45,11 +43,13 @@ namespace AnimeCore.Areas.Admin.Controllers
             {
                 ModelState.AddModelError(string.Empty, "Image is required.");
             }
+            if (model.StartDate < DateTime.Today)
+            {
+                ModelState.AddModelError(string.Empty, "Start date must be greater than current day");
+            }
             if (ModelState.IsValid)
             {
                 await UpdateFileIfExistAsync(model, file);
-
-                model.Price = _adsLocationRepository.FindById(model.AdsLocationId).Price;
 
                 await _bannerAdsRepository.AddAsync(model);
                 await _unitOfWork.SaveChangesAsync();
@@ -74,12 +74,9 @@ namespace AnimeCore.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(BannerAds model, IFormFile file)
         {
             ViewData["Action"] = "Edit";
-
             if (ModelState.IsValid)
             {
                 await UpdateFileIfExistAsync(model, file);
-
-                //model.Price = _adsLocationRepository.FindById(model.AdsLocationId).Price;
 
                 _bannerAdsRepository.Update(model);
                 await _unitOfWork.SaveChangesAsync();

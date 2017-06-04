@@ -11,13 +11,11 @@ namespace AnimeCore.Areas.Admin.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IVideoAdsRepository _videoAdsRepository;
-        private readonly IAdsLocationRepository _adsLocationRepository;
 
-        public VideoAdsController(IUnitOfWork unitOfWork, IVideoAdsRepository videoAdsRepository, IAdsLocationRepository adsLocationRepository)
+        public VideoAdsController(IUnitOfWork unitOfWork, IVideoAdsRepository videoAdsRepository)
         {
             _unitOfWork = unitOfWork;
             _videoAdsRepository = videoAdsRepository;
-            _adsLocationRepository = adsLocationRepository;
         }
 
         public IActionResult Index()
@@ -40,10 +38,12 @@ namespace AnimeCore.Areas.Admin.Controllers
         public async Task<IActionResult> Add(VideoAds model)
         {
             ViewData["Action"] = "Add";
+            if (model.StartDate < DateTime.Today)
+            {
+                ModelState.AddModelError(string.Empty, "Start date must be greater than current day");
+            }
             if (ModelState.IsValid)
             {
-                model.Price = _adsLocationRepository.FindById(model.AdsLocationId).Price;
-
                 await _videoAdsRepository.AddAsync(model);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;
@@ -69,8 +69,6 @@ namespace AnimeCore.Areas.Admin.Controllers
             ViewData["Action"] = "Edit";
             if (ModelState.IsValid)
             {
-                //model.Price = _adsLocationRepository.FindById(model.AdsLocationId).Price;
-
                 _videoAdsRepository.Update(model);
                 await _unitOfWork.SaveChangesAsync();
                 return JsonStatus.Ok;

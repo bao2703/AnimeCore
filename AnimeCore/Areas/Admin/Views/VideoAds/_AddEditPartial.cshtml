@@ -79,13 +79,22 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Location</label>
                     <div class="col-sm-9">
-                        <select asp-for="AdsLocationId" class="selectpicker show-tick form-control" data-show-subtext="true">
+                        <select asp-for="AdsLocationId" class="selectpicker show-tick form-control" data-show-subtext="true" id="ads-location">
                             @foreach (var item in AdsLocationRepository.GetAll(LocationType.Video))
                             {
                                 <option value="@item.Id" data-subtext="@item.Price">@item.Name</option>
                             }
                         </select>
                         <span asp-validation-for="AdsLocationId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label asp-for="Price" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <input id="price" asp-for="Price" class="form-control" readonly=""/>
+                        <span asp-validation-for="Price" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -124,6 +133,18 @@
 
 <script>
     $(".selectpicker").selectpicker();
+
+    var adsLocation = $("#ads-location");
+
+    adsLocation.on("change",
+        function() {
+            $("#price").val(parseFloat($(this).find("option:selected").data("subtext")));
+        });
+
+    @if (ViewData["Action"].ToString() == "Add")
+    {
+        <text>adsLocation.trigger("change");</text>
+    }
 
     $('#start').datetimepicker({
         locale: 'en',

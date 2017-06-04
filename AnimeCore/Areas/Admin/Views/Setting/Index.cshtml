@@ -14,6 +14,11 @@
             <div asp-validation-summary="ModelOnly" class="alert alert-danger col-sm-offset-1 col-sm-10 text-center"></div>
             <div class="row">
                 <div class="col-sm-offset-1 col-sm-10">
+                    <h3>
+                        <label>App setting</label>
+                    </h3>
+                </div>
+                <div class="col-sm-offset-1 col-sm-10">
                     <div class="form-group">
                         <label asp-for="PageSize"></label>
                         <input asp-for="PageSize" class="form-control"/>
@@ -32,6 +37,25 @@
                         <label asp-for="FacebookAppSecret"></label>
                         <input asp-for="FacebookAppSecret" class="form-control"/>
                         <span asp-validation-for="FacebookAppSecret" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-sm-offset-1 col-sm-10">
+                    <h3>
+                        <label>Banner Price Mutiple</label>
+                    </h3>
+                </div>
+                <div class="col-sm-offset-1 col-sm-5">
+                    <div class="form-group">
+                        <label asp-for="Home"></label>
+                        <input asp-for="Home" class="form-control"/>
+                        <span asp-validation-for="Home" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="form-group">
+                        <label asp-for="Child"></label>
+                        <input asp-for="Child" class="form-control"/>
+                        <span asp-validation-for="Child" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-sm-offset-1 col-sm-10">
