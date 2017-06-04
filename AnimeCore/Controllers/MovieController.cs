@@ -31,7 +31,7 @@ namespace AnimeCore.Controllers
         // GET: /Movie/Index
         public IActionResult Index(string searchString, string releaseYear)
         {
-            ViewData["SearchString"] = searchString;
+            ViewData[Constant.SearchString] = searchString;
             ViewData[Constant.PageSize] = _appSettings.PageSize;
             ViewData["ReleaseYear"] = releaseYear;
             return View();

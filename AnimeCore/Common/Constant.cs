@@ -7,6 +7,8 @@ namespace AnimeCore.Common
 {
     public class Constant
     {
+        public static string DefaultRole => "Default User";
+
         public static string ImagesFolderPath => "/upload/images/";
 
         public static string RootPath => "wwwroot";

@@ -70,7 +70,7 @@ namespace AnimeCore.Controllers
                 return View(model);
             }
             var user = new User {UserName = model.UserName, Email = model.Email};
-            var result = await _userService.CreateAsync(user, model.Password);
+            var result = await _userService.CreateAsync(user, model.Password, Constant.DefaultRole);
             if (result.Succeeded)
             {
                 await _accountService.SignInAsync(user, false);
@@ -126,7 +126,11 @@ namespace AnimeCore.Controllers
             ViewData[Constant.ReturnUrl] = returnUrl;
             ViewData[Constant.LoginProvider] = info.LoginProvider;
             var email = info.Principal.FindFirstValue(ClaimTypes.Email);
-            return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel {UserName = email});
+            return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel
+            {
+                UserName = email,
+                Email = email
+            });
         }
 
         // POST: /Account/ExternalLoginConfirmation
@@ -143,13 +147,14 @@ namespace AnimeCore.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new User {UserName = model.UserName, Email = model.UserName};
+                var user = new User {UserName = model.UserName, Email = model.Email};
                 var result = await _userService.CreateAsync(user);
                 if (result.Succeeded)
                 {
                     result = await _userService.AddLoginAsync(user, info);
                     if (result.Succeeded)
                     {
+                        await _userService.UpdateAsync(user, Constant.DefaultRole);
                         await _accountService.SignInAsync(user, false);
                         return RedirectToLocal(returnUrl);
                     }

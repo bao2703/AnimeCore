@@ -1,7 +1,7 @@
 @model Movie
 @inject IBannerAdsRepository BannerAdsRepository
 @{
-    ViewData[Constant.Title] = "Details";
+    ViewData[Constant.Title] = Model.Name + " - Details";
 }
 
 @section Slide {
@@ -43,7 +43,7 @@
         <div class="row">
             <div class="col-sm-9">
                 <div class="col-sm-12">
-                    <display name-for="GenreMovies"></display>
+                    <display name-for="GenreMovies"></display>:
                     @{
                         var i = 0;
                     }
@@ -74,11 +74,11 @@
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="col-sm-4">
-                            <display name-for="View"/>:
+                            <i class="fa fa-eye" style="color: #006400"></i>
                             @Model.View
                         </div>
                         <div class="col-sm-4">
-                            <display name-for="Likes"/>:
+                            <i class="fa fa-heart" style="color: #ff0000"></i>
                             @Model.Likes.Count
                         </div>
                     </div>

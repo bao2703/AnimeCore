@@ -5,3 +5,7 @@
     list-style-type: none;
     padding: 0;
 }
+
+.input-validation-error {
+    border-color: #a94442;
+}

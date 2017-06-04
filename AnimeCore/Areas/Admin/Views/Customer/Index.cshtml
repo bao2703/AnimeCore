@@ -19,7 +19,7 @@
                 <tr>
                     <th>
                         <div class="btn-group">
-                            <a asp-action="Add" class="btn btn-primary btn-sm @(User.HasClaim("User", "Add") ? "" : "disabled")" data-toggle="modal" data-target="#customer-action-modal" style="">
+                            <a asp-action="Add" class="btn btn-primary btn-sm @(User.HasClaim("Customer", "Add") ? "" : "disabled")" data-toggle="modal" data-target="#customer-action-modal" style="">
                                 <i class="fa fa-plus"></i> Add Customer
                             </a>
                         </div>

@@ -4,7 +4,7 @@
 @inject IVideoAdsRepository VideoAdsRepository
 @model IEnumerable<AdsLocation>
 @{
-    ViewData[Constant.Title] = "AdsLocation List";
+    ViewData[Constant.Title] = "Location List";
 }
 
 @await Html.PartialAsync("Modal/_ModalPartial", new Modal {Id = "action-modal", ModalSize = ModalSize.Medium})

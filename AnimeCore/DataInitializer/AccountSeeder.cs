@@ -12,7 +12,6 @@ namespace AnimeCore.DataInitializer
     public class AccountSeeder
     {
         private const string Administrator = "Administrator";
-        private const string SuperUser = "Super User";
         private const string Manager = "Manager";
 
         public static async Task InitializeAsync(IApplicationBuilder app)
@@ -34,10 +33,10 @@ namespace AnimeCore.DataInitializer
                     }
                 },
                 {
-                    SuperUser, new Role
+                    Constant.DefaultRole, new Role
                     {
-                        Name = SuperUser,
-                        Description = "SuperUser"
+                        Name = Constant.DefaultRole,
+                        Description = Constant.DefaultRole,
                     }
                 },
                 {
@@ -57,10 +56,6 @@ namespace AnimeCore.DataInitializer
             foreach (var claim in Constant.Claims)
             {
                 await roleService.AddClaimAsync(roles[Administrator], new Claim(claim.Type, claim.Value));
-                if (claim.Type == "User" || claim.Type == "Role" || claim.Type == "Claim")
-                {
-                    await roleService.AddClaimAsync(roles[SuperUser], new Claim(claim.Type, claim.Value));
-                }
                 if (claim.Type == "Movie" || claim.Type == "Episode")
                 {
                     await roleService.AddClaimAsync(roles[Manager], new Claim(claim.Type, claim.Value));
