@@ -20,6 +20,16 @@
                 },
                 error: function() {
                     console.log("error");
+                },
+                beforeSend: function() {
+                    $(".btn").addClass("disabled");
+                    $(".action-modal").on("hide.bs.modal.prevent",
+                        function(e) {
+                            e.preventDefault();
+                        });
+                },
+                complete: function() {
+                    
                 }
             });
         }
